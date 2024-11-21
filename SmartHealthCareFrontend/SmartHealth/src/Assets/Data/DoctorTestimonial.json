@@ -1,0 +1,27 @@
+[
+    {
+      "name": "Dr. Binod Kumar",
+      "designation": "Vice President, Birathealthcare, Biratnagar",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "We must remember that the healthcare industry's primary goal, in any part of the world, is to provide quality healthcare to all those who need it. Many times, it does not happen due to information asymmetry, affordability issues, and barriers to access. While all those challenges may be difficult to address in a country like ours, some parts of the problem can definitely be addressed by the digitalization of healthcare. Smart Health is spearheading Nepal's healthcare agenda in that sense by leveraging an integral part of today's routine - online booking, which has helped healthcare reach the last mile through technology. The benefits of digitalization are visible across all areas of healthcare, and Smart Health itself has made strides in this direction even though we are not a technology company. That's because our aim has always been to provide quicker and better healthcare services to our patients, and increased use of technology to connect with our patients is helping us do that more efficiently."
+    },
+    {
+      "name": "Dr. Sita Pandey",
+      "designation": "Chief Medical Officer, Kathmandu Central Hospital",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "Smart Health has truly transformed the way we operate at Kathmandu Central. The platform’s seamless booking system and follow-up reminders help keep patients informed and encouraged to seek regular check-ups. This level of organization has led to significant improvements in patient satisfaction and operational efficiency, allowing our team to focus more on delivering quality care. Smart Health has made healthcare more accessible to people across all backgrounds, which is an incredible achievement in our healthcare system."
+    },
+    {
+      "name": "Dr. Anil Thapa",
+      "designation": "Director, HealthLink Nepal",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "In a country with complex geographic challenges, Smart Health has made healthcare access much easier for rural communities. People no longer need to travel long distances for initial consultations, thanks to Smart Health’s online appointment scheduling and remote consultations. This advancement has reduced the delay in seeking care and has positively impacted public health in remote areas. It’s remarkable to see a platform addressing these barriers and improving healthcare accessibility for all."
+    },
+    {
+      "name": "Dr. Asha Rana",
+      "designation": "Head of Pediatrics, Nepal Children's Hospital",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "Digitalization through Smart Health has greatly impacted our ability to serve families more effectively at Nepal Children's Hospital. With better access to medical history and digital records, pediatricians can make faster, more informed decisions. This efficiency has decreased wait times and improved patient outcomes in critical cases. Smart Health has not only streamlined our internal processes but also made it easier for parents to schedule follow-ups, contributing to better, continuous care for our young patients."
+    }
+  ]
+  

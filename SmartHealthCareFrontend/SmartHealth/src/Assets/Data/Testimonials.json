@@ -1,0 +1,51 @@
+[
+    {
+      "name": "Alice Thompson",
+      "age": 34,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "The care I received was exceptional. The team made me feel comfortable and well-informed throughout my treatment."
+    },
+    {
+      "name": "James Rodriguez",
+      "age": 47,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "I was very impressed with the professionalism and kindness shown by the staff. I felt truly cared for."
+    },
+    {
+      "name": "Maria Gonzalez",
+      "age": 29,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "From start to finish, I felt valued as a patient. The attention to detail and personalized care was wonderful."
+    },
+    {
+      "name": "David Lee",
+      "age": 52,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "The doctors took time to explain every procedure, which really put my mind at ease. Highly recommend this clinic!"
+    },
+    {
+      "name": "Linda Wright",
+      "age": 41,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "I couldn’t have asked for better care. Everyone was compassionate and attentive, making my experience as stress-free as possible."
+    },
+    {
+      "name": "Michael Brown",
+      "age": 36,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "The team went above and beyond to make sure I was comfortable. I appreciated their attention and dedication to my well-being."
+    },
+    {
+      "name": "Sofia Martinez",
+      "age": 30,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "I felt like more than just a patient; they really took the time to understand my needs and concerns. Fantastic experience!"
+    },
+    {
+      "name": "Chris Evans",
+      "age": 55,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOvDs-ry3nz6dC7R-Ut7z78f98QnTkD4bTsWCXman027r53vIrXhiMS7hJ6tUyMjb6mE&usqp=CAU",
+      "testimonial": "A highly professional and caring team. They explained everything clearly and showed great empathy and dedication."
+    }
+  ]
+  
