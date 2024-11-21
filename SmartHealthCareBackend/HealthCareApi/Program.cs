@@ -23,6 +23,10 @@ builder.Services.AddControllers()
       
         options.JsonSerializerOptions.MaxDepth = 64;
     });
+
+
+builder.Services.AddHttpClient(); // Register HttpClient for Dependency Injection
+
 //Services Regsitrations 
 builder.Services.AddHealthCarePersistence(builder.Configuration);
 builder.Services.AddApplicationServices();  

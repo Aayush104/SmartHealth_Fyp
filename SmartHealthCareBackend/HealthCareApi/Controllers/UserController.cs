@@ -1,6 +1,7 @@
 ﻿using HealthCareApplication.Contract.IService;
 
 using HealthCareApplication.Dtos.UserDto;
+using HealthCareApplication.Dtos.UserDtoo;
 using HealthCareDomain.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -92,5 +93,13 @@ namespace HealthCareApi.Controllers
             return StatusCode(response.StatusCode, response);   
 
         }
+        [HttpPost("GoogleLogin")]
+        public async Task<IActionResult> GoogleLogin(GoogleLoginDto googleLoginDto)
+        {
+            var response = await _userService.GoogleLoginAsync(googleLoginDto);
+
+            return StatusCode(response.StatusCode, response);
+        }
+
     }
 }

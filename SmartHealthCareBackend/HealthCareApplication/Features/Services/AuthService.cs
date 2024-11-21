@@ -1,8 +1,11 @@
-﻿using HealthCareApplication.Contract.IService;
+﻿using Azure.Core;
+using Google.Apis.Auth;
+using HealthCareApplication.Contract.IService;
 using HealthCareApplication.Contracts.Email;
 using HealthCareApplication.Contracts.IService;
 
 using HealthCareApplication.Dtos.UserDto;
+using HealthCareApplication.Dtos.UserDtoo;
 using HealthCareApplication.Helper;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Patients;
@@ -12,8 +15,14 @@ using HealthCareInfrastructure.DataSecurity;
 using HealthCarePersistence.IRepository;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
+
+using System.Threading.Tasks;
+using System.Text.Json;
+
+using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace HealthCareApplication.Features.Services
@@ -29,11 +38,13 @@ namespace HealthCareApplication.Features.Services
         private readonly IOtpService _otpService;
         private readonly ITokenService _tokenService;
         private readonly IDataProtector _dataProtector;
+        private readonly HttpClient _httpClient;
 
-        public AuthService(IPatientRepository patientRepository, IDoctorRepository doctorRepository, UserManager<ApplicationUser> userManager,
+        public AuthService( HttpClient httpclient, IPatientRepository patientRepository, IDoctorRepository doctorRepository, UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager, IFileService fileService, IMailService mailService, IOtpService otpService,
             ITokenService tokenService, IDataProtectionProvider dataProtector, DataSecurityProvider securityProvider)
         {
+            _httpClient = httpclient;   
             _patientRepository = patientRepository;
             _doctorRepository = doctorRepository;
             _userManager = userManager;
@@ -61,7 +72,6 @@ namespace HealthCareApplication.Features.Services
                 {
                     FullName = userDto.FullName,
                     Email = userDto.Email,
-                    PhoneNumber = userDto.PhoneNumber,
                     UserName = userDto.Email
                 };
 
@@ -270,6 +280,84 @@ namespace HealthCareApplication.Features.Services
                 };
             }
         }
+
+        public async Task<ApiResponseDto> GoogleLoginAsync(GoogleLoginDto googleLoginDto)
+        {
+            try
+            {
+               
+                var user = await _userManager.FindByEmailAsync(googleLoginDto.Email);
+
+                
+                if (user == null)
+                {
+                    user = new ApplicationUser
+                    {
+                        FullName = googleLoginDto.Name,
+                        Email = googleLoginDto.Email,
+                        UserName = googleLoginDto.Email,
+                        EmailConfirmed = true
+                    };
+
+                  
+                    var result = await _userManager.CreateAsync(user);
+                    if (!result.Succeeded)
+                    {
+                       
+                        return new ApiResponseDto
+                        {
+                            IsSuccess = false,
+                            Message = "Error registering user.",
+                            StatusCode = 400  
+                        };
+                    }
+
+                    await _userManager.AddToRoleAsync(user, "Patient");
+
+                    
+                    var patient = new Patient { Id = user.Id };
+                    await _patientRepository.AddPatient(patient);
+                }
+
+               
+                var userRole = await _userManager.GetRolesAsync(user);
+
+            
+                var token = _tokenService.GenerateToken(user, userRole.ToList());
+
+                if (token != null)
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = true,
+                        Message = "Login successful",
+                        StatusCode = 200,
+                        Data = token
+                    };
+                }
+                else
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = false,
+                        Message = "Token generation failed.",
+                        StatusCode = 500
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                // Catch any unexpected errors
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"Internal server error: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
+
 
     }
 }

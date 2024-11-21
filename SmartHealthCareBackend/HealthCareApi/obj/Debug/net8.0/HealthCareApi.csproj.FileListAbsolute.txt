@@ -316,3 +316,9 @@ D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\refint\
 D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.pdb
 D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.genruntimeconfig.cache
 D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\ref\HealthCareApi.dll
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Google.Apis.dll
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Google.Apis.Auth.dll
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Google.Apis.Core.dll
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\System.Management.dll
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll

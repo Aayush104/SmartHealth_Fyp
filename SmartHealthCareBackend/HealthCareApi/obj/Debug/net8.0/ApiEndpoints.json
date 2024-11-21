@@ -197,6 +197,22 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.UserController",
+    "Method": "GoogleLogin",
+    "RelativePath": "api/User/GoogleLogin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "googleLoginDto",
+        "Type": "HealthCareApplication.Dtos.UserDtoo.GoogleLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.UserController",
     "Method": "Login",
     "RelativePath": "api/User/Login",
     "HttpMethod": "POST",

@@ -1,4 +1,5 @@
 ﻿using HealthCareApplication.Dtos.UserDto;
+using HealthCareApplication.Dtos.UserDtoo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace HealthCareApplication.Contract.IService
         Task <ApiResponseDto> ChangePasswordAsync(ChangePasswordDto changePasswordDto);
 
         Task<ApiResponseDto> ResendOtpAsync(string userId, string Purpose);
+        Task<ApiResponseDto> GoogleLoginAsync(GoogleLoginDto googleLoginDto);
     }
 }
