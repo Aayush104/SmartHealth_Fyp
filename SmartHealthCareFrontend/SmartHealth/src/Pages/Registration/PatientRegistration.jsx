@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 const PatientRegistration = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+
   const [password, setPassword] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [medicalHistory, setMedicalHistory] = useState('');
@@ -24,13 +24,8 @@ const PatientRegistration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic phone number validation
-    if (!/^\d{10}$/.test(phoneNumber)) {
-      toast.error("Please enter a valid phone number (10 digits).");
-      return;
-    }
 
-    // Basic password validation
+
     if (password.length < 8) {
       toast.error("Password must be at least 8 characters long.");
       return;
@@ -42,7 +37,7 @@ const PatientRegistration = () => {
       const formData = {
         fullName,
         email,
-        phoneNumber,
+
         password,
         dateOfBirth,
         medicalHistory,
@@ -59,19 +54,19 @@ const PatientRegistration = () => {
         } else {
           toast.error("Failed to register. Please try again.");
         }
-        setLoading(false); 
+        setLoading(false);
       }, 3000);
     } catch (error) {
       if (error.response && error.response.status === 401) {
         // Show loader for 3 seconds if 401 error occurs
         setLoading(true);
         setTimeout(() => {
-          setLoading(false); 
+          setLoading(false);
         }, 3000);
       } else {
         console.error("Error registering patient:", error);
         toast.error(error.message || "Failed to register. Please try again.");
-        setLoading(false); 
+        setLoading(false);
       }
     }
   };
@@ -86,10 +81,10 @@ const PatientRegistration = () => {
       {loading ? (
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-white z-10">
           <div>
-            <iframe 
+            <iframe
               src="https://lottie.host/embed/f0c76f96-a6b9-4b55-ad52-a3dc62715955/2imxSkN9Vh.json"
-              width="250"  
-              height="250" 
+              width="250"
+              height="250"
             />
             <p className="text-center text-sky-500 text-2xl">Please Wait....</p>
           </div>
@@ -155,19 +150,7 @@ const PatientRegistration = () => {
                     </div>
 
                     <div className="flex items-center justify-between gap-4 w-full">
-                      <div className="mb-4 w-full">
-                        <label className="text-gray-700 text-sm mb-2" htmlFor="phoneNumber">
-                          Phone Number <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          id="phoneNumber"
-                          type="tel"
-                          value={phoneNumber}
-                          onChange={(e) => setPhoneNumber(e.target.value)}
-                          required
-                          className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                      </div>
+
                       <div className="mb-4 w-full">
                         <label className="text-gray-700 text-sm mb-2" htmlFor="dateOfBirth">
                           Date of Birth <span className="text-red-500">*</span>

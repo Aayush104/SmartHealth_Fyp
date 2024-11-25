@@ -36,7 +36,7 @@ const Navbar = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li className="hover:text-sky-500 transition-colors duration-200">
-            <a href="#">Find Doctor</a>
+            <a href="/Doctors">Find Doctor</a>
           </li>
           <li className="hover:text-sky-500 transition-colors duration-200">
             <NavLink to="/AboutUs">About Us</NavLink>

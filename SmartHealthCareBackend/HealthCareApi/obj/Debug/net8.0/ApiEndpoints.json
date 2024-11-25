@@ -276,11 +276,6 @@
         "IsRequired": false
       },
       {
-        "Name": "PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "Password",
         "Type": "System.String",
         "IsRequired": false

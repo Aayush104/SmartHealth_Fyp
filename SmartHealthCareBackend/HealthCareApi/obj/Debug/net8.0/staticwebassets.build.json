@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XLcL3KII4ePU8Hb6A0zL2JCyO9Pc5A4+wJ0y33lHxIA=",
+  "Hash": "UFZxuF/9e891gDT0kkxJKhlZpa0XGEYWdmK62c9zQqk=",
   "Source": "HealthCareApi",
   "BasePath": "_content/HealthCareApi",
   "Mode": "Default",
@@ -226,6 +226,25 @@
       "OriginalItemSpec": "wwwroot\\Government\\c61a5d7e-c9d2-4061-8b96-53ca8b2e56d2.jpg"
     },
     {
+      "Identity": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\e30f1ba3-49a2-4702-9707-7fdc402860be.webp",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Government/e30f1ba3-49a2-4702-9707-7fdc402860be.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Government\\e30f1ba3-49a2-4702-9707-7fdc402860be.webp"
+    },
+    {
       "Identity": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\e42c322d-438d-427c-83b1-82d2dfc8c7ba.jpg",
       "SourceId": "HealthCareApi",
       "SourceType": "Discovered",
@@ -376,6 +395,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Liscense\\16803aa0-3a88-4c10-a459-2a9406958302.avif"
+    },
+    {
+      "Identity": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\2066c7c3-08b6-4347-a28e-e59ccc9af625.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Liscense/2066c7c3-08b6-4347-a28e-e59ccc9af625.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Liscense\\2066c7c3-08b6-4347-a28e-e59ccc9af625.png"
     },
     {
       "Identity": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\30609c89-718e-42b6-92ee-7662cb02c2e4.png",
@@ -623,6 +661,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Qualification\\3e885cb0-a876-4f41-9ceb-d560ec2db504.jpg"
+    },
+    {
+      "Identity": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\49749e2e-fe26-438b-a353-961af612b42d.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Qualification/49749e2e-fe26-438b-a353-961af612b42d.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Qualification\\49749e2e-fe26-438b-a353-961af612b42d.png"
     },
     {
       "Identity": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\497b757f-90ca-4ec2-86d2-465f4f154e0e.jpg",

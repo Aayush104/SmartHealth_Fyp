@@ -13,6 +13,7 @@ import DoctorAvailability from './Pages/DoctorAvailablity/DoctorAvailability';
 import Otp from './Components/Otp/Otp';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import Contact from './Components/Contact/Contact';
+import FindDoctor from './Pages/FindDoctor/FindDoctor';
 
 const App = () => {
   return (
@@ -24,12 +25,15 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/forgetPassword" element={<ForgetPassword />} />
         <Route path="/AboutUs" element={<AboutUs />} />
-        
-        <Route path="/home" element={<Home />} />
+        <Route path="/Doctors" element={<FindDoctor />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
+       
+        <Route path="/home" element={<Home />} />
+      
         <Route path="/ConfirmEmail/:email/:otp" element={<ConfirmDoctorEmail />} />
         <Route path="/doctorAvailability" element={<DoctorAvailability />} />
-        <Route path="/contact" element={<Contact />} />
+       
     
     
       </Routes>

@@ -11,12 +11,14 @@ export default {
         "banner" : "url('../src/Assets/Image/Banner.jpg')",
         "AboutBanner" :  "url('../src/Assets/Image/cms.jpg')",
         "ab" :  "url('../src/Assets/Image/ab.jpg')",
+        "Doctor_Banner" : "url('../src/Assets/Image/Find_Banner.png')",
 
       }, 
       height:{
         "full":"70vh",
         "90vh" : "90vh",
-        "50vh" : "55vh"
+        "50vh" : "55vh",
+        "75vh" : "75vh"
 
       },
       width :{

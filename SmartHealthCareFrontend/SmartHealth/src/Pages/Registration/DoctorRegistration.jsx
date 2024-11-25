@@ -13,7 +13,6 @@ import { toast } from 'react-toastify';
 const DoctorRegistration = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [specialization, setSpecialization] = useState('');
   const [licenseNumber, setLicenseNumber] = useState('');
@@ -35,7 +34,6 @@ const DoctorRegistration = () => {
 
     formData.append('FullName', fullName);
     formData.append('Email', email);
-    formData.append('PhoneNumber', phoneNumber);
     formData.append('Password', password);
     formData.append('Specialization', specialization);
     formData.append('LicenseNumber', licenseNumber);
@@ -45,16 +43,12 @@ const DoctorRegistration = () => {
     if (qualificationsFile) formData.append('QualificationsFile', qualificationsFile);
     if (governmentIdFile) formData.append('GovernmentIdFile', governmentIdFile);
 
-    if (!fullName || !email || !phoneNumber || !password || !specialization || !licenseFile || !qualificationsFile || !governmentIdFile || !qualifications) {
+    if (!fullName || !email  || !password || !specialization || !licenseFile || !qualificationsFile || !governmentIdFile || !qualifications) {
       toast.error("All fields are required.");
       return
     }
 
-    if (!/^\d{10}$/.test(phoneNumber)) {
-      toast.error("Please enter a valid phone number (10 digits).");
-      return;
-    }
-
+    
 
     if (password.length < 8) {
       toast.error("Password must be at least 8 characters long.");
@@ -71,7 +65,7 @@ const DoctorRegistration = () => {
        setGovernmentIdFile(null);
        setLicenseFile(null);
        setPassword('');
-       setPhoneNumber('');
+      
        setQualificationsFile('')
        setQualifications('');
        setSpecialization(null)
@@ -205,19 +199,18 @@ onClick={() => setSuccess(false)}
                 </div>
 
                 <div className='flex gap-4'>
-                  <div className='mb-4 w-full'>
+                  
+                <div className='mb-4 w-full'>
                     <label className="text-gray-700 text-sm mb-2" htmlFor="fullName">
-                      Phone Number <span className="text-red-500">*</span>
+                      Qualifications <span className="text-red-500">*</span>
                     </label>
                     <input
-                      type="tel"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      required
+                      type="text"
+                      value={qualifications}
+                      onChange={(e) => setQualifications(e.target.value)}
                       className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 h-12"
                     />
                   </div>
-
                   <div className='mb-4 w-full'>
                     <label className="text-gray-700 text-sm mb-2" htmlFor="fullName">
                       Pan Number<span className="text-red-500">*</span>
@@ -231,8 +224,8 @@ onClick={() => setSuccess(false)}
                   </div>
                 </div>
 
-                <div className='flex gap-4'>
-                  <div className='mb-4 w-full'>
+               
+                  <div className='mb-4 w-full '>
                     <label className="text-gray-700 text-sm mb-2" htmlFor="fullName">
                       Specialization<span className="text-red-500">*</span>
                     </label>
@@ -240,12 +233,12 @@ onClick={() => setSuccess(false)}
                       options={specializations.map((spec) => ({ value: spec.name, label: spec.name }))}
                       onChange={(selectedOption) => setSpecialization(selectedOption.value)}
                       placeholder="Select Specialization"
-                      className='w-full z-0'
+                      className=' W-full z-0'
                       styles={{
                         control: (base) => ({
                           ...base,
                           height: '48px',
-                          width: "16rem",
+                          width: "32.8rem",
                           minHeight: '48px',
                           border: '1px solid #d1d5db',
                           boxShadow: 'none',
@@ -273,18 +266,8 @@ onClick={() => setSuccess(false)}
                     />
                   </div>
 
-                  <div className='mb-4 w-full'>
-                    <label className="text-gray-700 text-sm mb-2" htmlFor="fullName">
-                      Qualifications <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={qualifications}
-                      onChange={(e) => setQualifications(e.target.value)}
-                      className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 h-12"
-                    />
-                  </div>
-                </div>
+              
+              
 
                 <div className='mb-4 w-full'>
                   <label className="text-gray-700 text-sm mb-2" htmlFor="fullName">
