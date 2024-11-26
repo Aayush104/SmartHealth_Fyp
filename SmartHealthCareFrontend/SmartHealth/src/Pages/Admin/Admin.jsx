@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import axios from 'axios';
-import SearchDoctor from '../../Components/SearchComponent/SearchDoctor';
 import Dashboard from '../../Components/DashBoard/Dashboard';
+import { useParams } from 'react-router-dom';
+import VerifyDoc from '../../Components/Admin Components/VerifyDoc';
 
 const Admin = () => {
   const [data, setData] = useState([]);
+  const { section } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,60 +22,26 @@ const Admin = () => {
     fetchData();
   }, []);
 
-  const handleAccept = async (email) => {
-    try {
-      const response = await axios.post(`https://localhost:7070/api/Doctor/AcceptDoctor/${email}`);
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error accepting doctor', error);
-    }
-  };
-
-  const handleReject = async (email) => {
-    try {
-      const response = await axios.post(`https://localhost:7070/api/Doctor/RejectDoctor/${email}`);
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error rejecting doctor', error);
-    }
-  };
-
   return (
-    <div>
+    <div className='bg-slate-50 h-screen'>
       <Navbar />
-{/* 
-  <Dashboard /> */}
-      <div className="container mx-auto p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {data.map((doctor) => (
-            <div key={doctor.licenseNumber} className="border p-4 rounded-lg shadow-lg">
-              <p className="font-bold"><strong>Name:</strong> {doctor.fullName}</p>
-              <p><strong>Specialization:</strong> {doctor.specialization}</p>
-              <p><strong>License Number:</strong> {doctor.licenseNumber}</p>
-              <p><strong>Qualifications:</strong> {doctor.qualifications}</p>
-              <p><strong>Status:</strong> {doctor.status}</p>
-              <div className="mt-2 w-20 flex gap-4">
-                <img src={doctor.licenseFilePath} alt="License" className="h-20 w-20 object-cover" />
-                <img src={doctor.qualificationsFilePath} alt="Qualifications" className="h-20 w-20 object-cover" />
-                <img src={doctor.governmentIdFilePath} alt="Government ID" className="h-20 w-20 object-cover" />
-              </div>
-              <div className="flex mt-4 gap-4">
-                <button
-                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
-                  onClick={() => handleAccept(doctor.email)}
-                >
-                  Accept
-                </button>
+      <div className="flex">
+        
+        <div className="w-16 md:w-60">
+          <Dashboard />
+        </div>
 
-                <button
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
-                  onClick={() => handleReject(doctor.email)}
-                >
-                  Reject
-                </button>
-              </div>
+       
+        <div className="flex-1 mt-4  p-4 mx-8">
+          <div className="w-full">
+            {section === 'dashboard' && <VerifyDoc />}
+          </div>
+
+          {section === 'messages' && (
+            <div className="bg-red-600 w-full p-4">
+              <p className="text-center text-white font-bold text-xl">This is the Messages section</p>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>

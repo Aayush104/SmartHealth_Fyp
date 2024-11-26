@@ -51,7 +51,7 @@ const Login = () => {
         Cookies.set("Token", token, { expires: 7 });
 
         if (userRole === "Admin") {
-          navigateTo('/admin');
+          navigateTo('/admin/dashboard');
         } else {
           navigateTo('/home');
         }

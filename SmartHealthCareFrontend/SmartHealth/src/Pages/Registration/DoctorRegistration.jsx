@@ -116,9 +116,9 @@ const DoctorRegistration = () => {
       success && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="shadow-lg w-80 rounded-lg bg-white px-6 py-4 text-center">
-            <h3 className="text-xl font-semibold text-gray-800 mb-3">Verification Sent</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Sent For Verification</h3>
             <p className="text-gray-600 mb-6">
-              We have sent you the verification details! Our team will reach out to you soon.
+              We will sent you the verification details! Our team will reach out to you soon.
             </p>
             <button 
 
