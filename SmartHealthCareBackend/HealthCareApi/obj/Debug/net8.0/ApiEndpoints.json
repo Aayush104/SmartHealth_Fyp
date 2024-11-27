@@ -241,6 +241,11 @@
         "IsRequired": false
       },
       {
+        "Name": "Location",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "LicenseNumber",
         "Type": "System.String",
         "IsRequired": false

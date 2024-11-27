@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from '../../Components/Navbar/Navbar';
 import Helper from '../../Components/Helper/Helper';
 import specializations from '../../Assets/Data/Speciality.json'; // Importing specialization data
+import locations from '../../Assets/Data/Location.json'; // Importing specialization data
 import Footer from '../../Components/Fotter/Fotter';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Select from 'react-select';
@@ -15,6 +16,7 @@ const DoctorRegistration = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [specialization, setSpecialization] = useState('');
+  const [location, setLocation] = useState('');
   const [licenseNumber, setLicenseNumber] = useState('');
   const [qualifications, setQualifications] = useState('');
   const [licenseFile, setLicenseFile] = useState(null);
@@ -36,6 +38,7 @@ const DoctorRegistration = () => {
     formData.append('Email', email);
     formData.append('Password', password);
     formData.append('Specialization', specialization);
+    formData.append('Location', location);
     formData.append('LicenseNumber', licenseNumber);
     formData.append('Qualifications', qualifications);
 
@@ -43,7 +46,7 @@ const DoctorRegistration = () => {
     if (qualificationsFile) formData.append('QualificationsFile', qualificationsFile);
     if (governmentIdFile) formData.append('GovernmentIdFile', governmentIdFile);
 
-    if (!fullName || !email  || !password || !specialization || !licenseFile || !qualificationsFile || !governmentIdFile || !qualifications) {
+    if (!fullName || !email  || !password || !specialization || location || !licenseFile || !qualificationsFile || !governmentIdFile || !qualifications) {
       toast.error("All fields are required.");
       return
     }
@@ -65,7 +68,7 @@ const DoctorRegistration = () => {
        setGovernmentIdFile(null);
        setLicenseFile(null);
        setPassword('');
-      
+      setLocation('');
        setQualificationsFile('')
        setQualifications('');
        setSpecialization(null)
@@ -224,8 +227,9 @@ onClick={() => setSuccess(false)}
                   </div>
                 </div>
 
+<div className='flex gap-4'>
                
-                  <div className='mb-4 w-full '>
+                  <div className='mb-4 w-full shadow'>
                     <label className="text-gray-700 text-sm mb-2" htmlFor="fullName">
                       Specialization<span className="text-red-500">*</span>
                     </label>
@@ -238,7 +242,47 @@ onClick={() => setSuccess(false)}
                         control: (base) => ({
                           ...base,
                           height: '48px',
-                          width: "32.8rem",
+                          width: "16rem",
+                          minHeight: '48px',
+                          border: '1px solid #d1d5db',
+                          boxShadow: 'none',
+                          '&:hover': {
+                            border: '2px solid #3b82f6',
+                          },
+                        }),
+                        dropdownIndicator: (base) => ({
+                          ...base,
+                          padding: 4,
+                        }),
+                        clearIndicator: (base) => ({
+                          ...base,
+                          padding: 4,
+                        }),
+                        multiValue: (base) => ({
+                          ...base,
+                          backgroundColor: '#93c5fd',
+                        }),
+                        placeholder: (base) => ({
+                          ...base,
+                          color: '#9ca3af',
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div className='mb-4 w-full shadow'>
+                    <label className="text-gray-700 text-sm mb-2" htmlFor="fullName">
+                      Location<span className="text-red-500">*</span>
+                    </label>
+                    <Select
+                      options={locations.map((loc) => ({ value: loc.name, label: loc.name }))}
+                      onChange={(selectedOption) => setSpecialization(selectedOption.value)}
+                      placeholder="Select Location"
+                      className=' W-full z-0'
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          height: '48px',
+                          width: "16rem",
                           minHeight: '48px',
                           border: '1px solid #d1d5db',
                           boxShadow: 'none',
@@ -266,7 +310,7 @@ onClick={() => setSuccess(false)}
                     />
                   </div>
 
-              
+              </div>
               
 
                 <div className='mb-4 w-full'>

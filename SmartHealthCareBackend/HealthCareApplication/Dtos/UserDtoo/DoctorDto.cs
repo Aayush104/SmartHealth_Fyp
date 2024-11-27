@@ -12,6 +12,7 @@ namespace HealthCareApplication.Dtos.UserDto
     {
         [Required]
         public string Specialization { get; set; }
+        public string Location { get; set; }
 
         public string LicenseNumber { get; set; }
 

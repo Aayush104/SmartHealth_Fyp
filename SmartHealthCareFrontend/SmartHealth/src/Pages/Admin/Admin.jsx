@@ -23,7 +23,7 @@ const Admin = () => {
   }, []);
 
   return (
-    <div className='bg-slate-50 h-screen'>
+    <div className='h-screen bg-slate-100'>
       <Navbar />
       <div className="flex">
         
@@ -32,7 +32,7 @@ const Admin = () => {
         </div>
 
        
-        <div className="flex-1 mt-4  p-4 mx-8">
+        <div className="flex-1 mt-4 px-4 ">
           <div className="w-full">
             {section === 'dashboard' && <VerifyDoc />}
           </div>

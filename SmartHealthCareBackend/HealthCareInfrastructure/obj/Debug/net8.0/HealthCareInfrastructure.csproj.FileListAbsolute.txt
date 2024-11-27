@@ -38,3 +38,5 @@ D:\SmartHealthCare\SmartHealthCareBackend\HealthCareInfrastructure\obj\Debug\net
 D:\SmartHealthCare\SmartHealthCareBackend\HealthCareInfrastructure\obj\Debug\net8.0\refint\HealthCareInfrastructure.dll
 D:\SmartHealthCare\SmartHealthCareBackend\HealthCareInfrastructure\obj\Debug\net8.0\HealthCareInfrastructure.pdb
 D:\SmartHealthCare\SmartHealthCareBackend\HealthCareInfrastructure\obj\Debug\net8.0\ref\HealthCareInfrastructure.dll
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareInfrastructure\bin\Debug\net8.0\HealthCareInfrastructure.runtimeconfig.json
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareInfrastructure\obj\Debug\net8.0\HealthCareInfrastructure.genruntimeconfig.cache

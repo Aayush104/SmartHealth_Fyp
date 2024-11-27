@@ -34,3 +34,5 @@ D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApplication\obj\Debug\net8.0
 D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApplication\obj\Debug\net8.0\refint\HealthCareApplication.dll
 D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApplication\obj\Debug\net8.0\HealthCareApplication.pdb
 D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApplication\obj\Debug\net8.0\ref\HealthCareApplication.dll
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApplication\bin\Debug\net8.0\HealthCareApplication.runtimeconfig.json
+D:\SmartHealthCare\SmartHealthCareBackend\HealthCareApplication\obj\Debug\net8.0\HealthCareApplication.genruntimeconfig.cache

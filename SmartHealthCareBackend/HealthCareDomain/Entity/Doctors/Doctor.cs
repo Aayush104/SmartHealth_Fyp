@@ -19,6 +19,9 @@ namespace HealthCareDomain.Entity.Doctors
         public string Specialization { get; set; }
 
         [Required]
+        public string Location { get; set; }
+
+        [Required]
         public string LicenseNumber { get; set; }
 
         [Required]
@@ -30,8 +33,6 @@ namespace HealthCareDomain.Entity.Doctors
         public string QualificationsFilePath { get; set; }
         public string GovernmentIdFilePath { get; set; }
 
-    
-        public string? Location { get; set; }
         public string? Experience { get; set; }    
         public string? Availability { get; set; } 
 
