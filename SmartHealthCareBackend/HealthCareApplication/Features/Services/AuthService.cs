@@ -24,6 +24,7 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace HealthCareApplication.Features.Services
 {
@@ -102,6 +103,7 @@ namespace HealthCareApplication.Features.Services
                         {
                             Id = user.Id,
                             LicenseFilePath = license,
+                            Location = doctorDto.Location,
                             GovernmentIdFilePath = government,
                             QualificationsFilePath = qualification,
                             Specialization = doctorDto.Specialization,
@@ -357,7 +359,7 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
-
+       
 
     }
 }

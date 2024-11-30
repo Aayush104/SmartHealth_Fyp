@@ -46,7 +46,7 @@ const DoctorRegistration = () => {
     if (qualificationsFile) formData.append('QualificationsFile', qualificationsFile);
     if (governmentIdFile) formData.append('GovernmentIdFile', governmentIdFile);
 
-    if (!fullName || !email  || !password || !specialization || location || !licenseFile || !qualificationsFile || !governmentIdFile || !qualifications) {
+    if (!fullName || !email  || !password || !specialization || !location || !licenseFile || !qualificationsFile || !governmentIdFile || !qualifications) {
       toast.error("All fields are required.");
       return
     }
@@ -275,7 +275,7 @@ onClick={() => setSuccess(false)}
                     </label>
                     <Select
                       options={locations.map((loc) => ({ value: loc.name, label: loc.name }))}
-                      onChange={(selectedOption) => setSpecialization(selectedOption.value)}
+                      onChange={(selectedOption) => setLocation(selectedOption.value)}
                       placeholder="Select Location"
                       className=' W-full z-0'
                       styles={{
@@ -376,19 +376,19 @@ onClick={() => setSuccess(false)}
               <div className='flex justify-around items-center mb-2'>
                 <div>
                   {licenseFileUrl && (
-                    <img src={licenseFileUrl} alt="License" className=" h-24 object-cover" />
+                    <img src={licenseFileUrl} alt="License" className=" h-20 object-cover" />
                   )}
                 </div>
 
                 <div>
                   {qualificationsFileUrl && (
-                    <img src={qualificationsFileUrl} alt="Qualifications" className="mt-1 h-24 object-cover" />
+                    <img src={qualificationsFileUrl} alt="Qualifications" className="mt-1 h-20 object-cover" />
                   )}
                 </div>
 
                 <div>
                   {governmentIdFileUrl && (
-                    <img src={governmentIdFileUrl} alt="Government ID" className="mt-1 h-24 object-cover" />
+                    <img src={governmentIdFileUrl} alt="Government ID" className="mt-1 h-20 object-cover" />
                   )}
                 </div>
 

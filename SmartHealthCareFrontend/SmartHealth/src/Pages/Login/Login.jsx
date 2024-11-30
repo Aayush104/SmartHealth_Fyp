@@ -46,7 +46,7 @@ const Login = () => {
 
       if (response.data.isSuccess) {
         const token = response.data.data;
-        const userRole = JSON.parse(atob(token.split('.')[1])).Role;
+        const userRole = JSON.parse(atob(token.split('.')[1])).Name;
 
         Cookies.set("Token", token, { expires: 7 });
 

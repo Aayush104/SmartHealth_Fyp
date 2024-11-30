@@ -125,7 +125,7 @@ const useStore = create((set) => ({
 
         return { token, userRole, userId: response.data.data };
       } else if (response.status === 401) {
-        throw { message: 'Unauthorized', userId: response.data.data }; // Trigger OTP if unauthorized
+        throw { message: 'Unauthorized', userId: response.data.data }; 
       }
     } catch (error) {
       if (error.response) {

@@ -67,7 +67,7 @@
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.11, )"
             },
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
@@ -76,6 +76,10 @@
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.2.1, )"
             }
           },
           "imports": [
@@ -156,6 +160,10 @@
               "target": "Package",
               "version": "[2.2.4, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
             "Microsoft.AspNetCore.Hosting": {
               "target": "Package",
               "version": "[2.2.7, )"
@@ -187,6 +195,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.2.1, )"
             }
           },
           "imports": [
@@ -267,6 +279,10 @@
               "target": "Package",
               "version": "[1.68.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
             "Microsoft.AspNetCore.Hosting": {
               "target": "Package",
               "version": "[2.2.7, )"
@@ -298,6 +314,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.2.1, )"
             }
           },
           "imports": [

@@ -10,6 +10,7 @@ namespace HealthCareApplication.Contract.IService
 {
     public interface IAuthService
     {
+     
         Task<ApiResponseDto> AddUserAsync(UserDto userDto, string role, object UserTypeDetails = null);
         Task<ApiResponseDto> LoginUserAsync(LoginDto loginDto);
 

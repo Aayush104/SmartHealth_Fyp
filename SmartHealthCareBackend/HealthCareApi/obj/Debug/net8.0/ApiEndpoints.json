@@ -16,6 +16,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HealthCareApi.Controllers.AuthController",
+    "Method": "CheckAccess",
+    "RelativePath": "api/Auth/CheckAccess",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DoctorController",
     "Method": "AcceptDoctor",
     "RelativePath": "api/Doctor/AcceptDoctor/{email}",
