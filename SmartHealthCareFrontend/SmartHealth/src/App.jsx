@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Landing from "./Pages/Landing/Landing";
 import PatientRegistration from "./Pages/Registration/PatientRegistration";
 import DoctorRegistration from "./Pages/Registration/DoctorRegistration";
@@ -13,6 +12,8 @@ import Home from "./Pages/Home/Home";
 import Admin from "./Pages/Admin/Admin";
 import ConfirmDoctorEmail from "./Pages/ConfirmDoctorEmail/ConfirmDoctorEmail";
 import DoctorAvailability from "./Pages/DoctorAvailablity/DoctorAvailability";
+import { Protect, RedirectIfAuthenticated } from "./Components/Protected/Protect";
+import UnAuthorized from "./Components/Helper/UnAuthorized";
 
 const App = () => {
   return (
@@ -21,9 +22,9 @@ const App = () => {
         <Route
           path="/"
           element={
-       
+            <RedirectIfAuthenticated>
               <Landing />
-        
+            </RedirectIfAuthenticated>
           }
         />
         <Route path="/patientRegistration" element={<PatientRegistration />} />
@@ -31,33 +32,27 @@ const App = () => {
         <Route
           path="/login"
           element={
-       
+            <RedirectIfAuthenticated>
               <Login />
-        
+            </RedirectIfAuthenticated>
           }
         />
-        <Route
-          path="/forgetPassword"
-          element={
-           
-              <ForgetPassword />
-          
-          }
-        />
+        <Route path="/forgetPassword" element={<ForgetPassword />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Doctors" element={<FindDoctor />} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/admin/:section"
           element={
-           
+            <Protect requiredRole={['Admin']}>
               <Admin />
-         
+            </Protect>
           }
         />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Protect requiredRole={['Patient']}><Home /> </Protect>} />
         <Route path="/ConfirmEmail/:email/:otp" element={<ConfirmDoctorEmail />} />
         <Route path="/doctorAvailability" element={<DoctorAvailability />} />
+        <Route path="/unAuthorized" element={<UnAuthorized />} />
       </Routes>
     </Router>
   );

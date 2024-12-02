@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|solutionrelative:healthcareapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapplication\\applicationserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\applicationserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C21B3950-83DC-4C16-BAED-7B1433B980B4}|HealthCareInfrastructure\\HealthCareInfrastructure.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareinfrastructure\\infrastructureserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C21B3950-83DC-4C16-BAED-7B1433B980B4}|HealthCareInfrastructure\\HealthCareInfrastructure.csproj|solutionrelative:healthcareinfrastructure\\infrastructureserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|solutionrelative:healthcareapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,7 +57,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 727,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -72,12 +72,8 @@
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "InfrastructureServiceRegistration.cs",
               "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareInfrastructure\\InfrastructureServiceRegistration.cs",
               "RelativeDocumentMoniker": "HealthCareInfrastructure\\InfrastructureServiceRegistration.cs",
@@ -85,8 +81,7 @@
               "RelativeToolTip": "HealthCareInfrastructure\\InfrastructureServiceRegistration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T11:49:55.05Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T11:49:55.05Z"
             },
             {
               "$type": "Document",
@@ -98,8 +93,7 @@
               "RelativeToolTip": "HealthCareApi\\Controllers\\DoctorController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T11:41:38.554Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T11:41:38.554Z"
             },
             {
               "$type": "Document",
@@ -172,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ApplicationServiceRegistration.cs",
               "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\ApplicationServiceRegistration.cs",
               "RelativeDocumentMoniker": "HealthCareApplication\\ApplicationServiceRegistration.cs",
@@ -180,8 +174,7 @@
               "RelativeToolTip": "HealthCareApplication\\ApplicationServiceRegistration.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAqwCoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T04:11:37.862Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T04:11:37.862Z"
             },
             {
               "$type": "Document",
@@ -193,8 +186,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\TokenService.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAywFoAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T03:16:59.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T03:16:59.956Z"
             },
             {
               "$type": "Document",
@@ -206,21 +198,24 @@
               "RelativeToolTip": "HealthCareApi\\Program.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAqwGEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T03:05:57.894Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T03:05:57.894Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "HealthCareApi\\Controllers\\AuthController.cs",
               "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\Controllers\\AuthController.cs",
               "RelativeToolTip": "HealthCareApi\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-30T02:57:25.67Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         },
