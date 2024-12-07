@@ -385,6 +385,10 @@
       "PackagePath": "staticwebassets\\Qualification\\e540d4e5-9891-4d79-8e40-0e70bb488adc.jpg"
     },
     {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HealthCareApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HealthCareApi.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

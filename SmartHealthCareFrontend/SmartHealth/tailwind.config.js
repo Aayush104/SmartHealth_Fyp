@@ -32,7 +32,8 @@ export default {
       {
         "Subheading" : "2.8rem",
         "1.8rem" : "1.8rem",
-        "1" : "1rem"
+        "1" : "1rem",
+        "4rem" : "14rem"
       },
       fontFamily: {
         comic: ['"Comic Neue"', 'cursive'], 

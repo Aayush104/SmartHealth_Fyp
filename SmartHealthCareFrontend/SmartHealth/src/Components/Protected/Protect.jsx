@@ -19,7 +19,6 @@ const Protect = ({ children, requiredRole }) => {
         const decodedToken = JSON.parse(atob(token.split('.')[1]));
         const userId = decodedToken.userId;
         const userRole = decodedToken.Name;
-        console.log(userRole)
 
         const response = await axios.get("https://localhost:7070/api/Auth/checkAccess", {
           headers: {
@@ -29,6 +28,21 @@ const Protect = ({ children, requiredRole }) => {
 
         if (response.status === 200 && response.data === userId && requiredRole.includes(userRole)) {
           setAuthenticated(true);
+          // Redirect based on role
+          switch (userRole) {
+            case "Admin":
+              navigateTo('/admin/dashboard');
+              break;
+            case "Patient":
+              navigateTo('/home');
+              break;
+            case "Doctor":
+              navigateTo('/DoctorProfile');
+              break;
+            default:
+              navigateTo('/unAuthorized');
+              break;
+          }
         } else {
           navigateTo('/unAuthorized');
         }
@@ -39,42 +53,49 @@ const Protect = ({ children, requiredRole }) => {
     };
 
     checkAuth();
-  }, [token, navigateTo, requiredRole]);
+  }, [token, requiredRole, navigateTo]);
 
+  
   return authenticated ? <>{children}</> : null;
 };
 
 const RedirectIfAuthenticated = ({ children }) => {
-    const navigateTo = useNavigate();
-    const token = Cookies.get("Token");
-  
-    useEffect(() => {
-      if (token) {
-        try {
-          const decodedToken = JSON.parse(atob(token.split('.')[1]));
-          const userRole = decodedToken.Name;
-  
-          // Navigate based on the user role
-          if (userRole === "Admin") {
+  const navigateTo = useNavigate();
+  const token = Cookies.get("Token");
+
+  useEffect(() => {
+    if (token) {
+      try {
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const userRole = decodedToken.Name;
+
+        // Navigate based on the user role
+        switch (userRole) {
+          case "Admin":
             navigateTo('/admin/dashboard');
-          } else if (userRole === "Patient") {
+            break;
+          case "Patient":
             navigateTo('/home');
-          } else if (userRole === "Doctor") {
+            break;
+          case "Doctor":
             navigateTo('/DoctorProfile');
-          } else {
+            break;
+          default:
             // Unknown role, clear the token and redirect to login
             Cookies.remove("Token");
             navigateTo('/');
-          }
-        } catch (error) {
-          console.error("Error decoding token:", error);
-          Cookies.remove("Token");
-          navigateTo('/');
+            break;
         }
+      } catch (error) {
+        console.error("Error decoding token:", error);
+        Cookies.remove("Token");
+        navigateTo('/');
       }
-    }, [token, navigateTo]);
-  
-    // Render children only if no token is present
-    return !token ? <>{children}</> : null;
-  };
+    }
+  }, [token, navigateTo]);
+
+  // Render children only if no token is present
+  return !token ? <>{children}</> : null;
+};
+
 export { Protect, RedirectIfAuthenticated };

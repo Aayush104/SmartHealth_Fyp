@@ -14,6 +14,8 @@ import ConfirmDoctorEmail from "./Pages/ConfirmDoctorEmail/ConfirmDoctorEmail";
 import DoctorAvailability from "./Pages/DoctorAvailablity/DoctorAvailability";
 import { Protect, RedirectIfAuthenticated } from "./Components/Protected/Protect";
 import UnAuthorized from "./Components/Helper/UnAuthorized";
+import SearchedDoctor from "./Components/SearchComponent/SearchedDoctor";
+import NotFound from "./Components/NotFound/NotFound";
 
 const App = () => {
   return (
@@ -53,6 +55,10 @@ const App = () => {
         <Route path="/ConfirmEmail/:email/:otp" element={<ConfirmDoctorEmail />} />
         <Route path="/doctorAvailability" element={<DoctorAvailability />} />
         <Route path="/unAuthorized" element={<UnAuthorized />} />
+        <Route path="/searched_doctor" element={<SearchedDoctor />} />
+        <Route path="/NotFound" element={<NotFound />} />
+      
+
       </Routes>
     </Router>
   );

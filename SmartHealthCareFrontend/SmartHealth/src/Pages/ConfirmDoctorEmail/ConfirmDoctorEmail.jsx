@@ -45,7 +45,7 @@ const ConfirmDoctorEmail = () => {
       {visual ? (
         <section className="flex flex-col items-center justify-center py-8 px-4">
           <p className="text-center text-lg md:text-xl font-medium mb-4">
-            Thank you for registering with us! We take great pleasure in welcoming you to <span className="font-bold">Foodmandu.com</span> and are committed to providing you with excellent service.
+            Thank you for registering with us! We take great pleasure in welcoming you to <span className="font-bold">SmartHealth.com</span> and are committed to providing you with excellent service.
           </p>
           <p className="text-center text-base md:text-lg">
             Click here to{' '}

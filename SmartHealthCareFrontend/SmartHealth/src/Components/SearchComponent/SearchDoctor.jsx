@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // For navigation
 import Location from '../../Assets/Data/Location.json';
 import Speciality from '../../Assets/Data/Speciality.json';
 import { CiLocationOn } from "react-icons/ci";
 import axios from 'axios';
-import Select from 'react-select'; 
+import Select from 'react-select';
+
 const SearchDoctor = () => {
   const [location, setLocation] = useState('');
   const [specialty, setSpecialty] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [specialties, setSpecialties] = useState([]);
-  const [doctors, setDoctors] = useState([]);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchSpecialties = async () => {
@@ -36,17 +38,21 @@ const SearchDoctor = () => {
       const response = await axios.get('https://localhost:7070/api/Doctor/SearchDoctor', {
         params: { Location: location, Speciality: specialty },
       });
+
+      console.log(response.data.$values)
+
       const doctorsData = response.data.$values || [];
       if (response.status === 200) {
-        setDoctors(doctorsData);
         setError('');
+      
+        navigate('/searched_doctor', { state: { doctors: doctorsData } });
       }
     } catch (err) {
       if (err.response) {
         if (err.response.status === 400) {
           setError('Specialty and Location are required for the search.');
         } else if (err.response.status === 404) {
-          setError('No doctors found for the selected location and specialty.');
+       navigate('/NotFound')
         } else {
           setError('An unexpected error occurred.');
         }
@@ -62,7 +68,7 @@ const SearchDoctor = () => {
   return (
     <div>
       {isLoading && <p>Searching...</p>}
-      {error && <p>{error}</p>}
+      {error && <p className="text-red-600">{error}</p>}
 
       <div className='flex gap-2 mt-4 mb-24'>
         <div className='relative flex items-center'>
@@ -74,12 +80,12 @@ const SearchDoctor = () => {
             styles={{
               control: (provided) => ({
                 ...provided,
-                paddingLeft: '30px', 
+                paddingLeft: '30px',
                 height: '49px',
               }),
               dropdownIndicator: (provided) => ({
                 ...provided,
-                display: 'none', 
+                display: 'none',
               }),
             }}
             components={{
@@ -97,10 +103,8 @@ const SearchDoctor = () => {
             styles={{
               control: (provided) => ({
                 ...provided,
-             
                 height: '49px',
               }),
-           
             }}
           />
         </div>
@@ -108,25 +112,13 @@ const SearchDoctor = () => {
         <button
           onClick={handleSearch}
           disabled={isLoading}
-          className='bg-sky-600 px-5  rounded-sm text-white hover:bg-sky-400 h-12'
+          className='bg-sky-600 px-5 rounded-sm text-white hover:bg-sky-400 h-12'
         >
           Search
         </button>
-      </div>
-
-      <div>
-        {doctors.length > 0 && (
-          <ul>
-            {doctors.map((doctor, index) => (
-              <li key={index}>{doctor.name}</li>
-            ))}
-          </ul>
-        )}
       </div>
     </div>
   );
 };
 
 export default SearchDoctor;
-
-

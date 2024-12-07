@@ -46,12 +46,18 @@ const DoctorRegistration = () => {
     if (qualificationsFile) formData.append('QualificationsFile', qualificationsFile);
     if (governmentIdFile) formData.append('GovernmentIdFile', governmentIdFile);
 
-    if (!fullName || !email  || !password || !specialization || !location || !licenseFile || !qualificationsFile || !governmentIdFile || !qualifications) {
+    if (!fullName || !email  || !password || !specialization || !location  || !licenseFile || !qualificationsFile || !governmentIdFile || !qualifications) {
       toast.error("All fields are required.");
       return
     }
 
-    
+    const panRegex = /^\d{9}$/;
+
+    if (!panRegex.test(licenseNumber)) {
+      toast.error("Invalid Pan number format.");
+      return;
+    }
+
 
     if (password.length < 8) {
       toast.error("Password must be at least 8 characters long.");

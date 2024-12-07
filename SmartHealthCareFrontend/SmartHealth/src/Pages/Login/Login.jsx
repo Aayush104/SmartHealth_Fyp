@@ -98,7 +98,7 @@ const Login = () => {
         
         if (data && data.data && data.data.isSuccess) {
           const token = data.data.data;
-          const userRole = JSON.parse(atob(token.split('.')[1])).Role;
+          const userRole = JSON.parse(atob(token.split('.')[1])).Name;
 
          
   
@@ -107,6 +107,12 @@ const Login = () => {
           {
             navigateTo('/home')
           }
+          else if(userRole == "Admin")
+          {
+            navigateTo('/admin/dashboard')
+          }
+
+
         } else {
           toast.error('Login failed!');
         }
