@@ -5,6 +5,7 @@ import Speciality from '../../Assets/Data/Speciality.json';
 import { CiLocationOn } from "react-icons/ci";
 import axios from 'axios';
 import Select from 'react-select';
+import { toast } from 'react-toastify';
 
 const SearchDoctor = () => {
   const [location, setLocation] = useState('');
@@ -20,7 +21,7 @@ const SearchDoctor = () => {
         setSpecialties(Speciality);
       } catch (err) {
         console.error('Error fetching specialties:', err);
-        setError('Failed to load specialties');
+        toast.error('Failed to load specialties');
       }
     };
     fetchSpecialties();
@@ -28,13 +29,13 @@ const SearchDoctor = () => {
 
   const handleSearch = async () => {
     if (!location || !specialty) {
-      setError('Please select both location and specialty.');
+      toast.error('Please select both location and specialty.');
       return;
     }
 
     try {
       setIsLoading(true);
-      setError('');
+    
       const response = await axios.get('https://localhost:7070/api/Doctor/SearchDoctor', {
         params: { Location: location, Speciality: specialty },
       });
@@ -43,22 +44,21 @@ const SearchDoctor = () => {
 
       const doctorsData = response.data.$values || [];
       if (response.status === 200) {
-        setError('');
       
         navigate('/searched_doctor', { state: { doctors: doctorsData } });
       }
     } catch (err) {
       if (err.response) {
         if (err.response.status === 400) {
-          setError('Specialty and Location are required for the search.');
+          toast.error('Specialty and Location are required for the search.');
         } else if (err.response.status === 404) {
        navigate('/NotFound')
         } else {
-          setError('An unexpected error occurred.');
+          toast.error('An unexpected error occurred.');
         }
       } else {
         console.error('Error during search:', err);
-        setError('Failed to perform search. Please try again later.');
+        toast.error('Failed to perform search. Please try again later.');
       }
     } finally {
       setIsLoading(false);
@@ -67,8 +67,7 @@ const SearchDoctor = () => {
 
   return (
     <div>
-      {isLoading && <p>Searching...</p>}
-      {error && <p className="text-red-600">{error}</p>}
+
 
       <div className='flex gap-2 mt-4 mb-24'>
         <div className='relative flex items-center'>
@@ -109,12 +108,14 @@ const SearchDoctor = () => {
           />
         </div>
 
+:
         <button
           onClick={handleSearch}
           disabled={isLoading}
           className='bg-sky-600 px-5 rounded-sm text-white hover:bg-sky-400 h-12'
         >
-          Search
+        {isLoading ? "Searching...":"Search"}
+       
         </button>
       </div>
     </div>

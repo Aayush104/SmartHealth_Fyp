@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import SearchDoctor from './SearchDoctor';
+import { MdVerified } from "react-icons/md";
+import Footer from '../Fotter/Fotter';
+import { FaCalendarDays } from "react-icons/fa6";
 
 const SearchedDoctor = () => {
   const location = useLocation();
   const doctors = location.state?.doctors || [];
+  const [hoverIndex, setHoverIndex] = useState(null); // To track hover state
   const navigateTo = useNavigate();
 
-  // Redirect to '/NotFound' if no doctors are found
   useEffect(() => {
     if (doctors.length === 0) {
       navigateTo('/NotFound');
@@ -18,27 +21,65 @@ const SearchedDoctor = () => {
   return (
     <div>
       <Navbar />
-      <div className='bg-Doctor_Banner h-75vh flex flex-col justify-center items-center'>
+      <div className="bg-Doctor_Banner h-75vh flex flex-col justify-center items-center">
         {doctors.length > 0 && (
-          <h2 className='text-white font-bold font-sans mb-4 text-6xl'>
-            {doctors[0].specialization} {/* Displaying specialization of the first doctor */}
+          <h2 className="text-white font-bold font-sans mb-4 text-6xl">
+            {doctors[0].specialization}
           </h2>
         )}
         <SearchDoctor />
       </div>
-      {doctors.length > 0 ? (
-        <div>
-          {doctors.map((doctor, index) => (
-            <div key={index} className="border-b py-2">
-              <p><strong>Name:</strong> {doctor.fullName}</p>
-              <p><strong>Specialty:</strong> {doctor.specialization}</p>
-              <p><strong>Location:</strong> {doctor.location}</p>
-            </div>
-          ))}
+
+      <div className="mx-8 mt-4">
+        <div className="flex gap-1 flex-col border-b py-6">
+          <p className="text-2xl font-semibold capitalize">
+            {doctors.length} doctors available in {doctors[0]?.location}
+          </p>
+          <div className="flex gap-2 items-center">
+            <MdVerified className="text-2xl" />
+            <span className="text-xl font-medium">
+              Book appointments with minimum wait-time & verified doctor details
+            </span>
+          </div>
         </div>
-      ) : (
-        <p>Loading...</p> 
-      )}
+
+        {doctors.length > 0 ? (
+          <div>
+            {doctors.map((doctor, index) => (
+              <div
+                key={index}
+                className="border-b py-4 flex gap-4 items-center justify-between"
+                onMouseEnter={() => setHoverIndex(index)}
+                onMouseLeave={() => setHoverIndex(null)}
+              >
+                <div className="flex gap-4 items-center">
+                  <img
+                    src="https://media.istockphoto.com/id/177373093/photo/indian-male-doctor.jpg?s=612x612&w=0&k=20&c=5FkfKdCYERkAg65cQtdqeO_D0JMv6vrEdPw3mX1Lkfg="
+                    className="h-30 w-40"
+                    alt={`Dr. ${doctor.fullName}`}
+                  />
+                  <div className="flex flex-col gap-2">
+                    <a className="text-3xl text-sky-600 cursor-pointer hover:underline">Dr. {doctor.fullName}</a>
+                    <p className="text-gray-500 text-md">{doctor.qualifications}</p>
+                    <p className="text-gray-500 text-md">{doctor.specialization}</p>
+                    <p className="text-gray-500 text-md">{doctor.location}</p>
+
+                    {hoverIndex === index && (
+                      <a className="text-sky-500 font-semibold cursor-pointer">View Profile</a>
+                    )}
+                  </div>
+                </div>
+                <button className="flex p-2 gap-2 bg-sky-600 text-white items-center hover:bg-sky-500 rounded-sm">
+                  <FaCalendarDays /> Book Appointment
+                </button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+      <Footer />
     </div>
   );
 };
