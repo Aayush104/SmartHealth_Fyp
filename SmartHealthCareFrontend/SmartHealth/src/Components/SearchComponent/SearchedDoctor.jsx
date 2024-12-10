@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import SearchDoctor from './SearchDoctor';
 import { MdVerified } from "react-icons/md";
@@ -65,7 +65,14 @@ const SearchedDoctor = () => {
                     <p className="text-gray-500 text-md">{doctor.location}</p>
 
                     {hoverIndex === index && (
-                      <a className="text-sky-500 font-semibold cursor-pointer">View Profile</a>
+                      
+                      <NavLink 
+                        to={`/Doctors/${doctor.userId}`} 
+                        className="text-sky-500 font-semibold cursor-pointer"
+                      >
+                        View Profile
+                      </NavLink>
+
                     )}
                   </div>
                 </div>

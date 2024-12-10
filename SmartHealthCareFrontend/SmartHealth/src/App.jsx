@@ -16,6 +16,7 @@ import { Protect, RedirectIfAuthenticated } from "./Components/Protected/Protect
 import UnAuthorized from "./Components/Helper/UnAuthorized";
 import SearchedDoctor from "./Components/SearchComponent/SearchedDoctor";
 import NotFound from "./Components/NotFound/NotFound";
+import DoctorDetail from "./Pages/DoctorDetails/DoctorDetails";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/forgetPassword" element={<ForgetPassword />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Doctors" element={<FindDoctor />} />
+        <Route path="/Doctors/:id" element={ <DoctorDetail/>} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/admin/:section"
