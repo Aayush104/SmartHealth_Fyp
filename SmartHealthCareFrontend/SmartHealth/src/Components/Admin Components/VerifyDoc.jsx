@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { IoPerson } from "react-icons/io5";
+import { NavLink } from 'react-router-dom';
 
 const VerifyDoc = () => {
   const [data, setData] = useState([]);
@@ -90,7 +91,10 @@ const VerifyDoc = () => {
           <div className="relative flex items-center justify-center mt-12 h-12 gap-1 px-4 border rounded-md p-2 overflow-hidden group">
   <span className="relative z-10 flex items-center gap-1 text-black group-hover:text-white transition duration-300 ease-in-out">
     <IoPerson />
+    <NavLink to = {`/Doctors/${doctor.userId}`}>
+   
     <p>View Profile</p>
+    </NavLink>
   </span>
   <div className="absolute inset-0 bg-sky-500 translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
 </div>

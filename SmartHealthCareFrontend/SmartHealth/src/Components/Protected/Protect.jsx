@@ -18,7 +18,7 @@ const Protect = ({ children, requiredRole }) => {
       try {
         const decodedToken = JSON.parse(atob(token.split('.')[1]));
         const userId = decodedToken.userId;
-        const userRole = decodedToken.Name;
+        const userRole = decodedToken.Role;
 
         const response = await axios.get("https://localhost:7070/api/Auth/checkAccess", {
           headers: {
@@ -37,7 +37,7 @@ const Protect = ({ children, requiredRole }) => {
               navigateTo('/home');
               break;
             case "Doctor":
-              navigateTo('/DoctorProfile');
+              navigateTo('/DoctorProfile/:name');
               break;
             default:
               navigateTo('/unAuthorized');
@@ -67,7 +67,7 @@ const RedirectIfAuthenticated = ({ children }) => {
     if (token) {
       try {
         const decodedToken = JSON.parse(atob(token.split('.')[1]));
-        const userRole = decodedToken.Name;
+        const userRole = decodedToken.Role;
 
         // Navigate based on the user role
         switch (userRole) {
@@ -78,10 +78,10 @@ const RedirectIfAuthenticated = ({ children }) => {
             navigateTo('/home');
             break;
           case "Doctor":
-            navigateTo('/DoctorProfile');
+            navigateTo('/DoctorProfile/:name');
             break;
           default:
-            // Unknown role, clear the token and redirect to login
+            
             Cookies.remove("Token");
             navigateTo('/');
             break;

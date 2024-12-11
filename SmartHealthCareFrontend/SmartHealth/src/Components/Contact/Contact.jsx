@@ -16,6 +16,10 @@ const Contact = () => {
     <>
       {isContactPage && <Navbar />}
 
+      <div className="bg-banner h-full mb-8 w-full bg-cover bg-center flex items-center justify-center">
+      <p className='text-white font-bold font-san text-6xl'>Contact Us </p>
+      </div>
+<img src='' className='bg-cover w-full'></img>
       <div className='mb-10 mx-6 mt-24' id='contact'>
         {!isContactPage && (
           <>

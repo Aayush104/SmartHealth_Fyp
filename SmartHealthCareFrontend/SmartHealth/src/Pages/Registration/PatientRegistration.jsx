@@ -49,7 +49,7 @@ const PatientRegistration = () => {
       setTimeout(() => {
         if (response) {
           setUserId(response);
-          setSuccess(true);
+       
           toast.success("Registration successful! Please verify your OTP.");
         } else {
           toast.error("Failed to register. Please try again.");
@@ -93,6 +93,7 @@ const PatientRegistration = () => {
         <Otp userId={userId} Purpose="Registration" />
       ) : (
         <>
+        
           <Helper />
           <div className="w-100 mt-4 py-4">
             <div className="flex justify-around items-center px-4 h-min-screen">

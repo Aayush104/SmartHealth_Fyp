@@ -46,12 +46,16 @@ const Login = () => {
 
       if (response.data.isSuccess) {
         const token = response.data.data;
-        const userRole = JSON.parse(atob(token.split('.')[1])).Name;
+        const userRole = JSON.parse(atob(token.split('.')[1])).Role;
 
         Cookies.set("Token", token, { expires: 7 });
 
         if (userRole === "Admin") {
           navigateTo('/admin/dashboard');
+        }
+          else if(userRole === "Doctor")
+          {
+            navigateTo('/DoctorProfile/:name')
         } else {
           navigateTo('/home');
         }
@@ -98,7 +102,7 @@ const Login = () => {
         
         if (data && data.data && data.data.isSuccess) {
           const token = data.data.data;
-          const userRole = JSON.parse(atob(token.split('.')[1])).Name;
+          const userRole = JSON.parse(atob(token.split('.')[1])).Role;
 
          
   
