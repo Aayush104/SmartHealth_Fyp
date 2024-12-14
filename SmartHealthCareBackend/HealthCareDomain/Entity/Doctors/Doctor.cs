@@ -33,8 +33,15 @@ namespace HealthCareDomain.Entity.Doctors
         public string QualificationsFilePath { get; set; }
         public string GovernmentIdFilePath { get; set; }
 
+        public string? Profile { get; set; }
         public string? Experience { get; set; }    
-        public string? Availability { get; set; } 
+        public string? AvailabilityDays { get; set; }
+        public string? AvailabilityTime { get; set; }
+        public string? Description { get; set; } 
+        public string? Fee { get; set; }
+
+
+
 
         public virtual ICollection<DoctorAvailability> AvailabilityList { get; set; }
         public virtual ICollection<BookAppointment> BookAppointments { get; set; } = new List<BookAppointment>();

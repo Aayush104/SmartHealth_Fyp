@@ -13,7 +13,7 @@ namespace HealthCareApplication.Dtos.UserDto
         public string FullName { get; set; }
         public string Email { get; set; }
         public string Specialization { get; set; }
-       
+       public string Loction { get; set; }
         public string Qualifications { get; set; }
         public string Status { get; set; }
       

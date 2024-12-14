@@ -41,16 +41,27 @@ namespace HealthCareApplication.Features.Services
                 };
             }
 
-            existingDoctor.Location = !string.IsNullOrEmpty(addProfileDto.Location)
-                                        ? addProfileDto.Location
-                                        : null;
+          
 
             existingDoctor.Experience = !string.IsNullOrEmpty(addProfileDto.Experience)
                                         ? addProfileDto.Experience
                                         : null;
+            
 
-            existingDoctor.Availability = !string.IsNullOrEmpty(addProfileDto.Availability)
-                                        ? addProfileDto.Availability
+            existingDoctor.AvailabilityDays = !string.IsNullOrEmpty(addProfileDto.AvailabilityDays)
+                                        ? addProfileDto.AvailabilityDays
+                                        : null;
+            
+            existingDoctor.AvailabilityTime = !string.IsNullOrEmpty(addProfileDto.AvailabilityTime)
+                                        ? addProfileDto.AvailabilityTime
+                                        : null; 
+
+            existingDoctor.Description = !string.IsNullOrEmpty(addProfileDto.Description)
+                                        ? addProfileDto.Description
+                                        : null;
+            
+            existingDoctor.Fee = !string.IsNullOrEmpty(addProfileDto.Fee)
+                                        ? addProfileDto.Fee
                                         : null;
 
             await _doctorRepository.UpdateDoctorAsync(existingDoctor);
@@ -87,9 +98,14 @@ namespace HealthCareApplication.Features.Services
                    Email = doctorDetails.User.Email,
                     Specialization = doctorDetails.Specialization,
                     Qualifications = doctorDetails.Qualifications,
-                    Location = doctorDetails.Location,
-                    Availability = doctorDetails.Availability,
+                   AvailabilityDays = doctorDetails.AvailabilityDays,  
+                    AvailabilityTime = doctorDetails.AvailabilityTime,   
+                   Loction = doctorDetails.Location,
+                   Description = doctorDetails.Description,
+                   Fee = doctorDetails.Fee, 
                     Experience = doctorDetails.Experience
+                    
+
                 };
 
                
@@ -119,8 +135,8 @@ namespace HealthCareApplication.Features.Services
                   
                   
                   
-                    Location = doctor.Location,
-                    Availability = doctor.Availability,
+                    //Location = doctor.Location,
+                   
                     Experience = doctor.Experience,
                 }).ToList();
 

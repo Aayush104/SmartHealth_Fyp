@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,11 @@ namespace HealthCareApplication.Dtos.UserDto
     {
 
         public string userId { get; set; }
-        public string? Location { get; set; }
+        public IFormFile? Profile { get; set; }
         public string? Experience { get; set; }
-        public string? Availability { get; set; }
+        public string? AvailabilityDays { get; set; }
+        public string? AvailabilityTime { get; set; }
+        public string? Description { get; set; }
+        public string? Fee { get; set; }
     }
 }

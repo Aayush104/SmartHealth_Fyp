@@ -592,15 +592,28 @@
             "type": "string",
             "nullable": true
           },
-          "location": {
+          "profile": {
             "type": "string",
+            "format": "binary",
             "nullable": true
           },
           "experience": {
             "type": "string",
             "nullable": true
           },
-          "availability": {
+          "availabilityDays": {
+            "type": "string",
+            "nullable": true
+          },
+          "availabilityTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "fee": {
             "type": "string",
             "nullable": true
           }
