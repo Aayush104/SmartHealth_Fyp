@@ -17,6 +17,7 @@ import UnAuthorized from "./Components/Helper/UnAuthorized";
 import SearchedDoctor from "./Components/SearchComponent/SearchedDoctor";
 import NotFound from "./Components/NotFound/NotFound";
 import DoctorDetail from "./Pages/DoctorDetails/DoctorDetails";
+import DoctorProfile from "./Pages/DoctorProfile/DoctorProfile";
 
 const App = () => {
   return (
@@ -50,6 +51,14 @@ const App = () => {
           element={
             <Protect requiredRole={['Admin']}>
               <Admin />
+            </Protect>
+          }
+        />
+        <Route
+          path="/DoctorProfile/:name"
+          element={
+            <Protect requiredRole={['Doctor']}>
+              <DoctorProfile />
             </Protect>
           }
         />

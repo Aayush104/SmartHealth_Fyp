@@ -1,9 +1,11 @@
 import React from 'react'
+import DoctorNav from '../../Components/Navbar/DoctorNav'
 
 const DoctorProfile = () => {
   return (
     <div>
-      <p>This is doctor profile page</p>
+    <DoctorNav />
+    
     </div>
   )
 }
