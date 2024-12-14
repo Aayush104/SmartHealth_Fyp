@@ -14,13 +14,28 @@ const Contact = () => {
 
   return (
     <>
-      {isContactPage && <Navbar />}
+      {isContactPage && (
+        <>
+          <Navbar />
 
-      <div className="bg-banner h-full mb-8 w-full bg-cover bg-center flex items-center justify-center">
-      <p className='text-white font-bold font-san text-6xl'>Contact Us </p>
-      </div>
-<img src='' className='bg-cover w-full'></img>
-      <div className='mb-10 mx-6 mt-24' id='contact'>
+          <div className="bg-Contact_Banner h-[76vh] mb-8 w-full bg-cover bg-center flex items-center justify-center relative">
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-800 via-blue-600 to-transparent opacity-30 z-10"></div>
+            <motion.p
+                       className="text-slate-50 justify-between text-6xl font-semibold text-center py-32 relative z-10"
+                       initial={{ opacity: 0, y: -20 }}
+                       whileInView={{ opacity: 1, y: 0 }}
+                       transition={{ duration: 1 }}
+                       viewport={{ once: true }}
+                     >
+                       Contact Us
+                     </motion.p>
+          </div>
+        </>
+      )}
+
+      <img src="" className="bg-cover w-full" alt="" />
+
+      <div className="mb-10 mx-6 mt-24" id="contact">
         {!isContactPage && (
           <>
             <motion.h2
@@ -37,21 +52,6 @@ const Contact = () => {
               <div className="h-1 w-60 bg-sky-600"></div>
             </div>
           </>
-        )}
-
-        {isContactPage && (
-          <div className="mb-16 mx-auto flex justify-center">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1784.2492321810957!2d87.27676853851942!3d26.56837539318675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDM0JzA2LjEiTiA4N8KwMTYnNDEuMCJF!5e0!3m2!1sen!2snp!4v1731304162154!5m2!1sen!2snp"
-              width="1500"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className='rounded-md'
-            ></iframe>
-          </div>
         )}
 
         <form method="POST" className="mt-8 w-full max-w-4xl mx-auto">
@@ -113,6 +113,21 @@ const Contact = () => {
           </div>
         </form>
       </div>
+
+      {isContactPage && (
+        <div className="mb-16 mx-auto flex justify-center mt-24">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1784.2492321810957!2d87.27676853851942!3d26.56837539318675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDM0JzA2LjEiTiA8N8KwMTYnNDEuMCJF!5e0!3m2!1sen!2snp!4v1731304162154!5m2!1sen!2snp"
+            width="1500"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="rounded-md"
+          ></iframe>
+        </div>
+      )}
 
       {isContactPage && <Footer />}
     </>

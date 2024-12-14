@@ -7,7 +7,7 @@ import logo from '../../Assets/Image/Logo.png';
 
 const Footer = () => {
   return (
-    <footer className='py-8 px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 bg-primary text-white mt-20'>
+    <footer className='py-8 px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 bg-primary text-white mt-20 overflow-hidden'>
     
       <div>
         <img src={logo} className='w-60 h-25' alt="Smart Health logo" />

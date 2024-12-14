@@ -6,6 +6,7 @@ import Footer from '../../Components/Fotter/Fotter';
 import useStore from '../../Zustand/Store';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
 const PatientRegistration = () => {
   const [fullName, setFullName] = useState('');
@@ -18,8 +19,14 @@ const PatientRegistration = () => {
   const [userId, setUserId] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigateTo = useNavigate();
-
   const registerPatient = useStore((state) => state.registerPatient);
+  const [showPassword, setShowPassword] = useState(false);
+  
+    const handlePasswordToggle = () => {
+      setShowPassword(!showPassword);
+    };
+
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +55,9 @@ const PatientRegistration = () => {
       // Simulate loading delay before displaying OTP or error
       setTimeout(() => {
         if (response) {
+
+            setSuccess(true);
+          
           setUserId(response);
        
           toast.success("Registration successful! Please verify your OTP.");
@@ -167,18 +177,26 @@ const PatientRegistration = () => {
                       </div>
                     </div>
 
-                    <div className="mb-4 w-full">
+                    <div className="mb-4 w-full relative">
                       <label className="text-gray-700 text-sm mb-2" htmlFor="password">
                         Password <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="password"
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                         className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
+
+                         <span
+                                                        onClick={handlePasswordToggle}
+                                                        className="absolute right-3 top-11 transform -translate-y-1/2 cursor-pointer text-gray-600"
+                                                      >
+                                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                                      </span>
+                      
                     </div>
 
                     <div className="mb-4 w-full">

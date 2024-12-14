@@ -10,6 +10,7 @@ import Select from 'react-select';
 import { AiFillFileAdd } from "react-icons/ai";
 import useStore from '../../Zustand/Store';
 import { toast } from 'react-toastify';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const DoctorRegistration = () => {
   const [fullName, setFullName] = useState('');
@@ -27,8 +28,11 @@ const DoctorRegistration = () => {
   const [governmentIdFileUrl, setGovernmentIdFileUrl] = useState(null);
   const [success,setSuccess] = useState(false);
   const registerDoctor = useStore((state) => state.registerDoctor);
+  const [showPassword, setShowPassword] = useState(false);
 
-
+  const handlePasswordToggle = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -319,17 +323,25 @@ onClick={() => setSuccess(false)}
               </div>
               
 
-                <div className='mb-4 w-full'>
+                <div className='mb-4 w-full relative'>
                   <label className="text-gray-700 text-sm mb-2" htmlFor="fullName">
                     Password<span className="text-red-500">*</span>
                   </label>
-                  <input
-                    type="password"
+                  <div className='flex'>                  <input
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 h-12"
+                    className="shadow border rounded w-full z-0 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 h-12"
                   />
+                  <span
+                                  onClick={handlePasswordToggle}
+                                  className="absolute right-3 top-12 transform -translate-y-1/2 cursor-pointer text-gray-600"
+                                >
+                                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                </span>
+                                </div>
+
                 </div>
 
                 <div className='flex items-center justify-between gap-2 w-full '>

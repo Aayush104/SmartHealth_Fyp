@@ -1,18 +1,22 @@
 import React from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
-import Footer from '../../Components/Fotter/Fotter'; 
+import Footer from '../../Components/Fotter/Fotter';
+import about1 from '../../Assets/Image/about_banner_1.jpg';
+import about2 from '../../Assets/Image/about_banner_2.jpg';
 
 import { motion } from 'framer-motion';
 import DoctorTestiMonial from '../../Components/TestiMonial/DoctorTestiMonial';
 
 const AboutUs = () => {
   return (
-    <div className='bg-gray-50'>
+    <div className="bg-gray-50">
       <Navbar />
-      <div className="">
-        <div className="h-[50vh] bg-ab relative bg-cover mb-16"> 
+      <div>
+        <div className="h-[75vh] bg-ab_banner relative bg-cover bg-center mb-16 flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-t from-blue-800 via-blue-600 to-transparent opacity-30"></div>
+
           <motion.p
-            className="text-sky-500 text-6xl font-bold font-comic text-center py-32"
+            className="text-slate-50 justify-between text-6xl font-semibold text-center py-32 relative z-10"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -22,10 +26,10 @@ const AboutUs = () => {
           </motion.p>
         </div>
 
-        <div className="">
-          <div className='mb-10 mx-6'>
+        <div>
+          <div className="mb-10 mx-6">
             <motion.h2
-              className="text-gray-600 font-bold text-2xl md:text-4xl mx-8"
+              className="text-gray-600 font-bold text-2xl md:text-3xl mx-8"
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
@@ -40,12 +44,16 @@ const AboutUs = () => {
           </div>
 
           <div className="flex flex-col md:flex-row gap-8 justify-around mb-24 px-4">
-            <img
-              src="https://imageio.forbes.com/specials-images/imageserve/62a75099c84f401b04876076/Doctor-and-patient-in-conversation--looking-at-digital-tablet/960x0.jpg?height=480&width=711&fit=bounds"
-              alt="Healthcare Team"
-              className="rounded-lg h-50vh w-full md:w-1/2"
-            />
-            <div className="text-gray-700 text-lg max-w-xl mt-8">
+            <div className="relative w-[42rem] h-[60vh]  rounded-lg overflow-hidden">
+              <img
+                src={about2}
+                alt="Healthcare Team"
+                className="absolute inset-0 w-full h-full "
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-sky-300 via-cyan-200 to-teal-200 opacity-30"></div>
+            </div>
+
+            <div className="text-gray-700 text-lg max-w-xl mt-8 space-y-6">
               <motion.h3
                 className="text-3xl font-semibold mb-4"
                 initial={{ opacity: 0, y: -20 }}
@@ -67,10 +75,10 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <div className=''>
-          <div className='mb-10 mx-6'>
+        <div>
+          <div className="mb-10 mx-6">
             <motion.p
-              className='text-3xl font-bold mx-10 text-gray-600'
+              className="text-3xl font-bold mx-10 text-gray-600"
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
@@ -84,15 +92,15 @@ const AboutUs = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8 justify-around mb-28 px-4">
+          <div className="flex items-center flex-col md:flex-row gap-8 justify-around mb-28 px-4">
             <img
-              src="https://kamleshyadav.com/html/healthcare/bootstrap5/images/about/about1.jpg"
+              src={about1}
               alt="Healthcare Team"
-              className="rounded-md w-full md:w-1/2"
+              className="rounded-md h-[70vh] md:h-[80vh] mb-8 md:mb-0"
             />
-            <div className="text-gray-700 text-lg max-w-xl mt-8">
+            <div className="text-gray-700 text-lg max-w-xl mt-8 space-y-6 ">
               <motion.h3
-                className="text-3xl font-semibold mb-4"
+                className="text-3xl font-semibold mb-4 "
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
@@ -141,7 +149,6 @@ const AboutUs = () => {
 
       <DoctorTestiMonial />
       <Footer />
-      
     </div>
   );
 };
