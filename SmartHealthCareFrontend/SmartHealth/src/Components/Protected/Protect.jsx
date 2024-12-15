@@ -33,7 +33,6 @@ const Protect = ({ children, requiredRole }) => {
           // Redirect based on role
           switch (userRole) {
             case "Admin":
-              navigateTo('/admin/dashboard');
               break;
             case "Patient":
               navigateTo('/home');

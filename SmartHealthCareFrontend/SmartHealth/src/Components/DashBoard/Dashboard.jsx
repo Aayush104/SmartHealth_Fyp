@@ -25,7 +25,6 @@ const Dashboard = () => {
             <AiOutlineDashboard className="text-xl" />
             <span className="text-md">Dashboard</span>
           </li>
-
           <li
             onClick={() => handleNavigation("/admin/messages")}
             className="flex items-center space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
@@ -34,7 +33,6 @@ const Dashboard = () => {
             <IoMdMail className="text-xl" />
             <span className="text-md">Messages</span>
           </li>
-
           <li
             onClick={() => handleNavigation("/admin/bookings")}
             className="flex items-center space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
@@ -43,7 +41,6 @@ const Dashboard = () => {
             <FaClipboardList className="text-xl" />
             <span className="text-md">Bookings</span>
           </li>
-
           <li
             onClick={() => handleNavigation("/admin/review")}
             className="flex items-center space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
@@ -52,7 +49,6 @@ const Dashboard = () => {
             <BiMessageSquareDetail className="text-xl" />
             <span className="text-md">Review</span>
           </li>
-
           <li
             onClick={() => handleNavigation("/admin/profile")}
             className="flex items-center space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"

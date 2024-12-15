@@ -247,7 +247,7 @@ onClick={() => setSuccess(false)}
                       options={specializations.map((spec) => ({ value: spec.name, label: spec.name }))}
                       onChange={(selectedOption) => setSpecialization(selectedOption.value)}
                       placeholder="Select Specialization"
-                      className=' W-full z-0'
+                      className=' W-full z-1'
                       styles={{
                         control: (base) => ({
                           ...base,
@@ -287,7 +287,7 @@ onClick={() => setSuccess(false)}
                       options={locations.map((loc) => ({ value: loc.name, label: loc.name }))}
                       onChange={(selectedOption) => setLocation(selectedOption.value)}
                       placeholder="Select Location"
-                      className=' W-full z-0'
+                      className=' W-full z-1'
                       styles={{
                         control: (base) => ({
                           ...base,

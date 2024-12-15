@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ResetPassword = ({ userId }) => {
   const [newPassword, setNewPassword] = useState('');
@@ -20,10 +21,11 @@ const ResetPassword = ({ userId }) => {
       if (response.data.statusCode == 200)
       {
         navigateTo('/login')
+        toast.success("Your Passowrd has been updated")
         
 
       }
-        console.log('Password updated successfully', response.data);
+       
       } catch (error) {
         console.error('Error updating password', error.response?.data || error.message);
       }

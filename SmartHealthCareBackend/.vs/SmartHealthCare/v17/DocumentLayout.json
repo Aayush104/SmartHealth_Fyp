@@ -57,6 +57,10 @@
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "AdminService.cs",
@@ -66,8 +70,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AdminService.cs",
               "ViewState": "AgIAAF8AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:43:27.855Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-14T17:43:27.855Z"
             },
             {
               "$type": "Document",
@@ -79,12 +82,7 @@
               "RelativeToolTip": "HealthCareApplication\\Contract\\IService\\IAdminService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:43:15.307Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "WhenOpened": "2024-12-14T17:43:15.307Z"
             },
             {
               "$type": "Document",
@@ -96,8 +94,7 @@
               "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\ChangePasswordDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:16:05.061Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-14T17:16:05.061Z"
             },
             {
               "$type": "Document",
@@ -109,8 +106,7 @@
               "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\ApiResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:15:59.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-14T17:15:59.969Z"
             },
             {
               "$type": "Document",
@@ -120,7 +116,7 @@
               "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
               "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\DoctorService.cs",
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAYwGoAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAIwGoAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-14T17:07:32.356Z",
               "EditorCaption": ""
@@ -135,8 +131,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Doctors\\Doctor.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAgwCMAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:06:33.852Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-14T17:06:33.852Z"
             },
             {
               "$type": "Document",
@@ -148,8 +143,7 @@
               "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\DoctorDetailsDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:05:37.954Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-14T17:05:37.954Z"
             },
             {
               "$type": "Document",
@@ -161,8 +155,17 @@
               "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\DoctorDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:05:34.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-14T17:05:34.512Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 276,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }
