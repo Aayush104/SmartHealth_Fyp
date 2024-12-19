@@ -1,48 +1,15 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapplication\\features\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\features\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapplication\\features\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\features\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapplication\\contract\\iservice\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\contract\\iservice\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapplication\\dtos\\userdtoo\\doctordetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\dtos\\userdtoo\\doctordetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{235337F8-86B0-44B6-8DC6-2C365017AAC9}|HealthCareDomain\\HealthCareDomain.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcaredomain\\entity\\doctors\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{235337F8-86B0-44B6-8DC6-2C365017AAC9}|HealthCareDomain\\HealthCareDomain.csproj|solutionrelative:healthcaredomain\\entity\\doctors\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapplication\\dtos\\userdtoo\\apiresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\dtos\\userdtoo\\apiresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapplication\\dtos\\userdtoo\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\dtos\\userdtoo\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealthcare\\smarthealthcarebackend\\healthcareapplication\\dtos\\userdtoo\\doctordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\dtos\\userdtoo\\doctordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 794,
-          "SelectedChildIndex": 8,
+          "DockedHeight": 39,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -55,112 +22,11 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdminService.cs",
-              "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\AdminService.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\AdminService.cs",
-              "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\AdminService.cs",
-              "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AdminService.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:43:27.855Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IAdminService.cs",
-              "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Contract\\IService\\IAdminService.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Contract\\IService\\IAdminService.cs",
-              "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Contract\\IService\\IAdminService.cs",
-              "RelativeToolTip": "HealthCareApplication\\Contract\\IService\\IAdminService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:43:15.307Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ChangePasswordDto.cs",
-              "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\UserDtoo\\ChangePasswordDto.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Dtos\\UserDtoo\\ChangePasswordDto.cs",
-              "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\UserDtoo\\ChangePasswordDto.cs",
-              "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\ChangePasswordDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:16:05.061Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApiResponseDto.cs",
-              "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\UserDtoo\\ApiResponseDto.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Dtos\\UserDtoo\\ApiResponseDto.cs",
-              "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\UserDtoo\\ApiResponseDto.cs",
-              "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\ApiResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:15:59.969Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DoctorService.cs",
-              "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "RelativeToolTip": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAIwGoAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:07:32.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Doctor.cs",
-              "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\Entity\\Doctors\\Doctor.cs",
-              "RelativeDocumentMoniker": "HealthCareDomain\\Entity\\Doctors\\Doctor.cs",
-              "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\Entity\\Doctors\\Doctor.cs",
-              "RelativeToolTip": "HealthCareDomain\\Entity\\Doctors\\Doctor.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAgwCMAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:06:33.852Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DoctorDetailsDto.cs",
-              "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\UserDtoo\\DoctorDetailsDto.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Dtos\\UserDtoo\\DoctorDetailsDto.cs",
-              "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\UserDtoo\\DoctorDetailsDto.cs",
-              "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\DoctorDetailsDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:05:37.954Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DoctorDto.cs",
-              "DocumentMoniker": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\UserDtoo\\DoctorDto.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Dtos\\UserDtoo\\DoctorDto.cs",
-              "ToolTip": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\UserDtoo\\DoctorDto.cs",
-              "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\DoctorDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:05:34.512Z"
             }
           ]
         },
         {
-          "DockedWidth": 276,
+          "DockedHeight": 721,
           "SelectedChildIndex": -1,
           "Children": [
             {

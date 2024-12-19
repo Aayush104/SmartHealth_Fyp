@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../Assets/Image/Logo.png'; 
+import logo from '../../Assets/Image/Logo.png';
 import { IoIosNotifications } from "react-icons/io";
 import { FaRegMessage } from "react-icons/fa6";
 import { MdOutlineArrowDropDown } from "react-icons/md";
@@ -8,15 +8,14 @@ import { TbLogout2 } from 'react-icons/tb';
 import { AiOutlineProfile } from 'react-icons/ai';
 import Cookies from 'js-cookie';
 
-const DoctorNav = () => {
+const DoctorNav = ({ onProfileClick }) => {
   const handleLogout = () => {
-    Cookies.remove("Token"); 
-    window.location.href = "/"; 
+    Cookies.remove("Token");
+    window.location.href = "/";
   };
 
   return (
-    <nav className="px-8 py-2 flex justify-between items-center bg-white shadow-md">
-     
+    <nav className="px-8 py-2 flex justify-between items-center bg-white shadow-md z-50">
       <img src={logo} alt="Medical Logo" className="w-36 cursor-pointer" />
 
       <div className="flex items-center gap-8">
@@ -25,7 +24,6 @@ const DoctorNav = () => {
           <FaRegMessage className="text-gray-500 text-2xl mt-1.5 cursor-pointer hover:text-sky-400" />
         </div>
 
-      
         <div className="relative group">
           <div className="flex items-center cursor-pointer">
             <img
@@ -37,9 +35,11 @@ const DoctorNav = () => {
             <MdOutlineArrowDropDown className="text-2xl text-gray-500" />
           </div>
 
-       
           <ul className="absolute right-0 w-48 bg-white border rounded-lg shadow-lg hidden group-hover:block">
-            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+            <li
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+              onClick={onProfileClick} // Trigger onProfileClick when 'Complete Profile' is clicked
+            >
               <AiOutlineProfile className="text-lg text-gray-500" /> Complete Profile
             </li>
             <li

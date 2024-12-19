@@ -40,13 +40,9 @@ const Protect = ({ children, requiredRole }) => {
             case "Doctor":  
               navigateTo(`/DoctorProfile/${name}`);
               break;
-            default:
-              navigateTo('/unAuthorized');
-              break;
+  
           }
-        } else {
-          navigateTo('/unAuthorized');
-        }
+        } 
       } catch (error) {
         console.error("Authentication check failed:", error);
         navigateTo('/unAuthorized');

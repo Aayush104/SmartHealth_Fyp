@@ -1,6 +1,9 @@
 wwwroot\Government\6ebe3799-5176-4a4e-b3b2-6efcb0c6d447.jpg
 wwwroot\Government\7efdf5ed-cef4-4f12-9a25-fe30777ad4b6.png
+wwwroot\Government\8f52f39a-2c03-40b9-9fe9-534c4078f717.png
+wwwroot\Liscense\2696c542-7c23-47c0-a06b-6a35efd5472f.png
 wwwroot\Liscense\374baf67-e44d-4854-a4f8-f3c0cfc772fe.jpg
 wwwroot\Liscense\cbcd789d-983e-4a3e-bcd3-48349c90e5eb.png
+wwwroot\Qualification\5372c9b4-3165-462e-a57c-9e89814e1462.jpg
 wwwroot\Qualification\69c370b5-cde3-420d-ac5e-9d28005927df.png
 wwwroot\Qualification\d56cce5d-861a-4f31-ba4f-47f7246d9561.png
