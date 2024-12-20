@@ -69,12 +69,6 @@ namespace HealthCarePersistence.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("AvailabilityDays")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AvailabilityTime")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -82,6 +76,12 @@ namespace HealthCarePersistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Fee")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromDay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromTime")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GovernmentIdFilePath")
@@ -117,6 +117,12 @@ namespace HealthCarePersistence.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToDay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToTime")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -289,20 +295,20 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0f729b32-07a3-42ea-82c4-0c75eca6f710",
-                            CreatedAt = new DateTime(2024, 12, 14, 16, 19, 30, 705, DateTimeKind.Utc).AddTicks(7083),
+                            ConcurrencyStamp = "7e4f4575-d6dd-4982-a1fe-e54dfb24bdd3",
+                            CreatedAt = new DateTime(2024, 12, 20, 17, 12, 55, 898, DateTimeKind.Utc).AddTicks(5558),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG5YHYYwgtkeKyJSntFOeINLalZNCoBNjdl+eDgtvDNOCGX682YrvugbYFrOcBsNwA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE2SQCmaBls/8wHgMn+GsYVjNuCA9CYp4A4feDYnBd0SYLzPgZTfBMRJKEffP2k8pQ==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3439ae42-02bc-4724-b6ad-5004c3e14893",
+                            SecurityStamp = "7c997f8d-6ea8-40a7-999a-d312b04bcf87",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2024, 12, 14, 16, 19, 30, 705, DateTimeKind.Utc).AddTicks(7095),
+                            UpdatedAt = new DateTime(2024, 12, 20, 17, 12, 55, 898, DateTimeKind.Utc).AddTicks(5561),
                             UserName = "Admin"
                         });
                 });

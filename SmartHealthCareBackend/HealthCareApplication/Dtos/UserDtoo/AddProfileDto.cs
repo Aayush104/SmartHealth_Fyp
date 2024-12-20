@@ -13,8 +13,11 @@ namespace HealthCareApplication.Dtos.UserDto
         public string userId { get; set; }
         public IFormFile? Profile { get; set; }
         public string? Experience { get; set; }
-        public string? AvailabilityDays { get; set; }
-        public string? AvailabilityTime { get; set; }
+        public string? FromDay { get; set; }  
+        public string? ToDay { get; set; } 
+        public string? FromTime { get; set; }  
+        public string? ToTime { get; set; }
+     
         public string? Description { get; set; }
         public string? Fee { get; set; }
     }

@@ -50,9 +50,49 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "addProfileDto",
-        "Type": "HealthCareApplication.Dtos.UserDto.AddProfileDto",
-        "IsRequired": true
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Profile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Experience",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FromDay",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ToDay",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FromTime",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ToTime",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Fee",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

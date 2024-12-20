@@ -1,4 +1,5 @@
 ﻿using HealthCareApplication.Contract.IService;
+using HealthCareApplication.Contracts.IService;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.UserEntity;
@@ -18,10 +19,12 @@ namespace HealthCareApplication.Features.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IDoctorRepository _doctorRepository;
         private readonly IDataProtector _dataProtector;
-        public DoctorService(UserManager<ApplicationUser> userManager, IDoctorRepository doctorRepository, IDataProtectionProvider dataProtector, DataSecurityProvider securityProvider)
+        private readonly IFileService _fileService;
+        public DoctorService(UserManager<ApplicationUser> userManager, IDoctorRepository doctorRepository, IDataProtectionProvider dataProtector, DataSecurityProvider securityProvider, IFileService fileService)
         {
             _userManager = userManager;
             _doctorRepository = doctorRepository;
+            _fileService = fileService;
             _dataProtector = dataProtector.CreateProtector(securityProvider.securityKey);
         }
 
@@ -29,8 +32,8 @@ namespace HealthCareApplication.Features.Services
         {
             var userId = addProfileDto.userId;
 
+            // Check if the doctor exists
             var existingDoctor = await _doctorRepository.GetDoctorBYId(userId);
-
             if (existingDoctor == null)
             {
                 return new ApiResponseDto
@@ -41,29 +44,55 @@ namespace HealthCareApplication.Features.Services
                 };
             }
 
-          
-
-            existingDoctor.Experience = !string.IsNullOrEmpty(addProfileDto.Experience)
+            // Update doctor profile details if values are provided
+            existingDoctor.Experience = !string.IsNullOrWhiteSpace(addProfileDto.Experience)
                                         ? addProfileDto.Experience
-                                        : null;
-            
+                                        : existingDoctor.Experience;
 
-            existingDoctor.AvailabilityDays = !string.IsNullOrEmpty(addProfileDto.AvailabilityDays)
-                                        ? addProfileDto.AvailabilityDays
-                                        : null;
-            
-            existingDoctor.AvailabilityTime = !string.IsNullOrEmpty(addProfileDto.AvailabilityTime)
-                                        ? addProfileDto.AvailabilityTime
-                                        : null; 
+            existingDoctor.FromDay = !string.IsNullOrWhiteSpace(addProfileDto.FromDay)
+                                     ? addProfileDto.FromDay
+                                     : existingDoctor.FromDay;
 
-            existingDoctor.Description = !string.IsNullOrEmpty(addProfileDto.Description)
-                                        ? addProfileDto.Description
-                                        : null;
-            
-            existingDoctor.Fee = !string.IsNullOrEmpty(addProfileDto.Fee)
-                                        ? addProfileDto.Fee
-                                        : null;
+            existingDoctor.ToDay = !string.IsNullOrWhiteSpace(addProfileDto.ToDay)
+                                   ? addProfileDto.ToDay
+                                   : existingDoctor.ToDay;
 
+            existingDoctor.FromTime = !string.IsNullOrWhiteSpace(addProfileDto.FromTime)
+                                      ? addProfileDto.FromTime
+                                      : existingDoctor.FromTime;
+
+            existingDoctor.ToTime = !string.IsNullOrWhiteSpace(addProfileDto.ToTime)
+                                    ? addProfileDto.ToTime
+                                    : existingDoctor.ToTime;
+
+            existingDoctor.Description = !string.IsNullOrWhiteSpace(addProfileDto.Description)
+                                         ? addProfileDto.Description
+                                         : existingDoctor.Description;
+
+            existingDoctor.Fee = !string.IsNullOrWhiteSpace(addProfileDto.Fee)
+                                 ? addProfileDto.Fee
+                                 : existingDoctor.Fee;
+
+            // Handle profile picture upload
+            if (addProfileDto.Profile != null)
+            {
+                try
+                {
+                    existingDoctor.Profile= await _fileService.SaveFileAsync(addProfileDto.Profile, "Profile");
+                    
+                }
+                catch (Exception ex)
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = false,
+                        Message = $"Failed to upload profile picture: {ex.Message}",
+                        StatusCode = 500
+                    };
+                }
+            }
+
+            // Update the doctor details in the repository
             await _doctorRepository.UpdateDoctorAsync(existingDoctor);
 
             return new ApiResponseDto
@@ -73,6 +102,7 @@ namespace HealthCareApplication.Features.Services
                 StatusCode = 200
             };
         }
+
 
         public async Task<DoctorDetailsDto> GetDoctorDetails(string Id)
         {
@@ -98,8 +128,10 @@ namespace HealthCareApplication.Features.Services
                    Email = doctorDetails.User.Email,
                     Specialization = doctorDetails.Specialization,
                     Qualifications = doctorDetails.Qualifications,
-                   AvailabilityDays = doctorDetails.AvailabilityDays,  
-                    AvailabilityTime = doctorDetails.AvailabilityTime,   
+                   FromDay = doctorDetails.FromDay,  
+                   ToDay = doctorDetails.ToDay,  
+                    FromTime = doctorDetails.FromTime,  
+                   ToTime = doctorDetails.ToTime,  
                    Loction = doctorDetails.Location,
                    Description = doctorDetails.Description,
                    Fee = doctorDetails.Fee, 

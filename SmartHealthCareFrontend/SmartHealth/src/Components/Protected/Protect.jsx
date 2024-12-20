@@ -45,7 +45,7 @@ const Protect = ({ children, requiredRole }) => {
         } 
       } catch (error) {
         console.error("Authentication check failed:", error);
-        navigateTo('/unAuthorized');
+       
       }
     };
 

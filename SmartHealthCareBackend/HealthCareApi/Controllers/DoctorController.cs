@@ -21,7 +21,7 @@ namespace HealthCareApi.Controllers
         }
 
         [HttpPost("AddProfile")]
-        public async Task<IActionResult> AddAdditionalInfo([FromBody] AddProfileDto addProfileDto)
+        public async Task<IActionResult> AddAdditionalInfo(AddProfileDto addProfileDto)
         {
             var response = await _doctorService.AddProfileDetails(addProfileDto);
             return StatusCode(response.StatusCode, response);
