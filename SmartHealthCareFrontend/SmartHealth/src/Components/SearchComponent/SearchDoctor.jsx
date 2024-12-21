@@ -45,6 +45,7 @@ const SearchDoctor = () => {
       const doctorsData = response.data.$values || [];
       if (response.status === 200) {
       
+        console.log(response)
         navigate('/searched_doctor', { state: { doctors: doctorsData } });
       }
     } catch (err) {

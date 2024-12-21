@@ -9,7 +9,7 @@ import { FaCalendarDays } from "react-icons/fa6";
 const SearchedDoctor = () => {
   const location = useLocation();
   const doctors = location.state?.doctors || [];
-  const [hoverIndex, setHoverIndex] = useState(null); // To track hover state
+  const [hoverIndex, setHoverIndex] = useState(null); 
   const navigateTo = useNavigate();
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const SearchedDoctor = () => {
               >
                 <div className="flex gap-4 items-center">
                   <img
-                    src="https://media.istockphoto.com/id/177373093/photo/indian-male-doctor.jpg?s=612x612&w=0&k=20&c=5FkfKdCYERkAg65cQtdqeO_D0JMv6vrEdPw3mX1Lkfg="
+                    src={doctor.profileget}
                     className="h-30 w-40"
                     alt={`Dr. ${doctor.fullName}`}
                   />

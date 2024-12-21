@@ -60,6 +60,11 @@
         "IsRequired": false
       },
       {
+        "Name": "Profileget",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "Experience",
         "Type": "System.String",
         "IsRequired": false

@@ -117,7 +117,7 @@ public class AdminService : IAdminService
                     FullName = doctor.User.FullName, 
                     Email = doctor.User.Email,
                     Specialization = doctor.Specialization,
-                 
+                 Profileget = doctor.Profile,
                     Qualifications = doctor.Qualifications,
                     Status = doctor.Status,
                   

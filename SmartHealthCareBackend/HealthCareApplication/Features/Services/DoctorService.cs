@@ -5,6 +5,7 @@ using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.UserEntity;
 using HealthCareInfrastructure.DataSecurity;
 using HealthCarePersistence.IRepository;
+using HealthCarePersistence.Migrations;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -128,7 +129,8 @@ namespace HealthCareApplication.Features.Services
                    Email = doctorDetails.User.Email,
                     Specialization = doctorDetails.Specialization,
                     Qualifications = doctorDetails.Qualifications,
-                   FromDay = doctorDetails.FromDay,  
+                   FromDay = doctorDetails.FromDay, 
+                   Profileget = doctorDetails.Profile,
                    ToDay = doctorDetails.ToDay,  
                     FromTime = doctorDetails.FromTime,  
                    ToTime = doctorDetails.ToTime,  
@@ -156,10 +158,14 @@ namespace HealthCareApplication.Features.Services
             {
                 var filteredDoctors = await _doctorRepository.SearchDoctors(searchDto.Speciality, searchDto.Location);
 
+             
+
                 var doctorList = filteredDoctors.Select(doctor => new DoctorDetailsDto
                 {
+                    
                     userId = _dataProtector.Protect(doctor.Id),
                     FullName = doctor.User.FullName,
+                    Profileget = doctor.Profile,
                  
                     Specialization = doctor.Specialization,
                    
@@ -171,6 +177,8 @@ namespace HealthCareApplication.Features.Services
                    
                     Experience = doctor.Experience,
                 }).ToList();
+
+             
 
                 return doctorList;
             }

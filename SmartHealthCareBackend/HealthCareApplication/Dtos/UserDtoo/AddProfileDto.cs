@@ -12,6 +12,7 @@ namespace HealthCareApplication.Dtos.UserDto
 
         public string userId { get; set; }
         public IFormFile? Profile { get; set; }
+        public string? Profileget { get; set; }
         public string? Experience { get; set; }
         public string? FromDay { get; set; }  
         public string? ToDay { get; set; } 

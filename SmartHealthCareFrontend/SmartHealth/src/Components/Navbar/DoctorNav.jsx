@@ -14,6 +14,10 @@ const DoctorNav = ({ onProfileClick }) => {
     window.location.href = "/";
   };
 
+  const token= Cookies.get("Token")
+  const decodedToken = JSON.parse(atob(token.split('.')[1]));
+  const userName = decodedToken.Name;
+
   return (
     <nav className="px-8 py-2 flex justify-between items-center bg-white shadow-md z-50">
       <img src={logo} alt="Medical Logo" className="w-36 cursor-pointer" />
@@ -31,14 +35,14 @@ const DoctorNav = ({ onProfileClick }) => {
               className="h-10 w-10 rounded-full object-cover"
               alt="Doctor Avatar"
             />
-            <p className="text-sky-400 font-medium ml-2">Dr. Aayush Adhikari</p>
+            <p className="text-sky-400 font-medium ml-2 capitalize">Dr. {userName}</p>
             <MdOutlineArrowDropDown className="text-2xl text-gray-500" />
           </div>
 
           <ul className="absolute right-0 w-48 bg-white border rounded-lg shadow-lg hidden group-hover:block">
             <li
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
-              onClick={onProfileClick} // Trigger onProfileClick when 'Complete Profile' is clicked
+              onClick={onProfileClick} 
             >
               <AiOutlineProfile className="text-lg text-gray-500" /> Complete Profile
             </li>
