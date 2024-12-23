@@ -15,6 +15,7 @@ export default {
         "Doctor_Banner" : "url('../src/Assets/Image/Find_Banner.png')",
         "Contact_Banner" : "url('../src/Assets/Image/contact_banner.jpg')",
         "loginbg" : "url('../src/Assets/Image/Logbg.jpg')",
+        "auth_bg" : "url('../src/Assets/Image/d_bg.png')",
 
       }, 
       height:{

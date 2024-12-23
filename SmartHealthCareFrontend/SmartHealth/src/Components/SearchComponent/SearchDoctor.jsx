@@ -70,7 +70,7 @@ const SearchDoctor = () => {
     <div>
 
 
-      <div className='flex gap-2 mt-4 mb-24'>
+      <div className='flex gap-2 mt-4 mb-10 '>
         <div className='relative flex items-center'>
           <Select
             options={Location.map((loc) => ({ value: loc.name, label: loc.name }))}
@@ -113,7 +113,7 @@ const SearchDoctor = () => {
         <button
           onClick={handleSearch}
           disabled={isLoading}
-          className='bg-sky-600 px-5 rounded-sm text-white hover:bg-sky-400 h-12'
+          className='bg-sky-600 px-5 rounded-sm text-white hover:bg-sky-400 h-12 transition ease-out'
         >
         {isLoading ? "Searching...":"Search"}
        

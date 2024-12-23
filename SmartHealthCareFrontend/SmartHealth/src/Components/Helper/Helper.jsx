@@ -15,7 +15,7 @@ const Helper = () => {
     }, [location]);
 
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center z-100'>
             <div className='flex gap-16 text-center items-center justify-center mt-8'>
                 {isLogin ? (
                     <>

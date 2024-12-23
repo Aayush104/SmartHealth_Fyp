@@ -119,7 +119,7 @@ const Login = () => {
   };
 
   return (
-    <div className="overflow-hidden relative"> 
+    <div className="overflow-hidden relative  "> 
       <Navbar />
       <motion.div 
         className="absolute top-[-50px] left-[-50px] w-72 h-72 bg-sky-400 opacity-80 rounded-full z-[-1]"

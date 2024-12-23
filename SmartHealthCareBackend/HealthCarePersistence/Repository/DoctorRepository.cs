@@ -51,13 +51,18 @@ namespace HealthCarePersistence.Repository
          .FirstOrDefaultAsync(x => x.Id == userId);
         }
 
-      
 
-        public async Task<IEnumerable<Doctor>> SearchDoctors(string speciality, string Location)
+
+        public async Task<IEnumerable<Doctor>> SearchDoctors(string speciality, string location)
         {
-       var doctors = await _dbContext.Doctors.Where(x => x.Specialization == speciality && x.Location == Location).Include(d => d.User).ToListAsync();
+            var doctors = await _dbContext.Doctors
+                .Where(d => d.Specialization == speciality && d.Location == location)
+                .Include(d => d.User)
+                .Where(d => d.User.EmailConfirmed == true)
+                .ToListAsync();
             return doctors;
         }
+
 
         public async Task UpdateDoctorAsync(Doctor doctor)
         {

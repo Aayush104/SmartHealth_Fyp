@@ -48,6 +48,12 @@ const DoctorNav = ({ onProfileClick }) => {
             </li>
             <li
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+              onClick={onProfileClick} 
+            >
+              <AiOutlineProfile className="text-lg text-gray-500" /> Additional Info
+            </li>
+            <li
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
               onClick={handleLogout}
             >
               <TbLogout2 className="text-lg text-gray-500" /> Logout
