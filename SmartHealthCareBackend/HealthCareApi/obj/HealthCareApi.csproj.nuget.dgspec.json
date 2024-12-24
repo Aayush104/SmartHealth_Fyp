@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\HealthCareApi.csproj": {}
+    "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\HealthCareApi.csproj": {}
   },
   "projects": {
-    "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\HealthCareApi.csproj": {
+    "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\HealthCareApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\HealthCareApi.csproj",
+        "projectUniqueName": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\HealthCareApi.csproj",
         "projectName": "HealthCareApi",
-        "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\HealthCareApi.csproj",
+        "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\HealthCareApi.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApi\\obj\\",
+        "outputPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,17 +33,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj": {
-                "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj"
+              "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj": {
+                "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj"
               },
-              "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj": {
-                "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj"
+              "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj": {
+                "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj"
               },
-              "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj": {
-                "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj"
+              "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj": {
+                "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj"
               },
-              "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj": {
-                "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj"
+              "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj": {
+                "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj"
               }
             }
           }
@@ -67,10 +67,6 @@
             "DotNetEnv": {
               "target": "Package",
               "version": "[3.1.1, )"
-            },
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.5.1, )"
             },
             "Google.Apis.Auth": {
               "target": "Package",
@@ -130,14 +126,14 @@
         }
       }
     },
-    "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj": {
+    "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj",
+        "projectUniqueName": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj",
         "projectName": "HealthCareApplication",
-        "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj",
+        "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\obj\\",
+        "outputPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -159,11 +155,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj": {
-                "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj"
+              "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj": {
+                "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj"
               },
-              "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj": {
-                "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj"
+              "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj": {
+                "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj"
               }
             }
           }
@@ -187,10 +183,6 @@
             "DotNetEnv": {
               "target": "Package",
               "version": "[3.1.1, )"
-            },
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.5.1, )"
             },
             "Google.Apis.Auth": {
               "target": "Package",
@@ -233,14 +225,14 @@
         }
       }
     },
-    "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj": {
+    "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj",
+        "projectUniqueName": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj",
         "projectName": "HealthCareDomain",
-        "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj",
+        "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\obj\\",
+        "outputPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -283,10 +275,6 @@
             "DotNetEnv": {
               "target": "Package",
               "version": "[3.1.1, )"
-            },
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.5.1, )"
             },
             "Google.Apis.Auth": {
               "target": "Package",
@@ -357,14 +345,14 @@
         }
       }
     },
-    "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj": {
+    "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj",
+        "projectUniqueName": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj",
         "projectName": "HealthCareInfrastructure",
-        "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj",
+        "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\HealthCareInfrastructure.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareInfrastructure\\obj\\",
+        "outputPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -386,8 +374,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj": {
-                "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj"
+              "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj": {
+                "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\HealthCareApplication.csproj"
               }
             }
           }
@@ -408,10 +396,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.5.1, )"
-            },
             "Google.Apis.Auth": {
               "target": "Package",
               "version": "[1.68.0, )"
@@ -445,14 +429,14 @@
         }
       }
     },
-    "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj": {
+    "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj",
+        "projectUniqueName": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj",
         "projectName": "HealthCarePersistence",
-        "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj",
+        "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\HealthCarePersistence.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCarePersistence\\obj\\",
+        "outputPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -474,8 +458,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj": {
-                "projectPath": "D:\\SmartHealthCare\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj"
+              "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj": {
+                "projectPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\HealthCareDomain.csproj"
               }
             }
           }
@@ -499,10 +483,6 @@
             "DotNetEnv": {
               "target": "Package",
               "version": "[3.1.1, )"
-            },
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.5.1, )"
             },
             "Google.Apis.Auth": {
               "target": "Package",

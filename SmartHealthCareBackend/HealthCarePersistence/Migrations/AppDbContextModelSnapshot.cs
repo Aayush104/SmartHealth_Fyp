@@ -130,6 +130,27 @@ namespace HealthCarePersistence.Migrations
                     b.ToTable("Doctors");
                 });
 
+            modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAdditionalInfo", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("DoctorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ExperienceDetail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Trainings")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.ToTable("DoctorAdditionalInfos");
+                });
+
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAvailability", b =>
                 {
                     b.Property<int>("Id")
@@ -295,20 +316,20 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7e4f4575-d6dd-4982-a1fe-e54dfb24bdd3",
-                            CreatedAt = new DateTime(2024, 12, 20, 17, 12, 55, 898, DateTimeKind.Utc).AddTicks(5558),
+                            ConcurrencyStamp = "c11fa64c-a5f1-4f2b-b4a6-fdbff9f8cd56",
+                            CreatedAt = new DateTime(2024, 12, 24, 17, 4, 25, 381, DateTimeKind.Utc).AddTicks(1254),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEE2SQCmaBls/8wHgMn+GsYVjNuCA9CYp4A4feDYnBd0SYLzPgZTfBMRJKEffP2k8pQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECjIW1vrW7snFSLVwBq3Meq8k2/SYYtySRrWPISrpz3WtbTgqgDA2OQbK2Grqi8Cfg==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7c997f8d-6ea8-40a7-999a-d312b04bcf87",
+                            SecurityStamp = "e53c4da3-0356-4433-b122-37ecac1d9fd9",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2024, 12, 20, 17, 12, 55, 898, DateTimeKind.Utc).AddTicks(5561),
+                            UpdatedAt = new DateTime(2024, 12, 24, 17, 4, 25, 381, DateTimeKind.Utc).AddTicks(1262),
                             UserName = "Admin"
                         });
                 });
@@ -503,6 +524,21 @@ namespace HealthCarePersistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAdditionalInfo", b =>
+                {
+                    b.HasOne("HealthCareDomain.Entity.Doctors.Doctor", null)
+                        .WithMany("DoctorAdditionals")
+                        .HasForeignKey("DoctorId");
+
+                    b.HasOne("HealthCareDomain.Entity.Doctors.Doctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+                });
+
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAvailability", b =>
                 {
                     b.HasOne("HealthCareDomain.Entity.Doctors.Doctor", "Doctor")
@@ -592,6 +628,8 @@ namespace HealthCarePersistence.Migrations
                     b.Navigation("AvailabilityList");
 
                     b.Navigation("BookAppointments");
+
+                    b.Navigation("DoctorAdditionals");
                 });
 
             modelBuilder.Entity("HealthCareDomain.Entity.Patients.Patient", b =>

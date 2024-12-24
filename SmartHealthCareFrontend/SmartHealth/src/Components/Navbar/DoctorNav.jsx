@@ -7,14 +7,15 @@ import { Link } from 'react-router-dom';
 import { TbLogout2 } from 'react-icons/tb';
 import { AiOutlineProfile } from 'react-icons/ai';
 import Cookies from 'js-cookie';
+import { IoIosAddCircleOutline } from "react-icons/io";
 
-const DoctorNav = ({ onProfileClick }) => {
+const DoctorNav = ({ onProfileClick, onAdditionalClick }) => {
   const handleLogout = () => {
     Cookies.remove("Token");
     window.location.href = "/";
   };
 
-  const token= Cookies.get("Token")
+  const token = Cookies.get("Token");
   const decodedToken = JSON.parse(atob(token.split('.')[1]));
   const userName = decodedToken.Name;
 
@@ -48,9 +49,9 @@ const DoctorNav = ({ onProfileClick }) => {
             </li>
             <li
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
-              onClick={onProfileClick} 
+              onClick={onAdditionalClick} 
             >
-              <AiOutlineProfile className="text-lg text-gray-500" /> Additional Info
+              <IoIosAddCircleOutline  className="text-lg text-gray-500" /> Additional Info
             </li>
             <li
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"

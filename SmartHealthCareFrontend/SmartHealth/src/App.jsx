@@ -65,7 +65,7 @@ const App = () => {
         <Route path="/home" element={<Protect requiredRole={['Patient']}><Home /> </Protect>} />
         <Route path="/ConfirmEmail/:email/:otp" element={<ConfirmDoctorEmail />} />
         <Route path="/doctorAvailability" element={<DoctorAvailability />} />
-        <Route path="/unAuthorized" element={<UnAuthorized />} />
+        <Route path="//unauthorize" element={<UnAuthorized />} />
         <Route path="/searched_doctor" element={<SearchedDoctor />} />
         <Route path="/NotFound" element={<NotFound />} />
       

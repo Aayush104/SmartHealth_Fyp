@@ -1,24 +1,37 @@
 import React, { useState } from 'react';
 import DoctorNav from '../../Components/Navbar/DoctorNav';
 import CompleteProfile from '../../Components/DoctorComponents/CompleteProfile';
+import AdditionalProfile from '../../Components/DoctorComponents/AdditionalProfile';
 
 const DoctorProfile = () => {
   const [showProfileForm, setShowProfileForm] = useState(false);
+  const [showAdditionalForm, setAdditionalForm] = useState(false);
 
   const handleProfileClick = () => {
-    setShowProfileForm(true); // Show the CompleteProfile form when clicked
-    document.body.style.overflow = 'hidden'; // Disable scrolling
+    setShowProfileForm(true); 
+    document.body.style.overflow = 'hidden'; 
   };
 
   const handleCloseProfile = () => {
-    setShowProfileForm(false); // Close the CompleteProfile form when cross is clicked
-    document.body.style.overflow = 'auto'; // Enable scrolling again
+    setShowProfileForm(false); 
+    document.body.style.overflow = 'auto'; 
+  };
+
+  const handleAdditionalClick = () => {
+    setAdditionalForm(true); 
+    document.body.style.overflow = 'hidden'; 
+  };
+
+  const handleAdditionalclose = () => {
+    setAdditionalForm(false); 
+    document.body.style.overflow = 'auto'; 
   };
 
   return (
     <div>
-      <DoctorNav onProfileClick={handleProfileClick} />
+      <DoctorNav onProfileClick={handleProfileClick} onAdditionalClick={handleAdditionalClick} />
       {showProfileForm && <CompleteProfile onClose={handleCloseProfile} />}
+      {showAdditionalForm && <AdditionalProfile onAdditionalOff={handleAdditionalclose} />}
     </div>
   );
 };

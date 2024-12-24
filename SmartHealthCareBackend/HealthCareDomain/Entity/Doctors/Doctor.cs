@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using HealthCareDomain.Entity.Appointment;
 using HealthCareDomain.Entity.UserEntity;
-using Microsoft.Identity.Client;
 
 namespace HealthCareDomain.Entity.Doctors
 {
@@ -39,15 +39,14 @@ namespace HealthCareDomain.Entity.Doctors
         public string? ToDay { get; set; }
         public string? FromTime { get; set; }
         public string? ToTime { get; set; }
-        public string? Description { get; set; } 
+        public string? Description { get; set; }
         public string? Fee { get; set; }
 
-
-
-
-        public virtual ICollection<DoctorAvailability> AvailabilityList { get; set; }
+        // Navigation Properties
+        public virtual ICollection<DoctorAvailability> AvailabilityList { get; set; } = new List<DoctorAvailability>();
         public virtual ICollection<BookAppointment> BookAppointments { get; set; } = new List<BookAppointment>();
 
-
+        // Relationship with DoctorAdditionalInfo
+        public virtual ICollection<DoctorAdditionalInfo> DoctorAdditionals { get; set; } = new List<DoctorAdditionalInfo>();
     }
 }

@@ -20,7 +20,8 @@ namespace HealthCarePersistence.DatabaseContext
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<OtpHash> Otps { get; set; }
         public DbSet<DoctorAvailability> DoctorAvailabilities { get; set; }
-        public DbSet<BookAppointment> BookAppointments { get; set; }
+        public DbSet<BookAppointment> BookAppointments { get; set; } 
+        public DbSet<DoctorAdditionalInfo> DoctorAdditionalInfos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +37,12 @@ namespace HealthCarePersistence.DatabaseContext
             // Configure Doctor relationship with ApplicationUser
             modelBuilder.Entity<Doctor>()
                 .HasOne(d => d.User)
+                .WithMany()  // No inverse relationship needed
+                .HasForeignKey(d => d.Id)
+                .OnDelete(DeleteBehavior.Cascade); 
+
+            modelBuilder.Entity<DoctorAdditionalInfo>()
+                .HasOne(d => d.Doctor)
                 .WithMany()  // No inverse relationship needed
                 .HasForeignKey(d => d.Id)
                 .OnDelete(DeleteBehavior.Cascade);  // Cascade delete on user deletion

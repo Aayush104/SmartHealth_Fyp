@@ -30,29 +30,33 @@ const Protect = ({ children, requiredRole }) => {
 
         if (response.status === 200 && response.data === userId && requiredRole.includes(userRole)) {
           setAuthenticated(true);
+
           // Redirect based on role
           switch (userRole) {
             case "Admin":
-              break;
+              break; // Admin stays on the current page
             case "Patient":
               navigateTo('/home');
               break;
-            case "Doctor":  
+            case "Doctor":
               navigateTo(`/DoctorProfile/${name}`);
               break;
-  
+            default:
+              navigateTo("/unauthorize");
+              break;
           }
-        } 
+        } else {
+          navigateTo("/unauthorize");
+        }
       } catch (error) {
         console.error("Authentication check failed:", error);
-       
+        navigateTo("/unauthorize");
       }
     };
 
     checkAuth();
   }, [token, requiredRole, navigateTo]);
 
-  
   return authenticated ? <>{children}</> : null;
 };
 
@@ -80,7 +84,6 @@ const RedirectIfAuthenticated = ({ children }) => {
             navigateTo(`/DoctorProfile/${name}`);
             break;
           default:
-            
             Cookies.remove("Token");
             navigateTo('/');
             break;
@@ -93,7 +96,6 @@ const RedirectIfAuthenticated = ({ children }) => {
     }
   }, [token, navigateTo]);
 
-  // Render children only if no token is present
   return !token ? <>{children}</> : null;
 };
 
