@@ -5,6 +5,10 @@ using HealthCareDomain.Entity.Patients;
 using HealthCareDomain.Entity.UserEntity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HealthCarePersistence.DatabaseContext
 {
@@ -20,52 +24,55 @@ namespace HealthCarePersistence.DatabaseContext
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<OtpHash> Otps { get; set; }
         public DbSet<DoctorAvailability> DoctorAvailabilities { get; set; }
-        public DbSet<BookAppointment> BookAppointments { get; set; } 
+        public DbSet<BookAppointment> BookAppointments { get; set; }
         public DbSet<DoctorAdditionalInfo> DoctorAdditionalInfos { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-         
+            // Configure Patient relationship with ApplicationUser
             modelBuilder.Entity<Patient>()
                 .HasOne(p => p.User)
-                .WithMany()  // No inverse relationship needed
+                .WithMany()
                 .HasForeignKey(p => p.Id)
-                .OnDelete(DeleteBehavior.Cascade);  // Cascade delete on user deletion
+                .OnDelete(DeleteBehavior.Cascade);
 
             // Configure Doctor relationship with ApplicationUser
             modelBuilder.Entity<Doctor>()
                 .HasOne(d => d.User)
-                .WithMany()  // No inverse relationship needed
+                .WithMany()
                 .HasForeignKey(d => d.Id)
-                .OnDelete(DeleteBehavior.Cascade); 
+                .OnDelete(DeleteBehavior.Cascade);
 
+            // Configure DoctorAdditionalInfo relationship with ApplicationUser
             modelBuilder.Entity<DoctorAdditionalInfo>()
-                .HasOne(d => d.Doctor)
-                .WithMany()  // No inverse relationship needed
-                .HasForeignKey(d => d.Id)
-                .OnDelete(DeleteBehavior.Cascade);  // Cascade delete on user deletion
+      .HasOne(d => d.User)
+      .WithMany(u => u.DoctorAdditionalInfos)
+      .HasForeignKey(d => d.UserId)
+      .OnDelete(DeleteBehavior.Cascade);
+
 
             // Configure OtpHash relationship with ApplicationUser
             modelBuilder.Entity<OtpHash>()
                 .HasOne(o => o.User)
-                .WithMany(u => u.Otps)  // User can have many OTPs
+                .WithMany(u => u.Otps)
                 .HasForeignKey(o => o.UserId)
-                .OnDelete(DeleteBehavior.Cascade);  // Cascade delete OTPs when User is deleted
+                .OnDelete(DeleteBehavior.Cascade);
 
-            
+            // Configure BookAppointment relationships
             modelBuilder.Entity<BookAppointment>()
                 .HasOne(b => b.Doctor)
-                .WithMany(d => d.BookAppointments)  
+                .WithMany(d => d.BookAppointments)
                 .HasForeignKey(b => b.DoctorId)
-                .OnDelete(DeleteBehavior.Cascade); 
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<BookAppointment>()
                 .HasOne(b => b.Patient)
-                .WithMany(p => p.BookAppointments) 
+                .WithMany(p => p.BookAppointments)
                 .HasForeignKey(b => b.PatientId)
-                .OnDelete(DeleteBehavior.Restrict);  
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }

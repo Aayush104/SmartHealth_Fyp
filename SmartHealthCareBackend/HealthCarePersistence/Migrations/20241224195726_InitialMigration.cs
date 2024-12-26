@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HealthCarePersistence.Migrations
 {
     /// <inheritdoc />
-    public partial class firstMigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -162,20 +162,46 @@ namespace HealthCarePersistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DoctorAdditionalInfos",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ExperienceDetail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Trainings = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DoctorAdditionalInfos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DoctorAdditionalInfos_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Doctors",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Specialization = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LicenseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Qualifications = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LicenseFilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QualificationsFilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GovernmentIdFilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Profile = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Experience = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Availability = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    FromDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ToDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FromTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ToTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Fee = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -240,6 +266,7 @@ namespace HealthCarePersistence.Migrations
                     StartTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EndTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SlotDuration = table.Column<int>(type: "int", nullable: false),
+                    IsBooked = table.Column<bool>(type: "bit", nullable: false),
                     DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -262,7 +289,7 @@ namespace HealthCarePersistence.Migrations
                     DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PatientId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AppointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Slot = table.Column<TimeSpan>(type: "time", nullable: false),
+                    Slot = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PaymentStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
@@ -296,7 +323,7 @@ namespace HealthCarePersistence.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName" },
-                values: new object[] { "25160704-4676-4ea0-8bf2-cffbfea196db", 0, "373b4e14-c370-4083-906c-ec51b38be3af", new DateTime(2024, 10, 21, 9, 12, 10, 739, DateTimeKind.Utc).AddTicks(7367), "aayushadhikari601@gmail.com", true, "Admin", false, null, "AAYUSHADHIKARI601@GMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAECa+O8jaUHDJ+l7f1DvotuaApCv20g8xgDqMNuExCYYknIthyWCvQ5PFWENScOec2Q==", "9827102964", false, "f701fcfb-5451-4382-be99-077074410760", false, new DateTime(2024, 10, 21, 9, 12, 10, 739, DateTimeKind.Utc).AddTicks(7372), "Admin" });
+                values: new object[] { "25160704-4676-4ea0-8bf2-cffbfea196db", 0, "3dc72d79-6dec-46ce-9081-2b06b8799535", new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8970), "aayushadhikari601@gmail.com", true, "Admin", false, null, "AAYUSHADHIKARI601@GMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEJcqnQkz0l/nJzazHynh8CliIDsF0dyB9QJ/pzeiNF8NGYohhhTohnY4J6iK2Wqhmg==", "9827102964", false, "edbbe9f0-bafa-4c74-92cd-5248ba996d29", false, new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8978), "Admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -353,6 +380,11 @@ namespace HealthCarePersistence.Migrations
                 column: "PatientId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DoctorAdditionalInfos_UserId",
+                table: "DoctorAdditionalInfos",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DoctorAvailabilities_DoctorId",
                 table: "DoctorAvailabilities",
                 column: "DoctorId");
@@ -383,6 +415,9 @@ namespace HealthCarePersistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "BookAppointments");
+
+            migrationBuilder.DropTable(
+                name: "DoctorAdditionalInfos");
 
             migrationBuilder.DropTable(
                 name: "DoctorAvailabilities");

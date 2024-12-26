@@ -60,3 +60,5 @@ D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareInfrastruct
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareInfrastructure\obj\Debug\net8.0\refint\HealthCareInfrastructure.dll
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareInfrastructure\obj\Debug\net8.0\HealthCareInfrastructure.pdb
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareInfrastructure\obj\Debug\net8.0\ref\HealthCareInfrastructure.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareInfrastructure\bin\Debug\net8.0\HealthCareInfrastructure.runtimeconfig.json
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareInfrastructure\obj\Debug\net8.0\HealthCareInfrastructure.genruntimeconfig.cache

@@ -17,9 +17,12 @@ namespace HealthCarePersistence.IRepository
         Task <Doctor> GetDoctorBYId(string userId);
         Task  UpdateDoctorAsync(Doctor doctor);
 
+        Task<List<DoctorAdditionalInfo>> GetByUserIdFromAdditionalAsync(string userId);
+        Task UpdateAdditionalAsync(DoctorAdditionalInfo info);
         Task<IEnumerable<Doctor>> SearchDoctors(string speciality, string Location);
-      
-      
+        Task AddAdditionalInfoAsync(DoctorAdditionalInfo info);
+
+
     }
 
 }

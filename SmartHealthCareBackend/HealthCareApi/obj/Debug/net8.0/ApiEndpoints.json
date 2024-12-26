@@ -43,6 +43,22 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.DoctorController",
+    "Method": "PostDoctorAdditionalInfo",
+    "RelativePath": "api/Doctor/AddDoctorAdditionalInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HealthCareApplication.Dtos.UserDtoo.AdditionalnfoDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.DoctorController",
     "Method": "AddAdditionalInfo",
     "RelativePath": "api/Doctor/AddProfile",
     "HttpMethod": "POST",

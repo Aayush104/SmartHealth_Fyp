@@ -55,8 +55,8 @@ const DoctorDetails = () => {
               <div className='border w-[45rem] bg-white p-2 flex items-center shadow justify-between'>
                 <div className='flex gap-8'>
                   <img
-                    // src={doctorDetails.profileget}
-                    src="https://png.pngtree.com/png-vector/20230928/ourmid/pngtree-young-afro-professional-doctor-png-image_10148632.png"
+                    src={doctorDetails.profileget}
+                    // src="https://png.pngtree.com/png-vector/20230928/ourmid/pngtree-young-afro-professional-doctor-png-image_10148632.png"
                     className="h-30 w-40  text-white border rounded"
                     alt={`Dr. ${doctorDetails.fullName}`}
                   />

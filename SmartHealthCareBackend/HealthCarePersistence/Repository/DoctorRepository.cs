@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HealthCareDomain.Entity.Doctors;
+using static System.Reflection.Metadata.BlobBuilder;
+
 
 
 
@@ -21,6 +23,15 @@ namespace HealthCarePersistence.Repository
         {
             _dbContext = dbContext;
         }
+
+        public async Task AddAdditionalInfoAsync(DoctorAdditionalInfo info)
+        {
+            await _dbContext.DoctorAdditionalInfos.AddAsync(info);
+            await _dbContext.SaveChangesAsync();
+
+
+        }
+
         public async Task AddDoctor(Doctor doctor)
         {
            await _dbContext.Doctors.AddAsync(doctor); 
@@ -43,14 +54,18 @@ namespace HealthCarePersistence.Repository
             return doctors;
         }
 
-     
+        public async Task<List<DoctorAdditionalInfo>> GetByUserIdFromAdditionalAsync(string userId)
+        {
+            return await _dbContext.DoctorAdditionalInfos
+            .Where(d => d.UserId == userId)
+            .ToListAsync();
+        }
 
-      public async  Task<Doctor>GetDoctorBYId(string userId)
+        public async  Task<Doctor>GetDoctorBYId(string userId)
         {
             return await _dbContext.Doctors.Include(d => d.User)
          .FirstOrDefaultAsync(x => x.Id == userId);
         }
-
 
 
         public async Task<IEnumerable<Doctor>> SearchDoctors(string speciality, string location)
@@ -63,6 +78,11 @@ namespace HealthCarePersistence.Repository
             return doctors;
         }
 
+        public async Task UpdateAdditionalAsync(DoctorAdditionalInfo info)
+        {
+             _dbContext.DoctorAdditionalInfos.Update(info);
+            await _dbContext.SaveChangesAsync();
+        }
 
         public async Task UpdateDoctorAsync(Doctor doctor)
         {

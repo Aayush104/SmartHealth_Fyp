@@ -46,7 +46,7 @@ namespace HealthCareDomain.Entity.Doctors
         public virtual ICollection<DoctorAvailability> AvailabilityList { get; set; } = new List<DoctorAvailability>();
         public virtual ICollection<BookAppointment> BookAppointments { get; set; } = new List<BookAppointment>();
 
-        // Relationship with DoctorAdditionalInfo
-        public virtual ICollection<DoctorAdditionalInfo> DoctorAdditionals { get; set; } = new List<DoctorAdditionalInfo>();
+
+
     }
 }

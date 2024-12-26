@@ -135,18 +135,19 @@ namespace HealthCarePersistence.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("DoctorId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("ExperienceDetail")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Trainings")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("DoctorId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("DoctorAdditionalInfos");
                 });
@@ -316,20 +317,20 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c11fa64c-a5f1-4f2b-b4a6-fdbff9f8cd56",
-                            CreatedAt = new DateTime(2024, 12, 24, 17, 4, 25, 381, DateTimeKind.Utc).AddTicks(1254),
+                            ConcurrencyStamp = "3dc72d79-6dec-46ce-9081-2b06b8799535",
+                            CreatedAt = new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8970),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAECjIW1vrW7snFSLVwBq3Meq8k2/SYYtySRrWPISrpz3WtbTgqgDA2OQbK2Grqi8Cfg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJcqnQkz0l/nJzazHynh8CliIDsF0dyB9QJ/pzeiNF8NGYohhhTohnY4J6iK2Wqhmg==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e53c4da3-0356-4433-b122-37ecac1d9fd9",
+                            SecurityStamp = "edbbe9f0-bafa-4c74-92cd-5248ba996d29",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2024, 12, 24, 17, 4, 25, 381, DateTimeKind.Utc).AddTicks(1262),
+                            UpdatedAt = new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8978),
                             UserName = "Admin"
                         });
                 });
@@ -526,17 +527,13 @@ namespace HealthCarePersistence.Migrations
 
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAdditionalInfo", b =>
                 {
-                    b.HasOne("HealthCareDomain.Entity.Doctors.Doctor", null)
-                        .WithMany("DoctorAdditionals")
-                        .HasForeignKey("DoctorId");
-
-                    b.HasOne("HealthCareDomain.Entity.Doctors.Doctor", "Doctor")
-                        .WithMany()
-                        .HasForeignKey("Id")
+                    b.HasOne("HealthCareDomain.Entity.UserEntity.ApplicationUser", "User")
+                        .WithMany("DoctorAdditionalInfos")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Doctor");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAvailability", b =>
@@ -628,8 +625,6 @@ namespace HealthCarePersistence.Migrations
                     b.Navigation("AvailabilityList");
 
                     b.Navigation("BookAppointments");
-
-                    b.Navigation("DoctorAdditionals");
                 });
 
             modelBuilder.Entity("HealthCareDomain.Entity.Patients.Patient", b =>
@@ -639,6 +634,8 @@ namespace HealthCarePersistence.Migrations
 
             modelBuilder.Entity("HealthCareDomain.Entity.UserEntity.ApplicationUser", b =>
                 {
+                    b.Navigation("DoctorAdditionalInfos");
+
                     b.Navigation("Otps");
                 });
 #pragma warning restore 612, 618

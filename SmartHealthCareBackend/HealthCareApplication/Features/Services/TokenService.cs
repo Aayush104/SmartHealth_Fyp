@@ -36,7 +36,7 @@ namespace HealthCareApplication.Features.Services
                 issuer: JWT_ISSUER,
                 audience: JWT_AUDIENCE,
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(60),
+                expires: DateTime.Now.AddMonths(1),
                 signingCredentials: credentials
             );
 

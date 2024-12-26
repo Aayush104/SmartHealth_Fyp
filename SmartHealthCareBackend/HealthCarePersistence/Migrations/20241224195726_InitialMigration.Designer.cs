@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthCarePersistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241022111641_changeDatatype")]
-    partial class changeDatatype
+    [Migration("20241224195726_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,10 +72,19 @@ namespace HealthCarePersistence.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Availability")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Experience")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fee")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromDay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromTime")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GovernmentIdFilePath")
@@ -91,6 +100,10 @@ namespace HealthCarePersistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Profile")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Qualifications")
@@ -109,9 +122,37 @@ namespace HealthCarePersistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ToDay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToTime")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Doctors");
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAdditionalInfo", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ExperienceDetail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Trainings")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DoctorAdditionalInfos");
                 });
 
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAvailability", b =>
@@ -279,20 +320,20 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8b66d0d8-7423-4b15-84ae-37848613b001",
-                            CreatedAt = new DateTime(2024, 10, 22, 11, 16, 39, 47, DateTimeKind.Utc).AddTicks(3858),
+                            ConcurrencyStamp = "3dc72d79-6dec-46ce-9081-2b06b8799535",
+                            CreatedAt = new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8970),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIrLpxZkhm20RX1VBFN0TJ3dx1k6vjxz1oV3LI2C7JwR52p4ObHPXsTWgNrzp6WwYA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJcqnQkz0l/nJzazHynh8CliIDsF0dyB9QJ/pzeiNF8NGYohhhTohnY4J6iK2Wqhmg==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7b28d09a-cc8a-4360-a91d-9ad7c4ffb1e7",
+                            SecurityStamp = "edbbe9f0-bafa-4c74-92cd-5248ba996d29",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2024, 10, 22, 11, 16, 39, 47, DateTimeKind.Utc).AddTicks(3866),
+                            UpdatedAt = new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8978),
                             UserName = "Admin"
                         });
                 });
@@ -487,6 +528,17 @@ namespace HealthCarePersistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAdditionalInfo", b =>
+                {
+                    b.HasOne("HealthCareDomain.Entity.UserEntity.ApplicationUser", "User")
+                        .WithMany("DoctorAdditionalInfos")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.DoctorAvailability", b =>
                 {
                     b.HasOne("HealthCareDomain.Entity.Doctors.Doctor", "Doctor")
@@ -585,6 +637,8 @@ namespace HealthCarePersistence.Migrations
 
             modelBuilder.Entity("HealthCareDomain.Entity.UserEntity.ApplicationUser", b =>
                 {
+                    b.Navigation("DoctorAdditionalInfos");
+
                     b.Navigation("Otps");
                 });
 #pragma warning restore 612, 618

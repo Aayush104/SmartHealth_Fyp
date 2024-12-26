@@ -1,17 +1,20 @@
 ﻿using HealthCareApplication.Contract.IService;
 using HealthCareApplication.Contracts.IService;
+using HealthCareApplication.Dtos.AvailabilityDto;
 using HealthCareApplication.Dtos.UserDto;
+using HealthCareApplication.Dtos.UserDtoo;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.UserEntity;
 using HealthCareInfrastructure.DataSecurity;
 using HealthCarePersistence.IRepository;
-using HealthCarePersistence.Migrations;
+
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace HealthCareApplication.Features.Services
 {
@@ -103,6 +106,67 @@ namespace HealthCareApplication.Features.Services
                 StatusCode = 200
             };
         }
+
+        public async Task<ApiResponseDto> CreateOrUpdateDoctorAdditionalInfo(AdditionalnfoDto request)
+        {
+            try
+            {
+                var existingRecords = await _doctorRepository.GetByUserIdFromAdditionalAsync(request.UserId);
+
+                int experienceIndex = 0, trainingIndex = 0;
+
+                // Update existing records with missing values
+                foreach (var record in existingRecords)
+                {
+                    if (string.IsNullOrEmpty(record.ExperienceDetail) && experienceIndex < request.Experiences.Count)
+                    {
+                        record.ExperienceDetail = request.Experiences[experienceIndex++];
+                    }
+
+                    if (string.IsNullOrEmpty(record.Trainings) && trainingIndex < request.Trainings.Count)
+                    {
+                        record.Trainings = request.Trainings[trainingIndex++];
+                    }
+
+                    await _doctorRepository.UpdateAdditionalAsync(record);
+                }
+
+                // Add new records for remaining experiences and trainings
+                while (experienceIndex < request.Experiences.Count || trainingIndex < request.Trainings.Count)
+                {
+                    var newRecord = new DoctorAdditionalInfo
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        UserId = request.UserId,
+                        ExperienceDetail = experienceIndex < request.Experiences.Count ? request.Experiences[experienceIndex++] : null,
+                        Trainings = trainingIndex < request.Trainings.Count ? request.Trainings[trainingIndex++] : null
+                    };
+
+                    await _doctorRepository.AddAdditionalInfoAsync(newRecord);
+                }
+
+               
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Message = "Additional Info Added Successfully",
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+               
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
+
+
 
 
         public async Task<DoctorDetailsDto> GetDoctorDetails(string Id)

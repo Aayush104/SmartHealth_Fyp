@@ -1,6 +1,7 @@
 ﻿using HealthCareApplication.Contract.IService;
 using HealthCareApplication.Dtos.AvailabilityDto;
 using HealthCareApplication.Dtos.UserDto;
+using HealthCareApplication.Dtos.UserDtoo;
 using HealthCareDomain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -85,5 +86,23 @@ namespace HealthCareApi.Controllers
 
         }
 
+        [HttpPost("AddDoctorAdditionalInfo")]
+        public async Task<IActionResult> PostDoctorAdditionalInfo([FromBody] AdditionalnfoDto request)
+        {
+            // Validate request before proceeding
+            if (request == null || !request.Experiences.Any() || !request.Trainings.Any())
+            {
+                return BadRequest(new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "Experiences and Trainings cannot be empty.",
+                    StatusCode = 400
+                });
+            }
+
+            // Create or update doctor additional info
+            var response = await _doctorService.CreateOrUpdateDoctorAdditionalInfo(request);
+            return StatusCode(response.StatusCode, response);
+        }
     }
 }

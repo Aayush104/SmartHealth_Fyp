@@ -3,17 +3,24 @@ import { motion } from "framer-motion";
 import { RxCross2 } from "react-icons/rx"; 
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { AiOutlineMinusCircle } from "react-icons/ai"; 
+import Cookies from 'js-cookie';
+import axios from "axios";
 
 const AdditionalProfile = ({ onAdditionalOff }) => {
-  const [experiences, setExperiences] = useState([""]); 
+  const [experiences, setExperiences] = useState([""]);
   const [trainings, setTrainings] = useState([""]);
+  const [loading, setLoading] = useState(false); // For loading state
+  const [error, setError] = useState(null); // For error handling
+  const token = Cookies.get("Token");
+  const decodedToken = JSON.parse(atob(token.split('.')[1]));
+  const userId = decodedToken.userId;
 
   const handleAddExperience = () => {
-    setExperiences([...experiences, ""]);
+    setExperiences([...experiences, ""]); // Add an empty string for a new experience input
   };
 
   const handleAddTraining = () => {
-    setTrainings([...trainings, ""]); 
+    setTrainings([...trainings, ""]); // Add an empty string for a new training input
   };
 
   const handleRemoveExperience = (index) => {
@@ -38,12 +45,21 @@ const AdditionalProfile = ({ onAdditionalOff }) => {
     setTrainings(updatedTrainings);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    console.log("Experiences:", experiences);
-    console.log("Trainings and Education:", trainings);
-    onAdditionalOff(); 
+    const data = {
+      userId: userId,
+      experiences,
+      trainings
+    };
+
+    const response = await axios.post("https://localhost:7070/api/Doctor/AddDoctorAdditionalInfo", data)
+
+    
+    console.log("Submitted Data:", response);
+
+    onAdditionalOff();
   };
 
   return (
@@ -81,10 +97,12 @@ const AdditionalProfile = ({ onAdditionalOff }) => {
                       onChange={(e) => handleExperienceChange(index, e.target.value)}
                       className="shadow border rounded w-[35rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                    <IoIosAddCircleOutline
-                      className="text-2xl cursor-pointer hover:text-sky-600"
-                      onClick={handleAddExperience}
-                    />
+                    {index === experiences.length - 1 && (
+                      <IoIosAddCircleOutline
+                        className="text-2xl cursor-pointer hover:text-sky-600"
+                        onClick={handleAddExperience}
+                      />
+                    )}
                     {experiences.length > 1 && (
                       <AiOutlineMinusCircle
                         className="text-2xl cursor-pointer hover:text-red-600"
@@ -109,10 +127,12 @@ const AdditionalProfile = ({ onAdditionalOff }) => {
                       onChange={(e) => handleTrainingChange(index, e.target.value)}
                       className="shadow border rounded w-[35rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                    <IoIosAddCircleOutline
-                      className="text-2xl cursor-pointer hover:text-sky-600"
-                      onClick={handleAddTraining}
-                    />
+                    {index === trainings.length - 1 && (
+                      <IoIosAddCircleOutline
+                        className="text-2xl cursor-pointer hover:text-sky-600"
+                        onClick={handleAddTraining}
+                      />
+                    )}
                     {trainings.length > 1 && (
                       <AiOutlineMinusCircle
                         className="text-2xl cursor-pointer hover:text-red-600"
@@ -124,8 +144,16 @@ const AdditionalProfile = ({ onAdditionalOff }) => {
               </div>
             </div>
 
-            <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded">
-              Submit Info
+            {/* Error message */}
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className={`w-full py-2 bg-blue-500 text-white rounded ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={loading}
+            >
+              {loading ? "Submitting..." : "Submit Info"}
             </button>
           </form>
         </motion.div>
