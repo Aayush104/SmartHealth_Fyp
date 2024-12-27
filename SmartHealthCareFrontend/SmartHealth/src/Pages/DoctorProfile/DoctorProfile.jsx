@@ -2,36 +2,47 @@ import React, { useState } from 'react';
 import DoctorNav from '../../Components/Navbar/DoctorNav';
 import CompleteProfile from '../../Components/DoctorComponents/CompleteProfile';
 import AdditionalProfile from '../../Components/DoctorComponents/AdditionalProfile';
+import DoctorAvailability from '../DoctorAvailablity/DoctorAvailability';
 
 const DoctorProfile = () => {
   const [showProfileForm, setShowProfileForm] = useState(false);
-  const [showAdditionalForm, setAdditionalForm] = useState(false);
+  const [showAdditionalForm, setShowAdditionalForm] = useState(false);
+  const [showAvailabilityForm, setShowAvailabilityForm] = useState(false);
 
-  const handleProfileClick = () => {
-    setShowProfileForm(true); 
-    document.body.style.overflow = 'hidden'; 
+  const handleCloseForms = () => {
+    setShowProfileForm(false);
+    setShowAdditionalForm(false);
+    setShowAvailabilityForm(false);
+    document.body.style.overflow = 'auto'; // Enable scrolling
   };
 
-  const handleCloseProfile = () => {
-    setShowProfileForm(false); 
-    document.body.style.overflow = 'auto'; 
+  const handleProfileClick = () => {
+    setShowProfileForm(true);
+    document.body.style.overflow = 'hidden'; // Disable scrolling
   };
 
   const handleAdditionalClick = () => {
-    setAdditionalForm(true); 
-    document.body.style.overflow = 'hidden'; 
+    setShowAdditionalForm(true);
+    document.body.style.overflow = 'hidden';
   };
 
-  const handleAdditionalclose = () => {
-    setAdditionalForm(false); 
-    document.body.style.overflow = 'auto'; 
+  const handleAvailabilityClick = () => {
+    setShowAvailabilityForm(true);
+    document.body.style.overflow = 'hidden';
   };
+
+  
 
   return (
     <div>
-      <DoctorNav onProfileClick={handleProfileClick} onAdditionalClick={handleAdditionalClick} />
-      {showProfileForm && <CompleteProfile onClose={handleCloseProfile} />}
-      {showAdditionalForm && <AdditionalProfile onAdditionalOff={handleAdditionalclose} />}
+      <DoctorNav
+        onProfileClick={handleProfileClick}
+        onAdditionalClick={handleAdditionalClick}
+        onAvailabilityClick={handleAvailabilityClick}
+      />
+      {showProfileForm && <CompleteProfile onClose={handleCloseForms} />}
+      {showAdditionalForm && <AdditionalProfile onAdditionalOff={handleCloseForms} />}
+      {showAvailabilityForm && <DoctorAvailability onClose={handleCloseForms} />}
     </div>
   );
 };

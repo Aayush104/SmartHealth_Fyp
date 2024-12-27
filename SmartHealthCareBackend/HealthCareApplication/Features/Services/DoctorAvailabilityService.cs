@@ -63,7 +63,7 @@ namespace HealthCareApplication.Features.Services
                                 EndTime = slotEnd.ToString("HH:mm"),
                                 SlotDuration = duration,
                                 DoctorId = doctorAvailabilityDto.DoctorId,
-                                Date = DateTime.Parse(doctorAvailabilityDto.Date),
+                                Date = DateTime.Parse(timeslot.Date),
                                 IsBooked = false
                             });
                         }
@@ -110,11 +110,12 @@ namespace HealthCareApplication.Features.Services
                     .Select(group => new DoctorAvailabilityDto
                     {
                         DoctorId = _dataProtector.Protect(doctorId),
-                        Date = group.Key.ToString("yyyy-MM-dd"), 
+                         
                         TimeSlots = group.Select(slot => new TimeSlot
                         {
                             StartTime = slot.StartTime, 
-                            EndTime = slot.EndTime  ,   
+                            EndTime = slot.EndTime  ,
+                            Date = group.Key.ToString("yyyy-MM-dd"),
                             SlotDuration  = slot.SlotDuration
                         }).ToList()
                     }).ToList();

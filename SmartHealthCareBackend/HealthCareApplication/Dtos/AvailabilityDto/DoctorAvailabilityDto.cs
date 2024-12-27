@@ -9,7 +9,7 @@ namespace HealthCareApplication.Dtos.AvailabilityDto
    public class DoctorAvailabilityDto
     {
         public string DoctorId { get; set; }
-        public string Date { get; set; }
+      
         public List<TimeSlot> TimeSlots { get; set; }
     }
 }

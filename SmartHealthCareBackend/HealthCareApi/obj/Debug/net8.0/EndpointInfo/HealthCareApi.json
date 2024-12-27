@@ -749,10 +749,6 @@
             "type": "string",
             "nullable": true
           },
-          "date": {
-            "type": "string",
-            "nullable": true
-          },
           "timeSlots": {
             "type": "array",
             "items": {
@@ -854,6 +850,10 @@
             "nullable": true
           },
           "endTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
             "type": "string",
             "nullable": true
           },

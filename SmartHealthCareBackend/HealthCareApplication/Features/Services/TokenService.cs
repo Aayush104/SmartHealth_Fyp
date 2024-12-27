@@ -1,4 +1,5 @@
-﻿using HealthCareDomain.Entity.UserEntity;
+﻿using HealthCareDomain.Entity.Doctors;
+using HealthCareDomain.Entity.UserEntity;
 using HealthCareDomain.IServices;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -17,9 +18,11 @@ namespace HealthCareApplication.Features.Services
             {
                 new Claim("userId", user.Id.ToString()),
                 new Claim("Name", user.FullName),
-                new Claim("Email", user.Email)
-            };
+                new Claim("Email", user.Email),
+                
 
+            };
+         
             foreach (var role in roles)
             {
                 claims.Add(new Claim("Role", role));
