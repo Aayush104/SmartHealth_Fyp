@@ -76,7 +76,7 @@ const SearchDoctor = () => {
             options={Location.map((loc) => ({ value: loc.name, label: loc.name }))}
             onChange={(selectedOption) => setLocation(selectedOption.value)}
             placeholder="Select Location"
-            className='rounded w-64 h-16'
+            className='rounded w-64 h-16 z-100'
             styles={{
               control: (provided) => ({
                 ...provided,

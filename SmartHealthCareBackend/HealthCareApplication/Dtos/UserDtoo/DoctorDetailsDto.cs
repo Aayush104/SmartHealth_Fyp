@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthCareApplication.Dtos.UserDtoo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,8 @@ namespace HealthCareApplication.Dtos.UserDto
        public string Loction { get; set; }
         public string Qualifications { get; set; }
         public string Status { get; set; }
-      
+        public List<AdditionalnfoDto> AdditionalInfo { get; set; }
+
 
 
     }

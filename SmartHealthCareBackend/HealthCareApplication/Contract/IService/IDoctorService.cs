@@ -13,6 +13,6 @@ namespace HealthCareApplication.Contract.IService
         Task<ApiResponseDto> AddProfileDetails(AddProfileDto addProfileDto);
         Task<ApiResponseDto> CreateOrUpdateDoctorAdditionalInfo(AdditionalnfoDto request);
         Task <IEnumerable<DoctorDetailsDto>> SearchDoctorAsync(SearchDto searchDto);
-        Task<DoctorDetailsDto> GetDoctorDetails(string Id);
+        Task<ApiResponseDto> GetDoctorDetails(string Id);
     }
 }

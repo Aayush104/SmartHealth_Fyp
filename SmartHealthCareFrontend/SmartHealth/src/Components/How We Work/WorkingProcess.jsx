@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 const WorkingProcess = () => {
   return (
-    <div className="flex gap-12 mb-8">
+    <div className="flex gap-12 mt-4 mb-10">
       <div className="pl-28">
         <motion.img
           src="https://medidove-nextjs.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fabout-img.c26e62ed.jpg&w=1200&q=75"
           alt="About us"
-          className="rounded-lg shadow-sm shadow-gray-500"
+          className="rounded-lg shadow-sm shadow-gray-500 "
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}

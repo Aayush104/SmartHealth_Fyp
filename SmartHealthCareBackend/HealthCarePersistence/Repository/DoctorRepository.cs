@@ -73,6 +73,7 @@ namespace HealthCarePersistence.Repository
             var doctors = await _dbContext.Doctors
                 .Where(d => d.Specialization == speciality && d.Location == location)
                 .Include(d => d.User)
+               
                 .Where(d => d.User.EmailConfirmed == true)
                 .ToListAsync();
             return doctors;
