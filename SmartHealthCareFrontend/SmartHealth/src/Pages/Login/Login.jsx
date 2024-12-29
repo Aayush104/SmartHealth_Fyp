@@ -43,8 +43,6 @@ const Login = () => {
         password,
       });
 
-      
-
       if (response.data.isSuccess) {
         const token = response.data.data;
         const userRole = JSON.parse(atob(token.split('.')[1])).Role;
@@ -121,13 +119,26 @@ const Login = () => {
   };
 
   return (
-    <div className="overflow-hidden relative  "> 
+    <div className="overflow-hidden relative"> 
       <Navbar />
+      
+     
       <motion.div 
-        className="absolute top-[-50px] left-[-50px] w-72 h-72 bg-sky-400 opacity-80 rounded-full z-[-1]"
-        animate={{ rotate: [0, 10, -10, 10, 0], scale: [1, 1.05, 1] }} 
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      ></motion.div>
+  className="absolute lg:top-[-50px] lg:left-[-120px] md:top-[-40px] md:left-[-90px] sm:top-[-30px] sm:left-[-100px] top-[-10px] left-[-60px] 
+    bg-sky-400 opacity-80 rounded-full z-[-1] 
+    400px:w-48 400px:h-48 
+    500px:w-54 500px:h-54 
+    700px:w-60 700px:h-70 
+    800px:w-72 800px:h-72
+    1000px:w-72 1000px:h-72
+    lg:w-72 lg:h-72 
+    md:w-64 md:h-64
+    sm:w-60 sm:h-60
+  w-56 h-56  "
+  animate={{ rotate: [0, 10, -10, 10, 0], scale: [1, 1.05, 1] }} 
+  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+></motion.div>
+
 
       <div className="relative mt-1"> 
         {userId ? (
@@ -136,7 +147,9 @@ const Login = () => {
           <div className="relative">
             <Helper />
             <div className="flex items-center justify-center h-90 mt-8">
-              <div className="w-[25rem] h-full bg-loginbg bg-cover flex justify-center items-center rounded-tl-[15px] rounded-bl-[15px]"></div>
+              {/* Hide background image on smaller screens */}
+              <div className="lg:w-[25rem] h-full md:bg-loginbg bg-cover lg:flex justify-center items-center rounded-tl-[15px] rounded-bl-[15px] hidden md:block"></div>
+
               <div className="bg-white p-8 border border-gray-300 w-full h-full max-w-sm rounded-tr-[15px] rounded-br-[15px]">
                 <div className="flex items-center justify-center ml-8 mt-4">
                   <h2 className="text-[1.8rem] font-bold text-center text-sky-600">Smart Health</h2>
@@ -230,8 +243,9 @@ const Login = () => {
         )}
       </div>
 
+      {/* Green circle shape */}
       <motion.div 
-        className="absolute bottom-[320px] right-[-50px] w-72 h-72 bg-teal-600 opacity-60 rounded-full z-[-1]"
+        className="absolute lg:bottom-[300px]  lg:right-[-100px]  sm:right[-50px] bg-teal-600 opacity-60 rounded-full z-[-1] md:w-72 md:h-72 sm:w-48 sm:h-48 w-40 h-40 right-[-60px]"
         animate={{ rotate: [0, 15, -15, 15, 0], scale: [1, 1.05, 1] }} 
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       ></motion.div>

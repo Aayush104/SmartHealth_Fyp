@@ -324,7 +324,7 @@ namespace HealthCareApplication.Features.Services
                
                 var userRole = await _userManager.GetRolesAsync(user);
 
-                v
+                
             
                 var token = _tokenService.GenerateToken(user, userRole.ToList());
 

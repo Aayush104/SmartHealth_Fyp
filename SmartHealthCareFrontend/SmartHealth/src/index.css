@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    /* Custom screen size adjustments */
+    @media screen and (max-width: 1011px) {
+      .custom-footer {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+      }
+      .custom-footer div {
+        margin-bottom: 20px;
+      }
+    }
+  
+    @media screen and (min-width: 1012px) {
+      .custom-footer {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }

@@ -117,7 +117,7 @@ const CompleteProfile = ({ onClose }) => {
   ];
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[50rem] bg-gray-900 bg-opacity-50 z-40 flex justify-center items-center">
+    <div className="fixed top-0 left-0 w-full h-[45rem] bg-gray-900 bg-opacity-50 z-40 flex justify-center items-center">
       <motion.div
         className="bg-white shadow-md rounded w-full max-w-xl p-6 relative"
         initial={{ y: "100%" }}
