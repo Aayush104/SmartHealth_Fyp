@@ -8,6 +8,7 @@ import { PiStethoscopeBold } from "react-icons/pi";
 import { FaUserDoctor, FaRegComment, FaRegHeart } from "react-icons/fa6";
 import { GiGraduateCap } from "react-icons/gi";
 import { MdPayment } from "react-icons/md";
+import TimeSlot from '../../Components/TimeSlot/TimeSlot';
 
 const DoctorDetails = () => {
   const { id } = useParams();
@@ -50,7 +51,8 @@ const DoctorDetails = () => {
       <div className="px-28 mt-2">
         <SearchDoctor />
       </div>
-      <div className="mx-8 mb-8 px-20">
+      <div className='flex gap-2'>
+      <div className="mx-8 mb-8 px-20 ">
         <div className="border w-[45rem] bg-white p-2 flex items-center shadow justify-between">
           <div className="flex gap-8">
             <img
@@ -114,10 +116,10 @@ const DoctorDetails = () => {
               {/* Experiences Section */}
               <div className="mb-5">
                 <h2 className="font-bold text-1.8rem">Experience</h2>
-                <ul className="text-md text-gray-500 mt-4">
+                <ul className="text-md text-gray-500 mt-4 list-decimal pl-5">
                   {additionalInfo?.experiences?.$values?.length > 0 ? (
                     additionalInfo.experiences.$values.map((exp, idx) => (
-                      <li key={idx}>{exp}</li>
+                      <li key={idx} className='font-semibold leading-loose'>{exp}</li>
                     ))
                   ) : (
                     <li>No experience data available.</li>
@@ -128,10 +130,10 @@ const DoctorDetails = () => {
               {/* Trainings Section */}
               <div className="mb-5">
                 <h2 className="font-bold text-1.8rem">Education and Training</h2>
-                <ul className="text-md text-gray-500 mt-4">
+                <ul className="text-md text-gray-500 mt-4 list-decimal pl-5">
                   {additionalInfo?.trainings?.$values?.length > 0 ? (
                     additionalInfo.trainings.$values.map((training, idx) => (
-                      <li key={idx}>{training}</li>
+                      <li key={idx} className='font-semibold leading-loose'>{training}</li>
                     ))
                   ) : (
                     <li>No training data available.</li>
@@ -148,6 +150,12 @@ const DoctorDetails = () => {
             </div>
           )}
         </div>
+      </div>
+
+      <div>
+  <TimeSlot fee={doctor?.fee} Id={id} />
+</div>
+
       </div>
       <Footer />
     </div>

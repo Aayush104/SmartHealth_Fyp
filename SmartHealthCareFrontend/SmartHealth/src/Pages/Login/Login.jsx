@@ -12,6 +12,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import heart from '../../Assets/Image/Heart.png';
 import { motion } from 'framer-motion';
 import { jwtDecode } from 'jwt-decode';
+import { Spinner } from '@chakra-ui/react'; 
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -35,7 +36,7 @@ const Login = () => {
       return;
     }
 
-    setIsSubmitting(true);
+    setIsSubmitting(true); // Show spinner
 
     try {
       const response = await axios.post("https://localhost:7070/api/User/Login", {
@@ -73,7 +74,7 @@ const Login = () => {
         }
       }
     } finally {
-      setTimeout(() => setIsSubmitting(false), 3000);
+      setIsSubmitting(false); // Hide spinner after submission is complete
     }
   };
 
@@ -88,6 +89,7 @@ const Login = () => {
         });
 
         if (data && data.data && data.data.isSuccess) {
+          setIsSubmitting(true); // Show spinner
           const token = data.data.data;
           const userRole = JSON.parse(atob(token.split('.')[1])).Role;
           const userName = JSON.parse(atob(token.split('.')[1])).Name;
@@ -111,6 +113,8 @@ const Login = () => {
     } catch (error) {
       toast.error('Google Login Failed!');
       console.error('Error during Google login:', error.message);
+    } finally {
+      setIsSubmitting(false); // Hide spinner after completion
     }
   };
 
@@ -120,25 +124,33 @@ const Login = () => {
 
   return (
     <div className="overflow-hidden relative"> 
+      {isSubmitting && (
+        <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </div>
+      )}
       <Navbar />
-      
-     
       <motion.div 
-  className="absolute lg:top-[-50px] lg:left-[-120px] md:top-[-40px] md:left-[-90px] sm:top-[-30px] sm:left-[-100px] top-[-10px] left-[-60px] 
-    bg-sky-400 opacity-80 rounded-full z-[-1] 
-    400px:w-48 400px:h-48 
-    500px:w-54 500px:h-54 
-    700px:w-60 700px:h-70 
-    800px:w-72 800px:h-72
-    1000px:w-72 1000px:h-72
-    lg:w-72 lg:h-72 
-    md:w-64 md:h-64
-    sm:w-60 sm:h-60
-  w-56 h-56  "
-  animate={{ rotate: [0, 10, -10, 10, 0], scale: [1, 1.05, 1] }} 
-  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-></motion.div>
-
+        className="absolute lg:top-[-50px] lg:left-[-120px] md:top-[-40px] md:left-[-90px] sm:top-[-30px] sm:left-[-100px] top-[-10px] left-[-60px] 
+          bg-sky-400 opacity-80 rounded-full z-[-1] 
+          400px:w-48 400px:h-48 
+          500px:w-54 500px:h-54 
+          700px:w-60 700px:h-70 
+          800px:w-72 800px:h-72
+          1000px:w-72 1000px:h-72
+          lg:w-72 lg:h-72 
+          md:w-64 md:h-64
+          sm:w-60 sm:h-60
+          w-56 h-56"
+        animate={{ rotate: [0, 10, -10, 10, 0], scale: [1, 1.05, 1] }} 
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      ></motion.div>
 
       <div className="relative mt-1"> 
         {userId ? (
@@ -147,7 +159,6 @@ const Login = () => {
           <div className="relative">
             <Helper />
             <div className="flex items-center justify-center h-90 mt-8">
-              {/* Hide background image on smaller screens */}
               <div className="lg:w-[25rem] h-full md:bg-loginbg bg-cover lg:flex justify-center items-center rounded-tl-[15px] rounded-bl-[15px] hidden md:block"></div>
 
               <div className="bg-white p-8 border border-gray-300 w-full h-full max-w-sm rounded-tr-[15px] rounded-br-[15px]">
@@ -207,10 +218,10 @@ const Login = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+                    className="w-full bg-blue-500 text-white px-4 py-3 rounded-md hover:bg-blue-600 transition-colors"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Logging in...' : 'Login'}
+                  Login
                   </button>
                 </form>
 
@@ -243,7 +254,6 @@ const Login = () => {
         )}
       </div>
 
-      {/* Green circle shape */}
       <motion.div 
         className="absolute lg:bottom-[300px]  lg:right-[-100px]  sm:right[-50px] bg-teal-600 opacity-60 rounded-full z-[-1] md:w-72 md:h-72 sm:w-48 sm:h-48 w-40 h-40 right-[-60px]"
         animate={{ rotate: [0, 15, -15, 15, 0], scale: [1, 1.05, 1] }} 

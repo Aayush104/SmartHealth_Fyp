@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 Env.Load(); // Load environment variables
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add controllers and configure JSON serialization options
 builder.Services.AddControllers()
     .AddJsonOptions(options =>

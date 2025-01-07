@@ -38,13 +38,18 @@ const PatientRegistration = () => {
       return;
     }
 
-    setLoading(true); // Start loading animation
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    if (!specialCharRegex.test(password)) {
+      toast.error("Password must have at least one special character.");
+      return;
+    }
+
+    setLoading(true); 
 
     try {
       const formData = {
         fullName,
         email,
-
         password,
         dateOfBirth,
         medicalHistory,

@@ -100,7 +100,7 @@ namespace HealthCareApplication.Features.Services
             try
             {
                 
-                var doctorId = _dataProtector.Unprotect(userId);
+                 var doctorId = _dataProtector.Unprotect(userId);
 
              
                 var availability = await _doctorAvailabilityRepository.GetSlotsAsync(doctorId);

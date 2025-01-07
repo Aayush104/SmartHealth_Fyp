@@ -83,7 +83,7 @@ const DoctorAvailability = ({ onClose }) => {
   const isFormInvalid = startTime || endTime || date;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[50rem] bg-gray-900 bg-opacity-50 z-40 flex justify-center items-center">
+    <div className="fixed top-0 left-0 w-full h-[55rem] bg-gray-900 bg-opacity-50 z-40 flex justify-center items-center">
       <motion.div
         className="bg-white shadow-md rounded w-full max-w-xl p-6 relative"
         initial={{ opacity: 0, y: -100 }} // Initial state (invisible and above)
@@ -150,9 +150,11 @@ const DoctorAvailability = ({ onClose }) => {
             Add Availability
           </button>
 
+         
           <div>
-            <h3 className="text-lg font-medium">Added Availabilities</h3>
-            {availabilities.length > 0 ? (
+          <h3 className="text-lg font-medium">Added Availabilities</h3>
+          <div className="flex">
+                      {availabilities.length > 0 ? (
               availabilities.map((availability, index) => (
                 <div key={index} className="mt-3">
                   <strong className="text-sm">Date:</strong> {availability.date}
@@ -168,6 +170,8 @@ const DoctorAvailability = ({ onClose }) => {
             ) : (
               <p>No availabilities added yet.</p>
             )}
+            </div>
+
           </div>
 
           <button

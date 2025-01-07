@@ -6,12 +6,12 @@ import { CiLocationOn } from "react-icons/ci";
 import axios from 'axios';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
+import { Spinner } from '@chakra-ui/react'; // Import Chakra spinner
 
 const SearchDoctor = () => {
   const [location, setLocation] = useState('');
   const [specialty, setSpecialty] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
   const [specialties, setSpecialties] = useState([]);
   const navigate = useNavigate(); 
 
@@ -40,12 +40,8 @@ const SearchDoctor = () => {
         params: { Location: location, Speciality: specialty },
       });
 
-      console.log(response.data.$values)
-
       const doctorsData = response.data.$values || [];
       if (response.status === 200) {
-      
-        console.log(response)
         navigate('/searched_doctor', { state: { doctors: doctorsData } });
       }
     } catch (err) {
@@ -53,12 +49,11 @@ const SearchDoctor = () => {
         if (err.response.status === 400) {
           toast.error('Specialty and Location are required for the search.');
         } else if (err.response.status === 404) {
-       navigate('/NotFound')
+          navigate('/NotFound')
         } else {
           toast.error('An unexpected error occurred.');
         }
       } else {
-        console.error('Error during search:', err);
         toast.error('Failed to perform search. Please try again later.');
       }
     } finally {
@@ -67,16 +62,16 @@ const SearchDoctor = () => {
   };
 
   return (
-    <div>
+    <div className="relative">
+     
 
-
-      <div className='flex gap-2 mt-4 mb-10 '>
-        <div className='relative flex items-center'>
+      <div className="flex gap-2 mt-4 mb-10">
+        <div className="relative flex items-center">
           <Select
-            options={Location.map((loc) => ({ value: loc.name, label: loc.name }))}
+            options={Location.map((loc) => ({ value: loc.name, label: loc.name }))} 
             onChange={(selectedOption) => setLocation(selectedOption.value)}
             placeholder="Select Location"
-            className='rounded w-64 h-16 z-100'
+            className="rounded w-64 h-16 z-100"
             styles={{
               control: (provided) => ({
                 ...provided,
@@ -89,17 +84,17 @@ const SearchDoctor = () => {
               }),
             }}
             components={{
-              DropdownIndicator: () => <CiLocationOn className='absolute left-3 text-gray-600' />,
+              DropdownIndicator: () => <CiLocationOn className="absolute left-3 text-gray-600" />,
             }}
           />
         </div>
 
-        <div className='relative'>
+        <div className="relative">
           <Select
-            options={specialties.map((spec) => ({ value: spec.name, label: spec.name }))}
+            options={specialties.map((spec) => ({ value: spec.name, label: spec.name }))} 
             onChange={(selectedOption) => setSpecialty(selectedOption.value)}
             placeholder="Select Specialty"
-            className='rounded w-64 h-12'
+            className="rounded w-64 h-12"
             styles={{
               control: (provided) => ({
                 ...provided,
@@ -109,14 +104,14 @@ const SearchDoctor = () => {
           />
         </div>
 
-:
         <button
           onClick={handleSearch}
           disabled={isLoading}
-          className='bg-sky-600 px-5 rounded-sm text-white hover:bg-sky-400 h-12 transition ease-out'
+          className="bg-sky-600 px-5 py-2 rounded-sm text-white hover:bg-sky-400 h-12 transition ease-out flex items-center justify-center"
         >
-        {isLoading ? "Searching...":"Search"}
-       
+          {isLoading ? <Spinner size="md" color="white" />
+         
+           : "Search"}
         </button>
       </div>
     </div>

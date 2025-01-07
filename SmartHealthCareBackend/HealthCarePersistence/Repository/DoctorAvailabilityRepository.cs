@@ -24,24 +24,28 @@ namespace HealthCarePersistence.Repository
             return await _dbContext.DoctorAvailabilities.Where(x => x.DoctorId == doctorId && x.Date == date && x.StartTime == timeSlot).FirstOrDefaultAsync();
         }
 
-       
+
 
         public async Task<List<DoctorAvailability>> GetSlotsAsync(string userId)
         {
-
             var currentDateTime = DateTime.Now;
 
+            // Fetch doctor availability slots
             var slots = await _dbContext.DoctorAvailabilities
                 .Where(x => x.DoctorId == userId && !x.IsBooked) // Exclude booked slots
-                .Where(x => x.Date > currentDateTime.Date ||
-                            (x.Date == currentDateTime.Date &&
-                             TimeSpan.Parse(x.EndTime) > currentDateTime.TimeOfDay)) // Exclude past date or past time slots
-                .ToListAsync();
+                .Where(x => x.Date >= currentDateTime.Date) // Include slots for today and in the future
+                .ToListAsync(); // Fetch the data to memory
 
-            return slots;
+            // Filter out past time slots for today
+            var validSlots = slots.Where(x =>
+                x.Date > currentDateTime.Date ||
+                (x.Date == currentDateTime.Date && TimeSpan.Parse(x.EndTime) > currentDateTime.TimeOfDay)
+            ).ToList();
+
+            return validSlots;
         }
 
- 
+
 
         public async Task SaveSlotsAsync(List<DoctorAvailability> slots)
         {
