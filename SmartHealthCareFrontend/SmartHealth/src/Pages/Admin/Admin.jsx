@@ -4,6 +4,7 @@ import axios from "axios";
 import Dashboard from "../../Components/DashBoard/Dashboard";
 import { useParams } from "react-router-dom";
 import VerifyDoc from "../../Components/Admin Components/VerifyDoc";
+import AdminNav from "../../Components/Navbar/AdminNav";
 
 const Admin = () => {
   const [data, setData] = useState([]);
@@ -24,7 +25,7 @@ const Admin = () => {
 
   return (
     <div className="h-screen bg-slate-100">
-      <Navbar />
+      <AdminNav/>
       <div className="flex">
         <div className="w-16 md:w-60">
           <Dashboard />

@@ -3,6 +3,7 @@ using HealthCareApplication.Dtos.AvailabilityDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Dtos.UserDtoo;
 using HealthCareDomain.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -56,7 +57,6 @@ namespace HealthCareApi.Controllers
         }
 
         [HttpGet("GetDoctorDetails/{id}")]
-
         public async Task<IActionResult> GetDoctorDetails(string id)
         {
             var response = await _doctorService.GetDoctorDetails(id);
@@ -77,12 +77,20 @@ namespace HealthCareApi.Controllers
         {
             var response = await _doctorAvailabiltyService.GetAvailabilityAsync(id);
 
-            if (response != null)
+            if (response.Count <= 0)
             {
-                return Ok(response);
+                return BadRequest(new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "No SLots Available.",
+                    StatusCode = 400
+                });
             }
 
-            return NotFound();
+
+            return Ok(response);
+            
+           
 
         }
 
@@ -103,6 +111,28 @@ namespace HealthCareApi.Controllers
             // Create or update doctor additional info
             var response = await _doctorService.CreateOrUpdateDoctorAdditionalInfo(request);
             return StatusCode(response.StatusCode, response);
+        }
+
+        //After Login
+
+        [HttpGet("GetLoginDoctorData")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> GetLoginDoctorData()
+        {
+            var user = HttpContext.User.FindFirst("userId");
+
+            var userId = user?.Value;
+
+            var response = await _doctorService.GetLoginDoctorService(userId);
+
+            if (response != null)
+            {
+                return Ok(response);
+            }
+
+            return NotFound();
+
+
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "iMBkhU+0w9MfkRs7iaUPrLlxbJDSpsFi/VFiFdqbwas=",
+  "Hash": "LhGlGfBXX5kAiMfTcaOyDcEIJQdqX5SZTIScRq99xQ0=",
   "Source": "HealthCareApi",
   "BasePath": "_content/HealthCareApi",
   "Mode": "Default",
@@ -59,6 +59,48 @@
       "OriginalItemSpec": "wwwroot\\Government\\20d4e99f-a819-4118-b6cd-a5f929d3bd67.png"
     },
     {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\3336ef93-6d21-4327-8720-209c2ebcf994.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Government/3336ef93-6d21-4327-8720-209c2ebcf994#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7xjwsjyolk",
+      "Integrity": "JetlHy1FWEGOwnoqbfIBARm5yMsRLzsCRdBSRwu6hk8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Government\\3336ef93-6d21-4327-8720-209c2ebcf994.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\3e7b85af-59c6-4078-87d9-dec9c57c616c.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Government/3e7b85af-59c6-4078-87d9-dec9c57c616c#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s6eygopu2r",
+      "Integrity": "VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Government\\3e7b85af-59c6-4078-87d9-dec9c57c616c.png"
+    },
+    {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\5b8b9ff1-5ded-4683-bde0-39e304168301.jpg",
       "SourceId": "HealthCareApi",
       "SourceType": "Discovered",
@@ -99,6 +141,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Government\\5ba816eb-f02f-4a68-8f74-31f8fa5b3da5.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\6aae32e4-cb00-4f01-940d-8288da85f71e.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Government/6aae32e4-cb00-4f01-940d-8288da85f71e#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "eb30tjn0qw",
+      "Integrity": "yulllMlcVjsOBzLOvvsNYvOhg7gMNvsdvb+QYKKndU8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Government\\6aae32e4-cb00-4f01-940d-8288da85f71e.png"
     },
     {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\6ebe3799-5176-4a4e-b3b2-6efcb0c6d447.jpg",
@@ -204,6 +267,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Government\\b56d58da-932f-40b1-b3db-89de794e3afc.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\cc605028-42bf-4507-9409-336490f5cc07.jpg",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Government/cc605028-42bf-4507-9409-336490f5cc07#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jq0jjs1nb1",
+      "Integrity": "hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Government\\cc605028-42bf-4507-9409-336490f5cc07.jpg"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\d3b49031-6bd7-479e-9572-8bc92de54410.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Government/d3b49031-6bd7-479e-9572-8bc92de54410#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ba3sgoiep7",
+      "Integrity": "ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Government\\d3b49031-6bd7-479e-9572-8bc92de54410.png"
     },
     {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\020a1532-31cb-4724-8a71-d060efc10507.png",
@@ -332,6 +437,27 @@
       "OriginalItemSpec": "wwwroot\\Liscense\\374baf67-e44d-4854-a4f8-f3c0cfc772fe.jpg"
     },
     {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\59ddb553-6d13-4738-ad9b-f74bddbc8905.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Liscense/59ddb553-6d13-4738-ad9b-f74bddbc8905#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s6eygopu2r",
+      "Integrity": "VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Liscense\\59ddb553-6d13-4738-ad9b-f74bddbc8905.png"
+    },
+    {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\5f51f841-04f1-438b-b9bf-a6a31c4e2743.png",
       "SourceId": "HealthCareApi",
       "SourceType": "Discovered",
@@ -351,6 +477,90 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Liscense\\5f51f841-04f1-438b-b9bf-a6a31c4e2743.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\6b9a4f71-2435-4805-bd25-f840aded8870.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Liscense/6b9a4f71-2435-4805-bd25-f840aded8870#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s6eygopu2r",
+      "Integrity": "VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Liscense\\6b9a4f71-2435-4805-bd25-f840aded8870.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\75727e42-fc7d-4811-a05d-53bf3f17e478.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Liscense/75727e42-fc7d-4811-a05d-53bf3f17e478#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "q1a49e1m6c",
+      "Integrity": "3jwtBl9/PWwfAH7lbQpsc/USVc3JajohSt8wSSq8EcQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Liscense\\75727e42-fc7d-4811-a05d-53bf3f17e478.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\7b07714d-82c7-4ba9-9f2c-a80dfaed49ae.jpg",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Liscense/7b07714d-82c7-4ba9-9f2c-a80dfaed49ae#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jq0jjs1nb1",
+      "Integrity": "hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Liscense\\7b07714d-82c7-4ba9-9f2c-a80dfaed49ae.jpg"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\7c97e911-9a78-4d4b-98af-44f01360fe9a.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Liscense/7c97e911-9a78-4d4b-98af-44f01360fe9a#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "brfr20x0zm",
+      "Integrity": "h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Liscense\\7c97e911-9a78-4d4b-98af-44f01360fe9a.png"
     },
     {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\a3aded84-fe37-4982-a7fb-2f2b4e1746d2.jpg",
@@ -393,6 +603,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Liscense\\cbcd789d-983e-4a3e-bcd3-48349c90e5eb.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Profile\\073b4d9f-5bed-48b0-9a14-37f299d441be.jpg",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Profile/073b4d9f-5bed-48b0-9a14-37f299d441be#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "h5l18alau5",
+      "Integrity": "VWGlo6bPKDwJF7QCwRnEdr73UEjEYDmuPcrjou6UKMg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Profile\\073b4d9f-5bed-48b0-9a14-37f299d441be.jpg"
     },
     {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Profile\\20efcb3f-c227-4c81-a296-169357d0a945.png",
@@ -542,6 +773,27 @@
       "OriginalItemSpec": "wwwroot\\Qualification\\18ab0f11-94d3-413f-8da7-b033344e29f7.jpg"
     },
     {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\1a913cea-2750-4130-858a-8f8eb95f800b.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Qualification/1a913cea-2750-4130-858a-8f8eb95f800b#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "brfr20x0zm",
+      "Integrity": "h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Qualification\\1a913cea-2750-4130-858a-8f8eb95f800b.png"
+    },
+    {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\4f2dc003-ebce-4dbf-a447-01266a92988e.png",
       "SourceId": "HealthCareApi",
       "SourceType": "Discovered",
@@ -561,6 +813,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Qualification\\4f2dc003-ebce-4dbf-a447-01266a92988e.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\5177e7f7-6f01-497c-b6f4-1c35f177c576.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Qualification/5177e7f7-6f01-497c-b6f4-1c35f177c576#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s6eygopu2r",
+      "Integrity": "VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Qualification\\5177e7f7-6f01-497c-b6f4-1c35f177c576.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\52b76496-9204-4682-b7e1-aca2fe29d7b8.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Qualification/52b76496-9204-4682-b7e1-aca2fe29d7b8#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ba3sgoiep7",
+      "Integrity": "ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Qualification\\52b76496-9204-4682-b7e1-aca2fe29d7b8.png"
     },
     {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\5372c9b4-3165-462e-a57c-9e89814e1462.jpg",
@@ -603,6 +897,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Qualification\\598e3b90-2248-4bcc-91da-cf8faa2bc2f6.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\5f27c151-dbb3-4352-aa0a-8f9b3dae1788.png",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Qualification/5f27c151-dbb3-4352-aa0a-8f9b3dae1788#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s6eygopu2r",
+      "Integrity": "VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Qualification\\5f27c151-dbb3-4352-aa0a-8f9b3dae1788.png"
     },
     {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\655cff0f-1258-4a53-bb42-d5398ca6073a.png",
@@ -708,6 +1023,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Qualification\\d56cce5d-861a-4f31-ba4f-47f7246d9561.png"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\ed87c494-9d00-4315-a825-4585f87702eb.jpg",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "Qualification/ed87c494-9d00-4315-a825-4585f87702eb#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jq0jjs1nb1",
+      "Integrity": "hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Qualification\\ed87c494-9d00-4315-a825-4585f87702eb.jpg"
     }
   ],
   "Endpoints": [
@@ -876,6 +1212,170 @@
       ]
     },
     {
+      "Route": "Government/3336ef93-6d21-4327-8720-209c2ebcf994.7xjwsjyolk.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\3336ef93-6d21-4327-8720-209c2ebcf994.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "56394"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JetlHy1FWEGOwnoqbfIBARm5yMsRLzsCRdBSRwu6hk8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:00:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7xjwsjyolk"
+        },
+        {
+          "Name": "label",
+          "Value": "Government/3336ef93-6d21-4327-8720-209c2ebcf994.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JetlHy1FWEGOwnoqbfIBARm5yMsRLzsCRdBSRwu6hk8="
+        }
+      ]
+    },
+    {
+      "Route": "Government/3336ef93-6d21-4327-8720-209c2ebcf994.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\3336ef93-6d21-4327-8720-209c2ebcf994.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "56394"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JetlHy1FWEGOwnoqbfIBARm5yMsRLzsCRdBSRwu6hk8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:00:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JetlHy1FWEGOwnoqbfIBARm5yMsRLzsCRdBSRwu6hk8="
+        }
+      ]
+    },
+    {
+      "Route": "Government/3e7b85af-59c6-4078-87d9-dec9c57c616c.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\3e7b85af-59c6-4078-87d9-dec9c57c616c.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:35:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
+        }
+      ]
+    },
+    {
+      "Route": "Government/3e7b85af-59c6-4078-87d9-dec9c57c616c.s6eygopu2r.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\3e7b85af-59c6-4078-87d9-dec9c57c616c.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:35:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s6eygopu2r"
+        },
+        {
+          "Name": "label",
+          "Value": "Government/3e7b85af-59c6-4078-87d9-dec9c57c616c.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
+        }
+      ]
+    },
+    {
       "Route": "Government/5b8b9ff1-5ded-4683-bde0-39e304168301.3blud7jg12.jpg",
       "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\5b8b9ff1-5ded-4683-bde0-39e304168301.jpg",
       "Selectors": [],
@@ -1036,6 +1536,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-D301rrKe3qgyjArnlgot7NJM96DQZA/rfCLRzo1LlAI="
+        }
+      ]
+    },
+    {
+      "Route": "Government/6aae32e4-cb00-4f01-940d-8288da85f71e.eb30tjn0qw.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\6aae32e4-cb00-4f01-940d-8288da85f71e.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "56152"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yulllMlcVjsOBzLOvvsNYvOhg7gMNvsdvb+QYKKndU8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:39:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "eb30tjn0qw"
+        },
+        {
+          "Name": "label",
+          "Value": "Government/6aae32e4-cb00-4f01-940d-8288da85f71e.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yulllMlcVjsOBzLOvvsNYvOhg7gMNvsdvb+QYKKndU8="
+        }
+      ]
+    },
+    {
+      "Route": "Government/6aae32e4-cb00-4f01-940d-8288da85f71e.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\6aae32e4-cb00-4f01-940d-8288da85f71e.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "56152"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yulllMlcVjsOBzLOvvsNYvOhg7gMNvsdvb+QYKKndU8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:39:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yulllMlcVjsOBzLOvvsNYvOhg7gMNvsdvb+QYKKndU8="
         }
       ]
     },
@@ -1446,6 +2028,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-gVj5RQJJy4EoHQ7uKUV2wOd9UW4Rs/bnZlKPFEQ7vp4="
+        }
+      ]
+    },
+    {
+      "Route": "Government/cc605028-42bf-4507-9409-336490f5cc07.jpg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\cc605028-42bf-4507-9409-336490f5cc07.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67439"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 08:53:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc="
+        }
+      ]
+    },
+    {
+      "Route": "Government/cc605028-42bf-4507-9409-336490f5cc07.jq0jjs1nb1.jpg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\cc605028-42bf-4507-9409-336490f5cc07.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67439"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 08:53:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jq0jjs1nb1"
+        },
+        {
+          "Name": "label",
+          "Value": "Government/cc605028-42bf-4507-9409-336490f5cc07.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc="
+        }
+      ]
+    },
+    {
+      "Route": "Government/d3b49031-6bd7-479e-9572-8bc92de54410.ba3sgoiep7.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\d3b49031-6bd7-479e-9572-8bc92de54410.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "38463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 05:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ba3sgoiep7"
+        },
+        {
+          "Name": "label",
+          "Value": "Government/d3b49031-6bd7-479e-9572-8bc92de54410.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY="
+        }
+      ]
+    },
+    {
+      "Route": "Government/d3b49031-6bd7-479e-9572-8bc92de54410.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\d3b49031-6bd7-479e-9572-8bc92de54410.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "38463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 05:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY="
         }
       ]
     },
@@ -1942,6 +2688,88 @@
       ]
     },
     {
+      "Route": "Liscense/59ddb553-6d13-4738-ad9b-f74bddbc8905.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\59ddb553-6d13-4738-ad9b-f74bddbc8905.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:00:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
+        }
+      ]
+    },
+    {
+      "Route": "Liscense/59ddb553-6d13-4738-ad9b-f74bddbc8905.s6eygopu2r.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\59ddb553-6d13-4738-ad9b-f74bddbc8905.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:00:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s6eygopu2r"
+        },
+        {
+          "Name": "label",
+          "Value": "Liscense/59ddb553-6d13-4738-ad9b-f74bddbc8905.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
+        }
+      ]
+    },
+    {
       "Route": "Liscense/5f51f841-04f1-438b-b9bf-a6a31c4e2743.png",
       "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\5f51f841-04f1-438b-b9bf-a6a31c4e2743.png",
       "Selectors": [],
@@ -2020,6 +2848,334 @@
         {
           "Name": "integrity",
           "Value": "sha256-CYgD/vUrkBsF1ObL9+suUrRMjbwOPSp3fKIwtRl4d9I="
+        }
+      ]
+    },
+    {
+      "Route": "Liscense/6b9a4f71-2435-4805-bd25-f840aded8870.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\6b9a4f71-2435-4805-bd25-f840aded8870.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:35:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
+        }
+      ]
+    },
+    {
+      "Route": "Liscense/6b9a4f71-2435-4805-bd25-f840aded8870.s6eygopu2r.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\6b9a4f71-2435-4805-bd25-f840aded8870.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:35:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s6eygopu2r"
+        },
+        {
+          "Name": "label",
+          "Value": "Liscense/6b9a4f71-2435-4805-bd25-f840aded8870.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
+        }
+      ]
+    },
+    {
+      "Route": "Liscense/75727e42-fc7d-4811-a05d-53bf3f17e478.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\75727e42-fc7d-4811-a05d-53bf3f17e478.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "172595"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3jwtBl9/PWwfAH7lbQpsc/USVc3JajohSt8wSSq8EcQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 05:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3jwtBl9/PWwfAH7lbQpsc/USVc3JajohSt8wSSq8EcQ="
+        }
+      ]
+    },
+    {
+      "Route": "Liscense/75727e42-fc7d-4811-a05d-53bf3f17e478.q1a49e1m6c.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\75727e42-fc7d-4811-a05d-53bf3f17e478.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "172595"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3jwtBl9/PWwfAH7lbQpsc/USVc3JajohSt8wSSq8EcQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 05:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "q1a49e1m6c"
+        },
+        {
+          "Name": "label",
+          "Value": "Liscense/75727e42-fc7d-4811-a05d-53bf3f17e478.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3jwtBl9/PWwfAH7lbQpsc/USVc3JajohSt8wSSq8EcQ="
+        }
+      ]
+    },
+    {
+      "Route": "Liscense/7b07714d-82c7-4ba9-9f2c-a80dfaed49ae.jpg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\7b07714d-82c7-4ba9-9f2c-a80dfaed49ae.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67439"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 08:53:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc="
+        }
+      ]
+    },
+    {
+      "Route": "Liscense/7b07714d-82c7-4ba9-9f2c-a80dfaed49ae.jq0jjs1nb1.jpg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\7b07714d-82c7-4ba9-9f2c-a80dfaed49ae.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67439"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 08:53:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jq0jjs1nb1"
+        },
+        {
+          "Name": "label",
+          "Value": "Liscense/7b07714d-82c7-4ba9-9f2c-a80dfaed49ae.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc="
+        }
+      ]
+    },
+    {
+      "Route": "Liscense/7c97e911-9a78-4d4b-98af-44f01360fe9a.brfr20x0zm.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\7c97e911-9a78-4d4b-98af-44f01360fe9a.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "247421"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:39:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "brfr20x0zm"
+        },
+        {
+          "Name": "label",
+          "Value": "Liscense/7c97e911-9a78-4d4b-98af-44f01360fe9a.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A="
+        }
+      ]
+    },
+    {
+      "Route": "Liscense/7c97e911-9a78-4d4b-98af-44f01360fe9a.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\7c97e911-9a78-4d4b-98af-44f01360fe9a.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "247421"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:39:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A="
         }
       ]
     },
@@ -2184,6 +3340,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-3vSVcvzh3dtAdQRXgWeXTSq5BypQzf7e9D5RRE48WKc="
+        }
+      ]
+    },
+    {
+      "Route": "Profile/073b4d9f-5bed-48b0-9a14-37f299d441be.h5l18alau5.jpg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Profile\\073b4d9f-5bed-48b0-9a14-37f299d441be.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "37103"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VWGlo6bPKDwJF7QCwRnEdr73UEjEYDmuPcrjou6UKMg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 12:21:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h5l18alau5"
+        },
+        {
+          "Name": "label",
+          "Value": "Profile/073b4d9f-5bed-48b0-9a14-37f299d441be.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VWGlo6bPKDwJF7QCwRnEdr73UEjEYDmuPcrjou6UKMg="
+        }
+      ]
+    },
+    {
+      "Route": "Profile/073b4d9f-5bed-48b0-9a14-37f299d441be.jpg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Profile\\073b4d9f-5bed-48b0-9a14-37f299d441be.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "37103"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VWGlo6bPKDwJF7QCwRnEdr73UEjEYDmuPcrjou6UKMg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 12:21:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VWGlo6bPKDwJF7QCwRnEdr73UEjEYDmuPcrjou6UKMg="
         }
       ]
     },
@@ -2762,6 +4000,88 @@
       ]
     },
     {
+      "Route": "Qualification/1a913cea-2750-4130-858a-8f8eb95f800b.brfr20x0zm.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\1a913cea-2750-4130-858a-8f8eb95f800b.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "247421"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:39:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "brfr20x0zm"
+        },
+        {
+          "Name": "label",
+          "Value": "Qualification/1a913cea-2750-4130-858a-8f8eb95f800b.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A="
+        }
+      ]
+    },
+    {
+      "Route": "Qualification/1a913cea-2750-4130-858a-8f8eb95f800b.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\1a913cea-2750-4130-858a-8f8eb95f800b.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "247421"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:39:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A="
+        }
+      ]
+    },
+    {
       "Route": "Qualification/4f2dc003-ebce-4dbf-a447-01266a92988e.png",
       "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\4f2dc003-ebce-4dbf-a447-01266a92988e.png",
       "Selectors": [],
@@ -2840,6 +4160,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-kYWIkuVEp1IFMXHoNWWisXZStmafH9zrFRkmquNhTds="
+        }
+      ]
+    },
+    {
+      "Route": "Qualification/5177e7f7-6f01-497c-b6f4-1c35f177c576.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\5177e7f7-6f01-497c-b6f4-1c35f177c576.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:35:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
+        }
+      ]
+    },
+    {
+      "Route": "Qualification/5177e7f7-6f01-497c-b6f4-1c35f177c576.s6eygopu2r.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\5177e7f7-6f01-497c-b6f4-1c35f177c576.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:35:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s6eygopu2r"
+        },
+        {
+          "Name": "label",
+          "Value": "Qualification/5177e7f7-6f01-497c-b6f4-1c35f177c576.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
+        }
+      ]
+    },
+    {
+      "Route": "Qualification/52b76496-9204-4682-b7e1-aca2fe29d7b8.ba3sgoiep7.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\52b76496-9204-4682-b7e1-aca2fe29d7b8.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "38463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 05:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ba3sgoiep7"
+        },
+        {
+          "Name": "label",
+          "Value": "Qualification/52b76496-9204-4682-b7e1-aca2fe29d7b8.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY="
+        }
+      ]
+    },
+    {
+      "Route": "Qualification/52b76496-9204-4682-b7e1-aca2fe29d7b8.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\52b76496-9204-4682-b7e1-aca2fe29d7b8.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "38463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 05:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ow8ptws7N15lGfv5tytFQ1XLG6swKqCnV/Q6j1h9+RY="
         }
       ]
     },
@@ -3004,6 +4488,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-h9pCwHwS7zkPWMvMKjQIXw7FAkkchVJBlPZrXi6+C9A="
+        }
+      ]
+    },
+    {
+      "Route": "Qualification/5f27c151-dbb3-4352-aa0a-8f9b3dae1788.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\5f27c151-dbb3-4352-aa0a-8f9b3dae1788.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:00:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
+        }
+      ]
+    },
+    {
+      "Route": "Qualification/5f27c151-dbb3-4352-aa0a-8f9b3dae1788.s6eygopu2r.png",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\5f27c151-dbb3-4352-aa0a-8f9b3dae1788.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 09:00:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s6eygopu2r"
+        },
+        {
+          "Name": "label",
+          "Value": "Qualification/5f27c151-dbb3-4352-aa0a-8f9b3dae1788.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VPxjEGvJ7bUnQCF2peFnmVWPSK3w3cGVLnVEZ73c4bQ="
         }
       ]
     },
@@ -3414,6 +4980,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-6rZrFEDMhi6zozllt4+aEwtDSA0cJiVVT/LKrylPdj0="
+        }
+      ]
+    },
+    {
+      "Route": "Qualification/ed87c494-9d00-4315-a825-4585f87702eb.jpg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\ed87c494-9d00-4315-a825-4585f87702eb.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67439"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 08:53:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc="
+        }
+      ]
+    },
+    {
+      "Route": "Qualification/ed87c494-9d00-4315-a825-4585f87702eb.jq0jjs1nb1.jpg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\ed87c494-9d00-4315-a825-4585f87702eb.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67439"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 08 Jan 2025 08:53:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jq0jjs1nb1"
+        },
+        {
+          "Name": "label",
+          "Value": "Qualification/ed87c494-9d00-4315-a825-4585f87702eb.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hcIbCZzcMxvCtTMMYrdjAPbybTVtwPZFtLnz01RJvIc="
         }
       ]
     }

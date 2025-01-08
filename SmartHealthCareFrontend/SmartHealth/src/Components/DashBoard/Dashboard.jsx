@@ -14,48 +14,48 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="h-screen w-56 bg-sky-700 text-white shadow-lg fixed transition-all duration-300 z-10">
+    <div className="h-screen w-16 sm:w-56 bg-sky-700 text-white shadow-lg fixed transition-all duration-300 z-10">
       <div className="p-3 flex flex-col justify-between h-full">
         <ul className="space-y-6 w-full">
           <li
             onClick={() => handleNavigation("/admin/dashboard")}
-            className="flex items-center space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
+            className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
             title="Dashboard"
           >
             <AiOutlineDashboard className="text-xl" />
-            <span className="text-md">Dashboard</span>
+            <span className="text-sm sm:text-md hidden sm:inline">Dashboard</span>
           </li>
           <li
             onClick={() => handleNavigation("/admin/messages")}
-            className="flex items-center space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
+            className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
             title="Messages"
           >
             <IoMdMail className="text-xl" />
-            <span className="text-md">Messages</span>
+            <span className="text-sm sm:text-md hidden sm:inline">Messages</span>
           </li>
           <li
             onClick={() => handleNavigation("/admin/bookings")}
-            className="flex items-center space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
+            className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
             title="Bookings"
           >
             <FaClipboardList className="text-xl" />
-            <span className="text-md">Bookings</span>
+            <span className="text-sm sm:text-md hidden sm:inline">Bookings</span>
           </li>
           <li
             onClick={() => handleNavigation("/admin/review")}
-            className="flex items-center space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
+            className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
             title="Review"
           >
             <BiMessageSquareDetail className="text-xl" />
-            <span className="text-md">Review</span>
+            <span className="text-sm sm:text-md hidden sm:inline">Review</span>
           </li>
           <li
             onClick={() => handleNavigation("/admin/profile")}
-            className="flex items-center space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
+            className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
             title="Profile"
           >
             <RiUserFill className="text-xl" />
-            <span className="text-md">Profile</span>
+            <span className="text-sm sm:text-md hidden sm:inline">Profile</span>
           </li>
         </ul>
       </div>

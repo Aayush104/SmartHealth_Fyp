@@ -11,6 +11,7 @@ import { AiFillFileAdd } from "react-icons/ai";
 import useStore from '../../Zustand/Store';
 import { toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Spinner } from '@chakra-ui/react';
 
 const DoctorRegistration = () => {
   const [fullName, setFullName] = useState('');
@@ -29,13 +30,16 @@ const DoctorRegistration = () => {
   const [success,setSuccess] = useState(false);
   const registerDoctor = useStore((state) => state.registerDoctor);
   const [showPassword, setShowPassword] = useState(false);
+   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+ 
     const formData = new FormData();
 
     formData.append('FullName', fullName);
@@ -67,6 +71,13 @@ const DoctorRegistration = () => {
       toast.error("Password must be at least 8 characters long.");
       return;
     }
+     const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+        if (!specialCharRegex.test(password)) {
+          toast.error("Password must have at least one special character.");
+          return;
+        }
+
+    setIsSubmitting(true);
     try {
       const response = await registerDoctor(formData);
 
@@ -93,6 +104,8 @@ const DoctorRegistration = () => {
     } catch (error) {
       console.error("Error registering patient:", error);
       toast.error(error.message || "Failed to register. Please try again.");
+    } finally {
+      setIsSubmitting(false); // Ensure the spinner stops
     }
   };
 
@@ -124,6 +137,19 @@ const DoctorRegistration = () => {
 
   return (
     <>
+  {
+    isSubmitting && (
+ <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="xl"
+              />
+            </div>
+    )
+  } 
 
     { 
       success && (

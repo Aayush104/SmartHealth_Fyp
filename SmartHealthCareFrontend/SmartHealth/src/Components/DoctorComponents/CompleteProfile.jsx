@@ -55,6 +55,8 @@ const CompleteProfile = ({ onClose }) => {
       if (response.status === 200) {
         toast.success('Profile added successfully!');
         onClose(); 
+        window.location.reload();
+
       }
     } catch (error) {
       toast.error('Error submitting profile. Please try again later.');

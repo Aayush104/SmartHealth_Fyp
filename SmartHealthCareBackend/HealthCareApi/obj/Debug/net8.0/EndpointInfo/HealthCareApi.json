@@ -365,6 +365,18 @@
         }
       }
     },
+    "/api/Doctor/GetLoginDoctorData": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/User/RegisterPatient": {
       "post": {
         "tags": [

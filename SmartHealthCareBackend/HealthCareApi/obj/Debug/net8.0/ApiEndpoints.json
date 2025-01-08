@@ -188,6 +188,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HealthCareApi.Controllers.DoctorController",
+    "Method": "GetLoginDoctorData",
+    "RelativePath": "api/Doctor/GetLoginDoctorData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DoctorController",
     "Method": "RejectDoctor",
     "RelativePath": "api/Doctor/RejectDoctor/{email}",

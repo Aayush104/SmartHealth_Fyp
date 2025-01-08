@@ -239,6 +239,66 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
+        public async Task<ApiResponseDto> GetLoginDoctorService(string Id)
+        {
+            try
+            {
+                var doctorDetails = await _doctorRepository.GetDoctorBYId(Id);
+
+                var existingRecords = await _doctorRepository.GetByUserIdFromAdditionalAsync(Id);
+
+                // Extract experiences and trainings
+                var experiences = existingRecords
+                    .Where(a => !string.IsNullOrEmpty(a.ExperienceDetail))
+                    .Select(d => d.ExperienceDetail)
+                    .ToList();
+
+                var trainings = existingRecords
+                    .Where(a => !string.IsNullOrEmpty(a.Trainings))
+                    .Select(d => d.Trainings)
+                    .ToList();
+
+                // Map data to DoctorDetailsDto
+                var doctor = new DoctorDetailsDto
+                {
+                    FullName = doctorDetails.User.FullName,
+                    Email = doctorDetails.User.Email,
+                    Specialization = doctorDetails.Specialization,
+                    Qualifications = doctorDetails.Qualifications,
+                    Loction = doctorDetails.Location,
+                    Description = doctorDetails.Description,
+                    Profileget = doctorDetails.Profile,
+                    Fee = doctorDetails.Fee,
+                    Experience = doctorDetails.Experience,
+                };
+
+                // Map additional info
+                var additionalInfo = new AdditionalnfoDto
+                {
+                    Experiences = experiences,
+                    Trainings = trainings,
+                };
+
+                // Create the response
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Data = new { doctor, additionalInfo }, // Anonymous object
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+                // Handle and log the exception
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
 
 
         public async Task<IEnumerable<DoctorDetailsDto>> SearchDoctorAsync(SearchDto searchDto)

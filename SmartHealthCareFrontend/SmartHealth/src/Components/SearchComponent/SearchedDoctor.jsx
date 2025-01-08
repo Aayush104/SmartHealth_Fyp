@@ -18,6 +18,8 @@ const SearchedDoctor = () => {
     }
   }, [doctors, navigateTo]);
 
+  const placeholderImage = "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg";
+
   return (
     <div>
       <Navbar />
@@ -52,12 +54,16 @@ const SearchedDoctor = () => {
                 onMouseEnter={() => setHoverIndex(index)}
                 onMouseLeave={() => setHoverIndex(null)}
               >
+
+            
                 <div className="flex gap-4 items-center">
-                  <img
-                    src={doctor.profileget}
-                    className="h-30 w-40"
-                    alt={`Dr. ${doctor.fullName}`}
-                  />
+                <img
+              src={doctor?.profileget || placeholderImage}
+              className="h-30 w-40 text-white border rounded"
+              alt={`Dr. ${doctor?.fullName || "Doctor"}`}
+            />
+  
+
                   <div className="flex flex-col gap-2">
                     <a className="text-3xl text-sky-600 cursor-pointer hover:underline">Dr. {doctor.fullName}</a>
                     <p className="text-gray-500 text-md">{doctor.qualifications}</p>
@@ -76,9 +82,17 @@ const SearchedDoctor = () => {
                     )}
                   </div>
                 </div>
+                <NavLink 
+                        to={`/Doctors/${doctor.userId}`} 
+                        className="cursor-pointer"
+                      >
                 <button className="flex p-2 gap-2 bg-sky-600 text-white items-center hover:bg-sky-500 rounded-sm">
-                  <FaCalendarDays /> Book Appointment
+                  <FaCalendarDays />  
+                     
+                       Book Appointment
+                      
                 </button>
+                </NavLink>
               </div>
             ))}
           </div>

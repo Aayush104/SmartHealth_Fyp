@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HealthCareApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+290042d7863f60163444538091ad47502ed95791")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5228a01d0da54a608c29e45019db959716825db")]
 [assembly: System.Reflection.AssemblyProductAttribute("HealthCareApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HealthCareApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
