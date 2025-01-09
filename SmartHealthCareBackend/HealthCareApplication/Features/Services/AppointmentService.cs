@@ -23,6 +23,8 @@ namespace HealthCareApplication.Features.Services
 
         public async Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto)
         {
+
+
             try
             {
                

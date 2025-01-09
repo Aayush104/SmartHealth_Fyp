@@ -227,10 +227,13 @@ namespace HealthCarePersistence.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateOnly?>("DateOfBirth")
                         .HasColumnType("date");
 
-                    b.Property<string>("MedicalHistory")
+                    b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -317,20 +320,20 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3dc72d79-6dec-46ce-9081-2b06b8799535",
-                            CreatedAt = new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8970),
+                            ConcurrencyStamp = "87ae5f1c-91e9-4e99-827e-460171d1bfdc",
+                            CreatedAt = new DateTime(2025, 1, 9, 11, 14, 16, 79, DateTimeKind.Utc).AddTicks(3615),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJcqnQkz0l/nJzazHynh8CliIDsF0dyB9QJ/pzeiNF8NGYohhhTohnY4J6iK2Wqhmg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO7Mot3LWiOVoPpKIMpr+xjyW4gDFGwGFE7XMwV/11HYxNJ+LCowD7wz4cpt31OEFg==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "edbbe9f0-bafa-4c74-92cd-5248ba996d29",
+                            SecurityStamp = "e8ae62fe-0392-440d-a00d-eb2138970cf3",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8978),
+                            UpdatedAt = new DateTime(2025, 1, 9, 11, 14, 16, 79, DateTimeKind.Utc).AddTicks(3621),
                             UserName = "Admin"
                         });
                 });

@@ -7,6 +7,7 @@ import { AiOutlineProfile } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { TbLogout2 } from "react-icons/tb";
 import { MdEventAvailable } from "react-icons/md";
+import { RiCalendarScheduleFill } from "react-icons/ri";
 import Cookies from 'js-cookie';
 
 const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doctorData}) => {
@@ -30,6 +31,10 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doct
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-8">
        
+          <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
+            <RiCalendarScheduleFill className="text-3xl mt-1 group-hover:text-sky-400" />
+            <span className="mt-1">Appointments</span>
+          </li>
           <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
             <IoIosNotifications className="text-3xl mt-1 group-hover:text-sky-400" />
             <span className="mt-1">Notifications</span>

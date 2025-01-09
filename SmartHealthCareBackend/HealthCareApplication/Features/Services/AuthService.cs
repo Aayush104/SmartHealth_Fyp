@@ -73,7 +73,8 @@ namespace HealthCareApplication.Features.Services
                 {
                     FullName = userDto.FullName,
                     Email = userDto.Email,
-                    UserName = userDto.Email
+                    UserName = userDto.Email,
+                    PhoneNumber = userDto.PhoneNumber
                 };
 
                 var result = await _userManager.CreateAsync(user, userDto.Password);
@@ -87,7 +88,9 @@ namespace HealthCareApplication.Features.Services
                         {
                             Id = user.Id,
                             DateOfBirth = patientDto.DateOfBirth,
-                            MedicalHistory = patientDto.MedicalHistory,
+                           Gender = patientDto.Gender,
+                           Address = patientDto.Address
+
                         };
                         await _patientRepository.AddPatient(patient);
                         await _otpService.StoreOtpAsync(user.Id, "Registration", otp);

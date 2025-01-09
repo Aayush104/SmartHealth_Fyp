@@ -463,6 +463,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "PhoneNumber",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -842,12 +849,19 @@
             "type": "string",
             "nullable": true
           },
-          "dateOfBirth": {
+          "phoneNumber": {
             "type": "string",
-            "format": "date",
             "nullable": true
           },
-          "medicalHistory": {
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date"
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
             "type": "string",
             "nullable": true
           }

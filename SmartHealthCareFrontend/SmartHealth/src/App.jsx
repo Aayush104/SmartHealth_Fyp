@@ -18,6 +18,8 @@ import SearchedDoctor from "./Components/SearchComponent/SearchedDoctor";
 import NotFound from "./Components/NotFound/NotFound";
 import DoctorDetail from "./Pages/DoctorDetails/DoctorDetails";
 import DoctorProfile from "./Pages/DoctorProfile/DoctorProfile";
+import ConfirmBooking from "./Components/ConfirmBooking/ConfirmBooking";
+import PrivateRoute from "./Components/Protected/PrivateRoute";
 
 const App = () => {
   return (
@@ -31,8 +33,18 @@ const App = () => {
             </RedirectIfAuthenticated>
           }
         />
-        <Route path="/patientRegistration" element={<PatientRegistration />} />
-        <Route path="/doctorRegistration" element={<DoctorRegistration />} />
+        <Route path="/patientRegistration" element={
+           <RedirectIfAuthenticated>
+          <PatientRegistration />
+          </RedirectIfAuthenticated>
+          } />
+        <Route path="/doctorRegistration" element={
+          <RedirectIfAuthenticated>         
+           <DoctorRegistration />
+          </RedirectIfAuthenticated>
+
+
+          } />
         <Route
           path="/login"
           element={
@@ -41,7 +53,13 @@ const App = () => {
             </RedirectIfAuthenticated>
           }
         />
-        <Route path="/forgetPassword" element={<ForgetPassword />} />
+        <Route path="/forgetPassword" element={
+       
+          <RedirectIfAuthenticated>
+          <ForgetPassword />
+
+          </RedirectIfAuthenticated>
+          } />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Doctors" element={<FindDoctor />} />
         <Route path="/Doctors/:id" element={ <DoctorDetail/>} />
@@ -68,6 +86,7 @@ const App = () => {
         <Route path="//unauthorize" element={<UnAuthorized />} />
         <Route path="/searched_doctor" element={<SearchedDoctor />} />
         <Route path="/NotFound" element={<NotFound />} />
+        <Route path="/Appointment" element={<PrivateRoute element={ConfirmBooking} />} />
       
 
       </Routes>

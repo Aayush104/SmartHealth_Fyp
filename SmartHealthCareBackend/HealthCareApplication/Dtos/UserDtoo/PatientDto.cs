@@ -9,10 +9,10 @@ namespace HealthCareApplication.Dtos.UserDto
 {
     public class PatientDto : UserDto
     {
-
-
-        public DateOnly? DateOfBirth { get; set; }
-        public string? MedicalHistory { get; set; }
+        public DateOnly DateOfBirth { get; set; }
+        public string? Address { get; set; }
+        public string? Gender { get; set; }
+      
 
     }
 }
