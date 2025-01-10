@@ -57,12 +57,11 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "dbo.Patients [Data]",
+              "Title": "dbo.Patients.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/./db_HealthCare/True/SqlTable/dbo.Patients.sql",
-              "ToolTip": "dbo.Patients [Data]",
+              "ToolTip": "ViewDataWindow_MSSQL__/./db_HealthCare/True/SqlTable/dbo.Patients.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-01-09T11:35:21.495Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T11:35:21.495Z"
             },
             {
               "$type": "Document",
@@ -74,8 +73,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Patients\\Patient.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAUwBAAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:20:07.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T10:20:07.153Z"
             },
             {
               "$type": "Document",
@@ -87,8 +85,7 @@
               "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\PatientDto.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:18:17.325Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T10:18:17.325Z"
             },
             {
               "$type": "Document",
@@ -100,8 +97,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AuthService.cs",
               "ViewState": "AgIAAEkAAAAAAAAAAAAmwF0AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:17:34.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T10:17:34.722Z"
             },
             {
               "$type": "Document",
@@ -113,8 +109,7 @@
               "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\UserDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:16:42.374Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T10:16:42.374Z"
             },
             {
               "$type": "Document",
@@ -126,18 +121,16 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\UserEntity\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:16:28.91Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T10:16:28.91Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "dbo.AspNetUsers [Data]",
+              "Title": "dbo.AspNetUsers.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/./db_HealthCare/True/SqlTable/dbo.AspNetUsers.sql",
-              "ToolTip": "dbo.AspNetUsers [Data]",
+              "ToolTip": "ViewDataWindow_MSSQL__/./db_HealthCare/True/SqlTable/dbo.AspNetUsers.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-01-09T10:15:31.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T10:15:31.95Z"
             }
           ]
         },
