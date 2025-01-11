@@ -31,6 +31,7 @@ const DoctorRegistration = () => {
   const registerDoctor = useStore((state) => state.registerDoctor);
   const [showPassword, setShowPassword] = useState(false);
    const [isSubmitting, setIsSubmitting] = useState(false);
+   const [phoneNumber, setPhoneNumber] = useState('');
 
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
@@ -45,6 +46,7 @@ const DoctorRegistration = () => {
     formData.append('FullName', fullName);
     formData.append('Email', email);
     formData.append('Password', password);
+    formData.append('PhoneNumber', phoneNumber);
     formData.append('Specialization', specialization);
     formData.append('Location', location);
     formData.append('LicenseNumber', licenseNumber);
@@ -90,6 +92,7 @@ const DoctorRegistration = () => {
        setLicenseFile(null);
        setPassword('');
       setLocation('');
+      setPhoneNumber('');
        setQualificationsFile('')
        setQualifications('');
        setSpecialization(null)
@@ -369,6 +372,20 @@ onClick={() => setSuccess(false)}
                                 </div>
 
                 </div>
+
+                <div className="mb-4 w-full">
+                      <label className="text-gray-700 text-sm mb-2" htmlFor="phoneNumber">
+                        Phone Number <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        id="phoneNumber"
+                        type="tel"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        required
+                        className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
 
                 <div className='flex items-center justify-between gap-2 w-full '>
                   <div className='mb-4 w-full flex flex-col gap-2 '>

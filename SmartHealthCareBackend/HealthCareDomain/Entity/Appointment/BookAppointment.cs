@@ -9,7 +9,7 @@ namespace HealthCareDomain.Entity.Appointment
     public class BookAppointment
     {
         [Key]
-        public int AppointmentId { get; set; }
+        public int Id { get; set; }
 
      
         [Required]
@@ -26,6 +26,7 @@ namespace HealthCareDomain.Entity.Appointment
 
         [Required]
         public string Slot { get; set; }  
+
         [Required]
         [MaxLength(50)]
         public string Status { get; set; }
@@ -39,5 +40,7 @@ namespace HealthCareDomain.Entity.Appointment
 
         
         public virtual Patient Patient { get; set; }
+
+        public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
 }

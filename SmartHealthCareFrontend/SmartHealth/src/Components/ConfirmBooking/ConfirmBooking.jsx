@@ -6,11 +6,13 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { NavLink } from 'react-router-dom';
 
+
 const ConfirmBooking = () => {
 
   const Id = Cookies.get("Token");
   const [appointmentDetails, setAppointmentDetails] = useState(null);
   const [doctorDetails, setDoctorDetails] = useState(null);
+
 
   useEffect(() => {
     const details = localStorage.getItem('AppointmentDetails');
@@ -151,16 +153,35 @@ const ConfirmBooking = () => {
               </div>
             </div>
 
-           
-            <button className="w-full mt-6 bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:border-green-700 transition-colors flex items-center justify-center gap-2">
+
+            <form action="https://uat.esewa.com.np/epay/main" method="POST">
+  <input value={doctorDetails?.fee} name="tAmt" type="hidden" />
+  <input value={doctorDetails?.fee} name="amt" type="hidden" />
+  <input value="0" name="txAmt" type="hidden" />
+  <input value="0" name="psc" type="hidden" />
+  <input value="0" name="pdc" type="hidden" />
+  <input value="EPAYTEST" name="scd" type="hidden" />
+  <input value={appointmentDetails.Id} name="pid" type="hidden" />
+  <input value="http://localhost:5173/success?q=su" name="su" type="hidden" />
+  <input value="http://localhost:5173/failure?q=fu" name="fu" type="hidden" />
+  
+
+  <button className="w-full mt-6 bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:border-green-700 transition-colors flex items-center justify-center gap-2" type= "submit">
               Pay Via Esewa
               <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRURIPRhKOlMe7cw2N9IzXTwUICDh0EVLvcCw&s' className='h-10' alt='Esewa Logo' />
             </button>
+</form>
+
+           
+            
           </div>
         </div>
       </div>
 
       <Footer />
+
+     
+    
     </div>
   );
 };

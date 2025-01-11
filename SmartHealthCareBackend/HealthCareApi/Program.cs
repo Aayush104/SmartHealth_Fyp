@@ -88,6 +88,20 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.Use(async (context, next) =>
+{
+    try
+    {
+        await next();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Exception: {ex.Message}");
+        throw; // Re-throw the exception to ensure it's not swallowed
+    }
+});
+
 app.UseStaticFiles();
 app.UseCors("AllowAll"); // Apply the CORS policy globally
 app.UseAuthentication();

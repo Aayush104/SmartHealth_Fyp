@@ -12,6 +12,8 @@ const DoctorProfile = () => {
   const [showAdditionalForm, setShowAdditionalForm] = useState(false);
   const [showAvailabilityForm, setShowAvailabilityForm] = useState(false);
   const [doctorData, setDoctorData] = useState(null); // Store doctor data
+  const [loading, setLoading] = useState(false); // State to manage loading status
+  const [error, setError] = useState(null); // State to handle errors
 
   const handleCloseForms = () => {
     setShowProfileForm(false);
@@ -38,17 +40,30 @@ const DoctorProfile = () => {
   const token = Cookies.get("Token");
 
   useEffect(() => {
+    if (!token) {
+      console.error("Token not found");
+      return; // Exit if no token is found
+    }
+
     const fetchData = async () => {
+      setLoading(true);
+      setError(null); // Reset any previous error
       try {
+        console.log("Fetching doctor data...");
+
         const response = await axios.get("https://localhost:7070/api/Doctor/GetLoginDoctorData", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+
+        console.log("Doctor data fetched:", response.data);
         setDoctorData(response.data); // Store the response data
-        console.log(response.data); // Log the response for reference
-      } catch (error) {
-        console.error("Error fetching doctor data:", error);
+      } catch (err) {
+        console.error("Error fetching doctor data:", err);
+        setError("Failed to load doctor data. Please try again.");
+      } finally {
+        setLoading(false); // Set loading to false after the request is completed
       }
     };
 
@@ -58,18 +73,26 @@ const DoctorProfile = () => {
   return (
     <>
       <div className="mb-8">
-        <DoctorNav
-          onProfileClick={handleProfileClick}
-          onAdditionalClick={handleAdditionalClick}
-          onAvailabilityClick={handleAvailabilityClick}
-          doctorData={doctorData} 
-        />
-        {showProfileForm && <CompleteProfile onClose={handleCloseForms}  />}
-        {showAdditionalForm && <AdditionalProfile onAdditionalOff={handleCloseForms}  />}
+
+        {doctorData && (
+          <>
+            <DoctorNav
+              onProfileClick={handleProfileClick}
+              onAdditionalClick={handleAdditionalClick}
+              onAvailabilityClick={handleAvailabilityClick}
+              doctorData={doctorData}
+            />
+            <DoctorDash doctorData={doctorData} />
+          </>
+        )}
+
+        {loading && <p>Loading doctor data...</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        
+        {showProfileForm && <CompleteProfile onClose={handleCloseForms} />}
+        {showAdditionalForm && <AdditionalProfile onAdditionalOff={handleCloseForms} />}
         {showAvailabilityForm && <DoctorAvailability onClose={handleCloseForms} />}
       </div>
-
-      <DoctorDash doctorData={doctorData} />
     </>
   );
 };

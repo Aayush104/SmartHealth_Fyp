@@ -25,7 +25,8 @@ namespace HealthCarePersistence.DatabaseContext
         public DbSet<OtpHash> Otps { get; set; }
         public DbSet<DoctorAvailability> DoctorAvailabilities { get; set; }
         public DbSet<BookAppointment> BookAppointments { get; set; }
-        public DbSet<DoctorAdditionalInfo> DoctorAdditionalInfos { get; set; }
+        public DbSet<DoctorAdditionalInfo> DoctorAdditionalInfos { get; set; } 
+        public DbSet<Payment> Payments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -54,6 +55,8 @@ namespace HealthCarePersistence.DatabaseContext
       .OnDelete(DeleteBehavior.Cascade);
 
 
+
+
             // Configure OtpHash relationship with ApplicationUser
             modelBuilder.Entity<OtpHash>()
                 .HasOne(o => o.User)
@@ -73,6 +76,14 @@ namespace HealthCarePersistence.DatabaseContext
                 .WithMany(p => p.BookAppointments)
                 .HasForeignKey(b => b.PatientId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Payment>()
+         .HasOne(p => p.Appointment)
+        .WithMany(b => b.Payments)  
+        .HasForeignKey(p => p.AppointmentId) 
+        .OnDelete(DeleteBehavior.Cascade);
+
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }

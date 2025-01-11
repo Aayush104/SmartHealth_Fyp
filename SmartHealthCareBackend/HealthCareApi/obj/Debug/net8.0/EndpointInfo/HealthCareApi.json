@@ -728,21 +728,25 @@
       "AppointmentDto": {
         "type": "object",
         "properties": {
+          "queryType": {
+            "type": "string",
+            "nullable": true
+          },
           "doctorId": {
             "type": "string",
             "nullable": true
           },
-          "patientId": {
+          "amount": {
             "type": "string",
             "nullable": true
           },
-          "date": {
+          "startTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "appointmentDate": {
             "type": "string",
             "format": "date-time"
-          },
-          "timeSlot": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

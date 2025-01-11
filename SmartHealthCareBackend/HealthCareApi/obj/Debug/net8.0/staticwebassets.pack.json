@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\Government\\3e7b85af-59c6-4078-87d9-dec9c57c616c.png"
     },
     {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\5b0220ef-6d57-40d0-990c-5892f1b2b96d.png",
+      "PackagePath": "staticwebassets\\Government\\5b0220ef-6d57-40d0-990c-5892f1b2b96d.png"
+    },
+    {
       "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Government\\5b8b9ff1-5ded-4683-bde0-39e304168301.jpg",
       "PackagePath": "staticwebassets\\Government\\5b8b9ff1-5ded-4683-bde0-39e304168301.jpg"
     },
@@ -77,6 +81,10 @@
       "PackagePath": "staticwebassets\\Liscense\\2696c542-7c23-47c0-a06b-6a35efd5472f.png"
     },
     {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\2a039113-609d-44b8-b524-42e6534a2746.jpg",
+      "PackagePath": "staticwebassets\\Liscense\\2a039113-609d-44b8-b524-42e6534a2746.jpg"
+    },
+    {
       "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Liscense\\374baf67-e44d-4854-a4f8-f3c0cfc772fe.jpg",
       "PackagePath": "staticwebassets\\Liscense\\374baf67-e44d-4854-a4f8-f3c0cfc772fe.jpg"
     },
@@ -117,6 +125,10 @@
       "PackagePath": "staticwebassets\\Profile\\073b4d9f-5bed-48b0-9a14-37f299d441be.jpg"
     },
     {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Profile\\1e4aa4eb-9392-4d18-bc1d-a064f47a9412.png",
+      "PackagePath": "staticwebassets\\Profile\\1e4aa4eb-9392-4d18-bc1d-a064f47a9412.png"
+    },
+    {
       "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Profile\\20efcb3f-c227-4c81-a296-169357d0a945.png",
       "PackagePath": "staticwebassets\\Profile\\20efcb3f-c227-4c81-a296-169357d0a945.png"
     },
@@ -147,6 +159,10 @@
     {
       "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Profile\\d5358998-5dbd-41e6-b5b8-e070806d10a1.png",
       "PackagePath": "staticwebassets\\Profile\\d5358998-5dbd-41e6-b5b8-e070806d10a1.png"
+    },
+    {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\0939e8c3-86a8-4ff3-bef6-6e667db04856.png",
+      "PackagePath": "staticwebassets\\Qualification\\0939e8c3-86a8-4ff3-bef6-6e667db04856.png"
     },
     {
       "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Qualification\\18ab0f11-94d3-413f-8da7-b033344e29f7.jpg",

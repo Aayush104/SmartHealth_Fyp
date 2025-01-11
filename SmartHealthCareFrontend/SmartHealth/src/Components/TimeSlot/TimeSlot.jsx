@@ -117,6 +117,7 @@ const TimeSlot = ({ fee, Id }) => {
       date: selectedDate,
       StartTime: selectedSlot.startTime,
       EndTime: selectedSlot.endTime,
+      Fee : fee
     });
    localStorage.setItem('AppointmentDetails', appointmentDetails);
   

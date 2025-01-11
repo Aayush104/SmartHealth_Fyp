@@ -9,6 +9,7 @@ namespace HealthCareDomain.IRepository
 {
    public interface IBookAppointmentRepository
     {
-        Task <bool> BookAppointment(BookAppointment bookappoinment);
+        Task <int> BookAppointment(BookAppointment bookappoinment);
+        Task<bool> Paymentasync(Payment payment);
     }
 }

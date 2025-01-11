@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import Navbar from '../../Components/Navbar/Navbar';
 
 const Home = () => {
+  useEffect(() => {
+  
+    localStorage.removeItem('AppointmentDetails');
+  }, []); 
+
   return (
     <div>
-    <p>This is Home page
-    </p>
-      
+      <Navbar />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

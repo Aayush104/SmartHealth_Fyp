@@ -21,5 +21,7 @@ namespace HealthCareApi.Controllers
 
             return Ok(userId);
         }
+
+      
     }
 }

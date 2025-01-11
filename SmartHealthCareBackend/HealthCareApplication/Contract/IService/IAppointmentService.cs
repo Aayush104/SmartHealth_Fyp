@@ -12,6 +12,6 @@ namespace HealthCareApplication.Contract.IService
 {
     public interface IAppointmentService
     {
-        Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto);
+        Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto, string userId);
     }
 }

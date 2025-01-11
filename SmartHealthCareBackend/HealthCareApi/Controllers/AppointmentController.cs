@@ -1,6 +1,6 @@
 ﻿using HealthCareApplication.Contract.IService;
 using HealthCareApplication.Dtos.AvailabilityDto;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,10 +18,20 @@ namespace HealthCareApi.Controllers
         }
 
 
-        [HttpPost ("BookAppointment")]
+        [HttpPost("BookAppointment")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> BookAppointment(AppointmentDto appointmentDto)
         {
-            var response = await _appointmentService.BookAppointmentAsync(appointmentDto);
+            var user = HttpContext.User.FindFirst("userId");
+
+            var userId = user?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User not found");
+            }
+
+            var response = await _appointmentService.BookAppointmentAsync(appointmentDto, userId!);
 
             return StatusCode(response.StatusCode, response);
         }

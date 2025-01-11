@@ -24,11 +24,11 @@ namespace HealthCarePersistence.Migrations
 
             modelBuilder.Entity("HealthCareDomain.Entity.Appointment.BookAppointment", b =>
                 {
-                    b.Property<int>("AppointmentId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppointmentId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("datetime2");
@@ -55,13 +55,45 @@ namespace HealthCarePersistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("AppointmentId");
+                    b.HasKey("Id");
 
                     b.HasIndex("DoctorId");
 
                     b.HasIndex("PatientId");
 
                     b.ToTable("BookAppointments");
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Appointment.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int>("AppointmentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppointmentId");
+
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.Doctor", b =>
@@ -230,7 +262,7 @@ namespace HealthCarePersistence.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly?>("DateOfBirth")
+                    b.Property<DateOnly>("DateOfBirth")
                         .HasColumnType("date");
 
                     b.Property<string>("Gender")
@@ -320,20 +352,20 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "87ae5f1c-91e9-4e99-827e-460171d1bfdc",
-                            CreatedAt = new DateTime(2025, 1, 9, 11, 14, 16, 79, DateTimeKind.Utc).AddTicks(3615),
+                            ConcurrencyStamp = "d1f87446-92e2-4004-ad0e-1aeba52dd415",
+                            CreatedAt = new DateTime(2025, 1, 11, 11, 10, 8, 616, DateTimeKind.Utc).AddTicks(5346),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEO7Mot3LWiOVoPpKIMpr+xjyW4gDFGwGFE7XMwV/11HYxNJ+LCowD7wz4cpt31OEFg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMxsz5lQkH63r6DrulXEmCw15cKVMVUVaNUYkgFvqGxjj5UXd0CvRFCBCZSZKCpmMQ==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e8ae62fe-0392-440d-a00d-eb2138970cf3",
+                            SecurityStamp = "936c71d4-1493-457b-9dcb-18b8eb67ed37",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 1, 9, 11, 14, 16, 79, DateTimeKind.Utc).AddTicks(3621),
+                            UpdatedAt = new DateTime(2025, 1, 11, 11, 10, 8, 616, DateTimeKind.Utc).AddTicks(5351),
                             UserName = "Admin"
                         });
                 });
@@ -517,6 +549,17 @@ namespace HealthCarePersistence.Migrations
                     b.Navigation("Patient");
                 });
 
+            modelBuilder.Entity("HealthCareDomain.Entity.Appointment.Payment", b =>
+                {
+                    b.HasOne("HealthCareDomain.Entity.Appointment.BookAppointment", "Appointment")
+                        .WithMany("Payments")
+                        .HasForeignKey("AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
+                });
+
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.Doctor", b =>
                 {
                     b.HasOne("HealthCareDomain.Entity.UserEntity.ApplicationUser", "User")
@@ -621,6 +664,11 @@ namespace HealthCarePersistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Appointment.BookAppointment", b =>
+                {
+                    b.Navigation("Payments");
                 });
 
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.Doctor", b =>

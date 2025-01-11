@@ -7,6 +7,8 @@ const DoctorDash = ({doctorData}) => {
   const [greeting, setGreeting] = useState('');
 
 
+console.log("doctorData", doctorData)
+
   var doc = doctorData?.data.doctor
   // Get current time and determine greeting
   useEffect(() => {

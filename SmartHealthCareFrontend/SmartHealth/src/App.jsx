@@ -20,6 +20,7 @@ import DoctorDetail from "./Pages/DoctorDetails/DoctorDetails";
 import DoctorProfile from "./Pages/DoctorProfile/DoctorProfile";
 import ConfirmBooking from "./Components/ConfirmBooking/ConfirmBooking";
 import PrivateRoute from "./Components/Protected/PrivateRoute";
+import Success from "./Components/Success/Success";
 
 const App = () => {
   return (
@@ -82,11 +83,15 @@ const App = () => {
         />
         <Route path="/home" element={<Protect requiredRole={['Patient']}><Home /> </Protect>} />
         <Route path="/ConfirmEmail/:email/:otp" element={<ConfirmDoctorEmail />} />
+        
+        <Route path="/success" element={<Protect requiredRole={['Patient']}><Success /> </Protect>} />
+      
       
         <Route path="//unauthorize" element={<UnAuthorized />} />
         <Route path="/searched_doctor" element={<SearchedDoctor />} />
         <Route path="/NotFound" element={<NotFound />} />
-        <Route path="/Appointment" element={<PrivateRoute element={ConfirmBooking} />} />
+
+        <Route path="/Appointment" element={<Protect requiredRole={['Patient']}><PrivateRoute element={ConfirmBooking} /></Protect> } />
       
 
       </Routes>

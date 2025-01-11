@@ -17,6 +17,14 @@ const DoctorDetails = () => {
   const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
+
+    const details = localStorage.getItem('AppointmentDetails');
+
+    if(details)
+    {
+      localStorage.removeItem("AppointmentDetails");
+
+    }
     const fetchDoctorDetails = async () => {
       try {
         const response = await axios.get(`https://localhost:7070/api/Doctor/GetDoctorDetails/${id}`);

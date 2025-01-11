@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 const Protect = ({ children, requiredRole }) => {
   const navigateTo = useNavigate();
@@ -11,46 +11,38 @@ const Protect = ({ children, requiredRole }) => {
   useEffect(() => {
     const checkAuth = async () => {
       if (!token) {
-        navigateTo('/');
+        navigateTo("/"); // Redirect to login if no token
         return;
       }
 
       try {
-        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const decodedToken = JSON.parse(atob(token.split(".")[1]));
         const userId = decodedToken.userId;
         const userRole = decodedToken.Role;
-        const userName = decodedToken.Name;
-        const name = userName.split(' ').join('_');
 
-        const response = await axios.get("https://localhost:7070/api/Auth/checkAccess", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (response.status === 200 && response.data === userId && requiredRole.includes(userRole)) {
-          setAuthenticated(true);
-
-          // Redirect based on role
-          switch (userRole) {
-            case "Admin":
-              break; // Admin stays on the current page
-            case "Patient":
-              navigateTo('/home');
-              break;
-            case "Doctor":
-              navigateTo(`/DoctorProfile/${name}`);
-              break;
-            default:
-              navigateTo("/unauthorize");
-              break;
+        // Validate token and user role
+        const response = await axios.get(
+          "https://localhost:7070/api/Auth/checkAccess",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
+        );
+
+        // Ensure the user's role matches the required role
+        if (
+          response.status === 200 &&
+          response.data === userId &&
+          requiredRole.includes(userRole)
+        ) {
+          setAuthenticated(true);
         } else {
-          navigateTo("/unauthorize");
+          navigateTo("/unauthorize"); // Redirect if role doesn't match
         }
       } catch (error) {
         console.error("Authentication check failed:", error);
-        navigateTo("/unauthorize");
+        navigateTo("/unauthorize"); // Redirect if there's an error
       }
     };
 
@@ -59,6 +51,7 @@ const Protect = ({ children, requiredRole }) => {
 
   return authenticated ? <>{children}</> : null;
 };
+
 
 const RedirectIfAuthenticated = ({ children }) => {
   const navigateTo = useNavigate();

@@ -242,8 +242,9 @@ namespace HealthCarePersistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    DateOfBirth = table.Column<DateOnly>(type: "date", nullable: true),
-                    MedicalHistory = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    DateOfBirth = table.Column<DateOnly>(type: "date", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -284,7 +285,7 @@ namespace HealthCarePersistence.Migrations
                 name: "BookAppointments",
                 columns: table => new
                 {
-                    AppointmentId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PatientId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -295,7 +296,7 @@ namespace HealthCarePersistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookAppointments", x => x.AppointmentId);
+                    table.PrimaryKey("PK_BookAppointments", x => x.Id);
                     table.ForeignKey(
                         name: "FK_BookAppointments_Doctors_DoctorId",
                         column: x => x.DoctorId,
@@ -308,6 +309,29 @@ namespace HealthCarePersistence.Migrations
                         principalTable: "Patients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AppointmentId = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Payments_BookAppointments_AppointmentId",
+                        column: x => x.AppointmentId,
+                        principalTable: "BookAppointments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -323,7 +347,7 @@ namespace HealthCarePersistence.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName" },
-                values: new object[] { "25160704-4676-4ea0-8bf2-cffbfea196db", 0, "3dc72d79-6dec-46ce-9081-2b06b8799535", new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8970), "aayushadhikari601@gmail.com", true, "Admin", false, null, "AAYUSHADHIKARI601@GMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEJcqnQkz0l/nJzazHynh8CliIDsF0dyB9QJ/pzeiNF8NGYohhhTohnY4J6iK2Wqhmg==", "9827102964", false, "edbbe9f0-bafa-4c74-92cd-5248ba996d29", false, new DateTime(2024, 12, 24, 19, 57, 23, 346, DateTimeKind.Utc).AddTicks(8978), "Admin" });
+                values: new object[] { "25160704-4676-4ea0-8bf2-cffbfea196db", 0, "d1f87446-92e2-4004-ad0e-1aeba52dd415", new DateTime(2025, 1, 11, 11, 10, 8, 616, DateTimeKind.Utc).AddTicks(5346), "aayushadhikari601@gmail.com", true, "Admin", false, null, "AAYUSHADHIKARI601@GMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEMxsz5lQkH63r6DrulXEmCw15cKVMVUVaNUYkgFvqGxjj5UXd0CvRFCBCZSZKCpmMQ==", "9827102964", false, "936c71d4-1493-457b-9dcb-18b8eb67ed37", false, new DateTime(2025, 1, 11, 11, 10, 8, 616, DateTimeKind.Utc).AddTicks(5351), "Admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -393,6 +417,11 @@ namespace HealthCarePersistence.Migrations
                 name: "IX_Otps_UserId",
                 table: "Otps",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Payments_AppointmentId",
+                table: "Payments",
+                column: "AppointmentId");
         }
 
         /// <inheritdoc />
@@ -414,9 +443,6 @@ namespace HealthCarePersistence.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "BookAppointments");
-
-            migrationBuilder.DropTable(
                 name: "DoctorAdditionalInfos");
 
             migrationBuilder.DropTable(
@@ -426,13 +452,19 @@ namespace HealthCarePersistence.Migrations
                 name: "Otps");
 
             migrationBuilder.DropTable(
+                name: "Payments");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Patients");
+                name: "BookAppointments");
 
             migrationBuilder.DropTable(
                 name: "Doctors");
+
+            migrationBuilder.DropTable(
+                name: "Patients");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

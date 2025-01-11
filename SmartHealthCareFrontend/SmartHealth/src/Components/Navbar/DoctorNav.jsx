@@ -16,6 +16,8 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doct
     window.location.href = "/";
   };
 
+
+
   console.log("Doctor Fee:", doctorData?.data.doctor.fullName); 
 
   

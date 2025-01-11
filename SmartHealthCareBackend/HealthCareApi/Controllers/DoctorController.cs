@@ -3,6 +3,7 @@ using HealthCareApplication.Dtos.AvailabilityDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Dtos.UserDtoo;
 using HealthCareDomain.IServices;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -117,6 +118,7 @@ namespace HealthCareApi.Controllers
 
         [HttpGet("GetLoginDoctorData")]
         [Authorize(AuthenticationSchemes = "Bearer")]
+
         public async Task<IActionResult> GetLoginDoctorData()
         {
             var user = HttpContext.User.FindFirst("userId");
@@ -131,6 +133,10 @@ namespace HealthCareApi.Controllers
             }
 
             return NotFound();
+
+            
+
+         
 
 
         }
