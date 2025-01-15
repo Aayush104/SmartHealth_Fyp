@@ -1,4 +1,6 @@
-﻿using HealthCareDomain.Entity.Appointment;
+﻿using HealthCareDomain.Contract.ContractDto;
+using HealthCareDomain.Entity.Appointment;
+using HealthCareDomain.Entity.Doctors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +13,6 @@ namespace HealthCareDomain.IRepository
     {
         Task <int> BookAppointment(BookAppointment bookappoinment);
         Task<bool> Paymentasync(Payment payment);
+       Task <IAsyncEnumerable<BookAppointment>> GetListByIdAsync(string Id);
     }
 }

@@ -32,7 +32,7 @@ namespace HealthCarePersistence.Repository
 
             // Fetch doctor availability slots
             var slots = await _dbContext.DoctorAvailabilities
-                .Where(x => x.DoctorId == userId && !x.IsBooked) // Exclude booked slots
+                .Where(x => x.DoctorId == userId && !x.IsBooked) //  Exclude booked slots
                 .Where(x => x.Date >= currentDateTime.Date) // Include slots for today and in the future
                 .ToListAsync(); // Fetch the data to memory
 

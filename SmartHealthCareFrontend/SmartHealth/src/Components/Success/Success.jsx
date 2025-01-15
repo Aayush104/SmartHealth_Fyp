@@ -129,7 +129,7 @@ const [doctorName, setDoctorName] = useState("");
           <div className="mb-6">
             <p className="text-gray-700">Hello {userName},</p>
             <p className="text-gray-600 mt-2">
-              Thanks for booking an appointment on Practo. Here are the details of your
+              Thanks for booking an appointment on Smart Health. Here are the details of your
               appointment:
             </p>
           </div>

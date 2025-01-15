@@ -9,6 +9,7 @@ import { TbLogout2 } from "react-icons/tb";
 import { MdEventAvailable } from "react-icons/md";
 import { RiCalendarScheduleFill } from "react-icons/ri";
 import Cookies from 'js-cookie';
+import { NavLink } from 'react-router-dom';
 
 const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doctorData}) => {
   const handleLogout = () => {
@@ -33,10 +34,12 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doct
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-8">
        
+       <NavLink to = "/DoctorAppointments">
           <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
             <RiCalendarScheduleFill className="text-3xl mt-1 group-hover:text-sky-400" />
             <span className="mt-1">Appointments</span>
           </li>
+          </NavLink>
           <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
             <IoIosNotifications className="text-3xl mt-1 group-hover:text-sky-400" />
             <span className="mt-1">Notifications</span>

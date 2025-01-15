@@ -19,11 +19,7 @@ namespace HealthCareApplication.Features.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IDataProtector _dataProtector;
 
-        public AppointmentService(UserManager<ApplicationUser> userManager,
-            IBookAppointmentRepository bookAppointmentRepository,
-            IDoctorAvailabilityRepository doctorAvailabilityRepository,
-            DataSecurityProvider securityProvider,
-            IDataProtectionProvider dataProtector)
+        public AppointmentService(UserManager<ApplicationUser> userManager, IBookAppointmentRepository bookAppointmentRepository,IDoctorAvailabilityRepository doctorAvailabilityRepository, DataSecurityProvider securityProvider, IDataProtectionProvider dataProtector)
         {
             _bookAppointmentRepository = bookAppointmentRepository;
             _doctorAvailabilityRepository = doctorAvailabilityRepository;
@@ -138,6 +134,42 @@ namespace HealthCareApplication.Features.Services
             catch (Exception ex)
             {
                 // Log exception (if logging is set up)
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
+        public async Task<ApiResponseDto> GetAppointmentListAsync(string userId)
+        {
+            try
+            {
+                var getlistById = await _bookAppointmentRepository.GetListByIdAsync(userId);
+                
+                if(getlistById == null)
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = false,
+                        Message = $"Not Found",
+                        StatusCode = 400
+                    };
+                }
+
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Message = "Successs",
+                    StatusCode = 200,
+                    Data = getlistById
+                };
+            }
+            catch (Exception ex)
+            {
+
                 return new ApiResponseDto
                 {
                     IsSuccess = false,

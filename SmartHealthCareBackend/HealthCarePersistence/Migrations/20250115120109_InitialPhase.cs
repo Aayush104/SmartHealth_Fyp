@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HealthCarePersistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialPhase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -290,7 +290,7 @@ namespace HealthCarePersistence.Migrations
                     DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PatientId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AppointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Slot = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Slot = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PaymentStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
@@ -320,8 +320,8 @@ namespace HealthCarePersistence.Migrations
                     AppointmentId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PaymentMethod = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -347,7 +347,7 @@ namespace HealthCarePersistence.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName" },
-                values: new object[] { "25160704-4676-4ea0-8bf2-cffbfea196db", 0, "d1f87446-92e2-4004-ad0e-1aeba52dd415", new DateTime(2025, 1, 11, 11, 10, 8, 616, DateTimeKind.Utc).AddTicks(5346), "aayushadhikari601@gmail.com", true, "Admin", false, null, "AAYUSHADHIKARI601@GMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEMxsz5lQkH63r6DrulXEmCw15cKVMVUVaNUYkgFvqGxjj5UXd0CvRFCBCZSZKCpmMQ==", "9827102964", false, "936c71d4-1493-457b-9dcb-18b8eb67ed37", false, new DateTime(2025, 1, 11, 11, 10, 8, 616, DateTimeKind.Utc).AddTicks(5351), "Admin" });
+                values: new object[] { "25160704-4676-4ea0-8bf2-cffbfea196db", 0, "dc48a8e3-6caa-48c7-9a62-ea9c2c668a55", new DateTime(2025, 1, 15, 12, 1, 7, 87, DateTimeKind.Utc).AddTicks(4629), "aayushadhikari601@gmail.com", true, "Admin", false, null, "AAYUSHADHIKARI601@GMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEC45wYGF/T0d/3yvYCJ2E4/0aitV1fm7rHj3JMvtJ7iHHerAstM+4TDPri97ROeXwA==", "9827102964", false, "921b9bba-eb80-4b7c-be95-f6822085d6c3", false, new DateTime(2025, 1, 15, 12, 1, 7, 87, DateTimeKind.Utc).AddTicks(4639), "Admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

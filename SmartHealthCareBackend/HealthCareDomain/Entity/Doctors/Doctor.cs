@@ -11,9 +11,9 @@ namespace HealthCareDomain.Entity.Doctors
     {
         [Key]
         [ForeignKey("User")]
-        public string Id { get; set; }
+        public string Id { get; set; } // Primary key
 
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         [Required]
         public string Specialization { get; set; }
@@ -42,11 +42,9 @@ namespace HealthCareDomain.Entity.Doctors
         public string? Description { get; set; }
         public string? Fee { get; set; }
 
-        // Navigation Properties
         public virtual ICollection<DoctorAvailability> AvailabilityList { get; set; } = new List<DoctorAvailability>();
         public virtual ICollection<BookAppointment> BookAppointments { get; set; } = new List<BookAppointment>();
 
-
-
+     
     }
 }

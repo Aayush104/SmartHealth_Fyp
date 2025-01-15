@@ -460,7 +460,7 @@ const Login = () => {
                     <label htmlFor="email" className="block text-gray-700">
                       Email
                     </label>
-                    {failure && !email && <p className="text-red-500 text-sm">This field is required.</p>}
+                    
                     <input
                       type="email"
                       id="email"
@@ -468,12 +468,13 @@ const Login = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${failure && !email ? 'border-red-500 shake' : 'border-gray-300'} focus:ring-blue-500 transition-all duration-200`}
                     />
+                    {failure && !email && <p className="text-red-500 text-sm">This field is required.</p>}
                   </div>
                   <div className="mb-4 relative">
                     <label htmlFor="password" className="block text-gray-700">
                       Password
                     </label>
-                    {failure && !password && <p className="text-red-500 text-sm">This field is required.</p>}
+                  
                     <input
                       type={showPassword ? 'text' : 'password'}
                       id="password"
@@ -481,6 +482,7 @@ const Login = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${failure && !password ? 'border-red-500 shake' : 'border-gray-300'} focus:ring-blue-500 transition-all duration-200`}
                     />
+                      {failure && !password && <p className="text-red-500 text-sm">This field is required.</p>}
                     <span
                       onClick={handlePasswordToggle}
                       className="absolute right-3 top-10 transform -translate-y-1/2 cursor-pointer text-gray-600"

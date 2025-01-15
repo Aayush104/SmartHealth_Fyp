@@ -16,6 +16,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
+    "Method": "GetAppointmentList",
+    "RelativePath": "api/Appointment/GetAppointmentList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HealthCareApi.Controllers.AuthController",
     "Method": "CheckAccess",
     "RelativePath": "api/Auth/CheckAccess",

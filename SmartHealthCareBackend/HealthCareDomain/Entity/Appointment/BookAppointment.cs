@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using HealthCareDomain.Entity.Doctors;
@@ -11,21 +12,22 @@ namespace HealthCareDomain.Entity.Appointment
         [Key]
         public int Id { get; set; }
 
-     
         [Required]
         [ForeignKey("Doctor")]
         public string DoctorId { get; set; }
+        public virtual Doctor Doctor { get; set; }
 
-        
         [Required]
         [ForeignKey("Patient")]
         public string PatientId { get; set; }
+        public virtual Patient Patient { get; set; }
 
         [Required]
         public DateTime AppointmentDate { get; set; }
 
         [Required]
-        public string Slot { get; set; }  
+        [MaxLength(50)]
+        public string Slot { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -34,12 +36,6 @@ namespace HealthCareDomain.Entity.Appointment
         [Required]
         [MaxLength(50)]
         public string PaymentStatus { get; set; }
-
-    
-        public virtual Doctor Doctor { get; set; }
-
-        
-        public virtual Patient Patient { get; set; }
 
         public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
