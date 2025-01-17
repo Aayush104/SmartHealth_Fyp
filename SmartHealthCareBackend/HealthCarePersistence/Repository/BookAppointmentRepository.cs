@@ -3,8 +3,9 @@ using HealthCareDomain.Entity.Appointment;
 using HealthCareDomain.IRepository;
 using HealthCarePersistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
+using Sprache;
 using System;
-using System.Data.Entity;
+
 using System.Threading.Tasks;
 
 namespace HealthCarePersistence.Repository
@@ -39,14 +40,28 @@ namespace HealthCarePersistence.Repository
             }
         }
 
-        public async Task<IAsyncEnumerable<BookAppointment>> GetListByIdAsync(string Id)
-        
-{
-            return _dbContext.BookAppointments
-                             .Where(x => x.DoctorId == Id)
-                       
-                             .AsAsyncEnumerable();
+        public async Task<List<GetListById>> GetListByIdAsync(string Id)
+        {
+            
+            var result = await _dbContext.BookAppointments
+                .Where(x => x.DoctorId == Id) 
+                .Include(x => x.Patient)
+                .ThenInclude(patient => patient.User)   
+                .Select(appointment => new GetListById 
+                {
+                    AppointmentId = appointment.Id,
+                    PatientFullName = appointment.Patient.User.FullName, 
+                    AppointmentDate = appointment.AppointmentDate,
+                    Slot = appointment.Slot,
+                    Status = appointment.Status,
+                    PaymentStatus = appointment.PaymentStatus
+                })
+                .ToListAsync();
+
+            return result; 
         }
+
+        
         public async Task<bool> Paymentasync(Payment payment)
         {
             try

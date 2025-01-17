@@ -8,12 +8,15 @@ namespace HealthCareDomain.Contract.ContractDto
 {
     public class GetListById
     {
-        //public decimal Amount { get; set; }
+       
 
-        public string? PatientName { get; set; }
-        public string? StartTime { get; set; }
-        public DateTime? AppointmentDate { get; set; }
-        public string? PaymentStatus { get; set; }
-     
+        public int AppointmentId { get; set; }
+       
+        public string PatientFullName { get; set; }
+        public DateTime AppointmentDate { get; set; }
+        public string Slot { get; set; }
+        public string Status { get; set; }
+        public string PaymentStatus { get; set; }
+
     }
 }

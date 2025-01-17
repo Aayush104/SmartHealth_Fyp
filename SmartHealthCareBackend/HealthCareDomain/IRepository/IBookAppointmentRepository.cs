@@ -13,6 +13,6 @@ namespace HealthCareDomain.IRepository
     {
         Task <int> BookAppointment(BookAppointment bookappoinment);
         Task<bool> Paymentasync(Payment payment);
-       Task <IAsyncEnumerable<BookAppointment>> GetListByIdAsync(string Id);
+       Task <List<GetListById>> GetListByIdAsync(string Id);
     }
 }

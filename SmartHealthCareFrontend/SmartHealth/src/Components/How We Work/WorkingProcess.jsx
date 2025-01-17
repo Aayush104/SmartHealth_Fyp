@@ -3,19 +3,19 @@ import { motion } from 'framer-motion';
 
 const WorkingProcess = () => {
   return (
-    <div className="flex gap-12 mt-4 mb-10">
-      <div className="pl-28">
+    <div className="flex gap-12 flex-col items-center lg:flex-row lg:items-center  mt-4 mb-10 lg:mx-40 lg:gap-32">
+      <div className=" flex items-center justify-center ">
         <motion.img
           src="https://medidove-nextjs.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fabout-img.c26e62ed.jpg&w=1200&q=75"
           alt="About us"
-          className="rounded-lg shadow-sm shadow-gray-500 "
+          className="rounded-lg shadow-sm shadow-gray-500 w-full "
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         />
       </div>
 
-      <div className="mt-12">
+      <div className="mt-8">
         <motion.p
           className="text-gray-500 font-semibold capitalize text-xl"
           initial={{ opacity: 0, y: 20 }}
