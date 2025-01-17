@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 
 const DoctorAppointments = () => {
   const [appointments, setAppointments] = useState([]);
-  const [selectedAppointments, setSelectedAppointments] = useState([]); // State to hold selected appointments
   const token = Cookies.get("Token");
 
   // Fetch appointments from the backend
@@ -23,7 +22,7 @@ const DoctorAppointments = () => {
         );
         console.log("Appointments Data", response.data.data);
 
-        setAppointments(response.data.data); // Set fetched data in state
+        setAppointments(response.data.data.$values || []); // Handle nested $values array
       } catch (error) {
         console.error("Error fetching appointments", error);
       }
@@ -32,129 +31,55 @@ const DoctorAppointments = () => {
     fetchData();
   }, [token]);
 
-  // Function to select/deselect an appointment
-  const toggleSelectAppointment = (appointment) => {
-    setSelectedAppointments((prevSelected) => {
-      const exists = prevSelected.find(
-        (item) => item.appointmentId === appointment.id
-      );
-
-      if (exists) {
-        // Remove from selected if already exists
-        return prevSelected.filter(
-          (item) => item.appointmentId !== appointment.id
-        );
-      } else {
-        // Add to selected
-        return [
-          ...prevSelected,
-          { patientId: appointment.patientId, appointmentId: appointment.id },
-        ];
-      }
-    });
-  };
-
-  // Function to send selected appointments to the backend
-  const sendSelectedAppointments = async () => {
-    try {
-      const response = await axios.post(
-        "https://localhost:7070/api/Appointment/SendSelectedAppointments", // Replace with your API endpoint
-        { selectedAppointments },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("Response from backend:", response.data);
-      alert("Selected appointments sent successfully!");
-    } catch (error) {
-      console.error("Error sending selected appointments", error);
-      alert("Failed to send selected appointments");
-    }
-  };
-
   return (
     <div>
       <DoctorNav />
-      <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4">Doctor Appointments</h1>
 
-        <table className="table-auto w-full border border-gray-200">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="px-4 py-2 border">#</th>
-              <th className="px-4 py-2 border">Appointment ID</th>
-              <th className="px-4 py-2 border">Patient ID</th>
-              <th className="px-4 py-2 border">Doctor ID</th>
-              <th className="px-4 py-2 border">Appointment Date</th>
-              <th className="px-4 py-2 border">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {appointments.length > 0 ? (
-              appointments.map((appointment, index) => (
-                <tr key={appointment.id} className="text-center">
-                  <td className="px-4 py-2 border">{index + 1}</td>
-                  <td className="px-4 py-2 border">{appointment.id}</td>
-                  <td className="px-4 py-2 border">{appointment.patientId}</td>
-                  <td className="px-4 py-2 border">{appointment.doctorId}</td>
-                  <td className="px-4 py-2 border">
-                    {new Date(appointment.appointmentDate).toLocaleDateString()}
-                  </td>
-                  <td className="px-4 py-2 border">
-                    <button
-                      onClick={() => toggleSelectAppointment(appointment)}
-                      className={`${
-                        selectedAppointments.some(
-                          (item) => item.appointmentId === appointment.id
-                        )
-                          ? "bg-red-500"
-                          : "bg-blue-500"
-                      } text-white px-4 py-2 rounded`}
-                    >
-                      {selectedAppointments.some(
-                        (item) => item.appointmentId === appointment.id
-                      )
-                        ? "Deselect"
-                        : "Select"}
-                    </button>
+      <div className="container mx-auto my-8">
+        <h1 className="text-2xl font-bold text-center mb-4">Appointments</h1>
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="border border-gray-300 px-4 py-2">#</th>
+                <th className="border border-gray-300 px-4 py-2">Patient Name</th>
+                <th className="border border-gray-300 px-4 py-2">Date</th>
+                <th className="border border-gray-300 px-4 py-2">Slot</th>
+                <th className="border border-gray-300 px-4 py-2">Payment Status</th>
+                <th className="border border-gray-300 px-4 py-2">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {appointments.length > 0 ? (
+                appointments.map((appointment, index) => (
+                  <tr key={appointment.appointmentId} className="hover:bg-gray-100">
+                    <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {appointment.patientFullName}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {new Date(appointment.appointmentDate).toLocaleDateString()}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">{appointment.slot}</td>
+                    <td className="border border-gray-300 px-4 py-2">{appointment.paymentStatus}</td>
+                    <td className="border border-gray-300 px-4 py-2">{appointment.status}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td
+                    colSpan="6"
+                    className="text-center border border-gray-300 px-4 py-2"
+                  >
+                    No Appointments Found
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="6" className="text-center py-4 text-gray-500">
-                  No Appointments Found
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-
-        {/* Display selected appointments */}
-        {selectedAppointments.length > 0 && (
-          <div className="mt-4 p-4 bg-gray-100 border rounded">
-            <h2 className="text-lg font-bold mb-2">Selected Appointments</h2>
-            {selectedAppointments.map((item, index) => (
-              <p key={index}>
-                <strong>Patient ID:</strong> {item.patientId} |{" "}
-                <strong>Appointment ID:</strong> {item.appointmentId}
-              </p>
-            ))}
-          </div>
-        )}
-
-        {/* Button to send selected appointments */}
-        {selectedAppointments.length > 0 && (
-          <button
-            onClick={sendSelectedAppointments}
-            className="mt-4 bg-green-500 text-white px-4 py-2 rounded"
-          >
-            Send Selected Appointments
-          </button>
-        )}
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
+
       <Footer />
     </div>
   );
