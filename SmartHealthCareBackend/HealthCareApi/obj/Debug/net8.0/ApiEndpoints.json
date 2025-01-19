@@ -36,6 +36,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HealthCareApi.Controllers.ChatController",
+    "Method": "GetUserForChat",
+    "RelativePath": "api/Chat/GetUserForChat",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DoctorController",
     "Method": "AcceptDoctor",
     "RelativePath": "api/Doctor/AcceptDoctor/{email}",

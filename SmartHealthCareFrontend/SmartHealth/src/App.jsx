@@ -22,6 +22,7 @@ import ConfirmBooking from "./Components/ConfirmBooking/ConfirmBooking";
 import PrivateRoute from "./Components/Protected/PrivateRoute";
 import Success from "./Components/Success/Success";
 import DoctorAppointments from "./Pages/DoctorAppointments/DoctorAppointments";
+import Chat from "./Pages/Chat/Chat";
 
 const App = () => {
   return (
@@ -93,6 +94,7 @@ const App = () => {
         <Route path="//unauthorize" element={<UnAuthorized />} />
         <Route path="/searched_doctor" element={<SearchedDoctor />} />
         <Route path="/NotFound" element={<NotFound />} />
+        <Route path="/chat" element={<Chat/>} />
 
         <Route path="/Appointment" element={<Protect requiredRole={['Patient']}><PrivateRoute element={ConfirmBooking} /></Protect> } />
       

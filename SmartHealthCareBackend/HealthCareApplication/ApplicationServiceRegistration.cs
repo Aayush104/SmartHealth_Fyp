@@ -23,6 +23,7 @@ namespace HealthCareApplication
             services.AddScoped<IOtpService, OtpService>();
             services.AddScoped<IDoctorAvailabiltyService, DoctorAvailabilityService>();
             services.AddScoped<IAppointmentService, AppointmentService>();
+            services.AddScoped<IChatService, ChatService>();
             services.AddScoped<DataSecurityProvider>();
 
             services.AddSingleton<ITokenService, TokenService>();

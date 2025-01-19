@@ -38,7 +38,7 @@ const Navbar = () => {
   }, [menuOpen]);
 
 
-  //Yesley automatically resize flase gardinxa
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) { 
@@ -56,7 +56,9 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between p-4 bg-white shadow-md cursor-pointer relative">
       <NavLink to="/">
-        <img src={logo} alt="Medical Logo" className="w-44 cursor-pointer" />
+        <img src={logo} alt="Medical Logo" className={`cursor-pointer ${
+    icon ? 'w-28' : 'w-40'
+  }`}/>
       </NavLink>
 
       {/* Desktop menu */}

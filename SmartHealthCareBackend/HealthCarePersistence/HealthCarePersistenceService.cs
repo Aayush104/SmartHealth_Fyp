@@ -24,6 +24,7 @@ namespace HealthCarePersistence
             services.AddScoped<IOtpRepository, OtpRepository>();
             services.AddScoped<IDoctorAvailabilityRepository, DoctorAvailabilityRepository>();
             services.AddScoped<IBookAppointmentRepository, BookAppointmentRepository>();
+            services.AddScoped<IChatRepository, ChatRepository>();
             return services;
         }
     }

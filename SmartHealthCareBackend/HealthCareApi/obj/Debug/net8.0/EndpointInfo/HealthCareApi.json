@@ -60,6 +60,18 @@
         }
       }
     },
+    "/api/Chat/GetUserForChat": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Doctor/VerifyDoctor": {
       "get": {
         "tags": [
