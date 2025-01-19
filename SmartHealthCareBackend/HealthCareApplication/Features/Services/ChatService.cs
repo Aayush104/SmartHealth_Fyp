@@ -19,6 +19,43 @@ namespace HealthCareApplication.Features.Services
             _chatRepository = chatRepository;
         }
 
+        public async Task<ApiResponseDto> GetMessagesAsync(string senderId, string receiverId)
+        {
+            if (string.IsNullOrEmpty(senderId) || string.IsNullOrEmpty(receiverId))
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "One Of the Id not found",
+                    StatusCode = 404
+                };
+
+            }
+                try
+                {
+                var response = await _chatRepository.GetMessagesAsyncc(senderId, receiverId);
+
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Message = "Messages fetched successfully",
+                    StatusCode = 200,
+                    Data = response
+                };
+            }
+                catch (Exception ex)
+                {
+                    // Handle internal server errors
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = false,
+                        Message = $"Internal server error: {ex.Message}",
+                        StatusCode = 500
+                    };
+                }
+            }
+       
+
         public async Task<ApiResponseDto> GetUserListAsync(string Id, string role)
         {
             // Validate input parameters
@@ -37,7 +74,7 @@ namespace HealthCareApplication.Features.Services
                 // Check if the role is "Patient"
                 if (role.Equals("Patient", StringComparison.OrdinalIgnoreCase))
                 {
-                    var patients = await _chatRepository.GetPatientListAsync(Id); // Await the async call
+                    var patients = await _chatRepository.GetPatientListAsync(Id); 
 
                     return new ApiResponseDto
                     {
@@ -51,7 +88,7 @@ namespace HealthCareApplication.Features.Services
                 // Check if the role is "Doctor"
                 if (role.Equals("Doctor", StringComparison.OrdinalIgnoreCase))
                 {
-                    var doctors = await _chatRepository.GetDoctorListAsync(Id); // Await the async call
+                    var doctors = await _chatRepository.GetDoctorListAsync(Id); 
 
                     return new ApiResponseDto
                     {

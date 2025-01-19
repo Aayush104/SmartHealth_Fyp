@@ -99,6 +99,115 @@ namespace HealthCarePersistence.Migrations
                     b.ToTable("Payments");
                 });
 
+            modelBuilder.Entity("HealthCareDomain.Entity.Chat.Attachment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MessageId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UploadedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId");
+
+                    b.ToTable("Attachments");
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Chat.Conversation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReceiverId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Conversations");
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Chat.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("ConversationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MessageContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConversationId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Chat.MessageStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("MessageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("MessageStatuses");
+                });
+
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.Doctor", b =>
                 {
                     b.Property<string>("Id")
@@ -355,20 +464,20 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dc48a8e3-6caa-48c7-9a62-ea9c2c668a55",
-                            CreatedAt = new DateTime(2025, 1, 15, 12, 1, 7, 87, DateTimeKind.Utc).AddTicks(4629),
+                            ConcurrencyStamp = "5457d475-c6d0-426b-a2b6-4591766a6bdc",
+                            CreatedAt = new DateTime(2025, 1, 19, 15, 5, 11, 386, DateTimeKind.Utc).AddTicks(182),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC45wYGF/T0d/3yvYCJ2E4/0aitV1fm7rHj3JMvtJ7iHHerAstM+4TDPri97ROeXwA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOzkjfEzNkDrYPP5RYhmbCwI6xf5vksYVachTXa/3HQIzQltSEHuH9A8F6xIi46wHQ==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "921b9bba-eb80-4b7c-be95-f6822085d6c3",
+                            SecurityStamp = "cf9ee882-29ec-42ff-994a-0fecee714eca",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 1, 15, 12, 1, 7, 87, DateTimeKind.Utc).AddTicks(4639),
+                            UpdatedAt = new DateTime(2025, 1, 19, 15, 5, 11, 386, DateTimeKind.Utc).AddTicks(189),
                             UserName = "Admin"
                         });
                 });
@@ -563,6 +672,50 @@ namespace HealthCarePersistence.Migrations
                     b.Navigation("Appointment");
                 });
 
+            modelBuilder.Entity("HealthCareDomain.Entity.Chat.Attachment", b =>
+                {
+                    b.HasOne("HealthCareDomain.Entity.Chat.Message", "Message")
+                        .WithMany("Attachments")
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Message");
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Chat.Message", b =>
+                {
+                    b.HasOne("HealthCareDomain.Entity.Chat.Conversation", "Conversation")
+                        .WithMany("Messages")
+                        .HasForeignKey("ConversationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("HealthCareDomain.Entity.UserEntity.ApplicationUser", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Conversation");
+
+                    b.Navigation("Sender");
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Chat.MessageStatus", b =>
+                {
+                    b.HasOne("HealthCareDomain.Entity.Chat.Message", "Message")
+                        .WithMany("MessageStatuses")
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("HealthCareDomain.Entity.UserEntity.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Message");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.Doctor", b =>
                 {
                     b.HasOne("HealthCareDomain.Entity.UserEntity.ApplicationUser", "User")
@@ -672,6 +825,18 @@ namespace HealthCarePersistence.Migrations
             modelBuilder.Entity("HealthCareDomain.Entity.Appointment.BookAppointment", b =>
                 {
                     b.Navigation("Payments");
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Chat.Conversation", b =>
+                {
+                    b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("HealthCareDomain.Entity.Chat.Message", b =>
+                {
+                    b.Navigation("Attachments");
+
+                    b.Navigation("MessageStatuses");
                 });
 
             modelBuilder.Entity("HealthCareDomain.Entity.Doctors.Doctor", b =>

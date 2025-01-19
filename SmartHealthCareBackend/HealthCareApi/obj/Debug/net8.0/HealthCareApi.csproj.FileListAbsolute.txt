@@ -337,6 +337,7 @@ D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Deb
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.AssemblyInfoInputs.cache
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.AssemblyInfo.cs
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.csproj.CoreCompileInputs.cache
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.MvcApplicationPartsAssemblyInfo.cs
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.MvcApplicationPartsAssemblyInfo.cache
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.sourcelink.json
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\appsettings.Development.json
@@ -506,4 +507,3 @@ D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Deb
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.pdb
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.genruntimeconfig.cache
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\ref\HealthCareApi.dll
-D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.MvcApplicationPartsAssemblyInfo.cs

@@ -42,5 +42,28 @@ namespace HealthCareApi.Controllers
 
             return Ok(response);
         }
+
+
+
+        [HttpGet("GetMessages/{receiverId}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+
+
+        public async Task<IActionResult> GetMessages([FromRoute] string receiverId)
+        {
+            var userIdClaim = HttpContext.User.FindFirst("userId");
+            var senderId = userIdClaim.Value;
+
+            var conversation = await _chatService.GetMessagesAsync(senderId, receiverId);
+            if (conversation == null)
+            {
+                return NotFound("No Messages Found");
+            }
+
+            return Ok(conversation.Data);
+
+        }
+
     }
+
 }

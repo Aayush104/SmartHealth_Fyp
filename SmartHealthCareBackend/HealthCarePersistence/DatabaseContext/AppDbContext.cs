@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+
 using System.Threading;
 using System.Threading.Tasks;
 using HealthCareDomain.Entity.Appointment;
+using HealthCareDomain.Entity.Chat;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Otp;
 using HealthCareDomain.Entity.Patients;
@@ -25,6 +27,10 @@ namespace HealthCarePersistence.DatabaseContext
         public DbSet<DoctorAvailability> DoctorAvailabilities { get; set; }
         public DbSet<BookAppointment> BookAppointments { get; set; }
         public DbSet<DoctorAdditionalInfo> DoctorAdditionalInfos { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Conversation> Conversations { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<MessageStatus> MessageStatuses { get; set; }
         public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -74,6 +80,48 @@ namespace HealthCarePersistence.DatabaseContext
                 .WithMany(a => a.Payments)
                 .HasForeignKey(p => p.AppointmentId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            /// For Chat
+            /// 
+            modelBuilder.Entity<Attachment>()
+              .HasOne(a => a.Message)
+              .WithMany(m => m.Attachments)
+              .HasForeignKey(a => a.MessageId)
+              .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure Conversation
+            modelBuilder.Entity<Conversation>()
+                .HasMany(c => c.Messages)
+                .WithOne(m => m.Conversation)
+                .HasForeignKey(m => m.ConversationId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure Message
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Conversation)
+                .WithMany(c => c.Messages)
+                .HasForeignKey(m => m.ConversationId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany()
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Configure MessageStatus
+            modelBuilder.Entity<MessageStatus>()
+                .HasOne(ms => ms.Message)
+                .WithMany(m => m.MessageStatuses)
+                .HasForeignKey(ms => ms.MessageId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<MessageStatus>()
+                .HasOne(ms => ms.User)
+                .WithMany()
+                .HasForeignKey(ms => ms.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }

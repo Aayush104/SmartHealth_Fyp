@@ -37,6 +37,22 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.ChatController",
+    "Method": "GetMessages",
+    "RelativePath": "api/Chat/GetMessages/{receiverId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "receiverId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.ChatController",
     "Method": "GetUserForChat",
     "RelativePath": "api/Chat/GetUserForChat",
     "HttpMethod": "GET",

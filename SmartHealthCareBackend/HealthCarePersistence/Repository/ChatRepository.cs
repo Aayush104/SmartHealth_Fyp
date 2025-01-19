@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using HealthCareDomain.Contract.ContractDto.ChatDto;
+using HealthCareDomain.Entity.Chat;
 
 namespace HealthCarePersistence.Repository
 {
@@ -28,7 +30,8 @@ namespace HealthCarePersistence.Repository
                 .Select(x => new UserListDto
                 {
                     Id = x.Patient.User.Id,
-                    Name = x.Patient.User.FullName
+                    Name = x.Patient.User.FullName,
+                    
                 })
                 .GroupBy(x => x.Id) 
                 .Select(group => group.First()) 
@@ -37,7 +40,34 @@ namespace HealthCarePersistence.Repository
             return response;
         }
 
-        
+        public async Task<List<GetMessageDto>> GetMessagesAsyncc(string senderId, string receiverId)
+        {
+            var response = await _dbContext.Conversations
+                 .AsNoTracking()
+                .Include(c => c.Messages)
+                .FirstOrDefaultAsync(c =>
+                    (c.SenderId == senderId && c.ReceiverId == receiverId) ||
+                    (c.SenderId == receiverId && c.ReceiverId == senderId));
+
+            if (response != null)
+            {
+                var messageDtos = response.Messages
+                    .OrderBy(m => m.SentAt)
+                    .Select(m => new GetMessageDto
+                    {
+                        MessageId = m.Id, 
+                        MessageContent = m.MessageContent,
+                        SentAt = m.SentAt,
+                        SenderId = m.SenderId
+                    }).ToList();
+
+                return messageDtos;
+            }
+
+            return new List<GetMessageDto>();
+        }
+
+
         public async Task<List<UserListDto>> GetPatientListAsync(string userId)
         {
             var response = await _dbContext.BookAppointments
@@ -47,7 +77,8 @@ namespace HealthCarePersistence.Repository
                 .Select(x => new UserListDto
                 {
                     Id = x.Doctor.User.Id,
-                    Name = x.Doctor.User.FullName
+                    Name = x.Doctor.User.FullName,
+                    Profile = x.Doctor.Profile
                 })
                 .GroupBy(x => x.Id) 
                 .Select(group => group.First()) 
