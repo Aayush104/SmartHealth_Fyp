@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react'; 
 import { MessageCircle, PlusCircle, Send, Mic, Paperclip, Search } from 'lucide-react';
 import Navbar from '../../Components/Navbar/Navbar';
 import axios from 'axios';
@@ -6,14 +6,17 @@ import Cookies from "js-cookie";
 import DoctorNav from '../../Components/Navbar/DoctorNav';
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaRegCalendarCheck } from "react-icons/fa6";
+import * as signalR from '@microsoft/signalr';
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [userName, setuserName] = useState([]);
   const [isDoctor, setIsDoctor] = useState(false);
+  const [connection, setConnection] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [userId, setUserId] = useState(null); 
-  const [userProfile, setUserProfile] = useState("")
+  const [message, setMessage] = useState(""); // State to capture user input message
+  const messagesEndRef = useRef(null); // Reference to scroll to the bottom
 
   const token = Cookies.get("Token");
 
@@ -38,7 +41,6 @@ const Chat = () => {
         });
         console.log(response);
         setuserName(response.data.data.$values || []);
-       
       } catch (error) {
         console.error("Error fetching users for chat:", error);
       }
@@ -82,6 +84,82 @@ const Chat = () => {
   };
   
   const groupedMessages = groupMessagesByDate(messages);
+
+  // SignalR configuration
+  useEffect(() => {
+    const newConnection = new signalR.HubConnectionBuilder()
+      .withUrl('https://localhost:7070/hub', {
+        accessTokenFactory: () => token,
+        withCredentials: true,
+      })
+      .withAutomaticReconnect()
+      .build();
+
+    // Log different connection states
+    newConnection.onclose(() => {
+      console.log('SignalR connection closed');
+    });
+
+    newConnection.onreconnecting(() => {
+      console.log('SignalR reconnecting...');
+    });
+
+    newConnection.onreconnected(() => {
+      console.log('SignalR reconnected');
+    });
+
+    // Start the connection
+    newConnection.start()
+      .then(() => {
+        console.log('SignalR connected');
+        setConnection(newConnection);
+      })
+      .catch(err => {
+        console.error('SignalR connection error:', err);
+      });
+
+    // Cleanup function when the component unmounts
+    return () => {
+      if (newConnection) {
+        newConnection.stop()
+          .then(() => console.log('SignalR connection stopped'))
+          .catch(err => console.error('Error stopping SignalR connection:', err));
+      }
+    };
+  }, [token]);
+
+  useEffect(() => {
+    if (connection) {
+      console.log("receiver message")
+      connection.on('ReceiveMessage', (senderId, message) => {
+        setMessages(prevMessages => [...prevMessages, { senderId, messageContent: message, sentAt: new Date().toISOString() }]);
+      });
+    }
+  }, [connection]);
+
+  const sendMessage = async () => {
+    if (!message || !selectedUser?.id || !userId || !connection) {
+      console.log('Invalid parameters');
+      return;
+    }
+    if (connection && selectedUser.id && message) {
+      try {
+        // Call the backend to send the message
+        await connection.invoke('SendMessage', userId, selectedUser.id.toString(), message);
+        console.log('Message sent');
+        setMessage(''); // Clear input after sending the message
+      } catch (err) {
+        console.error('Error sending message:', err);
+      }
+    } else {
+      console.error('Invalid parameters');
+    }
+  };
+
+  // Scroll to the bottom whenever messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   return (
     <>
@@ -167,80 +245,63 @@ const Chat = () => {
           </div>
         ) : (
           <div className="flex-1 flex flex-col">
-          
             <div className="h-20 border-b flex gap-2  px-6  items-center">
-            <div className="w-12 h-12 rounded-full bg-sky-200 overflow-hidden">
-                    <img
-                      src={selectedUser.profile || placeholderImage}
-                      alt="User profile"
-                      className="w-12 h-12 object-cover"
-                    />
-                  </div>
-                  {isDoctor ? (
-                      <p className="text-xl font-medium">{selectedUser.name}</p>
-                    ) : (
-                      <p className="text-xl font-medium">Dr. {selectedUser.name}</p>
-                    )}
-            </div>
-
-        
-            <div className="flex-1 overflow-y-auto p-6 space-y-4">
-            
-
-{Object.entries(groupedMessages).map(([date, dailyMessages]) => (
-  <div key={date}>
-    <div className="text-center my-4">
-      <h3 className="text-sm font-semibold text-gray-600">{date}</h3>
-    </div>
-
-    {/* Display Messages for this Date */}
-    {dailyMessages.map((message) => (
-      <div
-        key={message.id}
-        className={`flex ${message.senderId === userId ? 'justify-end' : 'justify-start'}`}
-      >
-        <div
-          className={`max-w-md p-4 rounded-lg ${
-            message.senderId === userId
-              ? 'bg-sky-500 border text-white'
-              : 'bg-gray-100 border text-gray-800'
-          }`}
-        >
-          <p>{message.messageContent}</p>
-          <span className="text-xs opacity-75 mt-1 block">
-            {new Date(message.sentAt).toLocaleTimeString('en-US', {
-              hour: '2-digit',
-              minute: '2-digit',
-              hour12: true,
-            })}
-          </span>
-        </div>
-      </div>
-    ))}
-  </div>
-))}
-
-            </div>
-
-            {/* Input Area */}
-            <div className="h-20 border-t p-4">
-              <div className="flex items-center space-x-4">
-                <button className="p-2 hover:bg-gray-100 rounded-full">
-                  <Paperclip className="w-4 h-4 text-gray-500" />
-                </button>
-                <input
-                  type="text"
-                  className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Type a message..."
+              <div className="w-12 h-12 rounded-full bg-sky-200 overflow-hidden">
+                <img
+                  src={selectedUser.profile || placeholderImage}
+                  alt="User profile"
+                  className="w-12 h-12 object-cover"
                 />
-                <button className="p-2 hover:bg-gray-100 rounded-full">
-                  <Mic className="w-4 h-4 text-gray-500" />
-                </button>
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 flex items-center space-x-2">
-                  <Send className="w-4 h-4" />
-                  <span>Send</span>
-                </button>
               </div>
+              {isDoctor ? (
+                <p className="text-xl font-medium">{selectedUser.name}</p>
+              ) : (
+                <p className="text-xl font-medium">Dr. {selectedUser.name}</p>
+              )}
+            </div>
+
+            {/* Chat messages */}
+            <div className="flex-1 overflow-auto p-6">
+              {Object.keys(groupedMessages).map((date) => (
+                <div key={date} className="mb-4">
+                  <p className="text-xs font-semibold text-center text-gray-500">{date}</p>
+                  <div className="space-y-4">
+                    {groupedMessages[date].map((message, index) => (
+                      <div key={index} className="flex gap-2">
+                        <div className={`flex items-center ${message.senderId === userId ? 'ml-auto' : ''}`}>
+                          <div
+                            className={`p-3 max-w-xs rounded-lg text-white ${
+                              message.senderId === userId ? 'bg-sky-500' : 'bg-cyan-500'
+                            }`}
+                          >
+                            {message.messageContent}
+                            <p className="text-xs text-right opacity-60">{new Date(message.sentAt).toLocaleTimeString()}</p>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Message Input */}
+            <div className="flex items-center p-4 bg-white shadow-md border-t">
+              <input
+                type="text"
+                placeholder="Type a message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-300"
+              />
+              <button
+                onClick={sendMessage}
+                className="ml-2 text-blue-600"
+              >
+                <Send />
+              </button>
             </div>
           </div>
         )}

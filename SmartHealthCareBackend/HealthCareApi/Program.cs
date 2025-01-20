@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using DotNetEnv;
 using HealthCareInfrastructure;
 using Microsoft.OpenApi.Models;
+using HealthCareApi.Chathub;
 
 Env.Load(); // Load environment variables
 var builder = WebApplication.CreateBuilder(args);
@@ -13,11 +14,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add controllers and configure JSON serialization options
 builder.Services.AddControllers()
+
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
         options.JsonSerializerOptions.MaxDepth = 64;
     });
+
+builder.Services.AddSignalR(); // Adding SignalR services
 
 // Register HttpClient for Dependency Injection
 builder.Services.AddHttpClient();
@@ -25,10 +29,12 @@ builder.Services.AddHttpClient();
 // Register CORS policy
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader());
+    options.AddPolicy("AllowSpecificOrigin",
+        corsBuilder => corsBuilder
+        .WithOrigins("http://localhost:5173") // Add your frontend URL here
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
 });
 
 // Add authorization and authentication
@@ -103,10 +109,11 @@ app.Use(async (context, next) =>
 });
 
 app.UseStaticFiles();
-app.UseCors("AllowAll"); // Apply the CORS policy globally
+app.UseCors("AllowSpecificOrigin"); // Apply the CORS policy globally
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+app.MapHub<ChatHub>("/hub");
 
 // Run the application
 app.Run();

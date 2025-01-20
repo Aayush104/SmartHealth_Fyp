@@ -507,3 +507,9 @@ D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Deb
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.pdb
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\HealthCareApi.genruntimeconfig.cache
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\obj\Debug\net8.0\ref\HealthCareApi.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

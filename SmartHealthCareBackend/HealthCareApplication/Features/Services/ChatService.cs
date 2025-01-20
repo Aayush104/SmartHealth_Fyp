@@ -1,5 +1,6 @@
 ﻿using HealthCareApplication.Contract.IService;
 using HealthCareApplication.Dtos.UserDto;
+using HealthCareDomain.Entity.Chat;
 using HealthCareDomain.Entity.Patients;
 using HealthCareDomain.IRepository;
 using System;
@@ -118,5 +119,44 @@ namespace HealthCareApplication.Features.Services
                 };
             }
         }
+
+        public async Task<Message> SendMessageAsync(string senderId, string receiverId, string message)
+        {
+           
+          
+
+            // Check if a conversation exists indirectly via GetMessagesAsyncc
+            var conversation = await _chatRepository.GetConversationByParticipantsAsync(senderId, receiverId);
+
+            if (conversation == null)
+            {
+                // If no messages exist, create a new conversation
+                conversation = new Conversation
+                {
+                    SenderId = senderId,
+                    ReceiverId = receiverId,
+                    CreatedAt = DateTime.Now
+                };
+
+                await _chatRepository.CreateConversationAsync(conversation);
+            }
+            
+
+            
+            var newMessage = new Message
+            {
+                ConversationId = conversation.Id,
+                SenderId = senderId,
+                MessageContent = message,
+                SentAt = DateTime.Now
+            };
+
+            // Save the new message
+            await _chatRepository.CreateMessageAsync(newMessage);
+
+            return newMessage;
+        }
     }
+
 }
+

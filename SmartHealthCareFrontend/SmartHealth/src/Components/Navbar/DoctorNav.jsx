@@ -45,11 +45,12 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doct
             <span className="mt-1">Notifications</span>
           </li>
 
-  
+<NavLink to= "/chat">  
           <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
             <FaRegMessage className="text-2xl mt-1.5 group-hover:text-sky-400" />
             <span className="mt-1">Messages</span>
           </li>
+</NavLink>
 
         
           <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400" onClick={onAvailabilityClick}>

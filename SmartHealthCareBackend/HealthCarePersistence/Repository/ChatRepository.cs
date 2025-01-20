@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthCareDomain.Contract.ContractDto.ChatDto;
 using HealthCareDomain.Entity.Chat;
+//using System.Data.Entity;
 
 namespace HealthCarePersistence.Repository
 {
@@ -20,7 +21,21 @@ namespace HealthCarePersistence.Repository
             _dbContext = dbContext;
         }
 
-    
+        public async  Task CreateConversationAsync(Conversation conversation)
+        {
+            await _dbContext.Conversations.AddAsync(conversation);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Message> CreateMessageAsync(Message message)
+        {
+            await _dbContext.Messages.AddAsync(message);
+            await _dbContext.SaveChangesAsync();
+            return message;
+        }
+
+       
+
         public async Task<List<UserListDto>> GetDoctorListAsync(string userId)
         {
             var response = await _dbContext.BookAppointments
@@ -85,6 +100,16 @@ namespace HealthCarePersistence.Repository
                 .ToListAsync();
 
             return response;
+        }
+
+
+        public async Task<Conversation> GetConversationByParticipantsAsync(string senderId, string receiverId)
+        {
+            var conversation = await _dbContext.Conversations
+        .Where(c => (c.SenderId == senderId && c.ReceiverId == receiverId) || (c.SenderId == receiverId && c.ReceiverId == senderId))
+        .FirstOrDefaultAsync();
+
+            return conversation;
         }
     }
 }
