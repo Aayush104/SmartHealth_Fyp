@@ -7,18 +7,22 @@ import DoctorNav from '../../Components/Navbar/DoctorNav';
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaRegCalendarCheck } from "react-icons/fa6";
 import * as signalR from '@microsoft/signalr';
+import sendsounds from '../../Assets/Music/SendSound.mp3';
+
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
-  const [userName, setuserName] = useState([]);
+  const [userName, setUserName] = useState([]);
   const [isDoctor, setIsDoctor] = useState(false);
   const [connection, setConnection] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [userId, setUserId] = useState(null); 
-  const [message, setMessage] = useState(""); // State to capture user input message
-  const messagesEndRef = useRef(null); // Reference to scroll to the bottom
+  const [message, setMessage] = useState(""); 
+  const [isEmptyConvo, setisEmptyConvo] = useState(false);
+  const messagesEndRef = useRef(null); 
 
   const token = Cookies.get("Token");
+  const sendSound = new Audio(sendsounds);
 
   useEffect(() => {
     if (!token) return;
@@ -40,7 +44,19 @@ const Chat = () => {
           },
         });
         console.log(response);
-        setuserName(response.data.data.$values || []);
+
+        const usersWithLastMessage = await Promise.all(response.data.data.$values.map(async (user) => {
+          const messageResponse = await axios.get(`https://localhost:7070/api/Chat/GetMessages/${user.id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          const lastMessage = messageResponse.data.$values && messageResponse.data.$values.length > 0
+            ? messageResponse.data.$values[messageResponse.data.$values.length - 1]
+            : setisEmptyConvo(true);
+          return { ...user, lastMessage };
+        }));
+        setUserName(usersWithLastMessage || []);
       } catch (error) {
         console.error("Error fetching users for chat:", error);
       }
@@ -67,6 +83,13 @@ const Chat = () => {
   };
 
   const placeholderImage = "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg";
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); 
+      sendMessage();
+    }
+  };
 
   const groupMessagesByDate = (messages) => {
     return messages.reduce((acc, message) => {
@@ -95,7 +118,6 @@ const Chat = () => {
       .withAutomaticReconnect()
       .build();
 
-    // Log different connection states
     newConnection.onclose(() => {
       console.log('SignalR connection closed');
     });
@@ -108,7 +130,6 @@ const Chat = () => {
       console.log('SignalR reconnected');
     });
 
-    // Start the connection
     newConnection.start()
       .then(() => {
         console.log('SignalR connected');
@@ -118,7 +139,6 @@ const Chat = () => {
         console.error('SignalR connection error:', err);
       });
 
-    // Cleanup function when the component unmounts
     return () => {
       if (newConnection) {
         newConnection.stop()
@@ -130,12 +150,26 @@ const Chat = () => {
 
   useEffect(() => {
     if (connection) {
-      console.log("receiver message")
       connection.on('ReceiveMessage', (senderId, message) => {
+        // Update the last message for the user in the sidebar
         setMessages(prevMessages => [...prevMessages, { senderId, messageContent: message, sentAt: new Date().toISOString() }]);
+
+        setisEmptyConvo(false)
+        // Update the recent message for the sender/receiver
+        setUserName((prevUserName) => {
+          return prevUserName.map((user) => {
+            if (user.id === senderId || user.id === userId) {
+              return {
+                ...user,
+                lastMessage: { senderId, messageContent: message }
+              };
+            }
+            return user;
+          });
+        });
       });
     }
-  }, [connection]);
+  }, [connection, userId]);
 
   const sendMessage = async () => {
     if (!message || !selectedUser?.id || !userId || !connection) {
@@ -144,10 +178,20 @@ const Chat = () => {
     }
     if (connection && selectedUser.id && message) {
       try {
-        // Call the backend to send the message
         await connection.invoke('SendMessage', userId, selectedUser.id.toString(), message);
         console.log('Message sent');
-        setMessage(''); // Clear input after sending the message
+        sendSound.play();
+        setisEmptyConvo(false)
+        // Update the recent message for the selected user
+        setUserName(prevUserName => {
+          return prevUserName.map(user => {
+            if (user.id === selectedUser.id) {
+              return { ...user, lastMessage: { senderId: userId, messageContent: message } };
+            }
+            return user;
+          });
+        });
+        setMessage('');
       } catch (err) {
         console.error('Error sending message:', err);
       }
@@ -156,7 +200,6 @@ const Chat = () => {
     }
   };
 
-  // Scroll to the bottom whenever messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
@@ -197,15 +240,19 @@ const Chat = () => {
                     />
                   </div>
                   <div className="flex-1">
-                    {isDoctor ? (
-                      <p className="text-md font-medium">{user.name}</p>
-                    ) : (
-                      <p className="text-md font-medium">Dr. {user.name}</p>
-                    )}
-                    <p className="text-xs opacity-80">{user.message || "No recent message"}</p>
-                  </div>
-                </div>
-              ))}
+                  {isDoctor ? (
+                       <p className="text-lg font-medium">{user.name}</p>
+                     ) : (
+                       <p className="text-lg font-medium">Dr. {user.name}</p>
+                     )}
+                     <p
+                       className={`text-sm opacity-90 ${user.lastMessage && user.lastMessage.senderId !== userId ? 'font-bold text-md' : ''}`}
+                     >
+                       {user.lastMessage ? user.lastMessage.messageContent : "No recent message"}
+                     </p>
+                   </div>
+                 </div>
+               ))}
             </div>
           </div>
         </div>
@@ -261,7 +308,24 @@ const Chat = () => {
             </div>
 
             {/* Chat messages */}
-            <div className="flex-1 overflow-auto p-6">
+
+            {
+              isEmptyConvo ? 
+
+<div className="flex-1 flex flex-col justify-center items-center space-y-6 p-8 bg-gradient-to-b from-blue-50 to-white">
+  <div className="flex flex-col items-center space-y-4">
+    <div className="bg-blue-100 p-4 rounded-full">
+      <MessageCircle className="w-12 h-12 text-blue-600" />
+    </div>
+    <h2 className="text-3xl font-bold text-gray-800">Let's Get Chatting!</h2>
+    <p className="text-lg text-gray-600 text-center">Your next great conversation starts here. Connect, share, and explore!</p>
+  </div>
+
+  <p className="text-sm text-gray-500 mt-6">Smart Health is here to simplify your life. Start your journey towards better living today!</p>
+</div>
+
+:(
+                <div className="flex-1 overflow-auto p-6">
               {Object.keys(groupedMessages).map((date) => (
                 <div key={date} className="mb-4">
                   <p className="text-xs font-semibold text-center text-gray-500">{date}</p>
@@ -286,15 +350,18 @@ const Chat = () => {
               ))}
               <div ref={messagesEndRef} />
             </div>
+              )
+            }
+            
 
-            {/* Message Input */}
             <div className="flex items-center p-4 bg-white shadow-md border-t">
               <input
                 type="text"
                 placeholder="Type a message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-300"
+                onKeyDown={handleKeyDown}
+                className="w-full flex flex-wrap p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-300"
               />
               <button
                 onClick={sendMessage}

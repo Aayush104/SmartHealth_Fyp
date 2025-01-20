@@ -228,8 +228,7 @@
               "RelativeToolTip": "HealthCareApi\\Chathub\\ChatHub.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T04:01:48.445Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-20T04:01:48.445Z"
             },
             {
               "$type": "Document",
@@ -241,8 +240,7 @@
               "RelativeToolTip": "HealthCarePersistence\\Repository\\ChatRepository.cs",
               "ViewState": "AgIAAFkAAAAAAAAAAAAswGkAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T07:26:33.51Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T07:26:33.51Z"
             },
             {
               "$type": "Document",
@@ -254,8 +252,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\ChatService.cs",
               "ViewState": "AgIAAJEAAAAAAAAAAAAkwKEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T07:13:37.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T07:13:37.505Z"
             },
             {
               "$type": "Document",
@@ -267,8 +264,7 @@
               "RelativeToolTip": "HealthCareDomain\\IRepository\\IChatRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T07:20:05.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T07:20:05.266Z"
             },
             {
               "$type": "Document",
@@ -280,8 +276,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Chat\\Message.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAiwBMAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T12:28:13.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T12:28:13.856Z"
             },
             {
               "$type": "Document",
@@ -293,8 +288,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Chat\\Conversation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T12:28:00.13Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T12:28:00.13Z"
             },
             {
               "$type": "Document",
@@ -304,7 +298,7 @@
               "RelativeDocumentMoniker": "HealthCareApi\\Program.cs",
               "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Program.cs",
               "RelativeToolTip": "HealthCareApi\\Program.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGkAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGMAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-19T14:50:32.536Z",
               "EditorCaption": ""
@@ -323,8 +317,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAQwDAAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T07:17:52.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T07:17:52.089Z"
             },
             {
               "$type": "Document",
@@ -336,8 +329,7 @@
               "RelativeToolTip": "HealthCareApplication\\Contract\\IService\\IChatService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T06:55:22.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T06:55:22.057Z"
             },
             {
               "$type": "Document",
@@ -349,8 +341,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\DoctorAvailabilityService.cs",
               "ViewState": "AgIAAEgAAAAAAAAAAAAYwF0AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T08:15:45.16Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T08:15:45.16Z"
             },
             {
               "$type": "Document",
@@ -362,8 +353,7 @@
               "RelativeToolTip": "HealthCareApi\\Controllers\\ChatController.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAYwDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T06:41:06.541Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T06:41:06.541Z"
             },
             {
               "$type": "Document",
@@ -375,8 +365,7 @@
               "RelativeToolTip": "HealthCareApi\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T06:42:31.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T06:42:31.308Z"
             },
             {
               "$type": "Document",
@@ -388,8 +377,7 @@
               "RelativeToolTip": "HealthCareDomain\\Contract\\ContractDto\\ChatDto\\GetMessageDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T14:19:01.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T14:19:01.863Z"
             },
             {
               "$type": "Document",
@@ -401,8 +389,7 @@
               "RelativeToolTip": "HealthCarePersistence\\Repository\\BookAppointmentRepository.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAA2wDQAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-17T13:35:43.545Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-17T13:35:43.545Z"
             },
             {
               "$type": "Document",
@@ -414,8 +401,7 @@
               "RelativeToolTip": "HealthCareDomain\\Contract\\ContractDto\\ChatDto\\UserListDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T08:30:59.619Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T08:30:59.619Z"
             },
             {
               "$type": "Document",
@@ -427,8 +413,7 @@
               "RelativeToolTip": "HealthCarePersistence\\Migrations\\20250119150513_ChangeColumnName.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T15:05:14.122Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T15:05:14.122Z"
             },
             {
               "$type": "Document",
@@ -440,8 +425,7 @@
               "RelativeToolTip": "HealthCarePersistence\\Repository\\DoctorAvailabilityRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T14:51:13.438Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T14:51:13.438Z"
             },
             {
               "$type": "Document",
@@ -453,8 +437,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T14:53:58.957Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T14:53:58.957Z"
             },
             {
               "$type": "Document",
@@ -466,8 +449,7 @@
               "RelativeToolTip": "HealthCarePersistence\\Migrations\\20250119130131_ChatModel.cs",
               "ViewState": "AgIAAFUAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T13:01:31.362Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T13:01:31.362Z"
             },
             {
               "$type": "Document",
@@ -479,8 +461,7 @@
               "RelativeToolTip": "HealthCarePersistence\\DatabaseContext\\AppDbContext.cs",
               "ViewState": "AgIAAFsAAAAAAAAAAAAqwHcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T07:47:19.161Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T07:47:19.161Z"
             },
             {
               "$type": "Document",
@@ -492,8 +473,7 @@
               "RelativeToolTip": "HealthCareApplication\\Contract\\IService\\IAuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T06:56:06.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T06:56:06.725Z"
             },
             {
               "$type": "Document",
@@ -505,8 +485,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Chat\\MessageStatus.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAApwBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T12:28:28.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T12:28:28.647Z"
             },
             {
               "$type": "Document",
@@ -518,8 +497,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Chat\\Attachment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T12:27:46.701Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T12:27:46.701Z"
             },
             {
               "$type": "Document",
@@ -531,8 +509,7 @@
               "RelativeToolTip": "HealthCareInfrastructure\\InfrastructureServiceRegistration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T12:52:33.982Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T12:52:33.982Z"
             },
             {
               "$type": "Document",
@@ -544,8 +521,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Doctors\\Doctor.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAkwA8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T10:55:06.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T10:55:06.539Z"
             },
             {
               "$type": "Document",
@@ -557,8 +533,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Appointment\\BookAppointment.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAcwAsAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T10:54:32.921Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T10:54:32.921Z"
             },
             {
               "$type": "Document",
@@ -570,8 +545,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AppointmentService.cs",
               "ViewState": "AgIAAIQAAAAAAAAAAAAYwIgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T08:15:53.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T08:15:53.588Z"
             },
             {
               "$type": "Document",
@@ -583,8 +557,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\UserEntity\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T10:57:59.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T10:57:59.212Z"
             },
             {
               "$type": "Document",
@@ -596,8 +569,7 @@
               "RelativeToolTip": "HealthCarePersistence\\HealthCarePersistenceService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T08:25:42.355Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T08:25:42.355Z"
             },
             {
               "$type": "Document",
@@ -609,8 +581,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AdminService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T08:28:58.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T08:28:58.65Z"
             },
             {
               "$type": "Document",
@@ -622,8 +593,7 @@
               "RelativeToolTip": "HealthCareApplication\\ApplicationServiceRegistration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T08:25:13.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T08:25:13.926Z"
             },
             {
               "$type": "Document",
@@ -635,8 +605,7 @@
               "RelativeToolTip": "HealthCareDomain\\IRepository\\IBookAppointmentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-17T13:35:05.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-17T13:35:05.389Z"
             },
             {
               "$type": "Document",
@@ -648,8 +617,7 @@
               "RelativeToolTip": "HealthCareDomain\\IRepository\\IDoctorAvailabilityRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T07:43:37.236Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T07:43:37.236Z"
             },
             {
               "$type": "Document",
@@ -661,8 +629,7 @@
               "RelativeToolTip": "HealthCarePersistence\\Repository\\DoctorRepository.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAIBJwCUAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T07:23:49.742Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T07:23:49.742Z"
             },
             {
               "$type": "Document",
@@ -674,8 +641,7 @@
               "RelativeToolTip": "HealthCareApi\\Controllers\\DoctorController.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAAwC8AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T06:57:31.185Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T06:57:31.185Z"
             },
             {
               "$type": "Document",
@@ -687,8 +653,7 @@
               "RelativeToolTip": "HealthCareApi\\Controllers\\AdminController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T06:41:11.898Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T06:41:11.898Z"
             },
             {
               "$type": "Document",
@@ -700,8 +665,7 @@
               "RelativeToolTip": "HealthCareApi\\Controllers\\UserController.cs",
               "ViewState": "AgIAAEsAAAAAAAAAAAAowFcAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T06:40:15.448Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T06:40:15.448Z"
             },
             {
               "$type": "Document",
@@ -713,8 +677,7 @@
               "RelativeToolTip": "HealthCareDomain\\Contract\\ContractDto\\GetListById.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-17T13:34:07.695Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-17T13:34:07.695Z"
             },
             {
               "$type": "Document",
@@ -726,8 +689,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Patients\\Patient.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-17T13:30:23.603Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-17T13:30:23.603Z"
             },
             {
               "$type": "Document",
@@ -739,8 +701,7 @@
               "RelativeToolTip": "HealthCarePersistence\\Migrations\\20250115120109_InitialPhase.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T12:01:10.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T12:01:10.147Z"
             },
             {
               "$type": "Document",
@@ -751,8 +712,7 @@
               "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\HealthCareApi.csproj",
               "RelativeToolTip": "HealthCareApi\\HealthCareApi.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-15T11:45:41.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T11:45:41.868Z"
             },
             {
               "$type": "Document",
@@ -764,8 +724,7 @@
               "RelativeToolTip": "HealthCareApi\\HealthCareApi.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-15T11:45:46.206Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T11:45:46.206Z"
             },
             {
               "$type": "Document",
@@ -777,8 +736,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Appointment\\Payment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAIBJwBYAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T10:54:16.412Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T10:54:16.412Z"
             },
             {
               "$type": "Document",
