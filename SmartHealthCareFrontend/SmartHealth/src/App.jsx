@@ -21,8 +21,9 @@ import DoctorProfile from "./Pages/DoctorProfile/DoctorProfile";
 import ConfirmBooking from "./Components/ConfirmBooking/ConfirmBooking";
 import PrivateRoute from "./Components/Protected/PrivateRoute";
 import Success from "./Components/Success/Success";
-import DoctorAppointments from "./Pages/DoctorAppointments/DoctorAppointments";
-import Chat from "./Pages/Chat/Chat";
+import DoctorAppointments from "./Pages/DoctorAppointmentsPage/DoctorAppointmentsPage";
+import ChatPage from "./Pages/ChatPage/ChatPage";
+
 
 const App = () => {
   return (
@@ -94,7 +95,14 @@ const App = () => {
         <Route path="//unauthorize" element={<UnAuthorized />} />
         <Route path="/searched_doctor" element={<SearchedDoctor />} />
         <Route path="/NotFound" element={<NotFound />} />
-        <Route path="/chat" element={<Chat/>} />
+       <Route
+  path="/chat"
+  element={
+    <Protect requiredRole={['Doctor', 'Patient']}>
+      <ChatPage />
+    </Protect>
+  }
+/>
 
         <Route path="/Appointment" element={<Protect requiredRole={['Patient']}><PrivateRoute element={ConfirmBooking} /></Protect> } />
       

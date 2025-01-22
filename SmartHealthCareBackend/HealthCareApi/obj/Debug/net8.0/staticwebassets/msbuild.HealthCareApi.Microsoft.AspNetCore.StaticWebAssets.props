@@ -594,6 +594,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Profile\073b4d9f-5bed-48b0-9a14-37f299d441be.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Profile\1ad2eced-3388-4ad5-aed5-54ce2887276a.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>HealthCareApi</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/HealthCareApi</BasePath>
+      <RelativePath>Profile/1ad2eced-3388-4ad5-aed5-54ce2887276a.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>5nkgfz2rdh</Fingerprint>
+      <Integrity>f3jPGtqDfqmcR6XufOEl3L2YWBQIf5PC1HO2gPbqXFs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Profile\1ad2eced-3388-4ad5-aed5-54ce2887276a.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Profile\1e4aa4eb-9392-4d18-bc1d-a064f47a9412.png'))">
       <SourceType>Package</SourceType>
       <SourceId>HealthCareApi</SourceId>
@@ -719,6 +737,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Profile\93211f08-733d-4c4d-ba93-7997b3381067.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Profile\9be8ce98-5618-4352-a158-17aa01d2a0f3.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>HealthCareApi</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/HealthCareApi</BasePath>
+      <RelativePath>Profile/9be8ce98-5618-4352-a158-17aa01d2a0f3.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>qdrkudv2pj</Fingerprint>
+      <Integrity>nmkO0Bp8vdl0IO3XPyq6QFCHnUTzcdT9LGhyjCEj5v4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Profile\9be8ce98-5618-4352-a158-17aa01d2a0f3.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Profile\a00efa9b-9669-4f43-968f-54933de8955a.png'))">
       <SourceType>Package</SourceType>

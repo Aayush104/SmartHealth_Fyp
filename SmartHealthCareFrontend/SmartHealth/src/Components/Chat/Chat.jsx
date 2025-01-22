@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'; 
 import { MessageCircle, PlusCircle, Send, Mic, Paperclip, Search } from 'lucide-react';
-import Navbar from '../../Components/Navbar/Navbar';
+import Navbar from '../Navbar/Navbar';
 import axios from 'axios';
 import Cookies from "js-cookie";
-import DoctorNav from '../../Components/Navbar/DoctorNav';
+import DoctorNav from '../Navbar/DoctorNav';
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaRegCalendarCheck } from "react-icons/fa6";
 import * as signalR from '@microsoft/signalr';
@@ -206,7 +206,7 @@ const Chat = () => {
 
   return (
     <>
-      {isDoctor ? <DoctorNav /> : <Navbar />}
+      {/* {isDoctor ? <DoctorNav /> : <Navbar />} */}
 
       <div className="flex h-[90vh] bg-gray-50">
         {/* Sidebar */}

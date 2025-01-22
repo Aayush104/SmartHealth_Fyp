@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapplication\\features\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\features\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|solutionrelative:healthcareapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{235337F8-86B0-44B6-8DC6-2C365017AAC9}|HealthCareDomain\\HealthCareDomain.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcaredomain\\irepository\\ichatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{235337F8-86B0-44B6-8DC6-2C365017AAC9}|HealthCareDomain\\HealthCareDomain.csproj|solutionrelative:healthcaredomain\\irepository\\ichatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapplication\\features\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\features\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapplication\\contract\\iservice\\ichatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -220,19 +220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Chathub\\ChatHub.cs",
-              "RelativeDocumentMoniker": "HealthCareApi\\Chathub\\ChatHub.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Chathub\\ChatHub.cs",
-              "RelativeToolTip": "HealthCareApi\\Chathub\\ChatHub.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T04:01:48.445Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ChatRepository.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\Repository\\ChatRepository.cs",
               "RelativeDocumentMoniker": "HealthCarePersistence\\Repository\\ChatRepository.cs",
@@ -244,7 +232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ChatService.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\ChatService.cs",
               "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\ChatService.cs",
@@ -256,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "IChatRepository.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\IRepository\\IChatRepository.cs",
               "RelativeDocumentMoniker": "HealthCareDomain\\IRepository\\IChatRepository.cs",
@@ -268,7 +256,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Message.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\Entity\\Chat\\Message.cs",
               "RelativeDocumentMoniker": "HealthCareDomain\\Entity\\Chat\\Message.cs",
@@ -280,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Conversation.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\Entity\\Chat\\Conversation.cs",
               "RelativeDocumentMoniker": "HealthCareDomain\\Entity\\Chat\\Conversation.cs",
@@ -292,32 +280,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Program.cs",
               "RelativeDocumentMoniker": "HealthCareApi\\Program.cs",
               "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Program.cs",
               "RelativeToolTip": "HealthCareApi\\Program.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGMAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-19T14:50:32.536Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "DoctorService.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\DoctorService.cs",
               "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
               "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\DoctorService.cs",
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwDAAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAPcAAAAAAAAAAAAtwAgBAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T07:17:52.089Z"
+              "WhenOpened": "2025-01-19T07:17:52.089Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Chathub\\ChatHub.cs",
+              "RelativeDocumentMoniker": "HealthCareApi\\Chathub\\ChatHub.cs",
+              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Chathub\\ChatHub.cs",
+              "RelativeToolTip": "HealthCareApi\\Chathub\\ChatHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T04:01:48.445Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
               "$type": "Document",

@@ -58,7 +58,7 @@ const DoctorAppointments = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <DoctorNav />
+     
       <div className="container mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-lg">
         <div className="border-b border-gray-200 p-6 mb-4">
