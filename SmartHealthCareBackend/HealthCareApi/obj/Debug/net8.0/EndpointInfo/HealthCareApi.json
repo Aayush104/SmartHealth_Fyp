@@ -36,6 +36,70 @@
         }
       }
     },
+    "/api/Appointment/paywithesewa": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Appointment/Success": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "parameters": [
+          {
+            "name": "transactionCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Appointment/Failure": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Appointment/GetAppointmentList": {
       "get": {
         "tags": [
@@ -423,6 +487,49 @@
         }
       }
     },
+    "/api/Patient/AddPatientDetails": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPatientDetailsDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPatientDetailsDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPatientDetailsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/GetPatientDetails": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/User/RegisterPatient": {
       "post": {
         "tags": [
@@ -747,6 +854,24 @@
   },
   "components": {
     "schemas": {
+      "AddPatientDetailsDto": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AdditionalnfoDto": {
         "type": "object",
         "properties": {
@@ -914,6 +1039,16 @@
           "gender": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentDto": {
+        "type": "object",
+        "properties": {
+          "paidAmount": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

@@ -89,6 +89,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.2.1, )"
+            },
+            "plugin.web.eSewa.and.Khalti": {
+              "target": "Package",
+              "version": "[1.0.10, )"
             }
           },
           "imports": [
@@ -217,6 +221,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.2.1, )"
+            },
+            "plugin.web.eSewa.and.Khalti": {
+              "target": "Package",
+              "version": "[1.0.10, )"
             }
           },
           "imports": [
@@ -309,6 +317,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.2.1, )"
+            },
+            "plugin.web.eSewa.and.Khalti": {
+              "target": "Package",
+              "version": "[1.0.10, )"
             }
           },
           "imports": [
@@ -437,6 +449,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.2.1, )"
+            },
+            "plugin.web.eSewa.and.Khalti": {
+              "target": "Package",
+              "version": "[1.0.10, )"
             }
           },
           "imports": [

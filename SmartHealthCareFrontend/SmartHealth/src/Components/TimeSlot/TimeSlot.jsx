@@ -8,7 +8,7 @@ import DoctorDetails from "../../Pages/DoctorDetails/DoctorDetails";
 import ConfirmBooking from "../ConfirmBooking/ConfirmBooking";
 
 const TimeSlot = ({ fee, Id }) => {
-  const navigate = useNavigate(); // Initialize the navigate hook
+  const navigate = useNavigate(); 
 
   const token = Cookies.get("Token");
 
@@ -17,7 +17,36 @@ const TimeSlot = ({ fee, Id }) => {
   const [availableSlots, setAvailableSlots] = useState([]);
   const [groupedSlots, setGroupedSlots] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
+ 
+  const [location, setLocation] = useState('');
+  const [gender, setGender] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const navigateTo = useNavigate();
+
+useEffect(()=>
+{
+
+  if(token)
+  {
+    const fetchData = async()=>
+    {
+      const responseforPatient = await axios.get('https://localhost:7070/api/Patient/GetPatientDetails', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setLocation(responseforPatient.data.data.address);
+      setGender(responseforPatient.data.data.gender);
+      setPhoneNumber(responseforPatient.data.data.user.phoneNumber);
+    }
+
+
+fetchData();
+
+      
+  }
+}, [])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +55,10 @@ const TimeSlot = ({ fee, Id }) => {
           `https://localhost:7070/api/Doctor/GetDoctorAvailability/${Id}`
         );
 
+       
+     
+        
+     
         console.log("Response", response);
         const data = response.data.$values;
 
@@ -112,6 +145,12 @@ const TimeSlot = ({ fee, Id }) => {
 
   const handleConfirm = () => {
     
+    if (!location || !gender || !phoneNumber) {
+      localStorage.setItem("Null", "Null");
+      window.location.reload();
+      return;
+    }
+
     const appointmentDetails = JSON.stringify({
    Id : Id,
       date: selectedDate,

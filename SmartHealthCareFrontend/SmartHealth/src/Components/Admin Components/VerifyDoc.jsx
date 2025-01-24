@@ -91,7 +91,7 @@ const VerifyDoc = () => {
           <div className="relative flex items-center justify-center mt-12 h-12 gap-1 px-4 border rounded-md p-2 overflow-hidden group">
   <span className="relative z-10 flex items-center gap-1 text-black group-hover:text-white transition duration-300 ease-in-out">
     <IoPerson />
-    <NavLink to = {`/Doctors/${doctor.userId}`}>
+    <NavLink to = {`/DoctorsDetails/${doctor.userId}`}>
    
     <p>View Profile</p>
     </NavLink>

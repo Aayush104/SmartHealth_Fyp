@@ -60,7 +60,7 @@ const DoctorRegistration = () => {
       toast.error("All fields are required.");
       return
     }
-
+   
     const panRegex = /^\d{9}$/;
 
     if (!panRegex.test(licenseNumber)) {
@@ -71,6 +71,11 @@ const DoctorRegistration = () => {
 
     if (password.length < 8) {
       toast.error("Password must be at least 8 characters long.");
+      return;
+    }
+    const upperCaseRegex = /[A-Z]/;
+    if (!upperCaseRegex.test(password)) {
+      toast.error("Password must have at least one uppercase letter.");
       return;
     }
      const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;

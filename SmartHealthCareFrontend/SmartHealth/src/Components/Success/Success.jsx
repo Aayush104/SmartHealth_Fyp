@@ -8,7 +8,7 @@ const Success = () => {
   const queryParams = new URLSearchParams(location.search);
 const [doctorName, setDoctorName] = useState("");
 
-  const q = queryParams.get("q") || "";
+  const q = queryParams.get("data") || "";
   const oid = queryParams.get("oid") || "";
   const amt = queryParams.get("amt") || "";
   const refId = queryParams.get("refId") || "";

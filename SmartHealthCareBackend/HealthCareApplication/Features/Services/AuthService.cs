@@ -51,6 +51,7 @@ namespace HealthCareApplication.Features.Services
             _userManager = userManager;
             _signInManager = signInManager;
             _fileService = fileService;
+            _fileService = fileService;
             _mailService = mailService;
             _otpService = otpService;
             _tokenService = tokenService;

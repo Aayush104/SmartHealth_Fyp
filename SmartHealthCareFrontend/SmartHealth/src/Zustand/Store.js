@@ -109,20 +109,25 @@ import { create } from 'zustand';
 import axios from 'axios';
 
 const useStore = create((set) => ({
+ token: null, 
+  userRole: null, 
   userId: null,
+
+  
   login: async (email, password) => {
     try {
       const response = await axios.post('https://localhost:7070/api/User/Login', {
         email,
         password,
       });
-
+  
       console.log(response)
 
       if (response.data.isSuccess) {
         const token = response.data.data;
         const userRole = JSON.parse(atob(token.split('.')[1])).Role;
 
+        set({ token, userRole,  userId: response.data.data  });
         return { token, userRole, userId: response.data.data };
       } else if (response.status === 401) {
         throw { message: 'Unauthorized', userId: response.data.data }; 

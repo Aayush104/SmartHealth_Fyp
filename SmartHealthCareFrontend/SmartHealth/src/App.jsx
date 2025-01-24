@@ -23,6 +23,8 @@ import PrivateRoute from "./Components/Protected/PrivateRoute";
 import Success from "./Components/Success/Success";
 import DoctorAppointments from "./Pages/DoctorAppointmentsPage/DoctorAppointmentsPage";
 import ChatPage from "./Pages/ChatPage/ChatPage";
+import Doctorverificationdetails from "./Components/Admin Components/Doctorverificationdetails";
+import Failure from "./Components/Payment/Failure";
 
 
 const App = () => {
@@ -67,6 +69,7 @@ const App = () => {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Doctors" element={<FindDoctor />} />
         <Route path="/Doctors/:id" element={ <DoctorDetail/>} />
+        <Route path="/DoctorsDetails/:id" element={ <Protect requiredRole={['Admin']}> <Doctorverificationdetails/>   </Protect>} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/admin/:section"
@@ -87,7 +90,7 @@ const App = () => {
         <Route path="/home" element={<Protect requiredRole={['Patient']}><Home /> </Protect>} />
         <Route path="/ConfirmEmail/:email/:otp" element={<ConfirmDoctorEmail />} />
         
-        <Route path="/success" element={<Protect requiredRole={['Patient']}><Success /> </Protect>} />
+        <Route path="/Success" element={<Success /> } />
         
         <Route path="/DoctorAppointments" element={<Protect requiredRole={['Doctor']}><DoctorAppointments /> </Protect>} />
       
@@ -95,6 +98,8 @@ const App = () => {
         <Route path="//unauthorize" element={<UnAuthorized />} />
         <Route path="/searched_doctor" element={<SearchedDoctor />} />
         <Route path="/NotFound" element={<NotFound />} />
+        {/* <Route path="/payment-success" element={<Success />} />
+        <Route path="/payment-failure" element={<Failure />} /> */}
        <Route
   path="/chat"
   element={

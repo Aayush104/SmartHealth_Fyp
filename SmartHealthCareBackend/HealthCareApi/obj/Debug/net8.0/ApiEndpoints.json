@@ -17,12 +17,54 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.AppointmentController",
+    "Method": "Failure",
+    "RelativePath": "api/Appointment/Failure",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
     "Method": "GetAppointmentList",
     "RelativePath": "api/Appointment/GetAppointmentList",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
+    "Method": "Paywithesewa",
+    "RelativePath": "api/Appointment/paywithesewa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentDto",
+        "Type": "HealthCareApplication.Dtos.UserDtoo.PaymentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
+    "Method": "Success",
+    "RelativePath": "api/Appointment/Success",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "transactionCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -274,6 +316,32 @@
     "ContainingType": "DoctorController",
     "Method": "VerifyDoctors",
     "RelativePath": "api/Doctor/VerifyDoctor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.PatientController",
+    "Method": "AddPatientDetails",
+    "RelativePath": "api/Patient/AddPatientDetails",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addPatientDetailsDto",
+        "Type": "HealthCareApplication.Dtos.UserDtoo.AddPatientDetailsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.PatientController",
+    "Method": "GetPatientDetails",
+    "RelativePath": "api/Patient/GetPatientDetails",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

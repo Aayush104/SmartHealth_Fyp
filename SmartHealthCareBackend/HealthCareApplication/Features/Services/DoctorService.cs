@@ -210,6 +210,12 @@ namespace HealthCareApplication.Features.Services
                     Profileget = doctorDetails.Profile,
                     Fee = doctorDetails.Fee,
                     Experience = doctorDetails.Experience,
+                    phoneNumber = doctorDetails.User.PhoneNumber,
+                    GovernmentIdFile = doctorDetails.GovernmentIdFilePath,
+                    QualificationsFile = doctorDetails.QualificationsFilePath ,
+                    LicenseFile = doctorDetails .LicenseFilePath ,  
+
+
                 };
 
                 // Map additional info

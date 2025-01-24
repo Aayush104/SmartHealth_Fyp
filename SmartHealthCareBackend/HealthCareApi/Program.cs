@@ -37,6 +37,7 @@ builder.Services.AddCors(options =>
         .AllowCredentials());
 });
 
+
 // Add authorization and authentication
 builder.Services.AddAuthorization();
 

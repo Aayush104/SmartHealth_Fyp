@@ -15,6 +15,10 @@ namespace HealthCarePersistence.IRepository
 
      
         Task AddPatient(Patient patient);
-       
+        Task <Patient> GetPatientDetailAsync(string userId);
+
+        Task<Patient> UpdatePatientDetailsAsync(Patient patient, string userId);
+
+
     }
 }

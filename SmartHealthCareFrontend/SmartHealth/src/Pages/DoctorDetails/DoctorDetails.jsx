@@ -9,14 +9,43 @@ import { FaUserDoctor, FaRegComment, FaRegHeart } from "react-icons/fa6";
 import { GiGraduateCap } from "react-icons/gi";
 import { MdPayment } from "react-icons/md";
 import TimeSlot from '../../Components/TimeSlot/TimeSlot';
+import useStore from '../../Zustand/Store';
+
+import PersonalDetailsForm from '../../Components/PatientComponents/PersonalDetailsForm';
 
 const DoctorDetails = () => {
   const { id } = useParams();
   const [doctorDetails, setDoctorDetails] = useState(null);
   const [error, setError] = useState(null);
   const [showMore, setShowMore] = useState(false);
+    const [showAdditionalForm, setShowAdditionalForm] = useState(false);
+
+  const {userRole } = useStore();
+  const handleCloseForms = () => {
+    localStorage.removeItem('Null');
+    setShowAdditionalForm(false);
+    
+    document.body.style.overflow = 'auto'; // Enable scrolling
+  };
+
+
+
+
+  useEffect(()=>
+  {
+    
+  if(localStorage.getItem("Null"))
+    {setShowAdditionalForm(true);
+      document.body.style.overflow = 'hidden';
+      
+    }
+    
+  })
+
+ 
 
   useEffect(() => {
+console.log(userRole);
 
     const details = localStorage.getItem('AppointmentDetails');
 
@@ -59,6 +88,7 @@ const DoctorDetails = () => {
       <div className="px-28 mt-2">
         <SearchDoctor />
       </div>
+      {showAdditionalForm && <PersonalDetailsForm onClose={handleCloseForms} />}
       <div className='flex gap-2'>
       <div className="mx-8 mb-8 px-20 ">
         <div className="border w-[45rem] bg-white p-2 flex items-center shadow justify-between">

@@ -1925,6 +1925,18 @@
           }
         }
       },
+      "plugin.web.eSewa.and.Khalti/1.0.10": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.1/payment-gateway-nepal.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/payment-gateway-nepal.dll": {}
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
         "type": "package",
         "runtimeTargets": {
@@ -3893,7 +3905,8 @@
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.SignalR": "1.2.0",
-          "System.IdentityModel.Tokens.Jwt": "8.2.1"
+          "System.IdentityModel.Tokens.Jwt": "8.2.1",
+          "plugin.web.eSewa.and.Khalti": "1.0.10"
         },
         "compile": {
           "bin/placeholder/HealthCareApplication.dll": {}
@@ -3917,7 +3930,8 @@
           "Microsoft.AspNetCore.SignalR": "1.2.0",
           "Microsoft.EntityFrameworkCore": "8.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.8",
-          "System.IdentityModel.Tokens.Jwt": "8.2.1"
+          "System.IdentityModel.Tokens.Jwt": "8.2.1",
+          "plugin.web.eSewa.and.Khalti": "1.0.10"
         },
         "compile": {
           "bin/placeholder/HealthCareDomain.dll": {}
@@ -3935,7 +3949,8 @@
           "HealthCareApplication": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.11",
           "Microsoft.AspNetCore.SignalR": "1.2.0",
-          "System.IdentityModel.Tokens.Jwt": "8.2.1"
+          "System.IdentityModel.Tokens.Jwt": "8.2.1",
+          "plugin.web.eSewa.and.Khalti": "1.0.10"
         },
         "compile": {
           "bin/placeholder/HealthCareInfrastructure.dll": {}
@@ -3959,7 +3974,8 @@
           "Microsoft.AspNetCore.SignalR": "1.2.0",
           "Microsoft.EntityFrameworkCore": "8.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.8",
-          "System.IdentityModel.Tokens.Jwt": "8.2.1"
+          "System.IdentityModel.Tokens.Jwt": "8.2.1",
+          "plugin.web.eSewa.and.Khalti": "1.0.10"
         },
         "compile": {
           "bin/placeholder/HealthCarePersistence.dll": {}
@@ -6570,6 +6586,18 @@
         "newtonsoft.json.13.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "plugin.web.eSewa.and.Khalti/1.0.10": {
+      "sha512": "wEgW1Ve/yC+13hSKMKzkv0igsPbFd4P10p0Qb9/mg4b76rO11iE33zECSxQjMVhmUy4Noq/4wPTEZBuOBXoT3Q==",
+      "type": "package",
+      "path": "plugin.web.esewa.and.khalti/1.0.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.1/payment-gateway-nepal.dll",
+        "plugin.web.esewa.and.khalti.1.0.10.nupkg.sha512",
+        "plugin.web.esewa.and.khalti.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
@@ -11228,7 +11256,8 @@
       "Microsoft.EntityFrameworkCore >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.8",
       "Swashbuckle.AspNetCore >= 6.7.3",
-      "System.IdentityModel.Tokens.Jwt >= 8.2.1"
+      "System.IdentityModel.Tokens.Jwt >= 8.2.1",
+      "plugin.web.eSewa.and.Khalti >= 1.0.10"
     ]
   },
   "packageFolders": {
@@ -11340,6 +11369,10 @@
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
             "version": "[8.2.1, )"
+          },
+          "plugin.web.eSewa.and.Khalti": {
+            "target": "Package",
+            "version": "[1.0.10, )"
           }
         },
         "imports": [
