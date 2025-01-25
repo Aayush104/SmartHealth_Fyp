@@ -23,7 +23,7 @@ const SearchedDoctor = () => {
   return (
     <div>
       <Navbar />
-      <div className="bg-Doctor_Banner h-75vh flex flex-col justify-center items-center">
+      <div className="bg-Doctor_Banner h-75vh flex flex-col justify-center items-center bg-cover">
         {doctors.length > 0 && (
           <h2 className="text-white font-bold font-sans mb-4 text-6xl">
             {doctors[0].specialization}

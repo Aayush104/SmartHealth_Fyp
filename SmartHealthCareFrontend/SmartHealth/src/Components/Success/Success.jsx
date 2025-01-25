@@ -1,14 +1,183 @@
+// import React, { useState, useEffect, useRef } from "react";
+// import { useNavigate, useLocation, NavLink } from "react-router-dom";
+// import axios from "axios";
+// import Cookies from "js-cookie";
+// import Navbar from "../Navbar/Navbar";
+// import Footer from "../Fotter/Fotter";
+// import { Spinner } from "@chakra-ui/react";
+
+// const Success = () => {
+//   const location = useLocation();
+//   const queryParams = new URLSearchParams(location.search);
+//   const data = queryParams.get("data") || "";
+
+
+// const paymentGateway = localStorage.getItem("PaymentGateway");
+
+//   const details = JSON.parse(localStorage.getItem("AppointmentDetails")) || {};
+//   const startTime = details.StartTime || "Not provided";
+//   const appointmentDate = details.date || "Not provided";
+//   const doctorId = details.Id || "Not provided";
+//   const fee = details.Fee;
+
+//   const token = Cookies.get("Token");
+//   const decodedToken = token ? JSON.parse(atob(token.split(".")[1])) : {};
+//   const userName = decodedToken.Name || "Patient";
+
+//   const navigate = useNavigate();
+//   const [success, setSuccess] = useState(null);
+//   const [doctorName, setDoctorName] = useState("");
+//   const actionCalled = useRef(false);
+
+
+//   //for esewa
+//   const Esewaactions = async () => {
+//     if (!data || !token) {
+//       console.error("Missing required parameters or token.");
+//       setSuccess(false);
+//       return;
+//     }
+
+//     try {
+//       const requestBody = {
+//         queryType: data,
+//         doctorId: doctorId,
+//         StartTime: startTime,
+//         AppointmentDate: appointmentDate,
+//       };
+
+//       const response = await axios.post(
+//         `https://localhost:7070/api/Appointment/Success`,
+//         requestBody,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         }
+//       );
+
+//       console.log(response)
+//       if (response.status === 200) {
+       
+//         setDoctorName(response.data.data.data || "Unknown Doctor");
+//         setSuccess(true);
+      
+       
+//       } else {
+//         setSuccess(false);
+//       }
+//     } catch (error) {
+//       console.error("Error during API request:", error);
+//       setSuccess(false);
+//     }
+//   };
+
+//   useEffect(() => {
+
+//     console.log(paymentGateway)
+ 
+//     if (!actionCalled.current) {
+
+//       if(paymentGateway && paymentGateway == "Esewa")
+//       {
+//         Esewaactions();
+//       }
+
+//       if(paymentGateway && paymentGateway == "Khalti")
+//         {
+//           console.log("This is khalti")
+//         }
+
+     
+    
+      
+//       actionCalled.current = true;
+    
+//     }
+//   }, []);
+
+
+
+  
+//   useEffect(() => {
+//     if (success) {
+//       setTimeout(() => {
+//         navigate("/payment-success", {
+//           state: {
+//             appointmentDetails: {
+//               patientName: userName,
+//               doctorName: doctorName,
+//               dateTime: `${appointmentDate} | ${startTime}`,
+              
+//             },
+//             fee: fee,
+//           },
+//         });
+//       }, 2000);
+//     }
+//   }, [success, navigate, doctorName, userName, appointmentDate, startTime, fee]);
+  
+
+//   if (success === null) {
+//     return  <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
+//     <Spinner
+//       thickness="4px"
+//       speed="0.65s"
+//       emptyColor="gray.200"
+//       color="blue.500"
+//       size="xl"
+//     />
+//   </div>;
+//   }
+
+//   if (success === false) {
+//     return (
+//       <div className="text-center mt-20 text-red-500">
+//         Something went wrong. Please try again later.
+//       </div>
+//     );
+//   }
+
+//   return (
+
+//     <>
+//   <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
+//                 <Spinner
+//                   thickness="4px"
+//                   speed="0.65s"
+//                   emptyColor="gray.200"
+//                   color="blue.500"
+//                   size="xl"
+//                 />
+//               </div>
+//     </>
+
+//   );
+// };
+
+// export default Success;
+
+
+
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Fotter/Fotter";
+
+import { Spinner } from "@chakra-ui/react";
 
 const Success = () => {
   const location = useLocation();
+  
+const paymentGateway = localStorage.getItem("PaymentGateway");
   const queryParams = new URLSearchParams(location.search);
-  const data = queryParams.get("data") || "";
+
+
+  //if esewa ho vaney params bata data vaney tanxa if khalti ho vaney pidx vaney tanxa
+  const data = paymentGateway && paymentGateway == "Esewa" ?
+  queryParams.get("data") : queryParams.get("pidx");
+
+
 
   const details = JSON.parse(localStorage.getItem("AppointmentDetails")) || {};
   const startTime = details.StartTime || "Not provided";
@@ -25,13 +194,15 @@ const Success = () => {
   const [doctorName, setDoctorName] = useState("");
   const actionCalled = useRef(false);
 
+
+  //for esewa
   const actions = async () => {
     if (!data || !token) {
       console.error("Missing required parameters or token.");
       setSuccess(false);
       return;
     }
-
+  
     try {
       const requestBody = {
         queryType: data,
@@ -39,20 +210,33 @@ const Success = () => {
         StartTime: startTime,
         AppointmentDate: appointmentDate,
       };
-
-      const response = await axios.post(
-        `https://localhost:7070/api/Appointment/Success`,
-        requestBody,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      console.log(response)
+  
+      let response;
+  
+      if (paymentGateway && paymentGateway === "Esewa") {
+        response = await axios.post(
+          `https://localhost:7070/api/Appointment/Success`,
+          requestBody,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      } else {
+        response = await axios.post(
+          `https://localhost:7070/api/Appointment/KhaltiSuccess`,
+          requestBody,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      }
+  
+      console.log(response);
       if (response.status === 200) {
-       
         setDoctorName(response.data.data.data || "Unknown Doctor");
         setSuccess(true);
       } else {
@@ -63,22 +247,52 @@ const Success = () => {
       setSuccess(false);
     }
   };
+  
 
   useEffect(() => {
+
+    console.log(paymentGateway)
+ 
     if (!actionCalled.current) {
+
       actions();
       actionCalled.current = true;
+    
     }
   }, []);
 
-  const appointmentDetails = {
-    patientName: userName || "N/A",
-    doctorName: doctorName || "N/A",
-    dateTime: `${appointmentDate} | ${startTime}`,
-  };
+
+
+  
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        navigate("/payment-success", {
+          state: {
+            appointmentDetails: {
+              patientName: userName,
+              doctorName: doctorName,
+              dateTime: `${appointmentDate} | ${startTime}`,
+              
+            },
+            fee: fee,
+          },
+        });
+      }, 2000);
+    }
+  }, [success, navigate, doctorName, userName, appointmentDate, startTime, fee]);
+  
 
   if (success === null) {
-    return <div className="text-center mt-20">Loading...</div>;
+    return  <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
+    <Spinner
+      thickness="4px"
+      speed="0.65s"
+      emptyColor="gray.200"
+      color="blue.500"
+      size="xl"
+    />
+  </div>;
   }
 
   if (success === false) {
@@ -92,99 +306,15 @@ const Success = () => {
   return (
 
     <>
-    <Navbar />
-    <div className="min-h-screen mt-10  p-6">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg border shadow-lg overflow-hidden">
-        {/* Header */}
-        <div className="bg-sky-500 p-8 text-white">
-          <div className="text-3xl font-bold mb-4">Your appointment is confirmed</div>
-          <div className="flex items-center">
-            <div className="bg-sky-400 p-1 rounded-full mr-2">
-              <svg
-                className="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
+  <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.200"
+                  color="blue.500"
+                  size="xl"
                 />
-              </svg>
-            </div>
-            <span>
-              This appointment is <span className="text-sky-200">guaranteed</span> by Smart Health
-            </span>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6">
-          <div className="mb-6">
-            <p className="text-gray-700">Hello {userName},</p>
-            <p className="text-gray-600 mt-2">
-              Thanks for booking an appointment on Smart Health. Here are the details of your
-              appointment:
-            </p>
-          </div>
-
-          {/* Details Table */}
-          <div className="border rounded-lg overflow-hidden mb-6">
-            <table className="w-full">
-              <tbody>
-                <tr className="border-b">
-                  <td className="py-4 px-6 bg-gray-50 text-gray-600">Doctor's name</td>
-                  <td className="py-4 px-6">Dr. {appointmentDetails.doctorName}</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 bg-gray-50 text-gray-600">Date and Time</td>
-                  <td className="py-4 px-6">{appointmentDetails.dateTime}</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 bg-gray-50 text-gray-600">Patient Name</td>
-                  <td className="py-4 px-6">{appointmentDetails.patientName}</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 bg-gray-50 text-gray-600">Fee</td>
-                  <td className="py-4 px-6">₹ {fee}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p className="text-gray-600 mb-6">
-            If you are unable to make it to the appointment, please cancel or reschedule. It
-            will open this valuable slot for others waiting to visit the doctor.
-          </p>
-
-          {/* Buttons */}
-          <div className="flex gap-4 mb-6">
-            <NavLink
-              to="/home"
-              className="flex-1 bg-sky-500 text-white text-center py-3 rounded-lg hover:bg-sky-600 transition-colors"
-            >
-              Go Home
-            </NavLink>
-            <button className="flex-1 bg-sky-500 text-white py-3 rounded-lg hover:bg-sky-600 transition-colors">
-              Reschedule
-            </button>
-          </div>
-
-          {/* Manage Appointments Link */}
-          <div className="text-center">
-            <span className="text-gray-600">
-              Manage your appointments better by visiting{" "}
-            </span>
-            <NavLink to="/appointments" className="text-sky-500 hover:underline">
-              My Appointments
-            </NavLink>
-          </div>
-        </div>
-      </div>
-    </div>
-    <Footer />
+              </div>
     </>
 
   );

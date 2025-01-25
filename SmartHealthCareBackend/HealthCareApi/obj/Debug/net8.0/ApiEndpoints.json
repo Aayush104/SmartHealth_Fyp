@@ -21,8 +21,40 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.AppointmentController",
+    "Method": "KhaltiSuccess",
+    "RelativePath": "api/Appointment/KhaltiSuccess",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentDto",
+        "Type": "HealthCareApplication.Dtos.AvailabilityDto.AppointmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
     "Method": "Paywithesewa",
     "RelativePath": "api/Appointment/paywithesewa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "paymentDto",
+        "Type": "HealthCareApplication.Dtos.UserDtoo.PaymentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
+    "Method": "PayWithKhalti",
+    "RelativePath": "api/Appointment/paywithkhalti",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

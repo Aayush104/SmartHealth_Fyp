@@ -11,7 +11,7 @@ import FindDoctor from "./Pages/FindDoctor/FindDoctor";
 import Home from "./Pages/Home/Home";
 import Admin from "./Pages/Admin/Admin";
 import ConfirmDoctorEmail from "./Pages/ConfirmDoctorEmail/ConfirmDoctorEmail";
-import DoctorAvailability from "./Pages/DoctorAvailablity/DoctorAvailability";
+// import DoctorAvailability from "./Pages/DoctorAvailablity/DoctorAvailability";
 import { Protect, RedirectIfAuthenticated } from "./Components/Protected/Protect";
 import UnAuthorized from "./Components/Helper/UnAuthorized";
 import SearchedDoctor from "./Components/SearchComponent/SearchedDoctor";
@@ -24,7 +24,8 @@ import Success from "./Components/Success/Success";
 import DoctorAppointments from "./Pages/DoctorAppointmentsPage/DoctorAppointmentsPage";
 import ChatPage from "./Pages/ChatPage/ChatPage";
 import Doctorverificationdetails from "./Components/Admin Components/Doctorverificationdetails";
-import Failure from "./Components/Payment/Failure";
+// import Failure from "./Components/Payment/Failure";
+import AppointmentConfirmation from "./Components/AppointmentConfirmation/AppointmentConfirmation";
 
 
 const App = () => {
@@ -98,8 +99,8 @@ const App = () => {
         <Route path="//unauthorize" element={<UnAuthorized />} />
         <Route path="/searched_doctor" element={<SearchedDoctor />} />
         <Route path="/NotFound" element={<NotFound />} />
-        {/* <Route path="/payment-success" element={<Success />} />
-        <Route path="/payment-failure" element={<Failure />} /> */}
+       <Route path="/payment-success" element={<AppointmentConfirmation />} />
+      
        <Route
   path="/chat"
   element={

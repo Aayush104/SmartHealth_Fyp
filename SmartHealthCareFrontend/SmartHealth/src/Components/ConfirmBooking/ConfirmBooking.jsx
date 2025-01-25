@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import { CgProfile } from "react-icons/cg";
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { MdPayments } from "react-icons/md";
 
 
 
@@ -33,11 +34,35 @@ import { toast } from 'react-toastify';
     }, []);
   
     const MakeEsewaPayment = async () => {
+      localStorage.setItem('PaymentGateway', 'Esewa');
       try {
+ 
+
         const response = await axios.post("https://localhost:7070/api/Appointment/paywithesewa", {
           PaidAmount: Number(doctorDetails.fee) 
         });
 
+        if(response.status == 500)
+        {
+          toast.error ("An internal server error occured")
+        }
+        window.location.href = response.data.paymentUrl;
+        console.log("Payment response:", response.data.paymentUrl);
+      } catch (error) {
+        console.error("Error making payment:", error.response ? error.response.data : error.message);
+      }
+    };
+    const MakeKhaltiPayment = async () => {
+      localStorage.setItem('PaymentGateway', 'Khalti');
+      try {
+
+       
+        const response = await axios.post("https://localhost:7070/api/Appointment/paywithkhalti", {
+          PaidAmount: Number(doctorDetails.fee) 
+        });
+
+
+        console.log(response)
         if(response.status == 500)
         {
           toast.error ("An internal server error occured")
@@ -103,7 +128,7 @@ console.log("Patient", responseforPatient);
     return (
       <div className="min-h-screen bg-gray-50">
         <Navbar />
-        <div className="max-w-5xl mx-auto mt-8 px-4 py-8 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto mt-8 px-4 py-8 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 max-w-[30rem]">
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -208,13 +233,20 @@ console.log("Patient", responseforPatient);
               <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRURIPRhKOlMe7cw2N9IzXTwUICDh0EVLvcCw&s' className='h-10' alt='Esewa Logo' />
             </button>
 </form> */}
+<p className='text-gray-600 font-semibold mt-2 flex items-center gap-2 '> Complete your Payment <MdPayments /> </p>
+<div className=' flex gap-4 '>
 
 
-<button className="w-full mt-6 bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:border-green-700 transition-colors flex items-center justify-center gap-2" onClick={MakeEsewaPayment}>
-              Pay Via Esewa
+<button className="w-full mt-2 bg-green-500 text-white py-2 px-4 rounded-lg font-medium hover:border-green-700 transition-colors flex items-center justify-center gap-2" onClick={MakeEsewaPayment}>
+          Esewa
               <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRURIPRhKOlMe7cw2N9IzXTwUICDh0EVLvcCw&s' className='h-10' alt='Esewa Logo' />
             </button>
+<button className="w-full mt-2 bg-purple-500 text-white py-2 px-4 rounded-lg font-medium hover:border-purple-700 transition-colors flex items-center justify-center gap-2" onClick={MakeKhaltiPayment}>
+               Khalti
+              <img src=' https://blog.khalti.com/wp-content/uploads/2021/01/khalti-icon.png ' className='h-10' alt='Khalti Logo' />
+            </button>
 
+            </div>
             </div>
           </div>
         </div>
