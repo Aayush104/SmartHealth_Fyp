@@ -10,7 +10,6 @@ namespace HealthCareApplication.Dtos.AvailabilityDto
     {
         public string QueryType { get; set; }
         public string DoctorId { get; set; }
-        public string Amount { get; set; }
         public string StartTime { get; set; }
            public DateTime AppointmentDate { get; set; }
 

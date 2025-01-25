@@ -5,37 +5,6 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Appointment/BookAppointment": {
-      "post": {
-        "tags": [
-          "Appointment"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AppointmentDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AppointmentDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AppointmentDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Appointment/paywithesewa": {
       "post": {
         "tags": [
@@ -68,19 +37,29 @@
       }
     },
     "/api/Appointment/Success": {
-      "get": {
+      "post": {
         "tags": [
           "Appointment"
         ],
-        "parameters": [
-          {
-            "name": "transactionCode",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentDto"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -904,10 +883,6 @@
             "nullable": true
           },
           "doctorId": {
-            "type": "string",
-            "nullable": true
-          },
-          "amount": {
             "type": "string",
             "nullable": true
           },

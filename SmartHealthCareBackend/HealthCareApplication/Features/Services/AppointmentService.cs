@@ -27,7 +27,7 @@ namespace HealthCareApplication.Features.Services
             _dataProtector = dataProtector?.CreateProtector(securityProvider.securityKey);
         }
 
-        public async Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto, string userId)
+        public async Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto, string userId, decimal total_Amount)
         {
             if (appointmentDto == null)
                 return new ApiResponseDto
@@ -97,7 +97,7 @@ namespace HealthCareApplication.Features.Services
 
                 var payment = new Payment
                 {
-                    Amount = Convert.ToDecimal(appointmentDto.Amount),
+                    Amount = total_Amount,
                     PaymentDate = DateTime.Now,
                     Status = "Paid",
                     AppointmentId = bookedAppointmentId,

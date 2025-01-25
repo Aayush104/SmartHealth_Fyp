@@ -2,10 +2,14 @@
 using HealthCareApplication.Contract.IService;
 using HealthCareApplication.Dtos.AvailabilityDto;
 using HealthCareApplication.Dtos.UserDtoo;
+using HealthCareDomain.Entity.Appointment;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using payment_gateway_nepal;
+using System.Text;
+using System.Text.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HealthCareApi.Controllers
 {
@@ -31,23 +35,23 @@ namespace HealthCareApi.Controllers
         }
 
 
-        [HttpPost("BookAppointment")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> BookAppointment(AppointmentDto appointmentDto)
-        {
-            var user = HttpContext.User.FindFirst("userId");
+        //[HttpPost("BookAppointment")]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //public async Task<IActionResult> BookAppointment(AppointmentDto appointmentDto)
+        //{
+        //    var user = HttpContext.User.FindFirst("userId");
 
-            var userId = user?.Value;
+        //    var userId = user?.Value;
 
-            if (string.IsNullOrEmpty(userId))
-            {
-                return Unauthorized("User not found");
-            }
+        //    if (string.IsNullOrEmpty(userId))
+        //    {
+        //        return Unauthorized("User not found");
+        //    }
 
-            var response = await _appointmentService.BookAppointmentAsync(appointmentDto, userId!);
+        //    var response = await _appointmentService.BookAppointmentAsync(appointmentDto, userId!);
 
-            return StatusCode(response.StatusCode, response);
-        }
+        //    return StatusCode(response.StatusCode, response);
+        //}
 
         [HttpPost("paywithesewa")]
         public async Task<IActionResult> Paywithesewa(PaymentDto paymentDto)
@@ -112,13 +116,70 @@ namespace HealthCareApi.Controllers
             }
         }
 
-
-        [HttpGet("Success")]
-        public IActionResult Success(string transactionCode)
+        [HttpPost("Success")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> Success(AppointmentDto appointmentDto)
         {
-            // Handle successful payment
-            return Ok(new { message = "Payment successful", transactionCode });
+            // Get user information from claims
+            var user = HttpContext.User.FindFirst("userId");
+            var userId = user?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized(new { message = "User not found" });
+            }
+
+            try
+            {
+                // Initialize payment manager
+                var paymentManager = new PaymentManager(
+                    PaymentMethod.eSewa,
+                    PaymentVersion.v2,
+                    PaymentMode.Sandbox,
+                    eSewaKey
+                );
+
+                // Verify payment using the provided QueryType
+                var response = await paymentManager.VerifyPaymentAsync<eSewaResponse>(appointmentDto.QueryType);
+
+                // Ensure response and status are not null or empty
+                if (response == null || string.IsNullOrEmpty(response.status))
+                {
+                    return BadRequest(new { message = "Payment verification failed or incomplete" });
+                }
+
+                // Check for a successful payment
+                if (string.Equals(response.status, "complete", StringComparison.OrdinalIgnoreCase))
+                {
+                    decimal totalAmount = response.total_amount;
+
+                    // Book the appointment with the payment details
+                    var result = await _appointmentService.BookAppointmentAsync(appointmentDto, userId, totalAmount);
+
+                    // Check if appointment booking was successful
+                    if (result.IsSuccess)
+                    {
+                        return Ok(new { message = "Payment successful", data = result });
+                    }
+                    else
+                    {
+                        return BadRequest(new { message = "Appointment booking failed" });
+                    }
+                }
+                else
+                {
+                    return BadRequest(new { message = "Invalid payment data received from eSewa", details = response });
+                }
+            }
+            catch (Exception ex)
+            {
+               
+
+                // Return generic error message to the client
+                return StatusCode(500, new { message = "An error occurred while processing the payment", error = ex.Message });
+            }
         }
+
 
         [HttpGet("Failure")]
         public IActionResult Failure()

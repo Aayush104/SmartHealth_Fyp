@@ -1,22 +1,6 @@
 [
   {
     "ContainingType": "HealthCareApi.Controllers.AppointmentController",
-    "Method": "BookAppointment",
-    "RelativePath": "api/Appointment/BookAppointment",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "appointmentDto",
-        "Type": "HealthCareApplication.Dtos.AvailabilityDto.AppointmentDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
     "Method": "Failure",
     "RelativePath": "api/Appointment/Failure",
     "HttpMethod": "GET",
@@ -44,7 +28,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "appointmentDto",
+        "Name": "paymentDto",
         "Type": "HealthCareApplication.Dtos.UserDtoo.PaymentDto",
         "IsRequired": true
       }
@@ -55,14 +39,14 @@
     "ContainingType": "HealthCareApi.Controllers.AppointmentController",
     "Method": "Success",
     "RelativePath": "api/Appointment/Success",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "transactionCode",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "appointmentDto",
+        "Type": "HealthCareApplication.Dtos.AvailabilityDto.AppointmentDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

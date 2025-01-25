@@ -6,6 +6,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { CgProfile } from "react-icons/cg";
 import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
@@ -36,6 +37,11 @@ import { NavLink } from 'react-router-dom';
         const response = await axios.post("https://localhost:7070/api/Appointment/paywithesewa", {
           PaidAmount: Number(doctorDetails.fee) 
         });
+
+        if(response.status == 500)
+        {
+          toast.error ("An internal server error occured")
+        }
         window.location.href = response.data.paymentUrl;
         console.log("Payment response:", response.data.paymentUrl);
       } catch (error) {

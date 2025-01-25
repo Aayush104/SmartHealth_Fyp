@@ -2,64 +2,58 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Fotter/Fotter";
 
 const Success = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-const [doctorName, setDoctorName] = useState("");
-
-  const q = queryParams.get("data") || "";
-  const oid = queryParams.get("oid") || "";
-  const amt = queryParams.get("amt") || "";
-  const refId = queryParams.get("refId") || "";
+  const data = queryParams.get("data") || "";
 
   const details = JSON.parse(localStorage.getItem("AppointmentDetails")) || {};
   const startTime = details.StartTime || "Not provided";
   const appointmentDate = details.date || "Not provided";
-  const Fee = details.Fee || "Not provided";
+  const doctorId = details.Id || "Not provided";
+  const fee = details.Fee;
 
   const token = Cookies.get("Token");
-  const decodedToken = token ? JSON.parse(atob(token.split('.')[1])) : {};
+  const decodedToken = token ? JSON.parse(atob(token.split(".")[1])) : {};
   const userName = decodedToken.Name || "Patient";
-  const navigateTo = useNavigate();
+
+  const navigate = useNavigate();
   const [success, setSuccess] = useState(null);
+  const [doctorName, setDoctorName] = useState("");
   const actionCalled = useRef(false);
 
   const actions = async () => {
-
-
-
-    if (!q || !oid || !amt || !refId || !token) {
+    if (!data || !token) {
       console.error("Missing required parameters or token.");
+      setSuccess(false);
       return;
     }
 
     try {
       const requestBody = {
-        queryType: q,
-        doctorId: oid,
-        amount: amt,
-        referenceId: refId,
+        queryType: data,
+        doctorId: doctorId,
         StartTime: startTime,
         AppointmentDate: appointmentDate,
       };
 
-      console.log("Request Body:", requestBody);
-
       const response = await axios.post(
-        `https://localhost:7070/api/Appointment/BookAppointment`,
+        `https://localhost:7070/api/Appointment/Success`,
         requestBody,
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
           },
         }
       );
 
-      setDoctorName (response.data.data);
-
-      if (response.status === 201) {
+      console.log(response)
+      if (response.status === 200) {
+       
+        setDoctorName(response.data.data.data || "Unknown Doctor");
         setSuccess(true);
       } else {
         setSuccess(false);
@@ -78,10 +72,9 @@ const [doctorName, setDoctorName] = useState("");
   }, []);
 
   const appointmentDetails = {
-    patientName: details.patientName || "N/A",
-    doctorName: details.doctorName || "N/A",
+    patientName: userName || "N/A",
+    doctorName: doctorName || "N/A",
     dateTime: `${appointmentDate} | ${startTime}`,
-   
   };
 
   if (success === null) {
@@ -97,8 +90,11 @@ const [doctorName, setDoctorName] = useState("");
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+
+    <>
+    <Navbar />
+    <div className="min-h-screen mt-10  p-6">
+      <div className="max-w-2xl mx-auto bg-white rounded-lg border shadow-lg overflow-hidden">
         {/* Header */}
         <div className="bg-sky-500 p-8 text-white">
           <div className="text-3xl font-bold mb-4">Your appointment is confirmed</div>
@@ -140,7 +136,7 @@ const [doctorName, setDoctorName] = useState("");
               <tbody>
                 <tr className="border-b">
                   <td className="py-4 px-6 bg-gray-50 text-gray-600">Doctor's name</td>
-                  <td className="py-4 px-6">Dr. {doctorName}</td>
+                  <td className="py-4 px-6">Dr. {appointmentDetails.doctorName}</td>
                 </tr>
                 <tr className="border-b">
                   <td className="py-4 px-6 bg-gray-50 text-gray-600">Date and Time</td>
@@ -148,21 +144,16 @@ const [doctorName, setDoctorName] = useState("");
                 </tr>
                 <tr className="border-b">
                   <td className="py-4 px-6 bg-gray-50 text-gray-600">Patient Name</td>
-                  <td className="py-4 px-6">
-                    <div>{userName}</div>
-                    
-                  
-                  </td>
+                  <td className="py-4 px-6">{appointmentDetails.patientName}</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-6 bg-gray-50 text-gray-600">Fee</td>
-                  <td className="py-4 px-6">{Fee}</td>
+                  <td className="py-4 px-6">₹ {fee}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-       
           <p className="text-gray-600 mb-6">
             If you are unable to make it to the appointment, please cancel or reschedule. It
             will open this valuable slot for others waiting to visit the doctor.
@@ -170,10 +161,11 @@ const [doctorName, setDoctorName] = useState("");
 
           {/* Buttons */}
           <div className="flex gap-4 mb-6">
-          <NavLink to = "/home" className="flex-1 bg-sky-500 text-white text-center py-3 rounded-lg hover:bg-sky-600 transition-colors">
-            
+            <NavLink
+              to="/home"
+              className="flex-1 bg-sky-500 text-white text-center py-3 rounded-lg hover:bg-sky-600 transition-colors"
+            >
               Go Home
-          
             </NavLink>
             <button className="flex-1 bg-sky-500 text-white py-3 rounded-lg hover:bg-sky-600 transition-colors">
               Reschedule
@@ -185,11 +177,16 @@ const [doctorName, setDoctorName] = useState("");
             <span className="text-gray-600">
               Manage your appointments better by visiting{" "}
             </span>
-            <button className="text-sky-500 hover:underline">My Appointments</button>
+            <NavLink to="/appointments" className="text-sky-500 hover:underline">
+              My Appointments
+            </NavLink>
           </div>
         </div>
       </div>
     </div>
+    <Footer />
+    </>
+
   );
 };
 
