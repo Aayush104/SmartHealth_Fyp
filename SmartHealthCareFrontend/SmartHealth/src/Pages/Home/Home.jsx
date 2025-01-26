@@ -12,9 +12,7 @@ const Home = () => {
     <div>
       <Navbar />
 
-      <NavLink to= "/chat">
-      <button className='bg-sky-400 p-4 text-white rounded-sm m-8 cursor-pointer'>Chat With doctor</button>
-      </NavLink>
+    
     </div>
   );
 };

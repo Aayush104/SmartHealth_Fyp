@@ -302,7 +302,7 @@
               "RelativeDocumentMoniker": "HealthCareApi\\Controllers\\AppointmentController.cs",
               "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Controllers\\AppointmentController.cs",
               "RelativeToolTip": "HealthCareApi\\Controllers\\AppointmentController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T13:57:00.122Z",
               "EditorCaption": ""
@@ -341,8 +341,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAClAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T14:53:58.957Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T14:53:58.957Z"
             },
             {
               "$type": "Document",
@@ -354,8 +353,7 @@
               "RelativeToolTip": "HealthCareApi\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T06:42:31.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T06:42:31.308Z"
             },
             {
               "$type": "Document",

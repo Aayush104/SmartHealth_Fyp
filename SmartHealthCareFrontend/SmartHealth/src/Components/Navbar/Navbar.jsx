@@ -4,15 +4,19 @@ import { Link } from 'react-scroll';
 import logo from '../../Assets/Image/Logo.png';
 import { TbLogout2 } from "react-icons/tb";
 import { HiMenuAlt3 } from "react-icons/hi"; 
-import { IoMdClose } from "react-icons/io"; 
+import { IoIosAddCircleOutline, IoMdClose } from "react-icons/io"; 
 import Cookies from 'js-cookie';
-
+import { MdOutlineArrowDropDown } from 'react-icons/md';
+import { RiQuestionAnswerLine } from "react-icons/ri";
 const Navbar = () => {
   const location = useLocation();
   const [scrolling, setScrolling] = useState(false);
   const [icon, setIcon] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const token = Cookies.get("Token");
+  const decodedToken = token ? JSON.parse(atob(token.split('.')[1])) : {};
+  const userName = decodedToken.Name || "Doctor";
+  
 
   useEffect(() => {
     setScrolling(location.pathname === '/');
@@ -81,11 +85,17 @@ const Navbar = () => {
             ) : (
               <NavLink to="/contact">Contact Us</NavLink>
             )}
-          </li>
-          <li className="hover:text-sky-500 transition-colors duration-200">
-            <a href="#">Q & A</a>
-          </li>
+          </li> 
+
+
+          
           {!icon ? (
+
+            <>
+            <li className="hover:text-sky-500 transition-colors duration-200">
+            Q & A
+          </li>
+
             <li className="border border-gray-300 rounded-sm hover:border-sky-400 transition-colors duration-200">
               <NavLink to="/login">
                 <span className="text-xs text-gray-500 font-normal px-2 py-2 block hover:text-sky-400">
@@ -93,15 +103,45 @@ const Navbar = () => {
                 </span>
               </NavLink>
             </li>
+
+          </>
           ) : (
-            <li className="border border-gray-300 rounded-sm hover:border-sky-400 transition-colors duration-200">
-              <NavLink to="/" onClick={handleLogout} className="flex items-center justify-center px-2 py-2">
-                <TbLogout2 className="text-lg text-gray-500 mr-1 hover:text-sky-400" />
-                <span className="text-xs text-gray-500 font-normal hover:text-sky-400">
-                  LogOut
+
+<>
+<NavLink to= "/chat"><li className="hover:text-sky-500 transition-colors duration-200">
+            Message
+          </li>
+          </NavLink>
+
+            <div className="relative group">
+          <div className="flex items-center justify-between cursor-pointer">
+          <img
+                    src="https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg"
+                    alt="Profile"
+                    className="w-8 h-8 rounded-full"
+                  />
+            <p className="text-sky-400 font-medium ml-2 capitalize">{userName}</p>
+            <MdOutlineArrowDropDown className="text-2xl text-gray-500" />
+          </div>
+          <ul className="absolute mt-0.2 right-0 w-48 bg-white border rounded-lg shadow-lg hidden group-hover:block">
+            
+
+ <li className="px-4 py-2  hover:bg-gray-100 cursor-pointer flex items-center gap-2" >
+ <RiQuestionAnswerLine />       Q&A
+            </li>
+
+          <li className=" py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+              <NavLink to="/" onClick={handleLogout} className="flex items-center px-2 py-2">
+                <TbLogout2 className="text-lg text-sky-600  mr-1 " />
+                <span className="text-md text-sky-600 font-medium  ">
+                  Logout
                 </span>
               </NavLink>
             </li>
+            
+          </ul>
+        </div>
+        </>
           )}
         </ul>
       </div>
@@ -165,7 +205,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ) : (
-              <li className="border border-gray-300 rounded-sm hover:border-sky-400 transition-colors duration-200">
+              <li className="border w-24 border-gray-300 rounded-sm hover:border-sky-400 transition-colors duration-200">
                 <NavLink to="/" onClick={() => { handleLogout(); setMenuOpen(false); }} className="flex items-center justify-center px-2 py-2">
                   <TbLogout2 className="text-lg text-gray-500 mr-1 hover:text-sky-400" />
                   <span className="text-xs text-gray-500 font-normal hover:text-sky-400">
