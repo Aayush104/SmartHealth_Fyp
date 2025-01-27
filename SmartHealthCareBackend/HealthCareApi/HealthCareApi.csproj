@@ -34,6 +34,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\Liscense\" />
     <Folder Include="wwwroot\Government\" />
+    <Folder Include="wwwroot\MessageFile\" />
     <Folder Include="wwwroot\Profile\" />
     <Folder Include="wwwroot\Qualification\" />
   </ItemGroup>

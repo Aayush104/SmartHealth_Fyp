@@ -19,5 +19,7 @@ namespace HealthCareDomain.IRepository
         Task<Message> CreateMessageAsync(Message message);
 
         Task<Conversation> GetConversationByParticipantsAsync(string senderId, string receiverId);
+
+        Task CreateAttachmentAsync(Attachment uploadedFiles);
     }
 }

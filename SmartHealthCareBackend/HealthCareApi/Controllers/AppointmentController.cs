@@ -336,15 +336,17 @@ namespace HealthCareApi.Controllers
         public async Task<IActionResult> GetAppointmentList()
         {
             var user = HttpContext.User.FindFirst("userId");
+            var role = HttpContext.User.FindFirst("Role");
 
             var userId = user?.Value;
+            var rolee = role?.Value;
 
             if (string.IsNullOrEmpty(userId))
             {
                 return Unauthorized("User not found");
             }
 
-        var response = await _appointmentService.GetAppointmentListAsync(userId);
+        var response = await _appointmentService.GetAppointmentListAsync(userId, rolee);
 
             return Ok(response);
         }

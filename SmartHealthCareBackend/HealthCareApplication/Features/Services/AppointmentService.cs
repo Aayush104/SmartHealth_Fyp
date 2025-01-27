@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.DataProtection;
 using System;
 using System.Threading.Tasks;
+using HealthCareDomain.Contract.ContractDto.NewFolder;
 
 namespace HealthCareApplication.Features.Services
 {
@@ -143,28 +144,57 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
-        public async Task<ApiResponseDto> GetAppointmentListAsync(string userId)
+        public async Task<ApiResponseDto> GetAppointmentListAsync(string userId, string role)
         {
+            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(role))
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "Invalid input parameters.",
+                    StatusCode = 400
+                };
+            }
+
             try
             {
-                var getlistById = await _bookAppointmentRepository.GetListByIdAsync(userId);
-                
-                if(getlistById == null)
+                object result = null;
+
+                switch (role)
+                {
+                    case "Doctor":
+                        result = await _bookAppointmentRepository.GetListByIdAsync(userId);
+                        break;
+
+                    case "Patient":
+                        result = await _bookAppointmentRepository.GetDoctorListByIdAsync(userId);
+                        break;
+
+                    default:
+                        return new ApiResponseDto
+                        {
+                            IsSuccess = false,
+                            Message = "Invalid role specified.",
+                            StatusCode = 400
+                        };
+                }
+
+                if (result == null)
                 {
                     return new ApiResponseDto
                     {
                         IsSuccess = false,
-                        Message = $"Not Found",
-                        StatusCode = 400
+                        Message = "Not Found",
+                        StatusCode = 404 
                     };
                 }
 
                 return new ApiResponseDto
                 {
                     IsSuccess = true,
-                    Message = "Successs",
+                    Message = "Success",
                     StatusCode = 200,
-                    Data = getlistById
+                    Data = result
                 };
             }
             catch (Exception ex)
@@ -178,5 +208,6 @@ namespace HealthCareApplication.Features.Services
                 };
             }
         }
+
     }
 }

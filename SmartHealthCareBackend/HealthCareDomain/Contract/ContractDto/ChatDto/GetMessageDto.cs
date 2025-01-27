@@ -13,5 +13,6 @@ namespace HealthCareDomain.Contract.ContractDto.ChatDto
         public string? SenderId { get; set; }
         public string? MessageContent { get; set; }
         public DateTime? SentAt { get; set; }
+        public IEnumerable<GetFileDto>? getFile { get; set; }
     }
 }

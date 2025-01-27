@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthCareDomain.Contract.ContractDto.ChatDto;
 using HealthCareDomain.Entity.Chat;
+
 //using System.Data.Entity;
 
 namespace HealthCarePersistence.Repository
@@ -60,6 +61,7 @@ namespace HealthCarePersistence.Repository
             var response = await _dbContext.Conversations
                  .AsNoTracking()
                 .Include(c => c.Messages)
+                .ThenInclude(m => m.Attachments)
                 .FirstOrDefaultAsync(c =>
                     (c.SenderId == senderId && c.ReceiverId == receiverId) ||
                     (c.SenderId == receiverId && c.ReceiverId == senderId));
@@ -73,7 +75,14 @@ namespace HealthCarePersistence.Repository
                         MessageId = m.Id, 
                         MessageContent = m.MessageContent,
                         SentAt = m.SentAt,
-                        SenderId = m.SenderId
+                        SenderId = m.SenderId,
+                        getFile = m.Attachments.Select(a => new GetFileDto
+                        {
+                            FilePath = a.FilePath,
+                            FileType = a.FileType,
+                            UploadedAt = a.UploadedAt
+
+                        })
                     }).ToList();
 
                 return messageDtos;
@@ -110,6 +119,13 @@ namespace HealthCarePersistence.Repository
         .FirstOrDefaultAsync();
 
             return conversation;
+        }
+
+        public async Task CreateAttachmentAsync(Attachment uploadedFiles)
+        {
+            await _dbContext.Attachments.AddAsync(uploadedFiles);
+            await _dbContext.SaveChangesAsync();
+           
         }
     }
 }

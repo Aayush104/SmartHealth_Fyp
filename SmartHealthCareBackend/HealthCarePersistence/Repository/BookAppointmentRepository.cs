@@ -1,4 +1,5 @@
-﻿using HealthCareDomain.Contract.ContractDto;
+﻿using HealthCareDomain.Contract.ContractDto.NewFolder;
+using HealthCareDomain.Contract.ContractDto.UserLIstForAppointment;
 using HealthCareDomain.Entity.Appointment;
 using HealthCareDomain.IRepository;
 using HealthCarePersistence.DatabaseContext;
@@ -38,6 +39,26 @@ namespace HealthCarePersistence.Repository
                 Console.WriteLine($"Error occurred while booking the appointment: {ex.Message}");
                 throw;
             }
+        }
+
+        public async Task<List<GetDoctorByIdDto>> GetDoctorListByIdAsync(string Id)
+        {
+            var result = await _dbContext.BookAppointments
+                  .Where(x => x.PatientId == Id)
+                  .Include(x => x.Doctor)
+                  .ThenInclude(doctor => doctor.User)
+                  .Select(appointment => new GetDoctorByIdDto
+                  {
+                      AppointmentId = appointment.Id,
+                      DoctorName = appointment.Doctor.User.FullName,
+                      AppointmentDate = appointment.AppointmentDate,
+                      Slot = appointment.Slot,
+                      DoctorProfile = appointment.Doctor.Profile,
+                     
+                  })
+                  .ToListAsync();
+
+            return result;
         }
 
         public async Task<List<GetListById>> GetListByIdAsync(string Id)

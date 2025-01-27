@@ -1,4 +1,5 @@
 ﻿using HealthCareApplication.Contract.IService;
+using HealthCareDomain.Contract.ContractDto.ChatDto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +44,7 @@ namespace HealthCareApi.Controllers
             return Ok(response);
         }
 
-
+       
 
         [HttpGet("GetMessages/{receiverId}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
