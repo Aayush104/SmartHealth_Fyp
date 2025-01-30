@@ -8,6 +8,7 @@ using HealthCareInfrastructure;
 using Microsoft.OpenApi.Models;
 using HealthCareApi.Chathub;
 using HealthCareApi.VideoCallHub;
+using HealthCareApplication.AppointmentHub;
 
 
 Env.Load(); // Load environment variables
@@ -117,6 +118,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.MapHub<ChatHub>("/hub");
+app.MapHub<Appointmenthub>("/apppointmenthub");
 
 app.MapHub<VideocallHub>("/videocallhub");
 

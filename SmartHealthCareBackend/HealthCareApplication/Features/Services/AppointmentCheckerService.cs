@@ -1,4 +1,5 @@
 ﻿
+using HealthCareApplication.AppointmentHub;
 using HealthCareDomain.IRepository;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,14 +17,16 @@ namespace HealthCareApplication.Features.Services
         private readonly IServiceProvider _serviceProvider;
        
         private readonly ILogger<AppointmentCheckerService> _logger;
+        private readonly IHubContext<Appointmenthub> _hubContext;
 
         public AppointmentCheckerService(
             IServiceProvider serviceProvider,
            
-            ILogger<AppointmentCheckerService> logger)
+            ILogger<AppointmentCheckerService> logger, IHubContext<Appointmenthub> hubContext)
         {
             _serviceProvider = serviceProvider;
-          
+            _hubContext = hubContext;
+
             _logger = logger;
         }
 
@@ -51,6 +54,7 @@ namespace HealthCareApplication.Features.Services
                                 if (!appointment.IsButtonEnabled)
                                 {
                                     await appointmentRepository.UpdateAppointmentStatus(appointment.Id, true);
+                                    await _hubContext.Clients.All.SendAsync("ReceiveAppointmentStatusChange", appointment.Id, true);
                                     _logger.LogInformation($"Enabled button for appointment {appointment.Id}");
                                 }
                             }
@@ -61,6 +65,7 @@ namespace HealthCareApplication.Features.Services
                                 if (appointment.IsButtonEnabled)
                                 {
                                     await appointmentRepository.UpdateAppointmentStatus(appointment.Id, false);
+                                    await _hubContext.Clients.All.SendAsync("ReceiveAppointmentStatusChange", appointment.Id, false);
                                     _logger.LogInformation($"Disabled button for appointment {appointment.Id}");
                                 }
                             }

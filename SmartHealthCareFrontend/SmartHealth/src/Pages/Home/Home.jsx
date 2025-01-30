@@ -4,11 +4,14 @@ import Footer from "../../Components/Fotter/Fotter";
 import Cookies from "js-cookie";
 import { User, Calendar, ChevronRight } from "lucide-react";
 import axios from "axios";
+import { HubConnectionBuilder } from "@microsoft/signalr";
 
 const Home = () => {
   const [greeting, setGreeting] = useState("");
   const [appointments, setAppointments] = useState([]);
-  
+  const [connection, setConnection] = useState(null);
+  const [forceUpdate, setForceUpdate] = useState(false); // New state to force re-render
+
   const token = Cookies.get("Token");
   let decodedToken = {};
   try {
@@ -16,7 +19,7 @@ const Home = () => {
   } catch (error) {
     console.error("Invalid Token:", error);
   }
-  
+
   const userName = decodedToken.Name || "Patient";
 
   const formatTime12Hour = (time) => {
@@ -27,10 +30,42 @@ const Home = () => {
     return `${formattedHours}:${minutes.toString().padStart(2, "0")} ${period}`;
   };
 
-  // Fetch and update appointments every 30 seconds
   useEffect(() => {
+    // Create a new connection
+    const newConnection = new HubConnectionBuilder()
+      .withUrl("https://localhost:7070/apppointmenthub")
+      .build();
+
+    newConnection
+      .start()
+      .then(() => console.log("Connected to SignalR"))
+      .catch((err) => console.log("Error connecting to SignalR", err));
+
+    newConnection.on(
+      "ReceiveAppointmentStatusChange",
+      (appointmentId, isButtonEnabled) => {
+        setAppointments((prevAppointments) =>
+          prevAppointments.map((appointment) =>
+            appointment.id === appointmentId
+              ? { ...appointment, isButtonEnabled }
+              : appointment
+          )
+        );
+        setForceUpdate((prev) => !prev); // Toggle forceUpdate to trigger useEffect
+      }
+    );
+
+    setConnection(newConnection);
+
+    return () => {
+      newConnection.stop().then(() => console.log("SignalR connection stopped"));
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!token) return;
+
     const fetchAppointments = async () => {
-      if (!token) return;
       try {
         const response = await axios.get(
           "https://localhost:7070/api/Appointment/GetAppointmentList",
@@ -38,18 +73,35 @@ const Home = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        console.log(response.data);
-        setAppointments(response.data.data?.$values || []);
+
+
+        console.log(response);
+        const appointments = response.data.data?.$values || [];
+    
+        // Filter appointments based on current date and time
+        const currentDate = new Date();
+        const filteredAppointments = appointments.filter((appointment) => {
+          const appointmentDate = new Date(appointment.appointmentDate);
+          const endTime = appointment.endTime ? appointment.endTime.split(":") : [];
+          const endDateTime = new Date(appointmentDate);
+          
+          if (endTime.length === 2) {
+            endDateTime.setHours(parseInt(endTime[0], 10));
+            endDateTime.setMinutes(parseInt(endTime[1], 10));
+          }
+    
+          return appointmentDate > currentDate || endDateTime > currentDate;
+        });
+    
+        setAppointments(filteredAppointments);
       } catch (error) {
         console.error("Error fetching appointments:", error);
       }
     };
+    
 
-    fetchAppointments();  // Initial fetch
-    const interval = setInterval(fetchAppointments, 30000);  // Refetch every 30 seconds
-
-    return () => clearInterval(interval);  // Cleanup on component unmount
-  }, [token]);
+    fetchAppointments();
+  }, [token, forceUpdate]); // Re-fetch appointments when forceUpdate changes
 
   useEffect(() => {
     const currentHour = new Date().getHours();
@@ -117,7 +169,7 @@ const AppointmentList = ({ appointments, formatTime }) => (
             <div>
               <p className="font-medium">Dr. {appointment.doctorName}</p>
               <p className="text-gray-600 text-sm">
-                {new Date(appointment.appointmentDate).toISOString().split("T")[0]},{ " "}
+                {appointment.appointmentDate.split("T")[0]},{" "}
                 {formatTime(appointment.slot)} - {formatTime(appointment.endTime)}
               </p>
             </div>
@@ -127,7 +179,9 @@ const AppointmentList = ({ appointments, formatTime }) => (
               Reschedule
             </button>
             <button
-              className={`px-4 py-2 rounded  ${appointment.isButtonEnabled ? "bg-sky-500 text-white cursor-pointer" : "bg-gray-300 text-gray-600 cursor-not-allowed"}`}
+              className={`px-4 py-2 rounded ${
+                appointment.isButtonEnabled ? "bg-sky-500 text-white cursor-pointer" : "bg-gray-300 text-gray-600 cursor-not-allowed"
+              }`}
               disabled={!appointment.isButtonEnabled}
             >
               {appointment.isButtonEnabled ? "Join Appointment" : "Join Appointment"}

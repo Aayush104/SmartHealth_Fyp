@@ -43,10 +43,10 @@ namespace HealthCarePersistence.Repository
 
         public async Task<List<GetDoctorByIdDto>> GetDoctorListByIdAsync(string Id)
         {
-            var currentDateTime = DateTime.UtcNow;
+           
 
             var result = await _dbContext.BookAppointments
-                .Where(x => x.PatientId == Id && x.AppointmentDate >= currentDateTime)
+                .Where(x => x.PatientId == Id)
                 .Include(x => x.Doctor)
                 .ThenInclude(doctor => doctor.User)
                 .Select(appointment => new GetDoctorByIdDto
@@ -63,24 +63,19 @@ namespace HealthCarePersistence.Repository
                 .ToListAsync();
 
            
-            var filteredResult = result
-                .Where(appointment =>
-                    appointment.AppointmentDate > currentDateTime ||
-                    (appointment.AppointmentDate == currentDateTime &&
-                     TimeSpan.Parse(appointment.EndTime) > currentDateTime.TimeOfDay))
-                .ToList();
+           
 
-            return filteredResult;
+            return result;
         }
 
 
         public async Task<List<GetListById>> GetListByIdAsync(string Id)
         {
-            var currentDateTime = DateTime.Now;
+         
 
            
             var result = await _dbContext.BookAppointments
-                .Where(x => x.DoctorId == Id && x.AppointmentDate >= currentDateTime)
+                .Where(x => x.DoctorId == Id)
                 .Include(x => x.Patient)
                 .ThenInclude(patient => patient.User)
                 .Select(appointment => new GetListById
@@ -98,13 +93,9 @@ namespace HealthCarePersistence.Repository
 
        
        
-            var filteredResult = result
-                .Where(appointment =>
-                    appointment.AppointmentDate > currentDateTime ||
-                    (appointment.AppointmentDate == currentDateTime && TimeSpan.Parse(appointment.EndTime) > currentDateTime.TimeOfDay))
-                .ToList();
+          
 
-            return filteredResult;
+            return result;
         }
 
 
