@@ -43,46 +43,80 @@ namespace HealthCarePersistence.Repository
 
         public async Task<List<GetDoctorByIdDto>> GetDoctorListByIdAsync(string Id)
         {
-            var result = await _dbContext.BookAppointments
-                  .Where(x => x.PatientId == Id)
-                  .Include(x => x.Doctor)
-                  .ThenInclude(doctor => doctor.User)
-                  .Select(appointment => new GetDoctorByIdDto
-                  {
-                      AppointmentId = appointment.Id,
-                      DoctorName = appointment.Doctor.User.FullName,
-                      AppointmentDate = appointment.AppointmentDate,
-                      Slot = appointment.Slot,
-                      DoctorProfile = appointment.Doctor.Profile,
-                     
-                  })
-                  .ToListAsync();
+            var currentDateTime = DateTime.UtcNow;
 
-            return result;
-        }
-
-        public async Task<List<GetListById>> GetListByIdAsync(string Id)
-        {
-            
             var result = await _dbContext.BookAppointments
-                .Where(x => x.DoctorId == Id) 
-                .Include(x => x.Patient)
-                .ThenInclude(patient => patient.User)   
-                .Select(appointment => new GetListById 
+                .Where(x => x.PatientId == Id && x.AppointmentDate >= currentDateTime)
+                .Include(x => x.Doctor)
+                .ThenInclude(doctor => doctor.User)
+                .Select(appointment => new GetDoctorByIdDto
                 {
                     AppointmentId = appointment.Id,
-                    PatientFullName = appointment.Patient.User.FullName, 
+                    DoctorId = appointment.DoctorId,
+                    DoctorName = appointment.Doctor.User.FullName,
                     AppointmentDate = appointment.AppointmentDate,
                     Slot = appointment.Slot,
-                    Status = appointment.Status,
-                    PaymentStatus = appointment.PaymentStatus
+                    EndTime = appointment.EndTime!,
+                    DoctorProfile = appointment.Doctor.Profile,
+                    IsButtonEnabled = appointment.IsButtonEnabled,
                 })
                 .ToListAsync();
 
-            return result; 
+           
+            var filteredResult = result
+                .Where(appointment =>
+                    appointment.AppointmentDate > currentDateTime ||
+                    (appointment.AppointmentDate == currentDateTime &&
+                     TimeSpan.Parse(appointment.EndTime) > currentDateTime.TimeOfDay))
+                .ToList();
+
+            return filteredResult;
         }
 
-        
+
+        public async Task<List<GetListById>> GetListByIdAsync(string Id)
+        {
+            var currentDateTime = DateTime.Now;
+
+           
+            var result = await _dbContext.BookAppointments
+                .Where(x => x.DoctorId == Id && x.AppointmentDate >= currentDateTime)
+                .Include(x => x.Patient)
+                .ThenInclude(patient => patient.User)
+                .Select(appointment => new GetListById
+                {
+                    AppointmentId = appointment.Id,
+                    PatientFullName = appointment.Patient.User.FullName,
+                    AppointmentDate = appointment.AppointmentDate,
+                    Slot = appointment.Slot,
+                    EndTime = appointment.EndTime!,
+                    Status = appointment.Status,
+                    PaymentStatus = appointment.PaymentStatus,
+                    IsButtonEnabled = appointment.IsButtonEnabled,
+                })
+                .ToListAsync();
+
+       
+       
+            var filteredResult = result
+                .Where(appointment =>
+                    appointment.AppointmentDate > currentDateTime ||
+                    (appointment.AppointmentDate == currentDateTime && TimeSpan.Parse(appointment.EndTime) > currentDateTime.TimeOfDay))
+                .ToList();
+
+            return filteredResult;
+        }
+
+
+        public async Task<List<BookAppointment>> GetUpcomingAppointments()
+        {
+            return await _dbContext.BookAppointments
+                .Where(a => a.AppointmentDate.Date >= DateTime.UtcNow.Date)
+                .OrderBy(a => a.AppointmentDate)
+                .ThenBy(a => a.Slot)
+                .ToListAsync();
+        }
+
         public async Task<bool> Paymentasync(Payment payment)
         {
             try
@@ -100,6 +134,16 @@ namespace HealthCarePersistence.Repository
 
                 Console.WriteLine($"Error occurred while booking the appointment: {ex.Message}");
                 return false;
+            }
+        }
+
+        public async Task UpdateAppointmentStatus(int appointmentId, bool isEnabled)
+        {
+            var appointment = await _dbContext.BookAppointments.FindAsync(appointmentId);
+            if (appointment != null)
+            {
+                appointment.IsButtonEnabled = isEnabled;
+                await _dbContext.SaveChangesAsync();
             }
         }
     }

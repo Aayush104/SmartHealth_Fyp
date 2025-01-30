@@ -28,8 +28,10 @@ import Doctorverificationdetails from "./Components/Admin Components/Doctorverif
 import AppointmentConfirmation from "./Components/AppointmentConfirmation/AppointmentConfirmation";
 
 
+
 const App = () => {
   return (
+ 
     <Router>
       <Routes>
         <Route
@@ -80,6 +82,7 @@ const App = () => {
             </Protect>
           }
         />
+
         <Route
           path="/DoctorProfile/:name"
           element={
@@ -93,7 +96,7 @@ const App = () => {
         
         <Route path="/Success" element={<Success /> } />
         
-        <Route path="/DoctorAppointments" element={<Protect requiredRole={['Doctor']}><DoctorAppointments /> </Protect>} />
+        <Route path="/DoctorAppointments" element={<DoctorAppointments />} />
       
       
         <Route path="//unauthorize" element={<UnAuthorized />} />
@@ -115,6 +118,7 @@ const App = () => {
 
       </Routes>
     </Router>
+
   );
 };
 

@@ -16,5 +16,7 @@ namespace HealthCareDomain.IRepository
         Task<bool> Paymentasync(Payment payment);
        Task <List<GetListById>> GetListByIdAsync(string Id);
        Task <List<GetDoctorByIdDto>> GetDoctorListByIdAsync(string Id);
+        Task<List<BookAppointment>> GetUpcomingAppointments();
+        Task UpdateAppointmentStatus(int appointmentId, bool isEnabled);
     }
 }

@@ -184,6 +184,7 @@ const paymentGateway = localStorage.getItem("PaymentGateway");
   const appointmentDate = details.date || "Not provided";
   const doctorId = details.Id || "Not provided";
   const fee = details.Fee;
+  const endTime = details.EndTime
 
   const token = Cookies.get("Token");
   const decodedToken = token ? JSON.parse(atob(token.split(".")[1])) : {};
@@ -195,7 +196,7 @@ const paymentGateway = localStorage.getItem("PaymentGateway");
   const actionCalled = useRef(false);
 
 
-  //for esewa
+
   const actions = async () => {
     if (!data || !token) {
       console.error("Missing required parameters or token.");
@@ -209,6 +210,7 @@ const paymentGateway = localStorage.getItem("PaymentGateway");
         doctorId: doctorId,
         StartTime: startTime,
         AppointmentDate: appointmentDate,
+        EndTime : endTime,
       };
   
       let response;

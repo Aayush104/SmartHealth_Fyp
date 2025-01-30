@@ -53,7 +53,7 @@ namespace HealthCareApi.Controllers
         }
 
 
-        
+
 
         [HttpPost("paywithesewa")]
 
@@ -61,7 +61,7 @@ namespace HealthCareApi.Controllers
         {
             try
             {
-               
+
                 if (paymentDto == null || paymentDto.PaidAmount <= 0)
                 {
                     return BadRequest(new { message = "Invalid payment details provided." });
@@ -70,7 +70,7 @@ namespace HealthCareApi.Controllers
                 PaymentManager paymentManager = new PaymentManager(
                     PaymentMethod.eSewa,
                     PaymentVersion.v2,
-                    PaymentMode.Sandbox, 
+                    PaymentMode.Sandbox,
                     eSewaKey
                 );
 
@@ -83,7 +83,7 @@ namespace HealthCareApi.Controllers
                     Amount = paymentDto.PaidAmount,
                     TaxAmount = taxAmount,
                     TotalAmount = paymentDto.PaidAmount,
-                  
+
                     TransactionUuid = $"tx-{Guid.NewGuid().ToString("N").Substring(0, 8)}",
                     ProductCode = "EPAYTEST",
                     ProductServiceCharge = 0,  // Your service charge if any
@@ -103,7 +103,7 @@ namespace HealthCareApi.Controllers
                 Console.WriteLine("Payment Response:");
                 Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(response));
 
-               
+
                 // Return the payment URL to the client
                 return Ok(new { paymentUrl = response.data });
             }
@@ -157,7 +157,7 @@ namespace HealthCareApi.Controllers
                     decimal totalAmount = response.total_amount;
 
                     // Book the appointment with the payment details
-                    var result = await _appointmentService.BookAppointmentAsync(appointmentDto, userId, totalAmount);
+                    var result = await _appointmentService.BookAppointmentAsync(appointmentDto, userId, totalAmount, "Esewa");
 
                     // Check if appointment booking was successful
                     if (result.IsSuccess)
@@ -176,7 +176,7 @@ namespace HealthCareApi.Controllers
             }
             catch (Exception ex)
             {
-               
+
 
                 // Return generic error message to the client
                 return StatusCode(500, new { message = "An error occurred while processing the payment", error = ex.Message });
@@ -186,21 +186,21 @@ namespace HealthCareApi.Controllers
 
 
         [HttpPost("paywithkhalti")]
-      
+
         public async Task<IActionResult> PayWithKhalti(PaymentDto paymentDto)
         {
-            
-          
+
+
             if (paymentDto == null || paymentDto.PaidAmount <= 0)
             {
                 return BadRequest(new { message = "Invalid payment details provided." });
             }
 
-        
+
             PaymentManager paymentManager = new PaymentManager(
-                PaymentMethod.Khalti,          
+                PaymentMethod.Khalti,
                 PaymentVersion.v2,
-                PaymentMode.Sandbox,           
+                PaymentMode.Sandbox,
                 KhaltiKey
             );
 
@@ -216,9 +216,9 @@ namespace HealthCareApi.Controllers
                 purchase_order_name = "Doctor Booking",
                 customer_info = new
                 {
-                    name ="Test",
-                    email ="Test@example.com",
-                    phone = "9800000000" 
+                    name = "Test",
+                    email = "Test@example.com",
+                    phone = "9800000000"
                 },
                 product_details = new List<KhaltiProductDetail>
         {
@@ -226,7 +226,7 @@ namespace HealthCareApi.Controllers
 
             new KhaltiProductDetail()
             {
-                identity = Guid.NewGuid().ToString(), 
+                identity = Guid.NewGuid().ToString(),
                 name = "Doctor Booking",
                 total_price =paymentDto.PaidAmount,
                 quantity = 1,
@@ -282,7 +282,7 @@ namespace HealthCareApi.Controllers
                 PaymentMode.Sandbox,
                 KhaltiKey
             );
-                
+
                 var response = await paymentManager.VerifyPaymentAsync<KhaltiResponse>(appointmentDto.QueryType);
 
                 // Ensure response and status are not null or empty
@@ -292,12 +292,12 @@ namespace HealthCareApi.Controllers
                 }
 
                 // Check for a successful payment
-                if  (response != null && string.Equals(response.status, "completed", StringComparison.OrdinalIgnoreCase))
-                    {
+                if (response != null && string.Equals(response.status, "completed", StringComparison.OrdinalIgnoreCase))
+                {
                     decimal totalAmount = response.total_amount;
 
                     // Book the appointment with the payment details
-                    var result = await _appointmentService.BookAppointmentAsync(appointmentDto, userId, totalAmount);
+                    var result = await _appointmentService.BookAppointmentAsync(appointmentDto, userId, totalAmount, "Khalti");
 
                     // Check if appointment booking was successful
                     if (result.IsSuccess)
@@ -346,9 +346,15 @@ namespace HealthCareApi.Controllers
                 return Unauthorized("User not found");
             }
 
-        var response = await _appointmentService.GetAppointmentListAsync(userId, rolee);
+            var response = await _appointmentService.GetAppointmentListAsync(userId, rolee);
 
             return Ok(response);
         }
+
+
+        //public async Task<IActionResult> CheckButtonStatus(int appointmentid)
+        //{
+        //    ar appointment = await _appointmentRepository.GetUpcomingAppointments();
+        //}
     }
 }

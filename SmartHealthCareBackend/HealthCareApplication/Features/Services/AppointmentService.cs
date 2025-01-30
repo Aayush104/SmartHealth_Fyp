@@ -28,7 +28,7 @@ namespace HealthCareApplication.Features.Services
             _dataProtector = dataProtector?.CreateProtector(securityProvider.securityKey);
         }
 
-        public async Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto, string userId, decimal total_Amount)
+        public async Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto, string userId, decimal total_Amount, string PaymentMethod)
         {
             if (appointmentDto == null)
                 return new ApiResponseDto
@@ -71,6 +71,7 @@ namespace HealthCareApplication.Features.Services
                     PatientId = userId,
                     AppointmentDate = appointmentDto.AppointmentDate,
                     Slot = appointmentDto.StartTime,
+                   EndTime = appointmentDto.EndTime,
                     Status = "Booked",
                     PaymentStatus = "Paid"
                 };
@@ -102,7 +103,7 @@ namespace HealthCareApplication.Features.Services
                     PaymentDate = DateTime.Now,
                     Status = "Paid",
                     AppointmentId = bookedAppointmentId,
-                    PaymentMethod = "Esewa"
+                    PaymentMethod = PaymentMethod
                 };
 
 

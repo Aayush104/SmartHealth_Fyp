@@ -12,7 +12,7 @@ namespace HealthCareApplication.Contract.IService
 {
     public interface IAppointmentService
     {
-        Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto, string userId, decimal total_Amount);
+        Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto, string userId, decimal total_Amount, string PaymentMethod);
         Task<ApiResponseDto> GetAppointmentListAsync(string userId, string role);
 
     }

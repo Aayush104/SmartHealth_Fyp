@@ -23,11 +23,14 @@ namespace HealthCareApplication
             services.AddScoped<IOtpService, OtpService>();
             services.AddScoped<IDoctorAvailabiltyService, DoctorAvailabilityService>();
             services.AddScoped<IAppointmentService, AppointmentService>();
+            services.AddHostedService<AppointmentCheckerService>();
             services.AddScoped<IChatService, ChatService>();
             services.AddScoped<IPatientService, PatientService>();
             services.AddScoped<DataSecurityProvider>();
 
             services.AddSingleton<ITokenService, TokenService>();
+
+            services.AddSingleton<IConnectionService, ConnectionService>(); 
 
             // Retrieve JWT settings from environment variables
             var JWT_SECRET = Environment.GetEnvironmentVariable("JWT_SECRET");

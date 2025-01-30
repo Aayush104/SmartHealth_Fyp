@@ -29,9 +29,13 @@ namespace HealthCareDomain.Entity.Appointment
         [MaxLength(50)]
         public string Slot { get; set; }
 
+        public string? EndTime { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string Status { get; set; }
+
+        public bool IsButtonEnabled { get; set; } = false;
 
         [Required]
         [MaxLength(50)]

@@ -952,6 +952,10 @@
             "type": "string",
             "nullable": true
           },
+          "endTime": {
+            "type": "string",
+            "nullable": true
+          },
           "appointmentDate": {
             "type": "string",
             "format": "date-time"

@@ -24,7 +24,10 @@ namespace HealthCarePersistence.Repository
             return await _dbContext.DoctorAvailabilities.Where(x => x.DoctorId == doctorId && x.Date == date && x.StartTime == timeSlot).FirstOrDefaultAsync();
         }
 
-
+        public Task<DoctorAvailability> GetAvailabilityBySlotAsync(string doctorId, DateTime date, TimeSpan timeSlot)
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task<List<DoctorAvailability>> GetSlotsAsync(string userId)
         {

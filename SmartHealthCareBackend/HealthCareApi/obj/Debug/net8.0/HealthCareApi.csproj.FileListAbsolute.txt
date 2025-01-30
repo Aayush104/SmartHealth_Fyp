@@ -514,3 +514,13 @@ D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Deb
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\payment-gateway-nepal.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Common.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.Extensions.Features.dll
+D:\SmartHealth_care\SmartHealth_Fyp\SmartHealthCareBackend\HealthCareApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
