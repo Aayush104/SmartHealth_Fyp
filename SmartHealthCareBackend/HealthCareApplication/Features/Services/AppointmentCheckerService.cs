@@ -53,7 +53,7 @@ namespace HealthCareApplication.Features.Services
                             {
                                 if (!appointment.IsButtonEnabled)
                                 {
-                                    await appointmentRepository.UpdateAppointmentStatus(appointment.Id, true);
+                                    await appointmentRepository.UpdateAppointmentStatus(appointment.Id,true, true);
                                     await _hubContext.Clients.All.SendAsync("ReceiveAppointmentStatusChange", appointment.Id, true);
                                     _logger.LogInformation($"Enabled button for appointment {appointment.Id}");
                                 }
@@ -64,7 +64,7 @@ namespace HealthCareApplication.Features.Services
                                 // Update if button is not disabled already
                                 if (appointment.IsButtonEnabled)
                                 {
-                                    await appointmentRepository.UpdateAppointmentStatus(appointment.Id, false);
+                                    await appointmentRepository.UpdateAppointmentStatus(appointment.Id,false, false);
                                     await _hubContext.Clients.All.SendAsync("ReceiveAppointmentStatusChange", appointment.Id, false);
                                     _logger.LogInformation($"Disabled button for appointment {appointment.Id}");
                                 }

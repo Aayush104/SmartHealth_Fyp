@@ -41,6 +41,27 @@ namespace HealthCarePersistence.Repository
             }
         }
 
+        public async Task<bool> CheckIds(string MeetingId)
+        {
+            try
+            {
+                var result = await _dbContext.BookAppointments
+                    .AnyAsync(x => x.MeetingId == MeetingId && x.MeetingIdValidation == true);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"Error checking MeetingId: {ex.Message}");
+
+           
+                return false;
+            }
+        }
+
+
+
         public async Task<List<GetDoctorByIdDto>> GetDoctorListByIdAsync(string Id)
         {
            
@@ -129,12 +150,13 @@ namespace HealthCarePersistence.Repository
             }
         }
 
-        public async Task UpdateAppointmentStatus(int appointmentId, bool isEnabled)
+        public async Task UpdateAppointmentStatus(int appointmentId, bool MeetingIdValidation, bool isEnabled)
         {
             var appointment = await _dbContext.BookAppointments.FindAsync(appointmentId);
             if (appointment != null)
             {
                 appointment.IsButtonEnabled = isEnabled;
+                appointment.MeetingIdValidation = MeetingIdValidation;
                 await _dbContext.SaveChangesAsync();
             }
         }

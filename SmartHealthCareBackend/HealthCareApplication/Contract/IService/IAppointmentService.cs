@@ -15,5 +15,7 @@ namespace HealthCareApplication.Contract.IService
         Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto, string userId, decimal total_Amount, string PaymentMethod);
         Task<ApiResponseDto> GetAppointmentListAsync(string userId, string role);
 
+        Task<ApiResponseDto> ChecKMeetingIdAsync(string MeetingId);
+
     }
 }

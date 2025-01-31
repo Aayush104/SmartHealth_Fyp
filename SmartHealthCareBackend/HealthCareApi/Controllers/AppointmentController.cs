@@ -351,10 +351,22 @@ namespace HealthCareApi.Controllers
             return Ok(response);
         }
 
+        [HttpPost("CheckMeetingId")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> CheckMeetingId([FromQuery] string MeetingId)
+        {
+            var user = HttpContext.User.FindFirst("userId");
+            var userId = user?.Value;
 
-        //public async Task<IActionResult> CheckButtonStatus(int appointmentid)
-        //{
-        //    ar appointment = await _appointmentRepository.GetUpcomingAppointments();
-        //}
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User not found");
+            }
+
+            var response = await _appointmentService.ChecKMeetingIdAsync(MeetingId);
+
+            return StatusCode(response.StatusCode, response);
+        }
+
     }
 }

@@ -43,6 +43,8 @@ namespace HealthCareDomain.Entity.Appointment
 
         public string MeetingId { get; set; } = Guid.NewGuid().ToString();  
 
+        public bool MeetingIdValidation { get; set; } = true;
+
         public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
 }

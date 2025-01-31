@@ -153,6 +153,27 @@
         }
       }
     },
+    "/api/Appointment/CheckMeetingId": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "parameters": [
+          {
+            "name": "MeetingId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth/CheckAccess": {
       "get": {
         "tags": [

@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "HealthCareApi.Controllers.AppointmentController",
+    "Method": "CheckMeetingId",
+    "RelativePath": "api/Appointment/CheckMeetingId",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "MeetingId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
     "Method": "Failure",
     "RelativePath": "api/Appointment/Failure",
     "HttpMethod": "GET",

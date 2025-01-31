@@ -145,6 +145,52 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
+        
+        public async Task<ApiResponseDto> ChecKMeetingIdAsync(string MeetingId)
+        {
+            if (string.IsNullOrEmpty(MeetingId))
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "Invalid input parameters.",
+                    StatusCode = 400
+                };
+            }
+
+            try
+            {
+                var checkIds = await _bookAppointmentRepository.CheckIds(MeetingId);
+
+                if (checkIds)
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = true,
+                        Message = "Valid Token",
+                        StatusCode = 200
+                    };
+                }
+
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "Invalid Token",
+                    StatusCode = 400
+                };
+            }
+            catch (Exception ex)
+            {
+
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
         public async Task<ApiResponseDto> GetAppointmentListAsync(string userId, string role)
         {
             if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(role))

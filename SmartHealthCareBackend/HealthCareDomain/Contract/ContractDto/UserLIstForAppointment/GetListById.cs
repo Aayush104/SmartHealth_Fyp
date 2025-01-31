@@ -11,8 +11,7 @@ namespace HealthCareDomain.Contract.ContractDto.NewFolder
 
 
         public int AppointmentId { get; set; }
-
-        //public string DoctorId { get; set; }
+     
         public string PatientFullName { get; set; }
         public DateTime AppointmentDate { get; set; }
         public string Slot { get; set; }
