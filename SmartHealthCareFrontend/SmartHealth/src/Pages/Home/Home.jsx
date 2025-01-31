@@ -5,12 +5,14 @@ import Cookies from "js-cookie";
 import { User, Calendar, ChevronRight } from "lucide-react";
 import axios from "axios";
 import { HubConnectionBuilder } from "@microsoft/signalr";
+import MeetingVerify from "../../Components/MeetingVerifyComponent/MeetingVerify";
 
 const Home = () => {
   const [greeting, setGreeting] = useState("");
   const [appointments, setAppointments] = useState([]);
   const [connection, setConnection] = useState(null);
-  const [forceUpdate, setForceUpdate] = useState(false); // New state to force re-render
+  const [showAdditionalForm, setShowAdditionalForm] = useState(false);
+  const [forceUpdate, setForceUpdate] = useState(false);
 
   const token = Cookies.get("Token");
   let decodedToken = {};
@@ -22,7 +24,12 @@ const Home = () => {
 
   const userName = decodedToken.Name || "Patient";
 
-  const formatTime12Hour = (time) => {
+  const handleCloseForms = () => {
+    setShowAdditionalForm(false);
+    document.body.style.overflow = "auto";
+  };
+
+  const formatTime = (time) => {
     if (!time) return "";
     const [hours, minutes] = time.split(":").map(Number);
     const period = hours >= 12 ? "PM" : "AM";
@@ -31,7 +38,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // Create a new connection
     const newConnection = new HubConnectionBuilder()
       .withUrl("https://localhost:7070/apppointmenthub")
       .build();
@@ -41,25 +47,17 @@ const Home = () => {
       .then(() => console.log("Connected to SignalR"))
       .catch((err) => console.log("Error connecting to SignalR", err));
 
-    newConnection.on(
-      "ReceiveAppointmentStatusChange",
-      (appointmentId, isButtonEnabled) => {
-        setAppointments((prevAppointments) =>
-          prevAppointments.map((appointment) =>
-            appointment.id === appointmentId
-              ? { ...appointment, isButtonEnabled }
-              : appointment
-          )
-        );
-        setForceUpdate((prev) => !prev); // Toggle forceUpdate to trigger useEffect
-      }
-    );
+    newConnection.on("ReceiveAppointmentStatusChange", (appointmentId, isButtonEnabled) => {
+      setAppointments((prevAppointments) =>
+        prevAppointments.map((appointment) =>
+          appointment.id === appointmentId ? { ...appointment, isButtonEnabled } : appointment
+        )
+      );
+      setForceUpdate((prev) => !prev);
+    });
 
     setConnection(newConnection);
-
-    return () => {
-      newConnection.stop().then(() => console.log("SignalR connection stopped"));
-    };
+    return () => newConnection.stop().then(() => console.log("SignalR connection stopped"));
   }, []);
 
   useEffect(() => {
@@ -67,70 +65,85 @@ const Home = () => {
 
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get(
-          "https://localhost:7070/api/Appointment/GetAppointmentList",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-
-
-        console.log(response);
+        const response = await axios.get("https://localhost:7070/api/Appointment/GetAppointmentList", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         const appointments = response.data.data?.$values || [];
-    
-        // Filter appointments based on current date and time
         const currentDate = new Date();
         const filteredAppointments = appointments.filter((appointment) => {
           const appointmentDate = new Date(appointment.appointmentDate);
           const endTime = appointment.endTime ? appointment.endTime.split(":") : [];
           const endDateTime = new Date(appointmentDate);
-          
+
           if (endTime.length === 2) {
             endDateTime.setHours(parseInt(endTime[0], 10));
             endDateTime.setMinutes(parseInt(endTime[1], 10));
           }
-    
+
           return appointmentDate > currentDate || endDateTime > currentDate;
         });
-    
+
         setAppointments(filteredAppointments);
       } catch (error) {
         console.error("Error fetching appointments:", error);
       }
     };
-    
 
     fetchAppointments();
-  }, [token, forceUpdate]); // Re-fetch appointments when forceUpdate changes
+  }, [token, forceUpdate]);
 
   useEffect(() => {
     const currentHour = new Date().getHours();
     const greetingMessage =
-      currentHour < 12
-        ? "Good Morning 😎"
-        : currentHour < 18
-        ? "Good Afternoon 🌄"
-        : "Good Night 🌆";
+      currentHour < 12 ? "Good Morning 😎" : currentHour < 18 ? "Good Afternoon 🌄" : "Good Night 🌆";
     setGreeting(greetingMessage);
   }, []);
+
+  const HandleJoinAppointment = () => {
+    setShowAdditionalForm(true);
+  };
 
   return (
     <div>
       <Navbar />
+      {showAdditionalForm && <MeetingVerify onClose={handleCloseForms} />}
       <div className="md:max-w-8xl mx-auto p-6 space-y-8">
         <div className="space-y-1">
           <p className="text-gray-600 text-lg">{greeting},</p>
           <h1 className="text-2xl font-semibold">Welcome back, {userName}!</h1>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <InfoCard title="Upcoming Appointments" count={appointments.length} icon={<ChevronRight />} />
           <InfoCard title="Tests Scheduled" count={2} icon={<Calendar />} />
           <InfoCard title="Missed Appointments" count={5} icon={<User />} />
         </div>
-
-        <AppointmentList appointments={appointments} formatTime={formatTime12Hour} />
-        <RecommendedDoctors />
+        <div className="space-y-4">
+          <h2 className="text-xl font-semibold">Upcoming Appointments</h2>
+          {appointments.length > 0 ? (
+            appointments.map((appointment, index) => (
+              <div className="bg-white p-4 rounded-lg shadow flex items-center justify-between" key={index}>
+                <div className="flex items-center space-x-4">
+                  <img src={appointment.doctorProfile || "default-avatar.png"} alt="Doctor" className="w-12 h-12 rounded-full" />
+                  <div>
+                    <p className="font-medium">Dr. {appointment.doctorName}</p>
+                    <p className="text-gray-600 text-sm">
+                      {appointment.appointmentDate.split("T")[0]}, {formatTime(appointment.slot)} - {formatTime(appointment.endTime)}
+                    </p>
+                  </div>
+                </div>
+                <button
+                  className={`px-4 py-2 rounded ${appointment.isButtonEnabled ? "bg-sky-500 text-white" : "bg-gray-300 text-gray-600"}`}
+                  disabled={!appointment.isButtonEnabled}
+                  onClick={appointment.isButtonEnabled ? HandleJoinAppointment : undefined}
+                >
+                  Join Appointment
+                </button>
+              </div>
+            ))
+          ) : (
+            <p className="text-gray-600">No upcoming appointments.</p>
+          )}
+        </div>
       </div>
       <Footer />
     </div>
@@ -138,82 +151,12 @@ const Home = () => {
 };
 
 const InfoCard = ({ title, count, icon }) => (
-  <div className="bg-white p-4 rounded-lg shadow flex justify-between items-center">
+  <div className="bg-white p-4 rounded-lg shadow flex items-center justify-between">
     <div>
-      <p className="text-gray-600 text-sm">{title}</p>
-      <p className="text-3xl font-bold">{count}</p>
+      <h3 className="text-lg font-medium">{title}</h3>
+      <p className="text-gray-600 text-sm">{count}</p>
     </div>
-    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-      {icon}
-    </div>
-  </div>
-);
-
-const AppointmentList = ({ appointments, formatTime }) => (
-  <div className="space-y-4">
-    <h2 className="text-xl font-semibold">Upcoming Appointments</h2>
-    {appointments.length > 0 ? (
-      appointments.map((appointment, index) => (
-        <div
-          className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
-          key={index}
-        >
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-              <img
-                src={appointment.doctorProfile || "default-avatar.png"}
-                alt="Doctor"
-                className="rounded-full"
-              />
-            </div>
-            <div>
-              <p className="font-medium">Dr. {appointment.doctorName}</p>
-              <p className="text-gray-600 text-sm">
-                {appointment.appointmentDate.split("T")[0]},{" "}
-                {formatTime(appointment.slot)} - {formatTime(appointment.endTime)}
-              </p>
-            </div>
-          </div>
-          <div className="flex space-x-2">
-            <button className="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded">
-              Reschedule
-            </button>
-            <button
-              className={`px-4 py-2 rounded ${
-                appointment.isButtonEnabled ? "bg-sky-500 text-white cursor-pointer" : "bg-gray-300 text-gray-600 cursor-not-allowed"
-              }`}
-              disabled={!appointment.isButtonEnabled}
-            >
-              {appointment.isButtonEnabled ? "Join Appointment" : "Join Appointment"}
-            </button>
-          </div>
-        </div>
-      ))
-    ) : (
-      <p className="text-gray-600">No upcoming appointments.</p>
-    )}
-  </div>
-);
-
-const RecommendedDoctors = () => (
-  <div className="space-y-4">
-    <h2 className="text-xl font-semibold">Recommended Doctors</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      {[1, 2, 3].map((_, index) => (
-        <div className="bg-white rounded-lg shadow overflow-hidden" key={index}>
-          <div className="h-48 bg-gray-200"></div>
-          <div className="p-4 space-y-4">
-            <div>
-              <h3 className="font-medium">Dr. Alex Johnson</h3>
-              <p className="text-gray-600 text-sm">Cardiologist</p>
-            </div>
-            <button className="w-full py-2 bg-blue-600 text-white rounded">
-              Book Appointment
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
+    {icon}
   </div>
 );
 

@@ -87,6 +87,7 @@ namespace HealthCarePersistence.Repository
                     EndTime = appointment.EndTime!,
                     Status = appointment.Status,
                     PaymentStatus = appointment.PaymentStatus,
+                    MeetingId = appointment.MeetingId,
                     IsButtonEnabled = appointment.IsButtonEnabled,
                 })
                 .ToListAsync();

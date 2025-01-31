@@ -420,6 +420,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-hYMnyIlq\u002BlM4ge3MP6KJ3dyn/\u002BCMg\u002BnPF1qEncyD8rw="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"9620"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022hYMnyIlq\u002BlM4ge3MP6KJ3dyn/\u002BCMg\u002BnPF1qEncyD8rw=\u0022"},{"Name":"Last-Modified","Value":"Mon, 27 Jan 2025 17:58:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/HealthCareApi/MessageFile/0516e9c3-3837-4b9d-ab38-29502a388d2d.5e0gmpv080.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MessageFile\0516e9c3-3837-4b9d-ab38-29502a388d2d.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5e0gmpv080"},{"Name":"integrity","Value":"sha256-A9CbODuYGlyjuhiN12/76O1pTw1XuDReBiJgM6omYqc="},{"Name":"label","Value":"_content/HealthCareApi/MessageFile/0516e9c3-3837-4b9d-ab38-29502a388d2d.jpeg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"23005"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022A9CbODuYGlyjuhiN12/76O1pTw1XuDReBiJgM6omYqc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 30 Jan 2025 16:02:10 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/HealthCareApi/MessageFile/0516e9c3-3837-4b9d-ab38-29502a388d2d.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MessageFile\0516e9c3-3837-4b9d-ab38-29502a388d2d.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-A9CbODuYGlyjuhiN12/76O1pTw1XuDReBiJgM6omYqc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"23005"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022A9CbODuYGlyjuhiN12/76O1pTw1XuDReBiJgM6omYqc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 30 Jan 2025 16:02:10 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/HealthCareApi/MessageFile/0cfd499f-1057-46c1-a9d6-8689577b402e.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MessageFile\0cfd499f-1057-46c1-a9d6-8689577b402e.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -863,6 +875,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-rch/gA26K23heI5sPPUX1jSiXmooRYGzBQRauIUv\u002BX4="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"3921"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022rch/gA26K23heI5sPPUX1jSiXmooRYGzBQRauIUv\u002BX4=\u0022"},{"Name":"Last-Modified","Value":"Mon, 27 Jan 2025 18:28:31 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/HealthCareApi/MessageFile/e9c36411-3f0e-4588-9074-e3785c4a3ee5.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MessageFile\e9c36411-3f0e-4588-9074-e3785c4a3ee5.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9W6XFpHDU7B55Ia8NBq10cVwB\u002BrIRMEa8vQetW0jGdA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"5297"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229W6XFpHDU7B55Ia8NBq10cVwB\u002BrIRMEa8vQetW0jGdA=\u0022"},{"Name":"Last-Modified","Value":"Thu, 30 Jan 2025 16:01:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/HealthCareApi/MessageFile/e9c36411-3f0e-4588-9074-e3785c4a3ee5.xpte5b3a0b.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MessageFile\e9c36411-3f0e-4588-9074-e3785c4a3ee5.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xpte5b3a0b"},{"Name":"integrity","Value":"sha256-9W6XFpHDU7B55Ia8NBq10cVwB\u002BrIRMEa8vQetW0jGdA="},{"Name":"label","Value":"_content/HealthCareApi/MessageFile/e9c36411-3f0e-4588-9074-e3785c4a3ee5.jpeg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5297"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229W6XFpHDU7B55Ia8NBq10cVwB\u002BrIRMEa8vQetW0jGdA=\u0022"},{"Name":"Last-Modified","Value":"Thu, 30 Jan 2025 16:01:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/HealthCareApi/MessageFile/edd7da57-a5f5-49d7-8fe4-54075bf28a03.1emvzznjs2.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MessageFile\edd7da57-a5f5-49d7-8fe4-54075bf28a03.jpeg'))</AssetFile>

@@ -41,6 +41,8 @@ namespace HealthCareDomain.Entity.Appointment
         [MaxLength(50)]
         public string PaymentStatus { get; set; }
 
+        public string MeetingId { get; set; } = Guid.NewGuid().ToString();  
+
         public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
 }
