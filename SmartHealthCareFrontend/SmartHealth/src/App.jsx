@@ -26,6 +26,7 @@ import ChatPage from "./Pages/ChatPage/ChatPage";
 import Doctorverificationdetails from "./Components/Admin Components/Doctorverificationdetails";
 // import Failure from "./Components/Payment/Failure";
 import AppointmentConfirmation from "./Components/AppointmentConfirmation/AppointmentConfirmation";
+import VideoCall from "./Pages/VideoCall/VideoCall";
 
 
 
@@ -70,6 +71,7 @@ const App = () => {
           </RedirectIfAuthenticated>
           } />
         <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/meeting/:id" element={<VideoCall />} />
         <Route path="/Doctors" element={<FindDoctor />} />
         <Route path="/Doctors/:id" element={ <DoctorDetail/>} />
         <Route path="/DoctorsDetails/:id" element={ <Protect requiredRole={['Admin']}> <Doctorverificationdetails/>   </Protect>} />

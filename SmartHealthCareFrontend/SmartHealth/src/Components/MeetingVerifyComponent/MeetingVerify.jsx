@@ -33,6 +33,8 @@ const MeetingVerify = ({ onClose }) => {
 
       if(response.status == 200)
       {
+
+        window.location.href = `/meeting/${meetingId}`;
         console.log("Valid Meeting Id");
         onclose();
       }
