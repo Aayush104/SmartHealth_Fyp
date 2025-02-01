@@ -37,6 +37,8 @@
 
 //   return connection;
 // };
+// useSignalR.js
+// useSignalR.js
 import * as signalR from "@microsoft/signalr";
 
 export const connectToMeetingHub = (meetingId, onMessageReceived) => {
@@ -52,11 +54,11 @@ export const connectToMeetingHub = (meetingId, onMessageReceived) => {
     .start()
     .then(() => {
       console.log("Connected to SignalR for video call");
-      connection.invoke("JoinRoom", groupName)
-        .catch(err => console.error("JoinRoom error:", err));
+      // You can join the room later when both users are ready.
     })
-    .catch(err => console.error("SignalR Connection Error: ", err));
+    .catch((err) => console.error("SignalR Connection Error: ", err));
 
+  // Listen for server events
   connection.on("UserJoined", (connectionId) => {
     console.log("User joined: ", connectionId);
   });
@@ -71,6 +73,19 @@ export const connectToMeetingHub = (meetingId, onMessageReceived) => {
 
   connection.on("ReceiveIceCandidate", (from, candidate) => {
     onMessageReceived("iceCandidate", { from, candidate });
+  });
+
+  connection.on("BothUsersReady", () => {
+    console.log("Both users are ready to start the call.");
+    onMessageReceived("BothUsersReady");
+  });
+
+  connection.on("UserReadyAck", () => {
+    console.log("User is marked as ready.");
+  });
+
+  connection.on("WaitingForOtherUser", () => {
+    console.log("Waiting for the other user to be ready...");
   });
 
   return connection;

@@ -147,24 +147,12 @@
           ]
         },
         {
-          "DockedHeight": 307,
-          "SelectedChildIndex": 6,
+          "DockedHeight": 543,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": ".env",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\.env",
-              "RelativeDocumentMoniker": "HealthCareApi\\.env",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\.env",
-              "RelativeToolTip": "HealthCareApi\\.env",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-01T07:57:11.666Z"
             },
             {
               "$type": "Document",
@@ -177,6 +165,31 @@
               "ViewState": "AgIAACMAAAAAAAAAAAAAwDwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-31T10:48:03.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Meetinghub.cs",
+              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\MeetingHub\\Meetinghub.cs",
+              "RelativeDocumentMoniker": "HealthCareApi\\MeetingHub\\Meetinghub.cs",
+              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\MeetingHub\\Meetinghub.cs*",
+              "RelativeToolTip": "HealthCareApi\\MeetingHub\\Meetinghub.cs*",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T06:35:56.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": ".env",
+              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\.env",
+              "RelativeDocumentMoniker": "HealthCareApi\\.env",
+              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\.env",
+              "RelativeToolTip": "HealthCareApi\\.env",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-01T07:57:11.666Z"
             },
             {
               "$type": "Document",
@@ -213,19 +226,6 @@
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-30T07:52:12.87Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Meetinghub.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\MeetingHub\\Meetinghub.cs",
-              "RelativeDocumentMoniker": "HealthCareApi\\MeetingHub\\Meetinghub.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\MeetingHub\\Meetinghub.cs",
-              "RelativeToolTip": "HealthCareApi\\MeetingHub\\Meetinghub.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAuwCgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T06:35:56.864Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -506,7 +506,7 @@
           ]
         },
         {
-          "DockedHeight": 318,
+          "DockedHeight": 82,
           "SelectedChildIndex": -1,
           "Children": [
             {
