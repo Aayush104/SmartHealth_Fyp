@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using System.Text.RegularExpressions;
 
 namespace HealthCareApi.MeetingHub
 {
@@ -10,6 +11,7 @@ namespace HealthCareApi.MeetingHub
             {
                 throw new HubException("Meeting ID is required.");
             }
+            Console.WriteLine($"User {Context.ConnectionId} joining room {meetingId}");
             await Groups.AddToGroupAsync(Context.ConnectionId, meetingId);
             await Clients.Group(meetingId).SendAsync("UserJoined", Context.ConnectionId);
         }
@@ -22,16 +24,19 @@ namespace HealthCareApi.MeetingHub
 
         public async Task SendOffer(string meetingId, string offer)
         {
+            Console.WriteLine($"Sending offer to group {meetingId}");
             await Clients.OthersInGroup(meetingId).SendAsync("ReceiveOffer", Context.ConnectionId, offer);
         }
 
         public async Task SendAnswer(string meetingId, string answer)
         {
+            Console.WriteLine($"Sending answer to group {meetingId}");
             await Clients.OthersInGroup(meetingId).SendAsync("ReceiveAnswer", Context.ConnectionId, answer);
         }
 
         public async Task SendIceCandidate(string meetingId, string candidate)
         {
+            Console.WriteLine($"Sending ICE candidate to group {meetingId}");
             await Clients.OthersInGroup(meetingId).SendAsync("ReceiveIceCandidate", Context.ConnectionId, candidate);
         }
     }

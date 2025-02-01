@@ -71,7 +71,7 @@ const App = () => {
           </RedirectIfAuthenticated>
           } />
         <Route path="/AboutUs" element={<AboutUs />} />
-        <Route path="/meeting/:id" element={<VideoCall />} />
+        <Route path="/meeting/:meetingId" element={<VideoCall />} />
         <Route path="/Doctors" element={<FindDoctor />} />
         <Route path="/Doctors/:id" element={ <DoctorDetail/>} />
         <Route path="/DoctorsDetails/:id" element={ <Protect requiredRole={['Admin']}> <Doctorverificationdetails/>   </Protect>} />

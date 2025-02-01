@@ -2,7 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { connectToMeetingHub } from "./useSignalR";
 import { WebRTCConnection } from "./WebRtc";
 import Cookies from "js-cookie";
-const VideoCall = ({ meetingId }) => {
+import { useParams } from "react-router-dom";
+const VideoCall = () => {
+
+  const { meetingId } = useParams(); 
+  console.log("Meeting ID from URL:", meetingId);
   const localVideoRef = useRef(null);
   const remoteVideoRef = useRef(null);
   const [webRTC, setWebRTC] = useState(null);
@@ -11,7 +15,7 @@ const VideoCall = ({ meetingId }) => {
 
 const token = Cookies.get("Token")
 const decodedToken = JSON.parse(atob(token.split(".")[1]));
-// const userId = decodedToken.userId;
+
 const userRole = decodedToken.Role;
 
   useEffect(() => {
@@ -37,10 +41,8 @@ const userRole = decodedToken.Role;
     // Connect to the SignalR hub.
     const connection = connectToMeetingHub(meetingId, async (type, data) => {
       if (type === "offer") {
-        // Parse the received offer JSON.
         const offer = typeof data.offer === "string" ? JSON.parse(data.offer) : data.offer;
         const answer = await webrtc.createAnswer(offer);
-        // Send back the answer as a JSON string.
         connection.invoke("SendAnswer", String(meetingId), JSON.stringify(answer))
           .catch(err => console.error("SendAnswer error:", err));
       } else if (type === "answer") {
@@ -51,6 +53,7 @@ const userRole = decodedToken.Role;
         await webrtc.addIceCandidate(candidate);
       }
     });
+    
 
     // Setup sending ICE candidates to the remote peer.
     webrtc.peerConnection.onicecandidate = event => {
