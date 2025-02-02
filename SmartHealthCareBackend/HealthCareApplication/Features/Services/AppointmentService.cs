@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.DataProtection;
 using System;
 using System.Threading.Tasks;
 using HealthCareDomain.Contract.ContractDto.NewFolder;
+using HealthCareApplication.Contracts.Email;
 
 namespace HealthCareApplication.Features.Services
 {
@@ -19,12 +20,14 @@ namespace HealthCareApplication.Features.Services
         private readonly IDoctorAvailabilityRepository _doctorAvailabilityRepository;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IDataProtector _dataProtector;
+        private readonly IMailService _mailService;
 
-        public AppointmentService(UserManager<ApplicationUser> userManager, IBookAppointmentRepository bookAppointmentRepository,IDoctorAvailabilityRepository doctorAvailabilityRepository, DataSecurityProvider securityProvider, IDataProtectionProvider dataProtector)
+        public AppointmentService(UserManager<ApplicationUser> userManager, IBookAppointmentRepository bookAppointmentRepository,IDoctorAvailabilityRepository doctorAvailabilityRepository, DataSecurityProvider securityProvider, IDataProtectionProvider dataProtector, IMailService mailService)
         {
             _bookAppointmentRepository = bookAppointmentRepository;
             _doctorAvailabilityRepository = doctorAvailabilityRepository;
-           _userManager = userManager;
+            _mailService = mailService;
+            _userManager = userManager;
             _dataProtector = dataProtector?.CreateProtector(securityProvider.securityKey);
         }
 
@@ -71,9 +74,11 @@ namespace HealthCareApplication.Features.Services
                     PatientId = userId,
                     AppointmentDate = appointmentDto.AppointmentDate,
                     Slot = appointmentDto.StartTime,
-                   EndTime = appointmentDto.EndTime,
+                    EndTime = appointmentDto.EndTime,
                     Status = "Booked",
-                    PaymentStatus = "Paid"
+                    PaymentStatus = "Paid",
+                    MeetingId = Guid.NewGuid().ToString()
+
                 };
 
                 // Save the appointment to the database and get the appointment ID
@@ -112,15 +117,20 @@ namespace HealthCareApplication.Features.Services
 
                 if(Payment == true)
                 {
+                    var patient = await _userManager.FindByIdAsync(userId);
 
-                    var doctor= await _userManager.FindByIdAsync(doctorId);
+                    var userEmail = patient!.Email;
+                    var userName = patient!.FullName;
+                    var doctor = await _userManager.FindByIdAsync(doctorId);
+                    await _mailService.SendBookingConfirmationEmail(userEmail!, userName, appointment.MeetingId, doctor.FullName, appointment.AppointmentDate, appointment.Slot);
+                   
 
                     return new ApiResponseDto
                     {
                         IsSuccess = true,
                         Message = "Appointment booked successfully",
                         StatusCode = 201,
-                        Data = doctor.FullName // Include the appointment ID in the response
+                        Data = doctor!.FullName // Include the appointment ID in the response
                     };
                 }
 

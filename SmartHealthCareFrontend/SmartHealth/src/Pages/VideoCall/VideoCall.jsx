@@ -120,8 +120,11 @@ const VideoCall = () => {
   const startCall = async () => {
     setStartButton(false);
     if (connectionRef.current) {
+      
       await connectionRef.current
+      
         .invoke("SetUserReady", meetingId)
+        
         .catch((err) => console.error("SetUserReady error:", err));
     }
   };
@@ -155,6 +158,8 @@ const VideoCall = () => {
     }
   };
 
+
+
   return (
     <div className="flex flex-col h-screen bg-gray-900">
       {/* Main content area */}
@@ -166,23 +171,36 @@ const VideoCall = () => {
           playsInline
           className="w-full h-[92vh] object-cover px-2"
         />
+
+
         {/* Local video (picture-in-picture) */}
         <div className="absolute top-2 right-1 w-48 rounded-lg overflow-hidden shadow-lg">
+        
           <video
             ref={localVideoRef}
             autoPlay
             playsInline
             muted
             className="w-48 h-32 object-cover"
+           
+                  
           />
+           
+           {isMuted ? (
+            <div>
+                    <FaMicrophoneSlash className="w-6 h-6 absolute top-2 left-4 text-white" />
+<p className="  text-white absolute top-8 left-1">Muted</p>
+                    </div>
+                  ) : (
+                    <FaMicrophone className="w-6 h-6 absolute top-2  left-1  text-white" />
+                  )}
+          
         </div>
       </div>
       {/* Bottom control bar */}
-      <div className="bg-gray-800 px-4 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Meeting info */}
-          <div className="text-gray-300 text-sm">{meetingId}</div>
-          {/* Main controls */}
+      <div className="bg-gray-800 px-4 py-3 flex justify-center">
+        <div className="max-w-7xl flex justify-center">
+        
           <div className="flex gap-2">
             {startButton && !bothUsersReady ? (
               <button
@@ -230,15 +248,8 @@ const VideoCall = () => {
               </div>
             )}
           </div>
-          {/* Right side controls */}
-          <div className="flex gap-2">
-            <button className="p-3 text-white hover:bg-gray-700 rounded-full transition-colors">
-              <FaCommentAlt className="w-5 h-5" />
-            </button>
-            <button className="p-3 text-white hover:bg-gray-700 rounded-full transition-colors">
-              <FaUserFriends className="w-5 h-5" />
-            </button>
-          </div>
+          
+        
         </div>
       </div>
     </div>

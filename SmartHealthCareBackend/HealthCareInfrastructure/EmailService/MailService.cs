@@ -30,6 +30,56 @@ namespace HealthCareApplication.Features.Services
             _fromEmail = Environment.GetEnvironmentVariable("FROM_EMAIL") ?? throw new InvalidOperationException("FROM_EMAIL is not set");
         }
 
+        public async Task SendBookingConfirmationEmail(
+        string toEmail,
+        string fullName,
+        string meetingId,
+        string doctorName,
+        DateTime appointmentDate,
+        string startTime)
+        {
+            var body = $@"
+<html>
+    <body style='font-family: Arial, sans-serif;'>
+        <p>Dear <strong>{fullName}</strong>,</p>
+        <p>You have booked an appointment with <strong>Dr.{doctorName}</strong> 
+        on <strong>{appointmentDate:MMMM dd, yyyy}</strong> at <strong>{startTime}</strong>.</p>
+        <p>
+            <strong>Meeting ID:</strong> 
+            <span style='background-color: #d3d3d3; padding: 5px; border-radius: 5px;'>{meetingId}</span>
+        </p>
+        <p><strong>Please do not share this ID with anyone.</strong></p>
+        <p>If you have any further questions, feel free to contact our support team.</p>
+        <p>Thank you for booking through <strong>Smart Health</strong>.</p>
+        <br/>
+        <p>Best regards,<br/>
+        <strong>Smart Health Team</strong></p>
+    </body>
+</html>";
+
+            var message = new MailMessage
+            {
+                From = new MailAddress(_fromEmail),
+                Subject = "Booking Confirmation Email",
+                Body = body,
+                IsBodyHtml = true
+            };
+
+            message.To.Add(toEmail);
+
+            try
+            {
+                await _smtpClient.SendMailAsync(message);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Error sending email", ex);
+            }
+            finally
+            {
+                message.Dispose();
+            }
+        }
         public async Task SendDoctorAcceptanceEmail(string toEmail, string fullName, string otp)
         {
 

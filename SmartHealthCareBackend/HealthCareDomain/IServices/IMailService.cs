@@ -11,5 +11,6 @@ namespace HealthCareApplication.Contracts.Email
         Task SendEmail(string toEmail, string fullName,  string Otp);
         Task SendDoctorAcceptanceEmail(string toEmail, string fullName, string Otp);
         Task SendDoctorRejectionEmail(string toEmail, string fullName);
+        Task SendBookingConfirmationEmail(string toEmail, string fullName, string meetingId, string doctorName, DateTime appointmentDate, string startTime);
     }
 }
