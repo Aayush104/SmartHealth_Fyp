@@ -89,6 +89,18 @@ export class WebRTCConnection {
     };
   }
 
+  async replaceVideoTrack(newTrack) {
+    const transceiver = this.peerConnection
+      .getTransceivers()
+      .find(t => t.sender.track?.kind === 'video');
+    
+    if (transceiver) {
+      await transceiver.sender.replaceTrack(newTrack);
+      return;
+    }
+    throw new Error('No video transceiver found');
+  }
+
   // Add all local tracks to the connection.
   addAllTracks() {
     if (!this.localStream) return;

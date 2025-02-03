@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapi\\meetinghub\\meetinghub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|solutionrelative:healthcareapi\\meetinghub\\meetinghub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C21B3950-83DC-4C16-BAED-7B1433B980B4}|HealthCareInfrastructure\\HealthCareInfrastructure.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareinfrastructure\\emailservice\\mailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C21B3950-83DC-4C16-BAED-7B1433B980B4}|HealthCareInfrastructure\\HealthCareInfrastructure.csproj|solutionrelative:healthcareinfrastructure\\emailservice\\mailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapplication\\features\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\features\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapi\\meetinghub\\meetinghub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|solutionrelative:healthcareapi\\meetinghub\\meetinghub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapi\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -176,46 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IMailService.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\IServices\\IMailService.cs",
-              "RelativeDocumentMoniker": "HealthCareDomain\\IServices\\IMailService.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\IServices\\IMailService.cs",
-              "RelativeToolTip": "HealthCareDomain\\IServices\\IMailService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAB4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T07:34:13.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MailService.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\EmailService\\MailService.cs",
-              "RelativeDocumentMoniker": "HealthCareInfrastructure\\EmailService\\MailService.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\EmailService\\MailService.cs",
-              "RelativeToolTip": "HealthCareInfrastructure\\EmailService\\MailService.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCwAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T07:34:28.265Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppointmentService.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\AppointmentService.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\AppointmentService.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\AppointmentService.cs",
-              "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AppointmentService.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAYwIkAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T07:53:50.242Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "BookAppointment.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\Entity\\Appointment\\BookAppointment.cs",
               "RelativeDocumentMoniker": "HealthCareDomain\\Entity\\Appointment\\BookAppointment.cs",
@@ -223,12 +184,36 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Appointment\\BookAppointment.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAA6wCsAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T08:48:57.421Z",
+              "WhenOpened": "2025-01-30T08:48:57.421Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Meetinghub.cs",
+              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\MeetingHub\\Meetinghub.cs",
+              "RelativeDocumentMoniker": "HealthCareApi\\MeetingHub\\Meetinghub.cs",
+              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\MeetingHub\\Meetinghub.cs",
+              "RelativeToolTip": "HealthCareApi\\MeetingHub\\Meetinghub.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAkwFcAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T06:35:56.864Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
+              "Title": "AppointmentService.cs",
+              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\AppointmentService.cs",
+              "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\AppointmentService.cs",
+              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\AppointmentService.cs",
+              "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AppointmentService.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAYwIkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T07:53:50.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "GetDoctorByIdDto.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\Contract\\ContractDto\\UserLIstForAppointment\\GetDoctorByIdDto.cs",
               "RelativeDocumentMoniker": "HealthCareDomain\\Contract\\ContractDto\\UserLIstForAppointment\\GetDoctorByIdDto.cs",
@@ -236,12 +221,11 @@
               "RelativeToolTip": "HealthCareDomain\\Contract\\ContractDto\\UserLIstForAppointment\\GetDoctorByIdDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T09:10:30.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T09:10:30.812Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AuthService.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\AuthService.cs",
@@ -249,12 +233,11 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AuthService.cs",
               "ViewState": "AgIAAFQAAAAAAAAAAAAYwGEAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T07:32:36.995Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-02T07:32:36.995Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "InfrastructureServiceRegistration.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\InfrastructureServiceRegistration.cs",
               "RelativeDocumentMoniker": "HealthCareInfrastructure\\InfrastructureServiceRegistration.cs",
@@ -262,12 +245,35 @@
               "RelativeToolTip": "HealthCareInfrastructure\\InfrastructureServiceRegistration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T07:34:26.189Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-02T07:34:26.189Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
+              "Title": "MailService.cs",
+              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\EmailService\\MailService.cs",
+              "RelativeDocumentMoniker": "HealthCareInfrastructure\\EmailService\\MailService.cs",
+              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareInfrastructure\\EmailService\\MailService.cs",
+              "RelativeToolTip": "HealthCareInfrastructure\\EmailService\\MailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-02T07:34:28.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IMailService.cs",
+              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\IServices\\IMailService.cs",
+              "RelativeDocumentMoniker": "HealthCareDomain\\IServices\\IMailService.cs",
+              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\IServices\\IMailService.cs",
+              "RelativeToolTip": "HealthCareDomain\\IServices\\IMailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAB4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-02T07:34:13.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "AdminService.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\AdminService.cs",
               "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\AdminService.cs",
@@ -275,21 +281,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AdminService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T07:32:43.805Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Meetinghub.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\MeetingHub\\Meetinghub.cs",
-              "RelativeDocumentMoniker": "HealthCareApi\\MeetingHub\\Meetinghub.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\MeetingHub\\Meetinghub.cs",
-              "RelativeToolTip": "HealthCareApi\\MeetingHub\\Meetinghub.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAQwEoAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T06:35:56.864Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-02T07:32:43.805Z"
             },
             {
               "$type": "Document",
@@ -317,7 +309,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AppointmentCheckerService.cs",
               "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\AppointmentCheckerService.cs",
               "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\AppointmentCheckerService.cs",
@@ -325,8 +317,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AppointmentCheckerService.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAAwEAAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T07:54:15.949Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T07:54:15.949Z"
             },
             {
               "$type": "Document",

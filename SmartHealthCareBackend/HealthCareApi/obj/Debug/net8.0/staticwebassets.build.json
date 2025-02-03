@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Sj0/E533bCfXREH4v4WpSD0HuIat7kqM2Qhmzyc+hSk=",
+  "Hash": "/85Mzb4QU3DhcdbCqCSUULq/I4GNQgcGJOw1aB9IlX4=",
   "Source": "HealthCareApi",
   "BasePath": "_content/HealthCareApi",
   "Mode": "Default",
@@ -1212,6 +1212,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\MessageFile\\766288c4-35c0-45c6-8721-7626490ee29b.jpeg"
+    },
+    {
+      "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\MessageFile\\83950bd8-9062-4fb9-b107-1aff3b0256b4.jpeg",
+      "SourceId": "HealthCareApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\",
+      "BasePath": "_content/HealthCareApi",
+      "RelativePath": "MessageFile/83950bd8-9062-4fb9-b107-1aff3b0256b4#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "birtduyeay",
+      "Integrity": "fcokrkG3zOGZv6on18ZlOpJTThzkd5mqT8f8lStoHPg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MessageFile\\83950bd8-9062-4fb9-b107-1aff3b0256b4.jpeg"
     },
     {
       "Identity": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\MessageFile\\86becbe0-557d-47b3-a427-2b92a443557f.jpeg",
@@ -6999,6 +7020,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-591WIjJy4jDlY2ei+DxRjbiGNMAP4U0yucb5E6+uBwg="
+        }
+      ]
+    },
+    {
+      "Route": "MessageFile/83950bd8-9062-4fb9-b107-1aff3b0256b4.birtduyeay.jpeg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\MessageFile\\83950bd8-9062-4fb9-b107-1aff3b0256b4.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12354"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fcokrkG3zOGZv6on18ZlOpJTThzkd5mqT8f8lStoHPg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Feb 2025 08:03:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "birtduyeay"
+        },
+        {
+          "Name": "label",
+          "Value": "MessageFile/83950bd8-9062-4fb9-b107-1aff3b0256b4.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fcokrkG3zOGZv6on18ZlOpJTThzkd5mqT8f8lStoHPg="
+        }
+      ]
+    },
+    {
+      "Route": "MessageFile/83950bd8-9062-4fb9-b107-1aff3b0256b4.jpeg",
+      "AssetFile": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\MessageFile\\83950bd8-9062-4fb9-b107-1aff3b0256b4.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12354"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fcokrkG3zOGZv6on18ZlOpJTThzkd5mqT8f8lStoHPg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Feb 2025 08:03:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fcokrkG3zOGZv6on18ZlOpJTThzkd5mqT8f8lStoHPg="
         }
       ]
     },
