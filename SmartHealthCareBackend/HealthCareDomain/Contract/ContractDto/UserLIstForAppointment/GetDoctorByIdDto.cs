@@ -12,6 +12,8 @@ namespace HealthCareDomain.Contract.ContractDto.UserLIstForAppointment
 
         public int AppointmentId { get; set; }
 public string DoctorId { get; set; }
+
+        public string MeetingId { get; set; }
         public string DoctorName { get; set; }
         public string DoctorProfile { get; set; }
         public DateTime AppointmentDate { get; set; }

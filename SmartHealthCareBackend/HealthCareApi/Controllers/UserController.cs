@@ -97,6 +97,7 @@ namespace HealthCareApi.Controllers
         public async Task<IActionResult> GoogleLogin(GoogleLoginDto googleLoginDto)
         {
             var response = await _userService.GoogleLoginAsync(googleLoginDto);
+          
 
             return StatusCode(response.StatusCode, response);
         }

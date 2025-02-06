@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import Cookies from 'js-cookie';
 import MeetingVerify from '../MeetingVerifyComponent/MeetingVerify';
+import { useNavigate } from 'react-router-dom';
 
 const DoctorDash = ({ doctorData }) => {
   const [greeting, setGreeting] = useState('');
   const [appointments, setAppointments] = useState([]);
   const [connection, setConnection] = useState(null);
   const [forceUpdate, setForceUpdate] = useState(false);
-    const [showAdditionalForm, setShowAdditionalForm] = useState(false);
+const navigateTo = useNavigate()
 
   const token = Cookies.get("Token");
   let decodedToken = {};
@@ -120,20 +121,16 @@ const DoctorDash = ({ doctorData }) => {
   const placeholderImage = "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg";
   const doc = doctorData?.data?.doctor;
 
-  const HandleJoinAppointment = () => {
-    setShowAdditionalForm(true);
+  const handleJoinAppointment = (meetingId) => {
+    navigateTo(`/meeting/${meetingId}`);
   };
-
   
-  const handleCloseForms = () => {
-    setShowAdditionalForm(false);
-    document.body.style.overflow = "auto";
-  };
+ 
 
 
   return (
     <div className="min-h-screen">
-     {showAdditionalForm && <MeetingVerify onClose={handleCloseForms} />}
+   
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Profile and Welcome Section */}
         <div className="items-center justify-between mb-8">
@@ -230,17 +227,11 @@ const DoctorDash = ({ doctorData }) => {
                   </div>
                 </div>
                 <div className="flex space-x-2">
-              <div className='flex items-center gap-2 text-gray-400 font-medium'>
-              <p>Meeting Id</p>
-                  <div className="px-4 py-2 text-gray-600 gray-700 bg-gray-100 border shadow-sm hover:bg-gray-200 rounded">
-               
-                    {appointment.meetingId}
-                  </div>
-                  </div>
+             
                   <button
                   className={`px-4 py-2 rounded ${appointment.isButtonEnabled ? "bg-sky-500 text-white" : "bg-gray-300 text-gray-600"}`}
                   disabled={!appointment.isButtonEnabled}
-                  onClick={appointment.isButtonEnabled ? HandleJoinAppointment : undefined}
+                  onClick={() => appointment.isButtonEnabled && handleJoinAppointment(appointment.meetingId)}
                 >
                   Join Appointment
                 </button>

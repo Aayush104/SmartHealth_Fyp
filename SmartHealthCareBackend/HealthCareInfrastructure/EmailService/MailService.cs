@@ -44,11 +44,7 @@ namespace HealthCareApplication.Features.Services
         <p>Dear <strong>{fullName}</strong>,</p>
         <p>You have booked an appointment with <strong>Dr.{doctorName}</strong> 
         on <strong>{appointmentDate:MMMM dd, yyyy}</strong> at <strong>{startTime}</strong>.</p>
-        <p>
-            <strong>Meeting ID:</strong> 
-            <span style='background-color: #d3d3d3; padding: 5px; border-radius: 5px;'>{meetingId}</span>
-        </p>
-        <p><strong>Please do not share this ID with anyone.</strong></p>
+        
         <p>If you have any further questions, feel free to contact our support team.</p>
         <p>Thank you for booking through <strong>Smart Health</strong>.</p>
         <br/>

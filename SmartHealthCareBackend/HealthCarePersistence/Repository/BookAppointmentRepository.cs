@@ -77,6 +77,7 @@ namespace HealthCarePersistence.Repository
                     DoctorName = appointment.Doctor.User.FullName,
                     AppointmentDate = appointment.AppointmentDate,
                     Slot = appointment.Slot,
+                    MeetingId = appointment.MeetingId,
                     EndTime = appointment.EndTime!,
                     DoctorProfile = appointment.Doctor.Profile,
                     IsButtonEnabled = appointment.IsButtonEnabled,
