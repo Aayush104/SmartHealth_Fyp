@@ -19,6 +19,8 @@ namespace HealthCareDomain.IRepository
         Task<List<BookAppointment>> GetUpcomingAppointments();
         Task UpdateAppointmentStatus(int appointmentId,bool MeetingIdValidation, bool isEnabled);
 
-        Task <bool> CheckIds(string MeetingId);  
+        Task <bool> CheckIds(string MeetingId);
+
+        Task<bool> CheckCommentValidaton(string DoctorId, string UserId);
     }
 }

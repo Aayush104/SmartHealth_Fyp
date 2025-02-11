@@ -1,5 +1,6 @@
 ﻿using HealthCareApplication.Contract.IService;
 using HealthCareApplication.Dtos.AvailabilityDto;
+using HealthCareApplication.Dtos.CommentDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Dtos.UserDtoo;
 using HealthCareDomain.IServices;
@@ -134,11 +135,32 @@ namespace HealthCareApi.Controllers
 
             return NotFound();
 
-            
+        }
 
-         
+        [HttpPost("DoComment")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
 
+        public async Task<IActionResult> DoComment(CommentDtoo comment)
+        {
+            var response = await _doctorService.DoCommentAsync(comment);
+            if (response != null)
+            {
+                return Ok(response);
+            }
 
+            return NotFound();
+        }
+
+        [HttpGet("GetComments/{id}")]
+
+        public async Task <IActionResult> GetComment(string id)
+        {
+            var response = await _doctorService.GetCommentsAsync(id);
+            if(response != null)
+            {
+                return Ok(response);
+            }
+            return NotFound();
         }
     }
 }

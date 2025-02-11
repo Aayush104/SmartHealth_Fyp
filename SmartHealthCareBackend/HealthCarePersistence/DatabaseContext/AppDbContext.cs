@@ -8,6 +8,7 @@ using HealthCareDomain.Entity.Chat;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Otp;
 using HealthCareDomain.Entity.Patients;
+using HealthCareDomain.Entity.Review;
 using HealthCareDomain.Entity.UserEntity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,7 @@ namespace HealthCarePersistence.DatabaseContext
         public DbSet<Message> Messages { get; set; }
         public DbSet<MessageStatus> MessageStatuses { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Comments> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -54,6 +56,18 @@ namespace HealthCarePersistence.DatabaseContext
                 .WithMany(u => u.DoctorAdditionalInfos)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+            
+            modelBuilder.Entity<Comments>()
+                .HasOne(d => d.Patients)
+                .WithMany(u => u.Comments)
+                .HasForeignKey(d => d.PatientId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            modelBuilder.Entity<Comments>()
+                .HasOne(d => d.Doctor)
+                .WithMany(u => u.Comments)
+                .HasForeignKey(d => d.DoctorId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<OtpHash>()
                 .HasOne(o => o.User)

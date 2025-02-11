@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "HealthCareApi.Controllers.AppointmentController",
+    "Method": "CheckforComment",
+    "RelativePath": "api/Appointment/CheckforComment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
     "Method": "CheckMeetingId",
     "RelativePath": "api/Appointment/CheckMeetingId",
     "HttpMethod": "POST",
@@ -251,6 +267,22 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.DoctorController",
+    "Method": "DoComment",
+    "RelativePath": "api/Doctor/DoComment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "comment",
+        "Type": "HealthCareApplication.Dtos.CommentDto.CommentDtoo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.DoctorController",
     "Method": "SaveAvailability",
     "RelativePath": "api/Doctor/GenerateAvailability",
     "HttpMethod": "POST",
@@ -260,6 +292,22 @@
       {
         "Name": "doctorAvailabilityDto",
         "Type": "HealthCareApplication.Dtos.AvailabilityDto.DoctorAvailabilityDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.DoctorController",
+    "Method": "GetComment",
+    "RelativePath": "api/Doctor/GetComments/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

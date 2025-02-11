@@ -1,5 +1,6 @@
 ﻿using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Otp;
+using HealthCareDomain.Entity.Review;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,6 @@ namespace HealthCareDomain.Entity.UserEntity
         // Navigation properties
         public virtual ICollection<OtpHash> Otps { get; set; } = new List<OtpHash>();
         public virtual ICollection<DoctorAdditionalInfo> DoctorAdditionalInfos { get; set; } = new List<DoctorAdditionalInfo>();
+       
     }
 }

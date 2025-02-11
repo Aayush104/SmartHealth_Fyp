@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import Cookies from 'js-cookie';
-import MeetingVerify from '../MeetingVerifyComponent/MeetingVerify';
+
 import { useNavigate } from 'react-router-dom';
 
 const DoctorDash = ({ doctorData }) => {

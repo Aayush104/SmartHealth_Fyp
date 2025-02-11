@@ -2,13 +2,15 @@
 using HealthCareApplication.Contract.IService;
 using HealthCareApplication.Contracts.IService;
 using HealthCareApplication.Dtos.AvailabilityDto;
+using HealthCareApplication.Dtos.CommentDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Dtos.UserDtoo;
 using HealthCareDomain.Entity.Doctors;
+using HealthCareDomain.Entity.Review;
 using HealthCareDomain.Entity.UserEntity;
 using HealthCareInfrastructure.DataSecurity;
 using HealthCarePersistence.IRepository;
-
+using HealthCarePersistence.Migrations;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -166,8 +168,114 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
+        public async  Task<ApiResponseDto> DoCommentAsync(CommentDtoo commentDtoo)
+        {
+            try
+            {
+                var doctorId = _dataProtector.Unprotect(commentDtoo.DoctorId);
+
+                var comments = new Comments
+                {
+                    PatientId = commentDtoo.PatientId,
+                    DoctorId = doctorId,    
+                    UserName = commentDtoo.UserName,    
+                    VisitedFor = commentDtoo.VisitedFor,    
+                    IsRecommended = commentDtoo.IsRecommended,  
+                    ReviewText = commentDtoo.ReviewText,    
+                      
+                    CreatedAt = DateTime.Now,   
+                };
+                await _doctorRepository.AddComment(comments);
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Message = "Comment Succesfull",
+                    StatusCode = 200
+                };
 
 
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
+        public async Task<ApiResponseDto> GetCommentsAsync(string Id)
+        {
+            try
+            {
+                string doctorId;
+
+                try
+                {
+                    doctorId = _dataProtector.Unprotect(Id);
+                }
+                catch (Exception)
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = false,
+                        Message = "Invalid or corrupted doctor Id",
+                        StatusCode = 400
+                    };
+                }
+
+                if (string.IsNullOrWhiteSpace(doctorId))
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = false,
+                        Message = "Doctor Id is required",
+                        StatusCode = 400
+                    };
+                }
+
+                var getComments = await _doctorRepository.GetCommentsAsync(doctorId);
+
+                if (getComments == null || !getComments.Any())
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = true,
+                        Message = "No comments found",
+                        StatusCode = 200,
+                        Data = new List<GetCommentsDto>()
+                    };
+                }
+
+                var comments = getComments.Select(a => new GetCommentsDto
+                {
+                    UserName = a.UserName,
+                    VisitedFor = a.VisitedFor,
+                    IsRecommended = a.IsRecommended,
+                    ReviewText = a.ReviewText,
+                    CreatedAt = a.CreatedAt,
+                }).ToList();
+
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Data = comments,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        
+}
 
 
         public async Task<ApiResponseDto> GetDoctorDetails(string Id)

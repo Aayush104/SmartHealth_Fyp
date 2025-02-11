@@ -130,14 +130,16 @@ const Navbar = () => {
  <RiQuestionAnswerLine />       Q&A
             </li>
 
+            <NavLink to="/" onClick={handleLogout} >
           <li className=" py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
-              <NavLink to="/" onClick={handleLogout} className="flex items-center px-2 py-2">
+              <div className='flex items-center px-2 py-2'>
                 <TbLogout2 className="text-lg text-sky-600  mr-1 " />
                 <span className="text-md text-sky-600 font-medium  ">
                   Logout
                 </span>
-              </NavLink>
+                </div>
             </li>
+            </NavLink>
             
           </ul>
         </div>

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using HealthCareDomain.Entity.Appointment;
+using HealthCareDomain.Entity.Review;
 using HealthCareDomain.Entity.UserEntity;
 
 namespace HealthCareDomain.Entity.Patients
@@ -20,6 +21,7 @@ namespace HealthCareDomain.Entity.Patients
         public string? Gender{ get; set; }
       
         public virtual ICollection<BookAppointment> BookAppointments { get; set; } = new List<BookAppointment>();
+        public virtual ICollection<Comments> Comments { get; set; } = new List<Comments>();
 
     }
 }

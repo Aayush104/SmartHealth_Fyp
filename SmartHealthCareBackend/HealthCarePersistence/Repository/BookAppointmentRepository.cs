@@ -41,6 +41,19 @@ namespace HealthCarePersistence.Repository
             }
         }
 
+        public async Task<bool> CheckCommentValidaton(string DoctorId, string UserId)
+        {
+            try
+            {
+                return await _dbContext.BookAppointments.AnyAsync(x => x.DoctorId == DoctorId && x.PatientId == UserId);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
         public async Task<bool> CheckIds(string MeetingId)
         {
             try

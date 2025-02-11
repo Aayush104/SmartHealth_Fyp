@@ -398,6 +398,50 @@ namespace HealthCarePersistence.Migrations
                     b.ToTable("Patients");
                 });
 
+            modelBuilder.Entity("HealthCareDomain.Entity.Review.Comments", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DoctorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsRecommended")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PatientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ReviewText")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VisitedFor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("HealthCareDomain.Entity.UserEntity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -477,20 +521,20 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7bdf2d98-b42b-4dab-8ef2-c8400d3b7443",
-                            CreatedAt = new DateTime(2025, 1, 31, 14, 17, 38, 715, DateTimeKind.Utc).AddTicks(1301),
+                            ConcurrencyStamp = "8b55ee31-cb69-4515-9c69-052528ffb928",
+                            CreatedAt = new DateTime(2025, 2, 11, 8, 52, 48, 389, DateTimeKind.Utc).AddTicks(8092),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEH2nO5D1NzcfDPDeSaf6LEoVUytp4N1ioOwBAy0zqQpTzmtKmWTS40WtNS0f3sBLwQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIhS3LQwS/peL6fVciV8sxYLZMVqPJnuWrpDqZZrJKdAbyo3SzErXzIIccm2TFpptA==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "241fa273-fddd-4980-9ff9-c2dcc24ed086",
+                            SecurityStamp = "ac27266f-f9b8-46c7-8296-614f2b5a6fc5",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 1, 31, 14, 17, 38, 715, DateTimeKind.Utc).AddTicks(1306),
+                            UpdatedAt = new DateTime(2025, 2, 11, 8, 52, 48, 389, DateTimeKind.Utc).AddTicks(8098),
                             UserName = "Admin"
                         });
                 });
@@ -784,6 +828,25 @@ namespace HealthCarePersistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("HealthCareDomain.Entity.Review.Comments", b =>
+                {
+                    b.HasOne("HealthCareDomain.Entity.Doctors.Doctor", "Doctor")
+                        .WithMany("Comments")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("HealthCareDomain.Entity.Patients.Patient", "Patients")
+                        .WithMany("Comments")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patients");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -857,11 +920,15 @@ namespace HealthCarePersistence.Migrations
                     b.Navigation("AvailabilityList");
 
                     b.Navigation("BookAppointments");
+
+                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("HealthCareDomain.Entity.Patients.Patient", b =>
                 {
                     b.Navigation("BookAppointments");
+
+                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("HealthCareDomain.Entity.UserEntity.ApplicationUser", b =>

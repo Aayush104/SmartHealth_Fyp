@@ -12,6 +12,7 @@ import TimeSlot from '../../Components/TimeSlot/TimeSlot';
 import useStore from '../../Zustand/Store';
 
 import PersonalDetailsForm from '../../Components/PatientComponents/PersonalDetailsForm';
+import Comments from '../../Components/Comments/Comments';
 
 const DoctorDetails = () => {
   const { id } = useParams();
@@ -91,7 +92,7 @@ console.log(userRole);
       {showAdditionalForm && <PersonalDetailsForm onClose={handleCloseForms} />}
       <div className='flex gap-2'>
       <div className="mx-8 mb-8 px-20 ">
-        <div className="border w-[45rem] bg-white p-2 flex items-center shadow justify-between">
+        <div className="border w-[48rem] bg-white p-2 flex items-center shadow justify-between">
           <div className="flex gap-8">
             <img
               src={doctorDetails.doctor?.profileget || placeholderImage}
@@ -135,7 +136,7 @@ console.log(userRole);
           </div>
         </div>
 
-        <div className="bg-white border w-[45rem] mt-8 p-4 rounded-sm shadow-md">
+        <div className="bg-white border w-[48rem] mt-8 p-4 rounded-sm shadow-md">
           <div className="mb-5">
             <h2 className="font-bold text-1.8rem">Overview</h2>
             <p className="text-md text-gray-500 mt-4 text-justify">{doctor?.description || "No description available."}</p>
@@ -188,6 +189,7 @@ console.log(userRole);
             </div>
           )}
         </div>
+        <Comments DoctorId = { id } />
       </div>
 
       <div>
@@ -195,6 +197,7 @@ console.log(userRole);
 </div>
 
       </div>
+
       <Footer />
     </div>
   );

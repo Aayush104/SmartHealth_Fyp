@@ -11,6 +11,8 @@ using System;
 using System.Threading.Tasks;
 using HealthCareDomain.Contract.ContractDto.NewFolder;
 using HealthCareApplication.Contracts.Email;
+using HealthCareDomain.Entity.Chat;
+using Microsoft.AspNetCore.Http;
 
 namespace HealthCareApplication.Features.Services
 {
@@ -155,7 +157,62 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
-        
+        public async Task<ApiResponseDto> CheckforCommentAsync(string DoctorId, string UserId)
+        {
+            try
+            {
+                if (UserId == null || DoctorId == null)
+                {
+
+                    return new ApiResponseDto
+                    {
+
+                        IsSuccess = false,
+                        Message = "Id is not availbale",
+                        StatusCode = 400
+                    };
+                };
+
+                var id = _dataProtector.Unprotect(DoctorId);
+
+                var response = await _bookAppointmentRepository.CheckCommentValidaton(id, UserId);    
+
+                if(response != true)
+                {
+
+                    return new ApiResponseDto
+                    {
+
+                        IsSuccess = false,
+                        Message = "No Booking",
+                        StatusCode = 422
+                    };
+
+                }
+
+                return new ApiResponseDto
+                {
+
+                    IsSuccess = true,
+                    Message = "Booking available",
+                    StatusCode = 200
+                };
+
+
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+
+
+            }
+        }
+
         public async Task<ApiResponseDto> ChecKMeetingIdAsync(string MeetingId)
         {
             if (string.IsNullOrEmpty(MeetingId))

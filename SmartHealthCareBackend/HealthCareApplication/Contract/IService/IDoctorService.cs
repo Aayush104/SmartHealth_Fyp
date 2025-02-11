@@ -1,4 +1,5 @@
-﻿using HealthCareApplication.Dtos.UserDto;
+﻿using HealthCareApplication.Dtos.CommentDto;
+using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Dtos.UserDtoo;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,8 @@ namespace HealthCareApplication.Contract.IService
         Task <IEnumerable<DoctorDetailsDto>> SearchDoctorAsync(SearchDto searchDto);
         Task<ApiResponseDto> GetDoctorDetails(string Id);
         Task<ApiResponseDto> GetLoginDoctorService(string Id);
+
+        Task<ApiResponseDto> DoCommentAsync(CommentDtoo commentDtoo);
+        Task<ApiResponseDto> GetCommentsAsync(string Id);
     }
 }

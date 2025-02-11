@@ -16,6 +16,7 @@ namespace HealthCareApplication.Contract.IService
         Task<ApiResponseDto> GetAppointmentListAsync(string userId, string role);
 
         Task<ApiResponseDto> ChecKMeetingIdAsync(string MeetingId);
+        Task<ApiResponseDto> CheckforCommentAsync(string DoctorId , string UserId);
 
     }
 }

@@ -179,7 +179,7 @@ import Cookies from "js-cookie";
 import { User, Calendar, ChevronRight } from "lucide-react";
 import axios from "axios";
 import { HubConnectionBuilder } from "@microsoft/signalr";
-import MeetingVerify from "../../Components/MeetingVerifyComponent/MeetingVerify";
+
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {

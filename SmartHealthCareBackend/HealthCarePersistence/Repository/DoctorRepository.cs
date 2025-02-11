@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HealthCareDomain.Entity.Doctors;
 using static System.Reflection.Metadata.BlobBuilder;
+using HealthCareDomain.Entity.Review;
 
 
 
@@ -30,6 +31,12 @@ namespace HealthCarePersistence.Repository
             await _dbContext.SaveChangesAsync();
 
 
+        }
+
+        public async Task AddComment(Comments comments)
+        {
+            await _dbContext.Comments.AddAsync(comments);
+            await _dbContext.SaveChangesAsync();    
         }
 
         public async Task AddDoctor(Doctor doctor)
@@ -59,6 +66,13 @@ namespace HealthCarePersistence.Repository
             return await _dbContext.DoctorAdditionalInfos
             .Where(d => d.UserId == userId)
             .ToListAsync();
+        }
+
+        public async Task<List<Comments>> GetCommentsAsync(string userId)
+        {
+            return await _dbContext.Comments
+           .Where(d => d.DoctorId == userId)
+           .ToListAsync();
         }
 
         public async  Task<Doctor>GetDoctorBYId(string userId)

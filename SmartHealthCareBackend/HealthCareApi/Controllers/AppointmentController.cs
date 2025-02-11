@@ -15,6 +15,7 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Identity;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using HealthCarePersistence.Migrations;
 
 namespace HealthCareApi.Controllers
 {
@@ -366,6 +367,26 @@ namespace HealthCareApi.Controllers
             var response = await _appointmentService.ChecKMeetingIdAsync(MeetingId);
 
             return StatusCode(response.StatusCode, response);
+        }
+
+        [HttpGet("CheckforComment/{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> CheckforComment(string id)
+        {
+            var userId = HttpContext.User.FindFirst("userId")?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User not found");
+            }
+
+            var response = await _appointmentService.CheckforCommentAsync(id, userId);
+
+            if (response.StatusCode == 200)
+            {
+                return Ok();
+            }
+            return StatusCode(response.StatusCode, response.Message);
         }
 
     }

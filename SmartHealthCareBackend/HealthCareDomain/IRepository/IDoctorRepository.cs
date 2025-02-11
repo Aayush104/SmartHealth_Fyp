@@ -1,6 +1,6 @@
 ﻿
 using HealthCareDomain.Entity.Doctors;
-
+using HealthCareDomain.Entity.Review;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +22,9 @@ namespace HealthCarePersistence.IRepository
         Task<IEnumerable<Doctor>> SearchDoctors(string speciality, string Location);
         Task AddAdditionalInfoAsync(DoctorAdditionalInfo info);
 
+        Task AddComment(Comments comments);
+
+        Task<List<Comments>> GetCommentsAsync(string userId);
 
     }
 
