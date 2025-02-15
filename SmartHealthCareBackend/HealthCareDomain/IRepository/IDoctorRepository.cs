@@ -1,4 +1,5 @@
 ﻿
+using HealthCareDomain.Contract.ContractDto.DoctorRevenue;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Review;
 using System;
@@ -25,6 +26,8 @@ namespace HealthCarePersistence.IRepository
         Task AddComment(Comments comments);
 
         Task<List<Comments>> GetCommentsAsync(string userId);
+
+        Task <List<DoctorRevenue>> DoctorRevenuesById(string id);
 
     }
 

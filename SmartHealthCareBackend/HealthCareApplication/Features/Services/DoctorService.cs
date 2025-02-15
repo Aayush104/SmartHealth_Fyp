@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 using static System.Reflection.Metadata.BlobBuilder;
 
@@ -344,6 +345,32 @@ namespace HealthCareApplication.Features.Services
             catch (Exception ex)
             {
                 // Handle and log the exception
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
+        public async Task<ApiResponseDto> GetDoctorRevenueAsync(string Id)
+        {
+            try
+            {
+
+                var result = await _doctorRepository.DoctorRevenuesById(Id);
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Data = result, 
+                    StatusCode = 200
+                };
+
+            }
+            catch (Exception ex)
+            {
+
                 return new ApiResponseDto
                 {
                     IsSuccess = false,

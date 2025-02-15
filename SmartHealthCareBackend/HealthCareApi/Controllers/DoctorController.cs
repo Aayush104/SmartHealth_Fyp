@@ -162,5 +162,26 @@ namespace HealthCareApi.Controllers
             }
             return NotFound();
         }
+
+        [HttpGet("DoctorRevenue")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+
+        public async Task <IActionResult> GetDoctorRevenue()
+        {
+            var user = HttpContext.User.FindFirst("userId");
+
+            var userId = user?.Value;
+
+            var response = await _doctorService.GetDoctorRevenueAsync(userId);
+
+            if (response != null)
+            {
+                return Ok(response);
+            }
+
+            return NotFound();
+
+        }
+
     }
 }

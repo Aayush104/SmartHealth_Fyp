@@ -2,8 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import Cookies from 'js-cookie';
-
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import RevenueChart from '../Charts/RevenueChart';
+import Footer from '../Fotter/Fotter';
 
 const DoctorDash = ({ doctorData }) => {
   const [greeting, setGreeting] = useState('');
@@ -129,10 +131,11 @@ const navigateTo = useNavigate()
 
 
   return (
-    <div className="min-h-screen">
+    <div className="h-screen">
    
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Profile and Welcome Section */}
+        
         <div className="items-center justify-between mb-8">
           <div>
             <h3>{greeting}</h3>
@@ -151,59 +154,65 @@ const navigateTo = useNavigate()
               />
             </div>
             <div>
-              <div className="text-lg font-medium">Dr. {doc?.fullName}</div>
+              <div className="text-2xl font-medium">Dr. {doc?.fullName}</div>
               <div className="text-sm text-gray-500">{doc?.specialization}</div>
             </div>
           </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {/* Total Appointments */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="bg-white rounded-xl shadow-sm p-6 border">
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-gray-600 text-sm">Total Appointments</p>
                 <h3 className="text-2xl font-bold text-gray-800 mt-1">25</h3>
               </div>
-              <span className="text-green-500 text-sm font-medium">+5</span>
+            
             </div>
           </div>
           {/* Confirmed Appointments */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <div className="flex justify-between items-start">
-              <div>
-                <p className="text-gray-600 text-sm">Confirmed Appointments</p>
-                <h3 className="text-2xl font-bold text-gray-800 mt-1">20</h3>
-              </div>
-              <span className="text-green-500 text-sm font-medium">+2</span>
-            </div>
-          </div>
+        
           {/* Video Consultations */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="bg-white rounded-xl shadow-sm p-6 border">
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-gray-600 text-sm">Video Consultations</p>
                 <h3 className="text-2xl font-bold text-gray-800 mt-1">10</h3>
               </div>
-              <span className="text-green-500 text-sm font-medium">+3</span>
+          
             </div>
           </div>
           {/* Pending Appointments */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="bg-white rounded-xl shadow-sm p-6 border">
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-gray-600 text-sm">Pending Appointments</p>
                 <h3 className="text-2xl font-bold text-gray-800 mt-1">5</h3>
               </div>
-              <span className="text-red-500 text-sm font-medium">-1</span>
+             
             </div>
           </div>
         </div>
 
+        <RevenueChart />
+
         {/* Appointments List */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">Upcoming Appointments</h2>
+        <motion.h2
+        className="text-gray-600 font-bold text-2xl md:text-[2.3rem] mx-10 uppercase mt-12"
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+       Appointments
+      </motion.h2>
+      <div className="relative flex items-center mx-1">
+        <div className="w-8 h-8 bg-sky-600 rounded-full"></div>
+        <div className="h-1 w-80 bg-sky-600"></div>
+      </div>
           {appointments.length > 0 ? (
             appointments.map((appointment, index) => (
               <div
@@ -239,53 +248,15 @@ const navigateTo = useNavigate()
               </div>
             ))
           ) : (
-            <p className="text-gray-600">No upcoming appointments.</p>
+            <p className="text-gray-600 text-center">No upcoming appointments.</p>
           )}
         </div>
 
-        {/* Quick Actions and Schedule */}
-        <div className="space-y-8 mt-8">
-          {/* Quick Actions */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {['Start Video Call', 'View Schedule', 'Patient Records', 'Write Prescription'].map(
-                (action, index) => (
-                  <button
-                    key={index}
-                    className="p-4 rounded-lg bg-sky-50 hover:bg-sky-100 transition-colors text-sm text-sky-700 font-medium text-center"
-                  >
-                    {action}
-                  </button>
-                )
-              )}
-            </div>
-          </div>
-
-          {/* Schedule Overview */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold mb-4">Schedule Overview</h3>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-600">Next available slot</span>
-                <span className="font-medium">Today, 04:30 PM</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-600">Appointments today</span>
-                <span className="font-medium">8 remaining</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-600">Video consultations</span>
-                <span className="font-medium">5 scheduled</span>
-              </div>
-            </div>
-            <button className="w-full mt-4 px-4 py-2 border border-sky-500 text-sky-500 rounded-lg hover:bg-sky-50 transition-colors">
-              View Full Schedule
-            </button>
-          </div>
-        </div>
+  
       </div>
+      <Footer />
     </div>
+    
   );
 };
 

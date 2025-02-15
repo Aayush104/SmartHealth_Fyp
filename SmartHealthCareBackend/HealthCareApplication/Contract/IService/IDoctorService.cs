@@ -19,5 +19,6 @@ namespace HealthCareApplication.Contract.IService
 
         Task<ApiResponseDto> DoCommentAsync(CommentDtoo commentDtoo);
         Task<ApiResponseDto> GetCommentsAsync(string Id);
+        Task<ApiResponseDto> GetDoctorRevenueAsync(string Id);
     }
 }

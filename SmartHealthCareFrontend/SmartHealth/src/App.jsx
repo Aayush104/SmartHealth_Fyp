@@ -28,6 +28,8 @@ import Doctorverificationdetails from "./Components/Admin Components/Doctorverif
 import AppointmentConfirmation from "./Components/AppointmentConfirmation/AppointmentConfirmation";
 import VideoCall from "./Pages/VideoCall/VideoCall";
 
+import RevenueChart from "./Components/Charts/RevenueChart";
+
 
 
 const App = () => {
@@ -94,6 +96,7 @@ const App = () => {
           }
         />
         <Route path="/home" element={<Protect requiredRole={['Patient']}><Home /> </Protect>} />
+        <Route path="/Chart" element={<Protect requiredRole={['Doctor']}><RevenueChart /> </Protect>} />
         <Route path="/ConfirmEmail/:email/:otp" element={<ConfirmDoctorEmail />} />
         
         <Route path="/Success" element={<Success /> } />

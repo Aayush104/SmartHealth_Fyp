@@ -14,9 +14,21 @@ const Comments = ({ DoctorId }) => {
 
   // Get and decode JWT token
   const token = Cookies.get("Token");
-  const decodedToken = JSON.parse(atob(token.split(".")[1])); // Decoding JWT to get user details
-  const PatientId = decodedToken.userId;
-  const UserName = decodedToken.Name;
+
+  let decodedToken;
+  let PatientId;
+  let  UserName;
+  
+  if(token)
+  {
+    
+ decodedToken = JSON.parse(atob(token.split(".")[1])); 
+ PatientId = decodedToken.userId;
+ 
+ UserName = decodedToken.Name;
+  }
+
+ 
 
   // Helper function to convert createdAt date to relative time
   const timeAgo = (dateString) => {

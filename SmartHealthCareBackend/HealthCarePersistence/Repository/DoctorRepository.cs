@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using HealthCareDomain.Entity.Doctors;
 using static System.Reflection.Metadata.BlobBuilder;
 using HealthCareDomain.Entity.Review;
+using HealthCareDomain.Contract.ContractDto.DoctorRevenue;
 
 
 
@@ -44,6 +45,23 @@ namespace HealthCarePersistence.Repository
            await _dbContext.Doctors.AddAsync(doctor); 
             await _dbContext.SaveChangesAsync();    
 
+        }
+
+        public async Task<List<DoctorRevenue>> DoctorRevenuesById(string id)
+        {
+            var revenueData = await _dbContext.Payments
+                .Where(p => p.Appointment.DoctorId == id)
+                   .GroupBy(p => new { p.PaymentDate.Year, p.PaymentDate.Month })
+            .Select(g => new DoctorRevenue
+            {
+                Year = g.Key.Year,
+                Month = g.Key.Month,
+                Revenue = g.Sum(p => p.Amount)
+            })
+            .OrderBy(g => g.Year).ThenBy(g => g.Month)
+            .ToListAsync();
+
+            return revenueData;
         }
 
         public async Task<IEnumerable<Doctor>> GetAllDoctors()

@@ -624,6 +624,18 @@
         }
       }
     },
+    "/api/Doctor/DoctorRevenue": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Patient/AddPatientDetails": {
       "post": {
         "tags": [
