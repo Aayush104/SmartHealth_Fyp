@@ -29,6 +29,7 @@ import AppointmentConfirmation from "./Components/AppointmentConfirmation/Appoin
 import VideoCall from "./Pages/VideoCall/VideoCall";
 
 import RevenueChart from "./Components/Charts/RevenueChart";
+import ChatBot from "./Components/Chat/ChatBot";
 
 
 
@@ -73,6 +74,7 @@ const App = () => {
           </RedirectIfAuthenticated>
           } />
         <Route path="/AboutUs" element={<AboutUs />} />
+       
         <Route path="/meeting/:meetingId" element={<VideoCall />} />
         <Route path="/Doctors" element={<FindDoctor />} />
         <Route path="/Doctors/:id" element={ <DoctorDetail/>} />
@@ -96,7 +98,7 @@ const App = () => {
           }
         />
         <Route path="/home" element={<Protect requiredRole={['Patient']}><Home /> </Protect>} />
-        <Route path="/Chart" element={<Protect requiredRole={['Doctor']}><RevenueChart /> </Protect>} />
+     
         <Route path="/ConfirmEmail/:email/:otp" element={<ConfirmDoctorEmail />} />
         
         <Route path="/Success" element={<Success /> } />

@@ -12,6 +12,7 @@ import useStore from '../../Zustand/Store';
 import { toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Spinner } from '@chakra-ui/react';
+import ChatBot from '../../Components/Chat/ChatBot';
 
 const DoctorRegistration = () => {
   const [fullName, setFullName] = useState('');
@@ -145,6 +146,7 @@ const DoctorRegistration = () => {
 
   return (
     <>
+      <ChatBot />
   {
     isSubmitting && (
  <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">

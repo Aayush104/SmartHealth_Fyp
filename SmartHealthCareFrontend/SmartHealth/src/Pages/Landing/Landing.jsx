@@ -6,11 +6,13 @@ import Banner from '../../Components/How We Work/Banner'
 import TestiMonial from '../../Components/TestiMonial/TestiMonial'
 import Fotter from '../../Components/Fotter/Fotter'
 import Contact from '../../Components/Contact/Contact'
+import ChatBot from '../../Components/Chat/ChatBot'
 
 
 const Landing = () => {
   return (
     <div className='bg-slate-50'>
+    <ChatBot />
     <Navbar />
     <Hero />
   

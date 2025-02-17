@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { Spinner } from '@chakra-ui/react';
+import ChatBot from '../../Components/Chat/ChatBot';
 
 const PatientRegistration = () => {
   const [fullName, setFullName] = useState('');
@@ -96,6 +97,7 @@ const PatientRegistration = () => {
 
   return (
     <div>
+     <ChatBot />
       <Navbar />
       {loading ? (
         <div className="fixed inset-0 bg-white  flex justify-center items-center z-50">

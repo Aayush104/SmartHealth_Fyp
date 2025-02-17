@@ -13,6 +13,7 @@ import useStore from '../../Zustand/Store';
 
 import PersonalDetailsForm from '../../Components/PatientComponents/PersonalDetailsForm';
 import Comments from '../../Components/Comments/Comments';
+import ChatBot from '../../Components/Chat/ChatBot';
 
 const DoctorDetails = () => {
   const { id } = useParams();
@@ -86,6 +87,7 @@ console.log(userRole);
   return (
     <div className="bg-neutral-100">
       <Navbar />
+      <ChatBot />
       <div className="px-28 mt-2">
         <SearchDoctor />
       </div>

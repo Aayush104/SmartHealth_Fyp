@@ -5,6 +5,7 @@ import SearchDoctor from './SearchDoctor';
 import { MdVerified } from "react-icons/md";
 import Footer from '../Fotter/Fotter';
 import { FaCalendarDays } from "react-icons/fa6";
+import ChatBot from '../Chat/ChatBot';
 
 const SearchedDoctor = () => {
   const location = useLocation();
@@ -23,6 +24,7 @@ const SearchedDoctor = () => {
   return (
     <div>
       <Navbar />
+      <ChatBot />
       <div className="bg-Doctor_Banner h-75vh flex flex-col justify-center items-center bg-cover">
         {doctors.length > 0 && (
           <h2 className="text-white font-bold font-sans mb-4 text-6xl">

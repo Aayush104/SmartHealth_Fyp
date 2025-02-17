@@ -181,6 +181,8 @@ import axios from "axios";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 
 import { useNavigate } from "react-router-dom";
+import Chat from "../../Components/Chat/Chat";
+import ChatBot from "../../Components/Chat/ChatBot";
 
 const Home = () => {
   const [greeting, setGreeting] = useState("");
@@ -278,6 +280,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
+      <ChatBot />
       <div className="md:max-w-8xl mx-auto p-6 space-y-8">
         <div className="space-y-1">
           <p className="text-gray-600 text-lg">{greeting},</p>

@@ -294,8 +294,7 @@
               "RelativeToolTip": "HealthCareDomain\\Contract\\ContractDto\\DoctorRevenue\\DoctorRevenue.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-15T12:19:26.012Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-15T12:19:26.012Z"
             },
             {
               "$type": "Document",
@@ -307,8 +306,7 @@
               "RelativeToolTip": "HealthCareApplication\\Contract\\IService\\IDoctorService.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T13:24:11.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-31T13:24:11.772Z"
             },
             {
               "$type": "Document",
@@ -320,8 +318,7 @@
               "RelativeToolTip": "HealthCareDomain\\IRepository\\IDoctorRepository.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAzwB0AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T08:22:37.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-11T08:22:37.772Z"
             },
             {
               "$type": "Document",
@@ -331,7 +328,7 @@
               "RelativeDocumentMoniker": "HealthCarePersistence\\Repository\\DoctorRepository.cs",
               "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\Repository\\DoctorRepository.cs",
               "RelativeToolTip": "HealthCarePersistence\\Repository\\DoctorRepository.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAgwEMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwDoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-11T08:43:45.34Z",
               "EditorCaption": ""
@@ -346,8 +343,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
               "ViewState": "AgIAAFMBAAAAAAAAAAAswGoBAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T09:11:04.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T09:11:04.052Z"
             },
             {
               "$type": "Document",
@@ -359,8 +355,7 @@
               "RelativeToolTip": "HealthCareApi\\Controllers\\DoctorController.cs",
               "ViewState": "AgIAAKAAAAAAAAAAAAAuwK4AAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T12:40:16.221Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-31T12:40:16.221Z"
             },
             {
               "$type": "Document",
@@ -372,8 +367,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Appointment\\BookAppointment.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAUwDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T08:48:57.421Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T08:48:57.421Z"
             },
             {
               "$type": "Document",
@@ -385,8 +379,7 @@
               "RelativeToolTip": "HealthCareDomain\\Entity\\Appointment\\Payment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T05:00:40.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-08T05:00:40.297Z"
             },
             {
               "$type": "Document",
@@ -398,8 +391,7 @@
               "RelativeToolTip": "HealthCareApplication\\Dtos\\UserDtoo\\PaymentDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-15T12:08:13.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-15T12:08:13.499Z"
             },
             {
               "$type": "Document",

@@ -267,6 +267,7 @@ import heart from '../../Assets/Image/Heart.png';
 import { motion } from 'framer-motion';
 import { jwtDecode } from 'jwt-decode';
 import { Spinner } from '@chakra-ui/react'; 
+import ChatBot from '../../Components/Chat/ChatBot';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -400,6 +401,7 @@ const Login = () => {
 
   return (
     <div className="overflow-hidden relative"> 
+      <ChatBot />
       {isSubmitting && (
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
           <Spinner

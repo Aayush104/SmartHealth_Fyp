@@ -6,10 +6,12 @@ import about2 from '../../Assets/Image/about_banner_2.jpg';
 
 import { motion } from 'framer-motion';
 import DoctorTestiMonial from '../../Components/TestiMonial/DoctorTestiMonial';
+import ChatBot from '../../Components/Chat/ChatBot';
 
 const AboutUs = () => {
   return (
     <div className="bg-gray-50">
+      <ChatBot />
       <Navbar />
       <div>
         <div className="h-[75vh] bg-ab_banner relative bg-cover bg-center mb-16 flex items-center justify-center">

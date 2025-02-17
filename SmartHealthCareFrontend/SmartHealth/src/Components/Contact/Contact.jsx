@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Fotter/Fotter'; // Import Footer
 import { useLocation } from 'react-router-dom';
+import ChatBot from '../Chat/ChatBot';
 
 const Contact = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const Contact = () => {
         <>
           <Navbar />
 
+          <ChatBot />
           <div className="bg-Contact_Banner h-[76vh] mb-8 w-full bg-cover bg-center flex items-center justify-center relative">
             <div className="absolute inset-0 bg-gradient-to-t from-blue-800 via-blue-600 to-transparent opacity-30 z-10"></div>
             <motion.p
