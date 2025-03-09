@@ -116,6 +116,7 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
           `https://localhost:7070/api/Doctor/GetComments/${DoctorId}`
         );
         setReviews(response.data.data.$values || []);
+        console.log("Comments", response);
       } catch (error) {
         console.error("Error fetching comments:", error);
       }
@@ -134,7 +135,7 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
     }));
   };
 
-  // Handle reply text change
+
   const handleReplyChange = (reviewId, text) => {
     setReplyTexts(prev => ({
       ...prev,
@@ -142,24 +143,55 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
     }));
   };
 
-  // Handle reply submission
-  const submitReply = async (e, reviewId) => {
+ 
+  const submitReply = async (e, commentId) => {
     e.preventDefault();
     
-    // Add your reply submission logic here
-    console.log(`Submitting reply for review ${reviewId}: ${replyTexts[reviewId]}`);
-    
-    // Clear the reply field and hide it after submission
-    setReplyTexts(prev => ({
-      ...prev,
-      [reviewId]: ""
-    }));
-    setShowReplyFields(prev => ({
-      ...prev,
-      [reviewId]: false
-    }));
-    
-    // TODO: Implement the actual API call to submit the reply
+    if (!replyTexts[commentId] || replyTexts[commentId].trim() === "") {
+      alert("Reply text cannot be empty!");
+      return;
+    }
+
+    const data = {
+      commentId: commentId,
+      doctorId: DoctorId,
+      replyText: replyTexts[commentId]
+    };
+
+
+    console.log("checing");
+    try {
+
+      
+      const response = await axios.post(
+        "https://localhost:7070/api/Doctor/DoReply",
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        // Clear the reply field and hide it
+        setReplyTexts(prev => ({
+          ...prev,
+          [commentId]: ""
+        }));
+        setShowReplyFields(prev => ({
+          ...prev,
+          [commentId]: false
+        }));
+        
+       
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error submitting reply:", error);
+      alert("Failed to submit reply. Please try again.");
+    }
   };
 
   const placeholderImage =
@@ -169,7 +201,7 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
     <div className="max-w-3xl mx-auto py-6">
       <h2 className="text-2xl font-bold mb-6">Patient Stories</h2>
 
-      {view && (
+      {view && !viewReply && (
         <div className="bg-white rounded-lg shadow p-6 mb-8">
           <h3 className="text-lg font-semibold mb-4">Write a Review</h3>
           <form onSubmit={handleSubmit}>
@@ -230,68 +262,90 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
       )}
 
       <div className="border border-gray-200 rounded-sm">
-        {reviews.map((review, index) => (
-          <div key={index} className="bg-white border shadow p-6">
-            <div className="flex justify-between">
-              <div className="flex gap-3">
-                <img src={placeholderImage} alt="Avatar" className="h-10 w-10" />
-                <div className="flex flex-col w-full">
-                  <div className="flex gap-justify-between">
-                    <span className="font-medium text-lg text-gray-500">
-                      {review.userName}
-                    </span>
+        {reviews.length > 0 ? (
+          reviews.map((review, index) => (
+            <div key={index} className="bg-white border shadow p-6 mb-3">
+              <div className="flex justify-between">
+                <div className="flex gap-3">
+                  <img src={placeholderImage} alt="Avatar" className="h-10 w-10 rounded-full" />
+                  <div className="flex flex-col w-full">
+                    <div className="flex justify-between">
+                      <span className="font-medium text-lg text-gray-500">
+                        {review.userName}
+                      </span>
+                    </div>
+                    <h3 className="font-medium mb-2 text-xl">
+                      Visited For {review.visitedFor}
+                    </h3>
+                    {review.isRecommended ? (
+                      <div className="flex gap-2 items-center text-lg text-green-500">
+                        <AiOutlineLike /> <p>I recommend this doctor</p>
+                      </div>
+                    ) : (
+                      <div className="flex gap-2 items-center text-lg text-red-500">
+                        <AiOutlineDislike />
+                        <p>I don't recommend this doctor</p>
+                      </div>
+                    )}
+                    <p className="text-gray-700 text-lg mt-1 px-1">{review.reviewText}</p>
                   </div>
-                  <h3 className="font-medium mb-2 text-xl">
-                    Visited For {review.visitedFor}
-                  </h3>
-                  {review.isRecommended ? (
-                    <div className="flex gap-2 items-center text-lg">
-                      <AiOutlineLike /> <p>I recommend this doctor</p>
-                    </div>
-                  ) : (
-                    <div className="flex gap-2 items-center text-lg">
-                      <AiOutlineDislike />
-                      <p>I don't recommend this doctor</p>
-                    </div>
-                  )}
-                  <p className="text-gray-700 text-lg mt-1 px-1">{review.reviewText}</p>
                 </div>
+                <div className="text-gray-500 text-sm">{timeAgo(review.createdAt)}</div>
               </div>
-              <div className="text-gray-500 text-sm">{timeAgo(review.createdAt)}</div>
+
+              {/* Show replies if they exist */}
+              {review.replies && review.replies.$values && review.replies.$values.length > 0 && (
+                <div className="ml-12 mt-4 border-l-2 border-gray-200 pl-4">
+                  {review.replies.$values.map((reply, replyIndex) => (
+                    <div key={replyIndex} className="mt-2">
+                      <div className="flex items-start gap-2">
+                        <img src={photo || placeholderImage} className="h-8 w-8 rounded-full border p-1" alt="Doctor" />
+                        <div>
+                          <div className="font-medium text-blue-600">Doctor's Response</div>
+                          <p className="text-gray-700">{reply.replyText}</p>
+                          <div className="text-gray-500 text-xs mt-1">{timeAgo(reply.createdAt)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {viewReply && (
+                <div className="mt-4">
+                  <button 
+                    className="text-blue-500 hover:text-blue-700"
+                    onClick={() => toggleReplyField(review.commentId || index)}
+                  >
+                    {showReplyFields[review.commentId || index] ? "Cancel Reply" : "Reply"}
+                  </button>
+                </div>
+              )}
+
+              {viewReply && showReplyFields[review.commentId || index] && (
+                <div className="flex items-center gap-2 mt-2">
+                  <img src={photo || placeholderImage} className="h-10 w-10 rounded-full border p-1" alt="Profile" />
+                  <textarea
+                    className="w-full p-2 border rounded resize-none min-h-[40px] focus:min-h-[80px]"
+                    placeholder="Write a reply..."
+                    value={replyTexts[review.commentId || index] || ""}
+                    onChange={(e) => handleReplyChange(review.commentId || index, e.target.value)}
+                  />
+                  <button 
+                    className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                    onClick={(e) => submitReply(e, review.commentId || index)}
+                  >
+                    Submit
+                  </button>
+                </div>
+              )}
             </div>
-
-            {/* Reply button - only show when viewReply is true */}
-            {viewReply && (
-              <div className="mt-4">
-                <button 
-                  className="text-blue-500 hover:text-blue-700"
-                  onClick={() => toggleReplyField(review.id || index)}
-                >
-                  Reply
-                </button>
-              </div>
-            )}
-
-            {/* Reply field - only shown when viewReply is true AND the reply button is clicked */}
-            {viewReply && showReplyFields[review.id || index] && (
-              <div className="flex items-center gap-2 mt-2">
-                <img src={photo || placeholderImage} className="h-10 w-10 rounded-full border p-1" alt="Profile" />
-                <textarea
-                  className="w-full p-2 border rounded resize-none min-h-[40px] focus:min-h-[80px]"
-                  placeholder="Write a reply..."
-                  value={replyTexts[review.id || index] || ""}
-                  onChange={(e) => handleReplyChange(review.id || index, e.target.value)}
-                />
-                <button 
-                  className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                  onClick={(e) => submitReply(e, review.id || index)}
-                >
-                  Submit
-                </button>
-              </div>
-            )}
+          ))
+        ) : (
+          <div className="bg-white p-6 text-center text-gray-500">
+            No reviews yet. Be the first to leave a review!
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

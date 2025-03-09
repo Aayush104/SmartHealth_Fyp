@@ -12,6 +12,7 @@ using HealthCareDomain.Entity.Doctors;
 using static System.Reflection.Metadata.BlobBuilder;
 using HealthCareDomain.Entity.Review;
 using HealthCareDomain.Contract.ContractDto.DoctorRevenue;
+using System.Numerics;
 
 
 
@@ -45,6 +46,12 @@ namespace HealthCarePersistence.Repository
            await _dbContext.Doctors.AddAsync(doctor); 
             await _dbContext.SaveChangesAsync();    
 
+        }
+
+        public async Task AddReply(Reply reply)
+        {
+            await _dbContext.Replies.AddAsync(reply);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<List<DoctorRevenue>> DoctorRevenuesById(string id)

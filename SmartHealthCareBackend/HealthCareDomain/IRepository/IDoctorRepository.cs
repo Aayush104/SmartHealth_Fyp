@@ -24,8 +24,11 @@ namespace HealthCarePersistence.IRepository
         Task AddAdditionalInfoAsync(DoctorAdditionalInfo info);
 
         Task AddComment(Comments comments);
+        Task AddReply(Reply reply);
 
         Task<List<Comments>> GetCommentsAsync(string userId);
+
+
 
         Task <List<DoctorRevenue>> DoctorRevenuesById(string id);
 

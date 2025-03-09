@@ -293,6 +293,22 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.DoctorController",
+    "Method": "DoReply",
+    "RelativePath": "api/Doctor/DoReply",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reply",
+        "Type": "HealthCareApplication.Dtos.CommentDto.ReplyDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.DoctorController",
     "Method": "SaveAvailability",
     "RelativePath": "api/Doctor/GenerateAvailability",
     "HttpMethod": "POST",

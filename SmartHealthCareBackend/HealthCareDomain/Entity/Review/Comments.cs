@@ -30,5 +30,6 @@ namespace HealthCareDomain.Entity.Review
 
       
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public virtual ICollection<Reply> Replies { get; set; } = new List<Reply>();
     }
 }

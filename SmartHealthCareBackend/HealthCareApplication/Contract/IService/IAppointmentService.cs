@@ -1,5 +1,5 @@
 ﻿using HealthCareApplication.Dtos.AvailabilityDto;
-
+using HealthCareApplication.Dtos.CommentDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareDomain.Entity.Appointment;
 using System;
@@ -17,6 +17,8 @@ namespace HealthCareApplication.Contract.IService
 
         Task<ApiResponseDto> ChecKMeetingIdAsync(string MeetingId);
         Task<ApiResponseDto> CheckforCommentAsync(string DoctorId , string UserId);
+       
 
+        
     }
 }

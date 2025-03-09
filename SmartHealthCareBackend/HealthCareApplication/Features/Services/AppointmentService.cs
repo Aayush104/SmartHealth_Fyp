@@ -13,6 +13,7 @@ using HealthCareDomain.Contract.ContractDto.NewFolder;
 using HealthCareApplication.Contracts.Email;
 using HealthCareDomain.Entity.Chat;
 using Microsoft.AspNetCore.Http;
+using HealthCareApplication.Dtos.CommentDto;
 
 namespace HealthCareApplication.Features.Services
 {
@@ -258,6 +259,7 @@ namespace HealthCareApplication.Features.Services
                 };
             }
         }
+
 
         public async Task<ApiResponseDto> GetAppointmentListAsync(string userId, string role)
         {

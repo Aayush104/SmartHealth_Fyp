@@ -16,6 +16,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Identity;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using HealthCarePersistence.Migrations;
+using HealthCareApplication.Dtos.CommentDto;
 
 namespace HealthCareApi.Controllers
 {
@@ -388,6 +389,7 @@ namespace HealthCareApi.Controllers
             }
             return StatusCode(response.StatusCode, response.Message);
         }
+
 
     }
 }

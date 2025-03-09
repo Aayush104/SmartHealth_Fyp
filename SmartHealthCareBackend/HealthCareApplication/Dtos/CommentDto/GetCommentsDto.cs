@@ -10,12 +10,14 @@ namespace HealthCareApplication.Dtos.CommentDto
     public class GetCommentsDto
     {
 
+
+    public int? CommentId { get; set; }
         public string UserName { get; set; }
         public string VisitedFor { get; set; }
         public bool IsRecommended { get; set; }
 
         [MaxLength(1000)]
-        public string ReviewText { get; set; }
+        public string ReplyText { get; set; }
 
         public DateTime CreatedAt { get; set; }
     }

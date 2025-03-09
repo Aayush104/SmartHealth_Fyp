@@ -3,6 +3,7 @@ using HealthCareApplication.Dtos.AvailabilityDto;
 using HealthCareApplication.Dtos.CommentDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Dtos.UserDtoo;
+using HealthCareApplication.Features.Services;
 using HealthCareDomain.IServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -151,6 +152,23 @@ namespace HealthCareApi.Controllers
             return NotFound();
         }
 
+
+
+        [HttpPost("DoReply")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+
+        public async Task<IActionResult> DoReply(ReplyDto reply)
+        {
+
+            var response = await _doctorService.DoReplyAsync(reply);
+            if (response != null)
+            {
+                return Ok(response);
+            }
+
+            return NotFound();
+
+        }
         [HttpGet("GetComments/{id}")]
 
         public async Task <IActionResult> GetComment(string id)

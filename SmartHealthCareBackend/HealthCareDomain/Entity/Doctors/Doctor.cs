@@ -46,6 +46,7 @@ namespace HealthCareDomain.Entity.Doctors
         public virtual ICollection<DoctorAvailability> AvailabilityList { get; set; } = new List<DoctorAvailability>();
         public virtual ICollection<BookAppointment> BookAppointments { get; set; } = new List<BookAppointment>();
         public virtual ICollection<Comments> Comments { get; set; } = new List<Comments>();
+        public virtual ICollection<Reply> Replies { get; set; } = new List<Reply>();
 
 
     }

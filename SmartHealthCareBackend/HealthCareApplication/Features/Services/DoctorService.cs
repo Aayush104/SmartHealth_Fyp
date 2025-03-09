@@ -207,6 +207,42 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
+        public async Task<ApiResponseDto> DoReplyAsync(ReplyDto reply)
+        {
+
+            var doctorId = _dataProtector.Unprotect(reply.DoctorId);
+            try
+            {
+              
+
+                var replies = new Reply
+                {
+                    CommentId = reply.CommentId,
+                    DoctorId = doctorId,
+                    ReplyText = reply.ReplyText,
+                    CreatedAt = DateTime.Now,
+                };
+                await _doctorRepository.AddReply(replies);
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Message = "Reply Succesfull",
+                    StatusCode = 200
+                };
+
+
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
         public async Task<ApiResponseDto> GetCommentsAsync(string Id)
         {
             try
@@ -252,6 +288,7 @@ namespace HealthCareApplication.Features.Services
 
                 var comments = getComments.Select(a => new GetCommentsDto
                 {
+                    CommentId =  a.Id,
                     UserName = a.UserName,
                     VisitedFor = a.VisitedFor,
                     IsRecommended = a.IsRecommended,
