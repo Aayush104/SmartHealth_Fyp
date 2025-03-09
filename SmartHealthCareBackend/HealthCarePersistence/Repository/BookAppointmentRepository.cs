@@ -45,7 +45,21 @@ namespace HealthCarePersistence.Repository
         {
             try
             {
-                return await _dbContext.BookAppointments.AnyAsync(x => x.DoctorId == DoctorId && x.PatientId == UserId);
+               var result =  await _dbContext.BookAppointments.AnyAsync(x => x.DoctorId == DoctorId && x.PatientId == UserId);
+
+                if (result)
+                {
+                    var reviewExist = await _dbContext.Comments.AnyAsync(x => x.DoctorId == DoctorId && x.PatientId == UserId);
+
+                   if(reviewExist)
+                    {
+                        return false;
+                    }
+
+                   return true;
+                }
+
+                return true;    
             }
             catch
             {

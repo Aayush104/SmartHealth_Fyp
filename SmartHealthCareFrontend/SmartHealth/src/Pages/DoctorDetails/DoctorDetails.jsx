@@ -14,6 +14,7 @@ import useStore from '../../Zustand/Store';
 import PersonalDetailsForm from '../../Components/PatientComponents/PersonalDetailsForm';
 import Comments from '../../Components/Comments/Comments';
 import ChatBot from '../../Components/Chat/ChatBot';
+import Cookies from 'js-cookie';
 
 const DoctorDetails = () => {
   const { id } = useParams();
@@ -21,6 +22,7 @@ const DoctorDetails = () => {
   const [error, setError] = useState(null);
   const [showMore, setShowMore] = useState(false);
     const [showAdditionalForm, setShowAdditionalForm] = useState(false);
+    const[viewReply, setViewReply] = useState(false)
 
   const {userRole } = useStore();
   const handleCloseForms = () => {
@@ -31,7 +33,9 @@ const DoctorDetails = () => {
   };
 
 
-
+const token = Cookies.get("Token");
+const decodedToken = JSON.parse(atob(token.split(".")[1]));
+const userId = decodedToken.userId;
 
   useEffect(()=>
   {
@@ -60,6 +64,12 @@ console.log(userRole);
       try {
         const response = await axios.get(`https://localhost:7070/api/Doctor/GetDoctorDetails/${id}`);
         setDoctorDetails(response.data?.data || {});
+
+        console.log("Yo ho Id", response.data?.data.doctor?.id );
+        if(userId == response.data?.data.doctor?.id)
+        {
+          setViewReply(true);
+        }
         console.log(response.data?.data);
       } catch (err) {
         console.error('Error fetching doctor details:', err);
@@ -191,7 +201,7 @@ console.log(userRole);
             </div>
           )}
         </div>
-        <Comments DoctorId = { id } />
+        <Comments DoctorId = { id } photo={doctorDetails.doctor?.profileget} viewReply = {viewReply} />
       </div>
 
       <div>

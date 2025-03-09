@@ -310,6 +310,7 @@ namespace HealthCareApplication.Features.Services
                 // Map data to DoctorDetailsDto
                 var doctor = new DoctorDetailsDto
                 {
+                    Id = doctorDetails.Id,
                     FullName = doctorDetails.User.FullName,
                     Email = doctorDetails.User.Email,
                     Specialization = doctorDetails.Specialization,
@@ -402,6 +403,7 @@ namespace HealthCareApplication.Features.Services
                 // Map data to DoctorDetailsDto
                 var doctor = new DoctorDetailsDto
                 {
+                    Id = _dataProtector.Protect(doctorDetails.Id),
                     FullName = doctorDetails.User.FullName,
                     Email = doctorDetails.User.Email,
                     Specialization = doctorDetails.Specialization,

@@ -56,6 +56,7 @@ wwwroot\MessageFile\658c0c88-dbc4-4d93-b543-2e21d72e0806.jpeg
 wwwroot\MessageFile\65cf478d-fc49-4a2f-b1c7-35319a5eecd4.jpeg
 wwwroot\MessageFile\6d106821-89ea-427c-831f-0758cf308279.jpeg
 wwwroot\MessageFile\766288c4-35c0-45c6-8721-7626490ee29b.jpeg
+wwwroot\MessageFile\767a83e8-2a07-453b-83fa-295340b1a7c6.jpeg
 wwwroot\MessageFile\79f0817d-ca49-4c58-907e-533fc1f168ce.jpeg
 wwwroot\MessageFile\83950bd8-9062-4fb9-b107-1aff3b0256b4.jpeg
 wwwroot\MessageFile\86becbe0-557d-47b3-a427-2b92a443557f.jpeg

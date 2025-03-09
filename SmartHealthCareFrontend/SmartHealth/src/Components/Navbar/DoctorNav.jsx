@@ -10,6 +10,7 @@ import { MdEventAvailable } from "react-icons/md";
 import { RiCalendarScheduleFill } from "react-icons/ri";
 import Cookies from 'js-cookie';
 import { NavLink } from 'react-router-dom';
+import { MdOutlineRateReview } from "react-icons/md";
 
 const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doctorData}) => {
   const handleLogout = () => {
@@ -77,6 +78,12 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doct
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={onAdditionalClick}>
               <IoIosAddCircleOutline className="text-gray-400" /> Additional Profile
             </li>
+
+            <NavLink to={`/Doctors/${doctorData?.data.doctor.id }`}>
+            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+              <MdOutlineRateReview className="text-gray-400" /> View Reviews
+            </li>
+            </NavLink>
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={handleLogout}>
               <TbLogout2 className="text-gray-400" /> Logout
             </li>
