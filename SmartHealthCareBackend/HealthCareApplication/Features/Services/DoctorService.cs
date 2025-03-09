@@ -291,8 +291,9 @@ namespace HealthCareApplication.Features.Services
                     CommentId =  a.Id,
                     UserName = a.UserName,
                     VisitedFor = a.VisitedFor,
-                    IsRecommended = a.IsRecommended,
                     ReviewText = a.ReviewText,
+                    IsRecommended = a.IsRecommended,
+                   
                     CreatedAt = a.CreatedAt,
                 }).ToList();
 
@@ -479,6 +480,48 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
+        public async Task<ApiResponseDto> GetReplyAsync(int Id)
+        {
+            try
+            {
+                var getReply = await _doctorRepository.GetReplyAsync(Id);
+
+                if (getReply == null || !getReply.Any())
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = true,
+                        Message = "No comments found",
+                        StatusCode = 200,
+                        Data = new List<GetCommentsDto>()
+                    };
+                }
+
+                var comments = getReply.Select(a => new ReplyDto
+                {
+                    CommentId = a.CommentId,
+                    DoctorId = a.DoctorId,
+                    ReplyText = a.ReplyText,
+                    CreatedAt = a.CreatedAt
+                }).ToList();
+
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Data = comments,
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
 
 
         public async Task<IEnumerable<DoctorDetailsDto>> SearchDoctorAsync(SearchDto searchDto)

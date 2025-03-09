@@ -382,6 +382,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HealthCareApi.Controllers.DoctorController",
+    "Method": "GetReply",
+    "RelativePath": "api/Doctor/GetReply/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DoctorController",
     "Method": "RejectDoctor",
     "RelativePath": "api/Doctor/RejectDoctor/{email}",

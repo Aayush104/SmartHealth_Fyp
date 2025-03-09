@@ -17,7 +17,7 @@ namespace HealthCareApplication.Dtos.CommentDto
         public bool IsRecommended { get; set; }
 
         [MaxLength(1000)]
-        public string ReplyText { get; set; }
+        public string ReviewText { get; set; }
 
         public DateTime CreatedAt { get; set; }
     }

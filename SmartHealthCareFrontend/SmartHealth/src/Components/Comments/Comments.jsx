@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 
-const Comments = ({ DoctorId, photo, viewReply }) => {
+const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
   // State variables
   const [view, setView] = useState(false);
   const [reviews, setReviews] = useState([]);
@@ -115,8 +115,33 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
         const response = await axios.get(
           `https://localhost:7070/api/Doctor/GetComments/${DoctorId}`
         );
-        setReviews(response.data.data.$values || []);
-        console.log("Comments", response);
+        const commentsData = response.data.data.$values || [];
+        setReviews(commentsData);
+        
+        // After getting comments, fetch replies for each comment
+        if (commentsData.length > 0) {
+          const updatedReviews = [...commentsData];
+          
+          for (let i = 0; i < updatedReviews.length; i++) {
+            if (updatedReviews[i].commentId) {
+              try {
+                const replyResponse = await axios.get(
+                  `https://localhost:7070/api/Doctor/GetReply/${updatedReviews[i].commentId}`
+                );
+                
+                if (replyResponse.status === 200 && replyResponse.data.data.$values) {
+                  updatedReviews[i].replies = {
+                    $values: replyResponse.data.data.$values
+                  };
+                }
+              } catch (error) {
+                console.error(`Error fetching replies for comment ${updatedReviews[i].commentId}:`, error);
+              }
+            }
+          }
+          
+          setReviews(updatedReviews);
+        }
       } catch (error) {
         console.error("Error fetching comments:", error);
       }
@@ -135,7 +160,6 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
     }));
   };
 
-
   const handleReplyChange = (reviewId, text) => {
     setReplyTexts(prev => ({
       ...prev,
@@ -143,7 +167,6 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
     }));
   };
 
- 
   const submitReply = async (e, commentId) => {
     e.preventDefault();
     
@@ -158,11 +181,7 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
       replyText: replyTexts[commentId]
     };
 
-
-    console.log("checing");
     try {
-
-      
       const response = await axios.post(
         "https://localhost:7070/api/Doctor/DoReply",
         data,
@@ -185,8 +204,31 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
           [commentId]: false
         }));
         
-       
-        window.location.reload();
+        // Fetch the updated replies for this comment
+        try {
+          const replyResponse = await axios.get(
+            `https://localhost:7070/api/Doctor/GetReply/${commentId}`
+          );
+          
+          if (replyResponse.status === 200) {
+            setReviews(prevReviews => {
+              return prevReviews.map(review => {
+                if (review.commentId === commentId) {
+                  return {
+                    ...review,
+                    replies: {
+                      $values: replyResponse.data.data.$values
+                    }
+                  };
+                }
+                return review;
+              });
+            });
+          }
+        } catch (error) {
+          console.error(`Error fetching updated replies for comment ${commentId}:`, error);
+          window.location.reload(); // Fall back to reload if update fails
+        }
       }
     } catch (error) {
       console.error("Error submitting reply:", error);
@@ -301,7 +343,7 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
                       <div className="flex items-start gap-2">
                         <img src={photo || placeholderImage} className="h-8 w-8 rounded-full border p-1" alt="Doctor" />
                         <div>
-                          <div className="font-medium text-blue-600">Doctor's Response</div>
+                          <div className="font-medium text-blue-600">Dr. {DoctorName}</div>
                           <p className="text-gray-700">{reply.replyText}</p>
                           <div className="text-gray-500 text-xs mt-1">{timeAgo(reply.createdAt)}</div>
                         </div>
@@ -315,25 +357,25 @@ const Comments = ({ DoctorId, photo, viewReply }) => {
                 <div className="mt-4">
                   <button 
                     className="text-blue-500 hover:text-blue-700"
-                    onClick={() => toggleReplyField(review.commentId || index)}
+                    onClick={() => toggleReplyField(review.commentId)}
                   >
-                    {showReplyFields[review.commentId || index] ? "Cancel Reply" : "Reply"}
+                    {showReplyFields[review.commentId] ? "Cancel Reply" : "Reply"}
                   </button>
                 </div>
               )}
 
-              {viewReply && showReplyFields[review.commentId || index] && (
+              {viewReply && showReplyFields[review.commentId] && (
                 <div className="flex items-center gap-2 mt-2">
                   <img src={photo || placeholderImage} className="h-10 w-10 rounded-full border p-1" alt="Profile" />
                   <textarea
                     className="w-full p-2 border rounded resize-none min-h-[40px] focus:min-h-[80px]"
                     placeholder="Write a reply..."
-                    value={replyTexts[review.commentId || index] || ""}
-                    onChange={(e) => handleReplyChange(review.commentId || index, e.target.value)}
+                    value={replyTexts[review.commentId] || ""}
+                    onChange={(e) => handleReplyChange(review.commentId, e.target.value)}
                   />
                   <button 
                     className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                    onClick={(e) => submitReply(e, review.commentId || index)}
+                    onClick={(e) => submitReply(e, review.commentId)}
                   >
                     Submit
                   </button>

@@ -655,6 +655,29 @@
         }
       }
     },
+    "/api/Doctor/GetReply/{id}": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Doctor/DoctorRevenue": {
       "get": {
         "tags": [
@@ -1281,6 +1304,10 @@
           "replyText": {
             "type": "string",
             "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false

@@ -201,7 +201,7 @@ console.log(userRole);
             </div>
           )}
         </div>
-        <Comments DoctorId = { id } photo={doctorDetails.doctor?.profileget} viewReply = {viewReply} />
+        <Comments DoctorId = { id } photo={doctorDetails.doctor?.profileget} viewReply = {viewReply} DoctorName = {doctor?.fullName} />
       </div>
 
       <div>

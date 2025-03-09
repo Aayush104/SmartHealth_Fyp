@@ -14,8 +14,10 @@ namespace HealthCareApplication.Dtos.CommentDto
     {
 
         public int CommentId { get; set; }
-        public string DoctorId { get; set; }
-        public string ReplyText { get; set; }
+        public string? DoctorId { get; set; }
+        public string? ReplyText { get; set; }
+
+         public DateTime CreatedAt { get; set; }
 
     }
 }

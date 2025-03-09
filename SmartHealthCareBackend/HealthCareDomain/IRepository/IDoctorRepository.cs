@@ -27,6 +27,7 @@ namespace HealthCarePersistence.IRepository
         Task AddReply(Reply reply);
 
         Task<List<Comments>> GetCommentsAsync(string userId);
+        Task<List<Reply>> GetReplyAsync(int CommentId);
 
 
 

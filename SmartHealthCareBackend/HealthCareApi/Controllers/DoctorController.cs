@@ -181,6 +181,19 @@ namespace HealthCareApi.Controllers
             return NotFound();
         }
 
+        [HttpGet("GetReply/{id}")]
+
+        public async Task<IActionResult> GetReply(int id)
+        {
+            var response = await _doctorService.GetReplyAsync(id);
+            if (response != null)
+            {
+                return Ok(response);
+            }
+            return NotFound();
+        }
+
+
         [HttpGet("DoctorRevenue")]
         [Authorize(AuthenticationSchemes = "Bearer")]
 

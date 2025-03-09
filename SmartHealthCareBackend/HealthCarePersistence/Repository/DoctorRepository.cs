@@ -129,5 +129,13 @@ namespace HealthCarePersistence.Repository
             _dbContext.Doctors.Update(doctor);
             await _dbContext.SaveChangesAsync();
         }
+
+     
+     public async   Task<List<Reply> >GetReplyAsync(int CommentId)
+        {
+            return await _dbContext.Replies
+            .Where(d => d.CommentId == CommentId)
+            .ToListAsync();
+        }
     }
 }
