@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../../Assets/Image/Logo.png';
-import { IoIosNotifications } from "react-icons/io";
 import { FaRegMessage } from "react-icons/fa6";
 import { MdOutlineArrowDropDown } from "react-icons/md";
 import { AiOutlineProfile } from "react-icons/ai";
@@ -11,18 +10,14 @@ import { RiCalendarScheduleFill } from "react-icons/ri";
 import Cookies from 'js-cookie';
 import { NavLink } from 'react-router-dom';
 import { MdOutlineRateReview } from "react-icons/md";
+import DoctorNotifications from '../DoctorNotification'; // Import the new component
 
-const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doctorData}) => {
+const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick, doctorData }) => {
   const handleLogout = () => {
     Cookies.remove("Token");
     window.location.href = "/";
   };
 
-
-
-  console.log("Doctor Fee:", doctorData?.data.doctor.fullName); 
-
-  
   const token = Cookies.get("Token");
   const decodedToken = token ? JSON.parse(atob(token.split('.')[1])) : {};
   const userName = decodedToken.Name || "Doctor";
@@ -34,26 +29,23 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doct
       <img src={logo} alt="Medical Logo" className="w-36 cursor-pointer" />
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-8">
-       
-       <NavLink to = "/DoctorAppointments">
-          <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
-            <RiCalendarScheduleFill className="text-3xl mt-1 group-hover:text-sky-400" />
-            <span className="mt-1">Appointments</span>
-          </li>
+          <NavLink to="/DoctorAppointments">
+            <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
+              <RiCalendarScheduleFill className="text-3xl mt-1 group-hover:text-sky-400" />
+              <span className="mt-1">Appointments</span>
+            </li>
           </NavLink>
-          <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
-            <IoIosNotifications className="text-3xl mt-1 group-hover:text-sky-400" />
-            <span className="mt-1">Notifications</span>
-          </li>
+          
+          {/* Replace the notifications li with our new component */}
+          <DoctorNotifications />
 
-<NavLink to= "/chat">  
-          <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
-            <FaRegMessage className="text-2xl mt-1.5 group-hover:text-sky-400" />
-            <span className="mt-1">Messages</span>
-          </li>
-</NavLink>
-
-        
+          <NavLink to="/chat">  
+            <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
+              <FaRegMessage className="text-2xl mt-1.5 group-hover:text-sky-400" />
+              <span className="mt-1">Messages</span>
+            </li>
+          </NavLink>
+          
           <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400" onClick={onAvailabilityClick}>
             <MdEventAvailable className="text-2xl mt-1.5 group-hover:text-sky-400" />
             <span className="mt-1">Add Availability</span>
@@ -63,8 +55,8 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doct
         {/* Profile Dropdown */}
         <div className="relative group">
           <div className="flex items-center justify-between cursor-pointer">
-          <img
-              src={doctorData?.data.doctor.profileget|| placeholderImage}
+            <img
+              src={doctorData?.data.doctor.profileget || placeholderImage}
               className="h-14 w-14 text-white border-2 rounded"
               alt={`Dr. ${doctorData?.data.doctor.fullName || "Doctor"}`}
             />
@@ -78,11 +70,10 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doct
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={onAdditionalClick}>
               <IoIosAddCircleOutline className="text-gray-400" /> Additional Profile
             </li>
-
-            <NavLink to={`/Doctors/${doctorData?.data.doctor.id }`}>
-            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
-              <MdOutlineRateReview className="text-gray-400" /> View Reviews
-            </li>
+            <NavLink to={`/Doctors/${doctorData?.data.doctor.id}`}>
+              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+                <MdOutlineRateReview className="text-gray-400" /> View Reviews
+              </li>
             </NavLink>
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={handleLogout}>
               <TbLogout2 className="text-gray-400" /> Logout
@@ -95,4 +86,3 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick,doct
 };
 
 export default DoctorNav;
-

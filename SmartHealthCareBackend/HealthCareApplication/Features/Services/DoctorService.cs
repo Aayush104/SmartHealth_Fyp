@@ -5,6 +5,7 @@ using HealthCareApplication.Dtos.AvailabilityDto;
 using HealthCareApplication.Dtos.CommentDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Dtos.UserDtoo;
+using HealthCareApplication.NotificationHub;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Review;
 using HealthCareDomain.Entity.UserEntity;
@@ -13,6 +14,7 @@ using HealthCarePersistence.IRepository;
 using HealthCarePersistence.Migrations;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,14 +28,16 @@ namespace HealthCareApplication.Features.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IDoctorRepository _doctorRepository;
+        private readonly IHubContext<Notificationhub> _hubContext;
         private readonly IDataProtector _dataProtector;
         private readonly IFileService _fileService;
-        public DoctorService(UserManager<ApplicationUser> userManager, IDoctorRepository doctorRepository, IDataProtectionProvider dataProtector, DataSecurityProvider securityProvider, IFileService fileService)
+        public DoctorService(UserManager<ApplicationUser> userManager, IHubContext<Notificationhub> hubContext, IDoctorRepository doctorRepository, IDataProtectionProvider dataProtector, DataSecurityProvider securityProvider, IFileService fileService)
         {
             _userManager = userManager;
             _doctorRepository = doctorRepository;
             _fileService = fileService;
             _dataProtector = dataProtector.CreateProtector(securityProvider.securityKey);
+            _hubContext = hubContext ?? throw new ArgumentNullException(nameof(hubContext));
         }
 
         public async Task<ApiResponseDto> AddProfileDetails(AddProfileDto addProfileDto)
@@ -169,32 +173,37 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
-        public async  Task<ApiResponseDto> DoCommentAsync(CommentDtoo commentDtoo)
+        public async Task<ApiResponseDto> DoCommentAsync(CommentDtoo commentDtoo)
         {
             try
             {
                 var doctorId = _dataProtector.Unprotect(commentDtoo.DoctorId);
-
                 var comments = new Comments
                 {
                     PatientId = commentDtoo.PatientId,
-                    DoctorId = doctorId,    
-                    UserName = commentDtoo.UserName,    
-                    VisitedFor = commentDtoo.VisitedFor,    
-                    IsRecommended = commentDtoo.IsRecommended,  
-                    ReviewText = commentDtoo.ReviewText,    
-                      
-                    CreatedAt = DateTime.Now,   
+                    DoctorId = doctorId,
+                    UserName = commentDtoo.UserName,
+                    VisitedFor = commentDtoo.VisitedFor,
+                    IsRecommended = commentDtoo.IsRecommended,
+                    ReviewText = commentDtoo.ReviewText,
+                    CreatedAt = DateTime.Now,
                 };
+
                 await _doctorRepository.AddComment(comments);
+
+                // Send a more detailed notification
+                string notificationMessage = $"{commentDtoo.UserName} left a new review: {commentDtoo.ReviewText.Substring(0, Math.Min(50, commentDtoo.ReviewText.Length))}";
+                if (commentDtoo.ReviewText.Length > 50)
+                    notificationMessage += "...";
+
+                await _hubContext.Clients.All.SendAsync("ReceiveNotification", notificationMessage);
+
                 return new ApiResponseDto
                 {
                     IsSuccess = true,
-                    Message = "Comment Succesfull",
+                    Message = "Comment Successful",
                     StatusCode = 200
                 };
-
-
             }
             catch (Exception ex)
             {

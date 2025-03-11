@@ -3,42 +3,6 @@
   "WorkspaceRootPath": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapplication\\features\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\features\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapplication\\dtos\\commentdto\\replydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\dtos\\commentdto\\replydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD83BF4-14F9-432F-A978-76C75587FF48}|HealthCarePersistence\\HealthCarePersistence.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcarepersistence\\repository\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD83BF4-14F9-432F-A978-76C75587FF48}|HealthCarePersistence\\HealthCarePersistence.csproj|solutionrelative:healthcarepersistence\\repository\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{235337F8-86B0-44B6-8DC6-2C365017AAC9}|HealthCareDomain\\HealthCareDomain.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcaredomain\\entity\\review\\reply.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{235337F8-86B0-44B6-8DC6-2C365017AAC9}|HealthCareDomain\\HealthCareDomain.csproj|solutionrelative:healthcaredomain\\entity\\review\\reply.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapplication\\dtos\\commentdto\\getcommentsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\dtos\\commentdto\\getcommentsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapplication\\contract\\iservice\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81861D83-D942-483F-8E0D-D1FEC5CC9D65}|HealthCareApplication\\HealthCareApplication.csproj|solutionrelative:healthcareapplication\\contract\\iservice\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcareapi\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{036390A6-4961-434F-A485-2B41EB16CDB3}|HealthCareApi\\HealthCareApi.csproj|solutionrelative:healthcareapi\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{235337F8-86B0-44B6-8DC6-2C365017AAC9}|HealthCareDomain\\HealthCareDomain.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcaredomain\\irepository\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{235337F8-86B0-44B6-8DC6-2C365017AAC9}|HealthCareDomain\\HealthCareDomain.csproj|solutionrelative:healthcaredomain\\irepository\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD83BF4-14F9-432F-A978-76C75587FF48}|HealthCarePersistence\\HealthCarePersistence.csproj|d:\\smarthealth_care\\smarthealth_fyp\\smarthealthcarebackend\\healthcarepersistence\\repository\\otprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD83BF4-14F9-432F-A978-76C75587FF48}|HealthCarePersistence\\HealthCarePersistence.csproj|solutionrelative:healthcarepersistence\\repository\\otprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/./db_HealthCare/True/SqlTable/dbo.Comments.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     }
   ],
@@ -49,7 +13,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 149,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -69,129 +33,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ReplyDto.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\CommentDto\\ReplyDto.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Dtos\\CommentDto\\ReplyDto.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\CommentDto\\ReplyDto.cs",
-              "RelativeToolTip": "HealthCareApplication\\Dtos\\CommentDto\\ReplyDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA8AAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T09:09:16.658Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DoctorRepository.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\Repository\\DoctorRepository.cs",
-              "RelativeDocumentMoniker": "HealthCarePersistence\\Repository\\DoctorRepository.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\Repository\\DoctorRepository.cs",
-              "RelativeToolTip": "HealthCarePersistence\\Repository\\DoctorRepository.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAUwIUAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T09:03:10.623Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IDoctorService.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Contract\\IService\\IDoctorService.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Contract\\IService\\IDoctorService.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Contract\\IService\\IDoctorService.cs",
-              "RelativeToolTip": "HealthCareApplication\\Contract\\IService\\IDoctorService.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAASwBgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T09:00:02.563Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DoctorController.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Controllers\\DoctorController.cs",
-              "RelativeDocumentMoniker": "HealthCareApi\\Controllers\\DoctorController.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Controllers\\DoctorController.cs",
-              "RelativeToolTip": "HealthCareApi\\Controllers\\DoctorController.cs",
-              "ViewState": "AgIAAKYAAAAAAAAAAADwv7sAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T08:57:56.798Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DoctorService.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "RelativeToolTip": "HealthCareApplication\\Features\\Services\\DoctorService.cs",
-              "ViewState": "AgIAAMgAAAAAAAAAAAAmwNoAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T08:40:59.468Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetCommentsDto.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\CommentDto\\GetCommentsDto.cs",
-              "RelativeDocumentMoniker": "HealthCareApplication\\Dtos\\CommentDto\\GetCommentsDto.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApplication\\Dtos\\CommentDto\\GetCommentsDto.cs",
-              "RelativeToolTip": "HealthCareApplication\\Dtos\\CommentDto\\GetCommentsDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T08:41:25.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Reply.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\Entity\\Review\\Reply.cs",
-              "RelativeDocumentMoniker": "HealthCareDomain\\Entity\\Review\\Reply.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\Entity\\Review\\Reply.cs",
-              "RelativeToolTip": "HealthCareDomain\\Entity\\Review\\Reply.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T09:05:42.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IDoctorRepository.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\IRepository\\IDoctorRepository.cs",
-              "RelativeDocumentMoniker": "HealthCareDomain\\IRepository\\IDoctorRepository.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareDomain\\IRepository\\IDoctorRepository.cs",
-              "RelativeToolTip": "HealthCareDomain\\IRepository\\IDoctorRepository.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwB0AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T09:02:29.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "OtpRepository.cs",
-              "DocumentMoniker": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\Repository\\OtpRepository.cs",
-              "RelativeDocumentMoniker": "HealthCarePersistence\\Repository\\OtpRepository.cs",
-              "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCarePersistence\\Repository\\OtpRepository.cs",
-              "RelativeToolTip": "HealthCarePersistence\\Repository\\OtpRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T09:05:51.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "dbo.Comments.sql",
+              "Title": "dbo.Comments [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/./db_HealthCare/True/SqlTable/dbo.Comments.sql",
-              "ToolTip": "ViewDataWindow_MSSQL__/./db_HealthCare/True/SqlTable/dbo.Comments.sql",
+              "ToolTip": "dbo.Comments [Data]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-03-09T08:40:31.446Z"
+              "WhenOpened": "2025-03-11T09:31:53.85Z",
+              "EditorCaption": ""
             }
           ]
         },

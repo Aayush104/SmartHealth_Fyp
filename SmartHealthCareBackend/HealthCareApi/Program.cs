@@ -11,6 +11,8 @@ using HealthCareApi.Chathub;
 using HealthCareApplication.AppointmentHub;
 using HealthCareApi.MeetingHub;
 
+using HealthCareApplication.NotificationHub;
+
 
 Env.Load(); // Load environment variables
 var builder = WebApplication.CreateBuilder(args);
@@ -122,6 +124,6 @@ app.MapHub<ChatHub>("/hub");
 app.MapHub<Appointmenthub>("/apppointmenthub");
 
 app.MapHub<MeetingHub>("/meetingHub");
-
+app.MapHub<Notificationhub>("/notificationHub");
 // Run the application
 app.Run();
