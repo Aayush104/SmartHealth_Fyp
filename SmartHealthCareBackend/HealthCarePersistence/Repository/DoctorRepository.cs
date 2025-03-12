@@ -137,5 +137,10 @@ namespace HealthCarePersistence.Repository
             .Where(d => d.CommentId == CommentId)
             .ToListAsync();
         }
+
+        public async Task<List<Comments>> DoctorNotificationById(string id)
+        {
+            return await _dbContext.Comments.Where(d => d.DoctorId == id).ToListAsync();
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace HealthCareApi.Controllers
         }
 
         [HttpGet("SearchDoctor")]
-        public async Task<IActionResult> SearchDoctor([FromQuery] SearchDto searchDto) 
+        public async Task<IActionResult> SearchDoctor([FromQuery] SearchDto searchDto)
         {
             if (searchDto == null || string.IsNullOrEmpty(searchDto.Speciality) || string.IsNullOrEmpty(searchDto.Location))
             {
@@ -42,7 +42,7 @@ namespace HealthCareApi.Controllers
 
             var response = await _doctorService.SearchDoctorAsync(searchDto);
 
-            if (response != null && response.Any()) 
+            if (response != null && response.Any())
             {
                 return Ok(response);
             }
@@ -52,7 +52,7 @@ namespace HealthCareApi.Controllers
 
         [HttpPost("GenerateAvailability")]
 
-        public async Task <IActionResult> SaveAvailability(DoctorAvailabilityDto doctorAvailabilityDto)
+        public async Task<IActionResult> SaveAvailability(DoctorAvailabilityDto doctorAvailabilityDto)
         {
             var response = await _doctorAvailabiltyService.GenerateSlotsAsync(doctorAvailabilityDto);
             return StatusCode(response.StatusCode, response);
@@ -92,8 +92,8 @@ namespace HealthCareApi.Controllers
 
 
             return Ok(response);
-            
-           
+
+
 
         }
 
@@ -171,10 +171,10 @@ namespace HealthCareApi.Controllers
         }
         [HttpGet("GetComments/{id}")]
 
-        public async Task <IActionResult> GetComment(string id)
+        public async Task<IActionResult> GetComment(string id)
         {
             var response = await _doctorService.GetCommentsAsync(id);
-            if(response != null)
+            if (response != null)
             {
                 return Ok(response);
             }
@@ -197,7 +197,7 @@ namespace HealthCareApi.Controllers
         [HttpGet("DoctorRevenue")]
         [Authorize(AuthenticationSchemes = "Bearer")]
 
-        public async Task <IActionResult> GetDoctorRevenue()
+        public async Task<IActionResult> GetDoctorRevenue()
         {
             var user = HttpContext.User.FindFirst("userId");
 
@@ -214,5 +214,25 @@ namespace HealthCareApi.Controllers
 
         }
 
+
+        [HttpGet("GetNotifications")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+
+        public async Task<IActionResult> GetNotificaions()
+        {
+            var user = HttpContext.User.FindFirst("userId");
+
+            var userId = user?.Value;
+
+            var response = await _doctorService.GetDoctorNotificationAsync(userId);
+
+            if (response != null)
+            {
+                return Ok(response);
+            }
+
+            return NotFound();
+
+        }
     }
 }

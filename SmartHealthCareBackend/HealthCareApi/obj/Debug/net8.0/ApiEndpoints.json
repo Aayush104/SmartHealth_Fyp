@@ -383,6 +383,16 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.DoctorController",
+    "Method": "GetNotificaions",
+    "RelativePath": "api/Doctor/GetNotifications",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.DoctorController",
     "Method": "GetReply",
     "RelativePath": "api/Doctor/GetReply/{id}",
     "HttpMethod": "GET",

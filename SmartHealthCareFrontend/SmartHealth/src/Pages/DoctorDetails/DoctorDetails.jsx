@@ -15,6 +15,7 @@ import PersonalDetailsForm from '../../Components/PatientComponents/PersonalDeta
 import Comments from '../../Components/Comments/Comments';
 import ChatBot from '../../Components/Chat/ChatBot';
 import Cookies from 'js-cookie';
+import DoctorNav from '../../Components/Navbar/DoctorNav';
 
 const DoctorDetails = () => {
   const { id } = useParams();
@@ -23,8 +24,8 @@ const DoctorDetails = () => {
   const [showMore, setShowMore] = useState(false);
     const [showAdditionalForm, setShowAdditionalForm] = useState(false);
     const[viewReply, setViewReply] = useState(false)
+    const [userRole, setUserRole] = useState(false);
 
-  const {userRole } = useStore();
   const handleCloseForms = () => {
     localStorage.removeItem('Null');
     setShowAdditionalForm(false);
@@ -36,9 +37,16 @@ const DoctorDetails = () => {
 const token = Cookies.get("Token");
 const decodedToken = JSON.parse(atob(token.split(".")[1]));
 const userId = decodedToken.userId;
+const role =  decodedToken.Role;
+
+
 
   useEffect(()=>
   {
+    if(role == "Doctor")
+      {
+        setUserRole(true)
+      }
     
   if(localStorage.getItem("Null"))
     {setShowAdditionalForm(true);
@@ -96,7 +104,9 @@ console.log(userRole);
 
   return (
     <div className="bg-neutral-100">
-      <Navbar />
+{
+  userRole ? <DoctorNav /> : <Navbar />
+}      
       <ChatBot />
       <div className="px-28 mt-2">
         <SearchDoctor />

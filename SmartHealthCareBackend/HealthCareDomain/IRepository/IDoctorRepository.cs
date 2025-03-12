@@ -32,6 +32,7 @@ namespace HealthCarePersistence.IRepository
 
 
         Task <List<DoctorRevenue>> DoctorRevenuesById(string id);
+        Task <List<Comments>> DoctorNotificationById(string id);
 
     }
 

@@ -3,6 +3,7 @@ using HealthCareApplication.Contract.IService;
 using HealthCareApplication.Contracts.IService;
 using HealthCareApplication.Dtos.AvailabilityDto;
 using HealthCareApplication.Dtos.CommentDto;
+using HealthCareApplication.Dtos.NotificationDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Dtos.UserDtoo;
 using HealthCareApplication.NotificationHub;
@@ -393,6 +394,52 @@ namespace HealthCareApplication.Features.Services
             catch (Exception ex)
             {
                 // Handle and log the exception
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
+
+    
+public async Task<ApiResponseDto> GetDoctorNotificationAsync(string Id)
+        {
+            try
+            {
+                var result = await _doctorRepository.DoctorNotificationById(Id);
+
+              
+                if (result == null || !result.Any())
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = false,
+                        Message = "No notifications found for this doctor.",
+                        StatusCode = 404
+                    };
+                }
+
+                
+                var notificationDetails = result.Select(comment => new Notificationdto
+                {
+                    DoctorId = _dataProtector.Protect(comment.DoctorId),
+                    UserName = comment.UserName,
+                    ReviewText = comment.ReviewText,
+                    CreatedAt = comment.CreatedAt
+                }).ToList();
+
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Data = notificationDetails,  
+                    StatusCode = 200
+                };
+            }
+            catch (Exception ex)
+            {
                 return new ApiResponseDto
                 {
                     IsSuccess = false,
