@@ -234,5 +234,24 @@ namespace HealthCareApi.Controllers
             return NotFound();
 
         }
+
+        [HttpGet("MarkAllAsRead")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> MarklNotificaionsAsRead()
+        {
+            var user = HttpContext.User.FindFirst("userId");
+
+            var userId = user?.Value;
+
+            var response = await _doctorService.MarkNotificationAsReadAsync(userId);
+
+            if (response != null)
+            {
+                return Ok(response);
+            }
+
+            return NotFound();
+
+        }
     }
 }

@@ -408,6 +408,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HealthCareApi.Controllers.DoctorController",
+    "Method": "MarklNotificaionsAsRead",
+    "RelativePath": "api/Doctor/MarkAllAsRead",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DoctorController",
     "Method": "RejectDoctor",
     "RelativePath": "api/Doctor/RejectDoctor/{email}",

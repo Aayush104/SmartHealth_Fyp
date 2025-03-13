@@ -47,7 +47,7 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
     return `${diffMonths} month${diffMonths === 1 ? "" : "s"} ago`;
   };
 
-  // Check if the user is allowed to comment
+
   useEffect(() => {
     if (DoctorId && token) {
       const checkCommentValidation = async () => {
@@ -68,7 +68,7 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
     }
   }, [DoctorId, token]);
 
-  // Handle comment submission
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newComment.visitedFor || !newComment.reviewText || selected === "") {
@@ -98,7 +98,7 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
       );
 
       if (response.status === 200) {
-        // Reset form after successful submission
+       
         setNewComment({ visitedFor: "", reviewText: "" });
         setSelected("");
         window.location.reload();
@@ -108,7 +108,7 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
     }
   };
 
-  // Fetch the comments for the doctor
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -117,8 +117,7 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
         );
         const commentsData = response.data.data.$values || [];
         setReviews(commentsData);
-        
-        // After getting comments, fetch replies for each comment
+      
         if (commentsData.length > 0) {
           const updatedReviews = [...commentsData];
           

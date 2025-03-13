@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthCareDomain.Entity.Review;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,7 @@ namespace HealthCareApplication.Dtos.NotificationDto
         public string ReviewText { get; set; }
 
         public DateTime CreatedAt { get; set; } 
+
+        public CommentStatus MarkAs { get; set; }
     }
 }

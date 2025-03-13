@@ -35,9 +35,16 @@ const DoctorDetails = () => {
 
 
 const token = Cookies.get("Token");
-const decodedToken = JSON.parse(atob(token.split(".")[1]));
-const userId = decodedToken.userId;
-const role =  decodedToken.Role;
+
+let userId;
+let role;
+if(token)
+{
+  const decodedToken = JSON.parse(atob(token.split(".")[1]));
+  userId = decodedToken.userId;
+  role =  decodedToken.Role;
+}
+
 
 
 
@@ -215,7 +222,12 @@ console.log(userRole);
       </div>
 
       <div>
-  <TimeSlot fee={doctor?.fee} Id={id} />
+      {userRole ? "" :(
+        <TimeSlot fee={doctor?.fee} Id={id} />
+
+      )
+
+      }
 </div>
 
       </div>

@@ -142,5 +142,25 @@ namespace HealthCarePersistence.Repository
         {
             return await _dbContext.Comments.Where(d => d.DoctorId == id).ToListAsync();
         }
+
+        public async Task<bool> UpdateNotificationStatus(string id)
+        {
+            var comments = await _dbContext.Comments
+                .Where(d => d.DoctorId == id)
+                .ToListAsync();
+
+            if (comments.Any())
+            {
+                foreach (var comment in comments)
+                {
+                    comment.MarkAs= 0; 
+                }
+
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
     }
 }

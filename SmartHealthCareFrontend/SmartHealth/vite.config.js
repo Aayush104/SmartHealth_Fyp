@@ -6,8 +6,11 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+
       src: "/src",
     },
+  },
+  server:{    host: '0.0.0.0',
   },
   define: {
     global: {},

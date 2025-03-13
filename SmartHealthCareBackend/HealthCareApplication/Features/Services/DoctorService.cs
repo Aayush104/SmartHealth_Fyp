@@ -428,7 +428,9 @@ public async Task<ApiResponseDto> GetDoctorNotificationAsync(string Id)
                     DoctorId = _dataProtector.Protect(comment.DoctorId),
                     UserName = comment.UserName,
                     ReviewText = comment.ReviewText,
-                    CreatedAt = comment.CreatedAt
+                    CreatedAt = comment.CreatedAt,
+                    MarkAs = comment.MarkAs
+
                 }).ToList();
 
                 return new ApiResponseDto
@@ -579,6 +581,39 @@ public async Task<ApiResponseDto> GetDoctorNotificationAsync(string Id)
             }
         }
 
+        public async Task<ApiResponseDto> MarkNotificationAsReadAsync(string Id)
+        {
+            try
+            {
+                var updateNotificationStatus = await _doctorRepository.UpdateNotificationStatus(Id);
+
+                if (updateNotificationStatus)
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = true,
+                        Message = "Marked all as read",
+                        StatusCode = 200
+                    };
+                }
+
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "No notifications found or update failed",
+                    StatusCode = 404
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
 
         public async Task<IEnumerable<DoctorDetailsDto>> SearchDoctorAsync(SearchDto searchDto)
         {
