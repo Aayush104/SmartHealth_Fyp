@@ -5,6 +5,7 @@ import { FaClipboardList } from "react-icons/fa";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { RiUserFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { FaUsers } from "react-icons/fa";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -30,8 +31,8 @@ const Dashboard = () => {
             className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
             title="Messages"
           >
-            <IoMdMail className="text-xl" />
-            <span className="text-sm sm:text-md hidden sm:inline">Messages</span>
+            <FaUsers className="text-xl" />
+            <span className="text-sm sm:text-md hidden sm:inline">Users</span>
           </li>
           <li
             onClick={() => handleNavigation("/admin/bookings")}

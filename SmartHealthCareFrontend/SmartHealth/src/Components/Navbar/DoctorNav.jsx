@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../Assets/Image/Logo.png';
 import { FaRegMessage } from "react-icons/fa6";
-import { MdOutlineArrowDropDown } from "react-icons/md";
+import { MdHome, MdOutlineArrowDropDown } from "react-icons/md";
 import { AiOutlineProfile } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { TbLogout2 } from "react-icons/tb";
@@ -29,6 +29,13 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick, doc
       <img src={logo} alt="Medical Logo" className="w-36 cursor-pointer" />
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-8">
+        <NavLink to={`/DoctorProfile/${doctorData?.data?.doctor?.fullName || ''}`}>
+  <div className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
+    <MdHome className="text-3xl mt-1 group-hover:text-sky-400" />
+    <span className="mt-1">Home</span>
+  </div>
+</NavLink>
+
           <NavLink to="/DoctorAppointments">
             <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
               <RiCalendarScheduleFill className="text-3xl mt-1 group-hover:text-sky-400" />

@@ -3,6 +3,7 @@ using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Helper;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.UserEntity;
+using HealthCareDomain.IRepository;
 using HealthCareDomain.IServices;
 using HealthCareInfrastructure.DataSecurity;
 using HealthCarePersistence.IRepository;
@@ -20,6 +21,7 @@ namespace HealthCareApplication.Features.Services;
 public class AdminService : IAdminService
     {
         private readonly IDoctorRepository _doctorRepository;
+        private readonly IAdminRepository _adminRepository;
         private readonly UserManager<ApplicationUser> _userManager;
     private readonly IMailService _mailService;
     private readonly IOtpService _otpService;
@@ -27,12 +29,13 @@ public class AdminService : IAdminService
 
 
     public AdminService(IDoctorRepository doctorRepository, UserManager<ApplicationUser> userManager, IMailService mailService,IOtpService otpService, 
-        IDataProtectionProvider dataProtection, DataSecurityProvider securityProvider)
+        IDataProtectionProvider dataProtection, DataSecurityProvider securityProvider, IAdminRepository adminRepository)
         {
             _doctorRepository = doctorRepository;
             _userManager = userManager;
         _mailService = mailService; 
         _otpService = otpService;
+        _adminRepository = adminRepository;
         _dataProtector = dataProtection.CreateProtector(securityProvider.securityKey);
         }
 
@@ -130,6 +133,23 @@ public class AdminService : IAdminService
                 throw new Exception("An error occurred while fetching doctors.", ex);
             }
         }
+
+    public async Task<ApiResponseDto> GetAllPatientAsync()
+    {
+        try
+        {
+            var patient = await _adminRepository.GetPatient();
+           
+
+            return new ApiResponseDto { IsSuccess = true, StatusCode = 200, Data= patient };
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponseDto { IsSuccess = false, Message = "Failed to delete the user", StatusCode = 500 };
+
+        }
+    }
+
 
     public async Task<ApiResponseDto> RejectDoctorAsync(string email)
     {

@@ -1,4 +1,5 @@
-﻿using HealthCareApplication.Dtos.UserDto;
+﻿using HealthCareApplication.Dtos.AdminDto;
+using HealthCareApplication.Dtos.UserDto;
 using HealthCareDomain.Entity.Doctors;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace HealthCareDomain.IServices
         Task<ApiResponseDto> AcceptDoctorAsync(string email);
         Task<ApiResponseDto> RejectDoctorAsync(string email);
         Task<ApiResponseDto> ConfirmDoctorEmailAsync(string email, string otp);
+        Task<ApiResponseDto> GetAllPatientAsync();
 
 
     }

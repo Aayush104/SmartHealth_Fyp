@@ -1,5 +1,78 @@
 [
   {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "AcceptDoctor",
+    "RelativePath": "api/Admin/AcceptDoctor/{email}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "ConfirmDoctorEmail",
+    "RelativePath": "api/Admin/ConfirmDoctorEmail/{email}/{otp}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "otp",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Admin/GetUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "RejectDoctor",
+    "RelativePath": "api/Admin/RejectDoctor/{email}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "VerifyDoctors",
+    "RelativePath": "api/Admin/VerifyDoctor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HealthCareApi.Controllers.AppointmentController",
     "Method": "CheckforComment",
     "RelativePath": "api/Appointment/CheckforComment/{id}",
@@ -152,22 +225,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DoctorController",
-    "Method": "AcceptDoctor",
-    "RelativePath": "api/Doctor/AcceptDoctor/{email}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "HealthCareApi.Controllers.DoctorController",
     "Method": "PostDoctorAdditionalInfo",
     "RelativePath": "api/Doctor/AddDoctorAdditionalInfo",
@@ -240,27 +297,6 @@
         "Name": "Fee",
         "Type": "System.String",
         "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoctorController",
-    "Method": "ConfirmDoctorEmail",
-    "RelativePath": "api/Doctor/ConfirmDoctorEmail/{email}/{otp}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "otp",
-        "Type": "System.String",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -418,22 +454,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DoctorController",
-    "Method": "RejectDoctor",
-    "RelativePath": "api/Doctor/RejectDoctor/{email}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "HealthCareApi.Controllers.DoctorController",
     "Method": "SearchDoctor",
     "RelativePath": "api/Doctor/SearchDoctor",
@@ -452,16 +472,6 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoctorController",
-    "Method": "VerifyDoctors",
-    "RelativePath": "api/Doctor/VerifyDoctor",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
