@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HealthCareApplication.Dtos.AdminDto;
+using HealthCareDomain.Entity.Doctors;
 
 namespace HealthCarePersistence.Repository
 {
@@ -18,7 +19,20 @@ namespace HealthCarePersistence.Repository
             _dbContext = dbContext;
         }
 
-   
+        public async Task<IEnumerable<Doctor>> GetAllDoctors()
+        {
+            var doctorsExist = await _dbContext.Doctors.AnyAsync();
+
+            if (!doctorsExist)
+            {
+                return Enumerable.Empty<Doctor>();
+            }
+
+
+            var doctors = await _dbContext.Doctors.Where(x => x.Status == "Accepted").Include(d => d.User).ToListAsync();
+            return doctors;
+        }
+
         public async Task<IEnumerable<PatientListDto>> GetPatient()
         {
             return await _dbContext.Patients

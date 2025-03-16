@@ -106,7 +106,6 @@ public class AdminService : IAdminService
         }
     }
 
-
     public async Task<IEnumerable<DoctorDetailsDto>> GetAllDoctorsAsync()
         {
             try
@@ -150,6 +149,7 @@ public class AdminService : IAdminService
         }
     }
 
+  
 
     public async Task<ApiResponseDto> RejectDoctorAsync(string email)
     {
@@ -173,6 +173,33 @@ public class AdminService : IAdminService
         
         return new ApiResponseDto { IsSuccess = true, Message = "Doctor rejected and user deleted successfully", StatusCode = 200 };
     }
+
+    public async Task<IEnumerable<DoctorDetailsDto>> GetAllVerifiedDoctorAsync()
+    {
+        try
+        {
+            var doctors = await _adminRepository.GetAllDoctors(); // Ensure this method is async
+
+            return doctors.Select(doctor => new DoctorDetailsDto
+            {
+               Id = _dataProtector.Protect(doctor.User.Id),
+                FullName = doctor.User.FullName,
+                Email = doctor.User.Email,
+                Specialization = doctor.Specialization,
+                Profileget = doctor.Profile, // Assuming 'Profileget' was a typo
+                Qualifications = doctor.Qualifications,
+                Status = doctor.Status
+            }).ToList();
+        }
+        catch (Exception ex)
+        {
+            
+            throw;
+        }
+    }
+
+
+
 
 }
 

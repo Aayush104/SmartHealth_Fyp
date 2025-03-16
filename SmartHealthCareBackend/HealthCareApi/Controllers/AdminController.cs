@@ -63,5 +63,13 @@ namespace HealthCareApi.Controllers
             var response = await _adminService.GetAllPatientAsync();
             return StatusCode(response.StatusCode, response);
         }
+
+        [HttpGet("GetDoctors")]
+
+        public async Task<IActionResult> GetDoctors()
+        {
+            var response = await _adminService.GetAllVerifiedDoctorAsync();
+            return Ok(response);
+        }
     }
 }

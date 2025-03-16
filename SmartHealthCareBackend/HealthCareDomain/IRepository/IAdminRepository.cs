@@ -1,5 +1,6 @@
 ﻿
 using HealthCareApplication.Dtos.AdminDto;
+using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Patients;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace HealthCareDomain.IRepository
     public interface IAdminRepository
     {
         Task<IEnumerable<PatientListDto>> GetPatient();
+        Task<IEnumerable<Doctor>> GetAllDoctors();
     }
 }
