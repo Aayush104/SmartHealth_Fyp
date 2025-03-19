@@ -17,6 +17,38 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "BlockUser",
+    "RelativePath": "api/Admin/Block/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "BlockDoctor",
+    "RelativePath": "api/Admin/BlockDoctor/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
     "Method": "ConfirmDoctorEmail",
     "RelativePath": "api/Admin/ConfirmDoctorEmail/{email}/{otp}",
     "HttpMethod": "GET",
@@ -66,6 +98,38 @@
     "Parameters": [
       {
         "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "Unblock",
+    "RelativePath": "api/Admin/Unblock/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "UnblockDoctor",
+    "RelativePath": "api/Admin/UnblockDoctor/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
         "Type": "System.String",
         "IsRequired": true
       }

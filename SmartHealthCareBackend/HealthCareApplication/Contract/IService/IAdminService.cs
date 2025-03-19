@@ -17,6 +17,10 @@ namespace HealthCareDomain.IServices
         Task<ApiResponseDto> RejectDoctorAsync(string email);
         Task<ApiResponseDto> ConfirmDoctorEmailAsync(string email, string otp);
         Task<ApiResponseDto> GetAllPatientAsync();
+        Task<ApiResponseDto> BlockUserAsync(string Id);
+        Task<ApiResponseDto> UnBlockUserAsync(string Id);
+        Task<ApiResponseDto> UnBlockDoctorAsync(string Id);
+        Task<ApiResponseDto> BlockDoctorAsync(string Id);
         Task<IEnumerable<DoctorDetailsDto>> GetAllVerifiedDoctorAsync();
 
 

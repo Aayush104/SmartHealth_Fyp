@@ -15,6 +15,8 @@ namespace HealthCareDomain.Entity.UserEntity
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
+        public bool IsBlocked { get; set; }
+        public DateTime? TokenRevokedAt { get; set; }
         // Navigation properties
         public virtual ICollection<OtpHash> Otps { get; set; } = new List<OtpHash>();
         public virtual ICollection<DoctorAdditionalInfo> DoctorAdditionalInfos { get; set; } = new List<DoctorAdditionalInfo>();

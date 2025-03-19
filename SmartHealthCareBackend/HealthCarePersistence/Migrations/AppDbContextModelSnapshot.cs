@@ -503,6 +503,9 @@ namespace HealthCarePersistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsBlocked")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -528,6 +531,9 @@ namespace HealthCarePersistence.Migrations
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("TokenRevokedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -556,20 +562,21 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b71412d1-350f-4a0b-bd18-220aab37c303",
-                            CreatedAt = new DateTime(2025, 3, 13, 12, 48, 58, 528, DateTimeKind.Utc).AddTicks(7791),
+                            ConcurrencyStamp = "819977fa-76be-43a5-ab3e-849ed02305bf",
+                            CreatedAt = new DateTime(2025, 3, 17, 4, 49, 56, 950, DateTimeKind.Utc).AddTicks(6534),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
+                            IsBlocked = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJr59d0Qk+9h28vf9+pk+Rra9emBCprFmgwy5MwW3Bz41eEpSLjt1R7z7S9srysvvQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGomjnvW/XAsnx4fYm6XL/Cbi1k2+7ebenWasqXRX0xWHYhMg+QTSXPdMvHwqQ05Uw==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "448e3269-30b3-4514-8776-9a05347089d6",
+                            SecurityStamp = "801ebb4b-6a49-4dd6-b312-d6e23227eb76",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 3, 13, 12, 48, 58, 528, DateTimeKind.Utc).AddTicks(7797),
+                            UpdatedAt = new DateTime(2025, 3, 17, 4, 49, 56, 950, DateTimeKind.Utc).AddTicks(6543),
                             UserName = "Admin"
                         });
                 });

@@ -5,6 +5,7 @@ using HealthCareApplication.Features.Services;
 using HealthCareDomain.IServices;
 using HealthCareInfrastructure.DataSecurity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -27,6 +28,7 @@ namespace HealthCareApplication
             services.AddScoped<IChatService, ChatService>();
             services.AddScoped<IPatientService, PatientService>();
             services.AddScoped<DataSecurityProvider>();
+            services.AddSingleton<IUserIdProvider,UserIdProvider>();
 
             services.AddSingleton<ITokenService, TokenService>();
 

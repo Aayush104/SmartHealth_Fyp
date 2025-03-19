@@ -18,5 +18,7 @@ namespace HealthCareApplication.Dtos.AdminDto
         public string? Address { get; set; }    
          
         public string? Gender { get; set; }  
+
+        public bool? IsBlocked { get; set; }
     }
 }

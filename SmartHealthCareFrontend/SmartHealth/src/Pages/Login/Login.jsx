@@ -45,7 +45,8 @@ const Login = () => {
         password,
       });
 
-      if (response.data.isSuccess) {
+
+   if (response.data.isSuccess) {
         const token = response.data.data;
         const userRole = JSON.parse(atob(token.split('.')[1])).Role;
         const userName = JSON.parse(atob(token.split('.')[1])).Name;
@@ -76,7 +77,9 @@ const Login = () => {
           setUserId(data.message);
         } else if (status === 404) {
           toast.error(data.message);
-        } else {
+        }else if (status === 403) {
+          toast.error(data.message);
+         } else {
           toast.error("An unexpected error occurred. Please try again.");
         }
       } else {
@@ -97,6 +100,8 @@ const Login = () => {
           Name: decodedData.name,
           Email: decodedData.email
         });
+
+       
 
         if (data && data.data && data.data.isSuccess) {
           const token = data.data.data;

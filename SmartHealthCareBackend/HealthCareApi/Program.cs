@@ -12,6 +12,7 @@ using HealthCareApplication.AppointmentHub;
 using HealthCareApi.MeetingHub;
 
 using HealthCareApplication.NotificationHub;
+using HealthCareApplication.StatusHub;
 
 
 Env.Load(); // Load environment variables
@@ -122,7 +123,7 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapHub<ChatHub>("/hub");
 app.MapHub<Appointmenthub>("/apppointmenthub");
-
+app.MapHub<UserHub>("/userhub");
 app.MapHub<MeetingHub>("/meetingHub");
 app.MapHub<Notificationhub>("/notificationHub");
 // Run the application

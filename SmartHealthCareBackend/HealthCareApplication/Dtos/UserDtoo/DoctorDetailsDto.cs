@@ -25,6 +25,8 @@ namespace HealthCareApplication.Dtos.UserDto
         public string? LicenseFile { get; set; }
         public string? QualificationsFile { get; set; }
         public string? GovernmentIdFile { get; set; }
+
+        public bool? IsBlocked { get; set; }
         public List<AdditionalnfoDto> AdditionalInfo { get; set; }
 
 

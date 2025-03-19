@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
-
+import { toast } from 'react-toastify';
 const Protect = ({ children, requiredRole }) => {
   const navigateTo = useNavigate();
   const [authenticated, setAuthenticated] = useState(false);
@@ -19,7 +19,7 @@ const Protect = ({ children, requiredRole }) => {
         const decodedToken = JSON.parse(atob(token.split(".")[1]));
         const userId = decodedToken.userId;
         const userRole = decodedToken.Role;
-
+     
         // Validate token and user role
         const response = await axios.get(
           "https://localhost:7070/api/Auth/checkAccess",
@@ -30,6 +30,15 @@ const Protect = ({ children, requiredRole }) => {
           }
         );
 
+        console.log(response,"dewc")
+
+        if(response.data == "Forbidden")
+          {  Cookies.remove("Token"); 
+            toast.info("Your Account has been suspended")
+            navigateTo("/"); 
+            return;
+          }
+          
         // Ensure the user's role matches the required role
         if (
           response.status === 200 &&
@@ -40,9 +49,15 @@ const Protect = ({ children, requiredRole }) => {
         } else {
           navigateTo("/unauthorize"); // Redirect if role doesn't match
         }
-      } catch (error) {
+      }  catch (error) {
         console.error("Authentication check failed:", error);
-        navigateTo("/unauthorize"); // Redirect if there's an error
+
+        if (error.response?.status === 403) {
+          Cookies.remove("Token"); 
+          navigateTo("/");
+        } else {
+          navigateTo("/unauthorize");
+        }
       }
     };
 
@@ -93,3 +108,4 @@ const RedirectIfAuthenticated = ({ children }) => {
 };
 
 export { Protect, RedirectIfAuthenticated };
+

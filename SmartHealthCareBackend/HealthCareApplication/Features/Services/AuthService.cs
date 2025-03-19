@@ -152,6 +152,12 @@ namespace HealthCareApplication.Features.Services
                 var userRole = await _userManager.GetRolesAsync(existingUser);
                 var role = userRole.FirstOrDefault();
 
+                if (existingUser.IsBlocked)
+                {
+                    return new ApiResponseDto { IsSuccess = false, Message = "You have been banned", StatusCode = 403 };
+                }
+
+
                 if (!existingUser.EmailConfirmed && role == "Patient")
                 {
                     var otp = OtpGenerator.GenerateOtp();
@@ -294,7 +300,12 @@ namespace HealthCareApplication.Features.Services
                
                 var user = await _userManager.FindByEmailAsync(googleLoginDto.Email);
 
-                
+                if (user.IsBlocked == true)
+                {
+                    return new ApiResponseDto { IsSuccess = false, Message = "You have been banned", StatusCode = 403 };
+                }
+
+
                 if (user == null)
                 {
                     user = new ApplicationUser
@@ -364,7 +375,22 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
-       
+        public async Task<ApiResponseDto> CheckIsStatus(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return new ApiResponseDto { IsSuccess = false, Message = "User not found" };
+            }
+
+            if (!user.EmailConfirmed || user.IsBlocked)
+            {
+                return new ApiResponseDto { IsSuccess = false, Message = "User is either not confirmed or blocked" };
+            }
+
+            return new ApiResponseDto { IsSuccess = true, Message = "User is active" };
+        }
 
     }
 }

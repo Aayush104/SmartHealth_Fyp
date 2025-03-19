@@ -19,6 +19,19 @@ namespace HealthCarePersistence.Repository
             _dbContext = dbContext;
         }
 
+        public async Task<bool> BlockUserAsync(string Id)
+        {
+            var user = await _dbContext.Users.FindAsync(Id);
+            if (user != null)
+            {
+                user.IsBlocked = true;
+                user.TokenRevokedAt = DateTime.UtcNow;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+
         public async Task<IEnumerable<Doctor>> GetAllDoctors()
         {
             var doctorsExist = await _dbContext.Doctors.AnyAsync();
@@ -45,9 +58,23 @@ namespace HealthCarePersistence.Repository
                     Email = p.User.Email,
                     PhoneNumber = p.User.PhoneNumber,
                     Address = p.Address,
-                    Gender = p.Gender
+                    Gender = p.Gender,
+                    IsBlocked = p.User.IsBlocked
+
                 })
                 .ToListAsync();
+        }
+
+        public async Task<bool> UnBlockUserAsync(string Id)
+        {
+            var user = await _dbContext.Users.FindAsync(Id);
+            if (user != null)
+            {
+                user.IsBlocked = false;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
     }
 }

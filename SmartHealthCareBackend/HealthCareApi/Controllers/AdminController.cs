@@ -71,5 +71,33 @@ namespace HealthCareApi.Controllers
             var response = await _adminService.GetAllVerifiedDoctorAsync();
             return Ok(response);
         }
+
+        [HttpPost("Block/{userId}")]
+
+        public async Task<IActionResult> BlockUser(string userId)
+        {
+            var response = await _adminService.BlockUserAsync(userId);
+            return StatusCode(response.StatusCode, response);   
+        }
+        [HttpPost("BlockDoctor/{userId}")]
+        public async Task<IActionResult> BlockDoctor(string userId)
+        {
+            var response = await _adminService.BlockDoctorAsync(userId);
+            return StatusCode(response.StatusCode, response);   
+        } 
+        
+        [HttpPost("Unblock/{userId}")]
+        public async Task<IActionResult> Unblock(string userId)
+        {
+            var response = await _adminService.UnBlockUserAsync(userId);
+            return StatusCode(response.StatusCode, response);   
+        } 
+        
+        [HttpPost("UnblockDoctor/{userId}")]
+        public async Task<IActionResult> UnblockDoctor(string userId)
+        {
+            var response = await _adminService.UnBlockDoctorAsync(userId);
+            return StatusCode(response.StatusCode, response);   
+        }
     }
 }

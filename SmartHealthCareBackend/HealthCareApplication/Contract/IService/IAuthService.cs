@@ -19,5 +19,6 @@ namespace HealthCareApplication.Contract.IService
 
         Task<ApiResponseDto> ResendOtpAsync(string userId, string Purpose);
         Task<ApiResponseDto> GoogleLoginAsync(GoogleLoginDto googleLoginDto);
+        Task<ApiResponseDto> CheckIsStatus(string userId);
     }
 }

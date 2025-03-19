@@ -1,6 +1,7 @@
 ﻿using HealthCareApplication.Contracts.Email;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Helper;
+using HealthCareApplication.StatusHub;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.UserEntity;
 using HealthCareDomain.IRepository;
@@ -9,6 +10,7 @@ using HealthCareInfrastructure.DataSecurity;
 using HealthCarePersistence.IRepository;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,19 +25,21 @@ public class AdminService : IAdminService
         private readonly IDoctorRepository _doctorRepository;
         private readonly IAdminRepository _adminRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IHubContext<UserHub> _hubContext;
     private readonly IMailService _mailService;
     private readonly IOtpService _otpService;
     private readonly IDataProtector _dataProtector;
 
 
     public AdminService(IDoctorRepository doctorRepository, UserManager<ApplicationUser> userManager, IMailService mailService,IOtpService otpService, 
-        IDataProtectionProvider dataProtection, DataSecurityProvider securityProvider, IAdminRepository adminRepository)
+     IDataProtectionProvider dataProtection, DataSecurityProvider securityProvider, IAdminRepository adminRepository, IHubContext<UserHub> hubContext)
         {
             _doctorRepository = doctorRepository;
             _userManager = userManager;
         _mailService = mailService; 
         _otpService = otpService;
         _adminRepository = adminRepository;
+        _hubContext = hubContext;
         _dataProtector = dataProtection.CreateProtector(securityProvider.securityKey);
         }
 
@@ -122,7 +126,8 @@ public class AdminService : IAdminService
                  Profileget = doctor.Profile,
                     Qualifications = doctor.Qualifications,
                     Status = doctor.Status,
-                  
+                   
+
                 }).ToList();
 
                 return doctorList;
@@ -188,7 +193,8 @@ public class AdminService : IAdminService
                 Specialization = doctor.Specialization,
                 Profileget = doctor.Profile, // Assuming 'Profileget' was a typo
                 Qualifications = doctor.Qualifications,
-                Status = doctor.Status
+                Status = doctor.Status,
+                IsBlocked = doctor.User.IsBlocked
             }).ToList();
         }
         catch (Exception ex)
@@ -197,9 +203,70 @@ public class AdminService : IAdminService
             throw;
         }
     }
+    public async Task<ApiResponseDto> BlockUserAsync(string Id)
+    {
+        var response = await _adminRepository.BlockUserAsync(Id);
+
+        if (response)
+        {
+            await _hubContext.Clients.Group(Id).SendAsync("Logout");
+            return new ApiResponseDto { IsSuccess = true, Message = "User Blocked", StatusCode = 200 };
+        }
+
+        return new ApiResponseDto { IsSuccess = false, Message = "Failed to block user", StatusCode = 400 };
+    }
+
+    public async Task<ApiResponseDto> BlockDoctorAsync(string Id)
+    {
+        if(Id == null)
+        {
+            return new ApiResponseDto { IsSuccess = false, Message = "Id Not Found", StatusCode = 404 };
+        }
 
 
+        var userId = _dataProtector.Unprotect(Id);
+        var response = await _adminRepository.BlockUserAsync(userId);
+
+        if (response)
+        {
+            await _hubContext.Clients.Group(userId).SendAsync("Logout");
+            return new ApiResponseDto { IsSuccess = true, Message = "User Blocked", StatusCode = 200 };
+        }
 
 
+        return new ApiResponseDto { IsSuccess = false, Message = "Failed to block user", StatusCode = 400 };
+    }
+
+    public async Task<ApiResponseDto> UnBlockUserAsync(string Id)
+    {
+        var response = await _adminRepository.UnBlockUserAsync(Id);
+
+        if (response)
+        {
+            
+            return new ApiResponseDto { IsSuccess = true, Message = "User UnBlocked", StatusCode = 200 };
+        }
+
+        return new ApiResponseDto { IsSuccess = false, Message = "Failed to Unblock user", StatusCode = 400 };
+    }
+
+    public async Task<ApiResponseDto> UnBlockDoctorAsync(string Id)
+    {
+        if (Id == null)
+        {
+            return new ApiResponseDto { IsSuccess = false, Message = "Id Not Found", StatusCode = 404 };
+        }
+
+
+        var userId = _dataProtector.Unprotect(Id);
+        var response = await _adminRepository.UnBlockUserAsync(userId);
+        if (response)
+        {
+
+            return new ApiResponseDto { IsSuccess = true, Message = "User UnBlocked", StatusCode = 200 };
+        }
+
+        return new ApiResponseDto { IsSuccess = false, Message = "Failed to Unblock user", StatusCode = 400 };
+    }
 }
 

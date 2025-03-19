@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using HealthCareApplication.Contract.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,11 @@ namespace HealthCareApi.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        public AuthController() { }
+        private readonly IAuthService _authService;
+        public AuthController(IAuthService authService)
+        {
+            _authService = authService;
+        }
 
 
         [HttpGet("CheckAccess")]
@@ -19,6 +24,13 @@ namespace HealthCareApi.Controllers
 
             var userId = user?.Value;
 
+            var response = await _authService.CheckIsStatus(userId);
+
+            if(!response.IsSuccess)
+            {
+                return Ok("Forbidden");
+            }
+           
             return Ok(userId);
         }
 

@@ -1,5 +1,4 @@
-﻿
-using HealthCareApplication.Dtos.AdminDto;
+﻿using HealthCareApplication.Dtos.AdminDto;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Patients;
 using System;
@@ -14,5 +13,11 @@ namespace HealthCareDomain.IRepository
     {
         Task<IEnumerable<PatientListDto>> GetPatient();
         Task<IEnumerable<Doctor>> GetAllDoctors();
+        Task<bool> BlockUserAsync(string Id);
+        Task<bool> UnBlockUserAsync(string Id);
+
+
+
+        
     }
 }

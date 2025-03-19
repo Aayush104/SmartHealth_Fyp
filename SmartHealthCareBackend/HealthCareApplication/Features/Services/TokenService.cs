@@ -19,7 +19,7 @@ namespace HealthCareApplication.Features.Services
                 new Claim("userId", user.Id.ToString()),
                 new Claim("Name", user.FullName),
                 new Claim("Email", user.Email),
-                
+            
 
             };
            
