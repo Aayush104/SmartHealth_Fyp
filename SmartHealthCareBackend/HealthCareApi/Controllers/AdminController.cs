@@ -3,6 +3,7 @@ using HealthCareDomain.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using static Google.Apis.Requests.BatchRequest;
 
 namespace HealthCareApi.Controllers
 {
@@ -98,6 +99,14 @@ namespace HealthCareApi.Controllers
         {
             var response = await _adminService.UnBlockDoctorAsync(userId);
             return StatusCode(response.StatusCode, response);   
+        }
+
+
+        [HttpGet("GetAllBookings")]
+         public async Task<IActionResult> GetAllBookings()
+        {
+            var response = await _adminService.GetAllBookingAsync();
+            return StatusCode(response.StatusCode, response);
         }
     }
 }

@@ -268,5 +268,27 @@ public class AdminService : IAdminService
 
         return new ApiResponseDto { IsSuccess = false, Message = "Failed to Unblock user", StatusCode = 400 };
     }
+
+    public async Task<ApiResponseDto> GetAllBookingAsync()
+    {
+        try
+        {
+            var response = await _adminRepository.GetAllAppointments();
+
+            if (response != null && response.Any()) 
+            {
+                return new ApiResponseDto { IsSuccess = true, Data = response, StatusCode = 200 };
+            }
+            else
+            {
+                return new ApiResponseDto { IsSuccess = false, Message = "No appointments found", StatusCode = 404 };
+            }
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponseDto { IsSuccess = false, Message = $"An error occurred: {ex.Message}", StatusCode = 500 };
+        }
+    }
+
 }
 

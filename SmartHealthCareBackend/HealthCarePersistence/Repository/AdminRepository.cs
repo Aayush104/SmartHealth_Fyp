@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthCareApplication.Dtos.AdminDto;
 using HealthCareDomain.Entity.Doctors;
+using HealthCareDomain.Contract.ContractDto.AdminDto;
 
 namespace HealthCarePersistence.Repository
 {
@@ -30,6 +31,27 @@ namespace HealthCarePersistence.Repository
                 return true;
             }
             return false;
+        }
+        
+        public async Task<IEnumerable<BookingListDto>> GetAllAppointments()
+        {
+            return await _dbContext.BookAppointments
+                 .Include(a => a.Patient)
+                 .Include(a => a.Doctor)
+                 .Include(a => a.Payments)
+                 .Select(a => new BookingListDto
+                 {
+                     PatientName = a.Patient.User.FullName,
+                     DoctorName = a.Doctor.User.FullName,
+                     AppointmentDate = a.AppointmentDate,
+                     AppointmentTime = a.Slot,
+                     PaymentStatus = a.PaymentStatus,
+                     PaymentAmount = a.Payments.FirstOrDefault().Amount,
+                     DoctorSpecialization = a.Doctor.Specialization
+
+                 })
+                 .ToListAsync();
+
         }
 
         public async Task<IEnumerable<Doctor>> GetAllDoctors()

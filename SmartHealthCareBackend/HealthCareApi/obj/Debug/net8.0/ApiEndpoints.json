@@ -70,6 +70,16 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "GetAllBookings",
+    "RelativePath": "api/Admin/GetAllBookings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
     "Method": "GetDoctors",
     "RelativePath": "api/Admin/GetDoctors",
     "HttpMethod": "GET",

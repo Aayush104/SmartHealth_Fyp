@@ -14,6 +14,7 @@ import Cookies from "js-cookie"; // Make sure you have `js-cookie` installed
 import logo from '../../Assets/Image/Logo.png';// Adjust the logo path accordingly
 import { MdHome } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import AllBookings from "../../Components/Admin Components/AllBookings";
 
 const Admin = () => {
   const [data, setData] = useState([]);
@@ -109,8 +110,8 @@ const Admin = () => {
             </div>
           )}
           {section === "bookings" && (
-            <div className="bg-blue-600 w-full p-4">
-              <p className="text-center text-white font-bold text-xl">This is the Bookings section</p>
+            <div className="w-full p-4">
+              <p className="text-center text-white font-bold text-xl"><AllBookings /></p>
             </div>
           )}
           {section === "review" && (
