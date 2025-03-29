@@ -70,8 +70,50 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "DeleteComment",
+    "RelativePath": "api/Admin/DeleteComment/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "DoAnnouncement",
+    "RelativePath": "api/Admin/DoAnnouncement",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "announceDto",
+        "Type": "HealthCareApplication.Dtos.AnnouncementDto.AnnounceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
     "Method": "GetAllBookings",
     "RelativePath": "api/Admin/GetAllBookings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "GetAnnouncemnt",
+    "RelativePath": "api/Admin/GetAnnouncementNotification",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -92,6 +134,16 @@
     "ContainingType": "HealthCareApi.Controllers.AdminController",
     "Method": "GetUsers",
     "RelativePath": "api/Admin/GetUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "MarklNotificaionsAsRead",
+    "RelativePath": "api/Admin/MarkAllAnnouncementAsRead",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

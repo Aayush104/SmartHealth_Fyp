@@ -1,4 +1,4 @@
-﻿using HealthCareDomain.Entity.Doctors;
+﻿ using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Patients;
 using System;
 using System.Collections.Generic;

@@ -300,7 +300,7 @@ namespace HealthCareApplication.Features.Services
                
                 var user = await _userManager.FindByEmailAsync(googleLoginDto.Email);
 
-                if (user.IsBlocked == true)
+                if (user !=null && user.IsBlocked)
                 {
                     return new ApiResponseDto { IsSuccess = false, Message = "You have been banned", StatusCode = 403 };
                 }

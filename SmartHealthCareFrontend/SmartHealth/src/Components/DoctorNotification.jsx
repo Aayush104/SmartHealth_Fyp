@@ -25,20 +25,27 @@ const DoctorNotifications = () => {
       .then(() => {
         console.log("SignalR Connected");
         fetchNotifications();
+        fetchAnnouncements();
       })
       .catch((err) => console.error("SignalR Connection Error: ", err));
 
     connectionRef.current.on("ReceiveNotification", (message) => {
+      console.log("Received notification:", message);
+      
+      // Check if the message is an announcement
+      const isAnnouncement = typeof message === 'string' || message.type === 'announcement';
+      
       const newNotification = {
-        id: message.id || Date.now().toString(),
-        type: message.type || "system",
-        message: message.content || message,
+        id: message.id || `notification-${Date.now()}`,
+        type: isAnnouncement ? "announcement" : (message.type || "system"),
+        message: isAnnouncement ? message : (message.content || message),
         read: false,
         timestamp: new Date(),
-        icon: getIconForType(message.type || "system"),
+        icon: getIconForType(isAnnouncement ? "announcement" : (message.type || "system")),
         link: message.link || null,
         doctorId: message.doctorId || null,
-        markAs: message.markAs !== undefined ? message.markAs : 1,
+        markAs: 1, // Set to 1 to ensure it's counted as unread
+        isMarked: false // For tracking announcement read status
       };
 
       setNotifications((prev) => [newNotification, ...prev]);
@@ -63,7 +70,7 @@ const DoctorNotifications = () => {
         }
       );
 
-      console.log("Notification", response);
+      console.log("reviews", response);
 
       if (response.ok) {
         const responseData = await response.json();
@@ -77,12 +84,12 @@ const DoctorNotifications = () => {
             message: `${notification.userName} left a review: "${notification.reviewText}"`,
             read: false,
             timestamp: new Date(notification.createdAt),
-            icon: getIconForType("review"),
+            icon: getIconForType("message"),
             link: `/Doctors/${notification.doctorId}`,
             markAs: notification.markAs,
           }));
 
-          setNotifications(formattedData);
+          setNotifications(prev => [...formattedData, ...prev.filter(n => n.type !== "review")]);
         } else {
           console.error("Unexpected data structure:", responseData);
         }
@@ -91,6 +98,45 @@ const DoctorNotifications = () => {
       }
     } catch (error) {
       console.error("Error fetching notifications:", error);
+    }
+  };
+
+  const fetchAnnouncements = async () => {
+    try {
+      const response = await axios.get(
+        "https://localhost:7070/api/Admin/GetAnnouncementNotification"
+      );
+
+      if (response.status === 200 && response.data.isSuccess) {
+        const announcements = response.data.data.$values;
+        
+        // Convert announcements to notifications format
+        const announcementNotifications = announcements.map(announcement => ({
+          id: `announcement-${announcement.id}`,
+          type: "announcement",
+          message: `${announcement.title}: ${announcement.description}`,
+          read: announcement.isMarked, // Set read status based on isMarked
+          timestamp: new Date(announcement.createdAt),
+          icon: getIconForType("announcement"),
+          link: null,
+          markAs: announcement.isMarked ? 0 : 1, // Set markAs based on isMarked
+          announcementId: announcement.id, // Store the announcement ID for API calls
+          isMarked: announcement.isMarked,
+          title: announcement.title,
+          description: announcement.description
+        }));
+
+        // Add announcements to notifications, preserving existing notifications
+        setNotifications(prev => [
+          ...announcementNotifications,
+          ...prev.filter(n => n.type !== "announcement" || 
+            !announcementNotifications.some(an => an.id === n.id))
+        ]);
+      } else {
+        console.error("Failed to fetch announcements:", response.data.message || response.statusText);
+      }
+    } catch (error) {
+      console.error("Error fetching announcements:", error);
     }
   };
 
@@ -104,6 +150,8 @@ const DoctorNotifications = () => {
         return "⭐";
       case "system":
         return "✅";
+      case "announcement":
+        return "📢";
       default:
         return "📌";
     }
@@ -126,17 +174,91 @@ const DoctorNotifications = () => {
   const markNotificationAsRead = (notificationId) => {
     setNotifications(prevNotifications => 
       prevNotifications.map(n => 
-        n.id === notificationId ? { ...n, read: true } : n
+        n.id === notificationId ? { ...n, read: true, markAs: 0 } : n
       )
     );
   };
 
-  const toggleNotifications = () => {
-    setShowNotifications(!showNotifications);
+  // Mark all doctor notifications as read
+  const markDoctorNotificationsAsRead = async () => {
+    try {
+      console.log("Attempting to mark all doctor notifications as read");
+      const response = await axios.get(
+        "https://localhost:7070/api/Doctor/MarkAllAsRead",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      
+      console.log("Doctor mark all as read response:", response);
+
+      if (response.status === 200) {
+        // Mark non-announcement notifications as read
+        setNotifications(prevNotifications =>
+          prevNotifications.map(notification => 
+            notification.type !== "announcement" 
+              ? { ...notification, markAs: 0, read: true } 
+              : notification
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Error marking doctor notifications as read:", error);
+    }
   };
 
-  // Only count notifications with markAs=1 in the unread count
-  const unreadCount = notifications.filter((n) => !n.read && n.markAs === 1).length;
+  // Mark all announcements as read
+  const markAllAnnouncementsAsRead = async () => {
+    try {
+      console.log("Attempting to mark all announcements as read");
+      const response = await axios.get(
+        "https://localhost:7070/api/Admin/MarkAllAnnouncementAsRead"
+      );
+      
+      console.log("Announcements mark all as read response:", response);
+
+      if (response.status === 200) {
+        // Update local state to mark all announcements as read
+        setNotifications(prevNotifications =>
+          prevNotifications.map(notification => 
+            notification.type === "announcement" 
+              ? { ...notification, read: true, markAs: 0, isMarked: true } 
+              : notification
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Error marking announcements as read:", error);
+    }
+  };
+
+  // Mark all notifications as read (both doctor notifications and announcements)
+  const markAllAsRead = async () => {
+    try {
+      await markDoctorNotificationsAsRead();
+      await markAllAnnouncementsAsRead();
+    } catch (error) {
+      console.error("Error marking all notifications as read:", error);
+    }
+  };
+
+  const toggleNotifications = () => {
+    const wasNotShowing = !showNotifications;
+    setShowNotifications(!showNotifications);
+    
+    // When notifications are opening (not closing), mark all as read
+    if (wasNotShowing) {
+      markAllAsRead(); // This will call both APIs when opening the notifications
+    }
+  };
+
+  // Only count notifications that are unread (markAs=1 or isMarked=false for announcements)
+  const unreadCount = notifications.filter(
+    (n) => (n.type === "announcement" && !n.isMarked) || 
+           (n.markAs === 1 && !n.read)
+  ).length;
 
   const formatTime = (timestamp) => {
     const now = new Date();
@@ -160,38 +282,10 @@ const DoctorNotifications = () => {
     }
   };
 
-  // Filter notifications based only on showUnreadOnly setting
-  // Don't filter based on markAs - show all notifications
+  // Filter notifications based on showUnreadOnly setting
   const filteredNotifications = showUnreadOnly
     ? notifications.filter((n) => !n.read)
     : notifications;
-
-    const Markasread = async ()=>
-    {
-      const response = await axios.get("https://localhost:7070/api/Doctor/MarkAllAsRead",
-        {
-          
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          
-        }
-
-       
-      )
-
-      if(response.status == 200)
-      {
-        setNotifications(prevNotifications =>
-          prevNotifications.map(notification => ({
-            ...notification,
-            markAs: 0,
-            read: true
-          }))
-        );
-      }
-      
-    }
 
   return (
     <div className="relative" ref={notificationRef}>
@@ -200,7 +294,7 @@ const DoctorNotifications = () => {
         onClick={toggleNotifications}
       >
         <div className="relative">
-          <div className="flex flex-col items-center" onClick={Markasread}>
+          <div className="flex flex-col items-center">
             <IoIosNotifications className="text-4xl" /> 
             <p>Notifications</p>
             {unreadCount > 0 && (
@@ -215,12 +309,20 @@ const DoctorNotifications = () => {
         <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border z-50">
           <div className="flex justify-between items-center px-4 py-2 border-b">
             <h3 className="font-medium text-lg">Notifications</h3>
-            <button
-              onClick={() => setShowUnreadOnly(!showUnreadOnly)}
-              className="text-sm text-sky-500"
-            >
-              {showUnreadOnly ? "Show All" : "Show Unread"}
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setShowUnreadOnly(!showUnreadOnly)}
+                className="text-sm text-sky-500"
+              >
+                {showUnreadOnly ? "Show All" : "Show Unread"}
+              </button>
+              <button
+                onClick={markAllAsRead}
+                className="text-sm text-sky-500"
+              >
+                Mark All Read
+              </button>
+            </div>
           </div>
           <div className="max-h-96 overflow-y-auto">
             {filteredNotifications.length === 0 ? (

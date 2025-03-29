@@ -1,5 +1,6 @@
 ﻿using HealthCareApplication.Dtos.AdminDto;
 using HealthCareDomain.Contract.ContractDto.AdminDto;
+using HealthCareDomain.Entity.Announcement;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Patients;
 using System;
@@ -17,9 +18,17 @@ namespace HealthCareDomain.IRepository
         Task<IEnumerable<BookingListDto>> GetAllAppointments();
         Task<bool> BlockUserAsync(string Id);
         Task<bool> UnBlockUserAsync(string Id);
+        Task<bool> DeleteCommentAsync(int Id);
+
+        Task<List<Announce>> GetAllNotificationAsync();
+
+        Task DoAnnounceAsync(Announce announce);
+
+        Task<bool> UpdateNotificationStatus();
 
 
 
-        
+
+
     }
 }

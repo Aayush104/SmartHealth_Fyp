@@ -16,6 +16,7 @@ import Comments from '../../Components/Comments/Comments';
 import ChatBot from '../../Components/Chat/ChatBot';
 import Cookies from 'js-cookie';
 import DoctorNav from '../../Components/Navbar/DoctorNav';
+import AdminNav from '../../Components/Navbar/AdminNav';
 
 const DoctorDetails = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const DoctorDetails = () => {
   const [showMore, setShowMore] = useState(false);
     const [showAdditionalForm, setShowAdditionalForm] = useState(false);
     const[viewReply, setViewReply] = useState(false)
-    const [userRole, setUserRole] = useState(false);
+    const [userRole, setUserRole] = useState(null);
 
   const handleCloseForms = () => {
     localStorage.removeItem('Null');
@@ -50,10 +51,13 @@ if(token)
 
   useEffect(()=>
   {
-    if(role == "Doctor")
-      {
-        setUserRole(true)
-      }
+    if (role === "Doctor") {
+      setUserRole("Doctor");
+    } else if (role === "Admin") {
+      setUserRole("Admin");
+    } else {
+      setUserRole("Patient"); // Default to Patient if no specific role
+    }
     
   if(localStorage.getItem("Null"))
     {setShowAdditionalForm(true);
@@ -63,6 +67,17 @@ if(token)
     
   })
 
+
+  const renderNavigation = () => {
+    switch (userRole) {
+      case "Admin":
+        return <AdminNav />;
+      case "Doctor":
+        return <DoctorNav />;
+      default:
+        return <Navbar />;
+    }
+  };
  
 
   useEffect(() => {
@@ -111,10 +126,9 @@ console.log(userRole);
 
   return (
     <div className="bg-neutral-100">
-{
-  userRole ? <DoctorNav /> : <Navbar />
-}      
-      <ChatBot />
+    
+    {renderNavigation()}
+    <ChatBot />
       <div className="px-28 mt-2">
         <SearchDoctor />
       </div>
@@ -222,12 +236,12 @@ console.log(userRole);
       </div>
 
       <div>
-      {userRole ? "" :(
+      
         <TimeSlot fee={doctor?.fee} Id={id} />
 
-      )
+      
 
-      }
+      
 </div>
 
       </div>

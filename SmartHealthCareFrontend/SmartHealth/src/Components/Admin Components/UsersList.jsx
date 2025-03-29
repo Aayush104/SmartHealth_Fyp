@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FiUsers, FiUserCheck, FiRefreshCw, FiSearch, FiEye, FiLock, FiUnlock } from 'react-icons/fi';
 import { HiOutlineOfficeBuilding, HiOutlineUserCircle } from 'react-icons/hi';
+import { NavLink } from 'react-router-dom';
 
 const UsersList = () => {
   const [activeTab, setActiveTab] = useState('doctors');
@@ -35,6 +36,8 @@ const UsersList = () => {
     try {
       const response = await fetch('https://localhost:7070/api/Admin/GetDoctors');
       const data = await response.json();
+
+      console.log(response, "doctor haru ")
       
       if (data.$values) {
         const doctorsWithBlockStatus = data.$values.map(doctor => ({
@@ -344,12 +347,15 @@ const UsersList = () => {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                   <div className="flex justify-end space-x-2">
-                                    <button 
+
+                                  <NavLink to = {`/Doctors/${doctor.id}`}>                                    <button 
                                       className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
                                     >
                                       <FiEye className="h-3.5 w-3.5 mr-1" />
                                       View
                                     </button>
+                                    </NavLink>
+
                                     <button 
                                       className={`inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded ${
                                         doctor.isBlocked 

@@ -3,6 +3,7 @@ using System.Linq;
 
 using System.Threading;
 using System.Threading.Tasks;
+using HealthCareDomain.Entity.Announcement;
 using HealthCareDomain.Entity.Appointment;
 using HealthCareDomain.Entity.Chat;
 using HealthCareDomain.Entity.Doctors;
@@ -34,6 +35,7 @@ namespace HealthCarePersistence.DatabaseContext
         public DbSet<MessageStatus> MessageStatuses { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Comments> Comments { get; set; }
+        public DbSet<Announce> Announces { get; set; }
 
         public DbSet<Reply> Replies { get; set; }
 

@@ -104,7 +104,7 @@ const Admin = () => {
         {/* Content area with scroll */}
         <div className="flex-1 overflow-y-auto p-4">
           {section === "dashboard" && <VerifyDoc />}
-          {section === "messages" && (
+          {section === "users" && (
             <div className="w-full p-2">
               <UsersList />
             </div>
@@ -114,7 +114,7 @@ const Admin = () => {
               <p className="text-center text-white font-bold text-xl"><AllBookings /></p>
             </div>
           )}
-          {section === "review" && (
+          {section === "broadcast" && (
             <div className="bg-green-600 w-full p-4">
               <p className="text-center text-white font-bold text-xl">This is the Review section</p>
             </div>

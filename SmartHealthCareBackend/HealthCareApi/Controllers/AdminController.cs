@@ -1,4 +1,5 @@
 ﻿using Azure;
+using HealthCareApplication.Dtos.AnnouncementDto;
 using HealthCareDomain.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -107,6 +108,52 @@ namespace HealthCareApi.Controllers
         {
             var response = await _adminService.GetAllBookingAsync();
             return StatusCode(response.StatusCode, response);
+        }  
+        
+        [HttpPost("DoAnnouncement")]
+         public async Task<IActionResult> DoAnnouncement(AnnounceDto announceDto)
+        {
+            var response = await _adminService.DoAnnouncementAsync(announceDto);
+            return StatusCode(response.StatusCode, response);
         }
+
+        [HttpPost("DeleteComment/{id}")]
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            var response = await _adminService.DeleteCommentAsync(id);
+            return StatusCode(response.StatusCode, response);
+        }
+
+
+        [HttpGet("GetAnnouncementNotification")]
+        public async Task<IActionResult> GetAnnouncemnt()
+        {
+            var response = await _adminService.GetAnnouncementNotificationAsync();
+            if (response != null)
+            {
+                return Ok(response);
+            }
+
+            return NotFound();
+        }
+
+
+        [HttpGet("MarkAllAnnouncementAsRead")]
+      
+        public async Task<IActionResult> MarklNotificaionsAsRead()
+        {
+          
+
+            var response = await _adminService.MarkNotificationAsReadAsync();
+
+            if (response != null)
+            {
+                return Ok(response);
+            }
+
+            return NotFound();
+
+        }
+
     }
 }

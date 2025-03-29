@@ -22,6 +22,35 @@ namespace HealthCarePersistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("HealthCareDomain.Entity.Announcement.Announce", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<bool>("IsMarked")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Announces");
+                });
+
             modelBuilder.Entity("HealthCareDomain.Entity.Appointment.BookAppointment", b =>
                 {
                     b.Property<int>("Id")
@@ -562,8 +591,8 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "819977fa-76be-43a5-ab3e-849ed02305bf",
-                            CreatedAt = new DateTime(2025, 3, 17, 4, 49, 56, 950, DateTimeKind.Utc).AddTicks(6534),
+                            ConcurrencyStamp = "d7cb6404-8ddb-4f16-a7f2-a31644eb1176",
+                            CreatedAt = new DateTime(2025, 3, 29, 16, 35, 11, 701, DateTimeKind.Utc).AddTicks(2096),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
@@ -571,12 +600,12 @@ namespace HealthCarePersistence.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGomjnvW/XAsnx4fYm6XL/Cbi1k2+7ebenWasqXRX0xWHYhMg+QTSXPdMvHwqQ05Uw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMWA/dZ6joeJPlNbW8l4x6LyzPl/nfggq3fV7fW5paxuMT8/2rO7lQQCs+8L9GCcBQ==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "801ebb4b-6a49-4dd6-b312-d6e23227eb76",
+                            SecurityStamp = "ff184d8a-f5a2-40a0-8bfe-a458d5474144",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 3, 17, 4, 49, 56, 950, DateTimeKind.Utc).AddTicks(6543),
+                            UpdatedAt = new DateTime(2025, 3, 29, 16, 35, 11, 701, DateTimeKind.Utc).AddTicks(2103),
                             UserName = "Admin"
                         });
                 });

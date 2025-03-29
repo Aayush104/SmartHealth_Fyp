@@ -1,4 +1,5 @@
 ﻿using HealthCareApplication.Dtos.AdminDto;
+using HealthCareApplication.Dtos.AnnouncementDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareDomain.Entity.Doctors;
 using System;
@@ -20,9 +21,14 @@ namespace HealthCareDomain.IServices
         Task<ApiResponseDto> BlockUserAsync(string Id);
         Task<ApiResponseDto> UnBlockUserAsync(string Id);
         Task<ApiResponseDto> UnBlockDoctorAsync(string Id);
+        Task<ApiResponseDto> DeleteCommentAsync(int Id);
         Task<ApiResponseDto> BlockDoctorAsync(string Id);
         Task<IEnumerable<DoctorDetailsDto>> GetAllVerifiedDoctorAsync();
         Task<ApiResponseDto> GetAllBookingAsync();
+        Task<ApiResponseDto> DoAnnouncementAsync(AnnounceDto announceDto);
+
+        Task<ApiResponseDto> GetAnnouncementNotificationAsync();
+        Task<ApiResponseDto> MarkNotificationAsReadAsync();
 
 
     }

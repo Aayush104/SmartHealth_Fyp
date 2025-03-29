@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using HealthCareApplication.Dtos.AdminDto;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Contract.ContractDto.AdminDto;
+using HealthCareDomain.Entity.Announcement;
+using HealthCareDomain.Entity.Review;
 
 namespace HealthCarePersistence.Repository
 {
@@ -32,7 +34,30 @@ namespace HealthCarePersistence.Repository
             }
             return false;
         }
-        
+
+        public async Task<bool> DeleteCommentAsync(int Id)
+        {
+            var comment = await _dbContext.Comments.FindAsync(Id);
+
+            if(comment != null)
+            {
+                _dbContext.Comments.Remove(comment);
+
+              
+                await _dbContext.SaveChangesAsync();
+                return true;
+
+
+            }
+            return false;
+        }
+
+        public async Task DoAnnounceAsync(Announce announce)
+        {
+            await _dbContext.Announces.AddAsync(announce);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<BookingListDto>> GetAllAppointments()
         {
             return await _dbContext.BookAppointments
@@ -68,6 +93,12 @@ namespace HealthCarePersistence.Repository
             return doctors;
         }
 
+        public async Task<List<Announce>> GetAllNotificationAsync()
+        {
+            var notification = await _dbContext.Announces.ToListAsync();
+            return notification;
+        }
+
         public async Task<IEnumerable<PatientListDto>> GetPatient()
         {
             return await _dbContext.Patients
@@ -96,6 +127,24 @@ namespace HealthCarePersistence.Repository
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
+            return false;
+        }
+
+        public async Task<bool> UpdateNotificationStatus()
+        {
+            var announces = await _dbContext.Announces.ToListAsync();
+
+            if (announces.Any())
+            {
+                foreach (var announce in announces)
+                {
+                    announce.IsMarked = true;
+                }
+
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+
             return false;
         }
     }

@@ -1,7 +1,9 @@
 ﻿using HealthCareApplication.Contracts.Email;
+using HealthCareApplication.Dtos.AnnouncementDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Helper;
 using HealthCareApplication.StatusHub;
+using HealthCareDomain.Entity.Announcement;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.UserEntity;
 using HealthCareDomain.IRepository;
@@ -290,5 +292,110 @@ public class AdminService : IAdminService
         }
     }
 
+    public async Task<ApiResponseDto> DeleteCommentAsync(int Id)
+    {
+        if (Id == 0)
+        {
+            return new ApiResponseDto { IsSuccess = false, Message = "Id Not Found", StatusCode = 404 };
+        }
+
+        var response = await _adminRepository.DeleteCommentAsync(Id);
+
+        if (response)
+        {
+
+            return new ApiResponseDto { IsSuccess = true, Message = "Comment deleted", StatusCode = 200 };
+        }
+
+        return new ApiResponseDto { IsSuccess = false, Message = "Failed to Unblock user", StatusCode = 400 };
+    }
+
+  
+    public async Task<ApiResponseDto> DoAnnouncementAsync(AnnounceDto announceDto)
+    {
+        if (announceDto == null)
+        {
+            return new ApiResponseDto
+            {
+                IsSuccess = false,
+                Message = "Invalid announcement data.",
+                StatusCode = 400
+            };
+        }
+
+        var announce = new Announce
+        {
+            Title = announceDto.Title,
+            Description = announceDto.Description,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        await _hubContext.Clients.All.SendAsync("ReceiveNotification", announceDto.Title);
+
+        await _adminRepository.DoAnnounceAsync(announce);
+
+        return new ApiResponseDto
+        {
+            IsSuccess = true,
+            Message = "Announcement created successfully.",
+             StatusCode = 200
+        };
+    }
+
+    public async Task<ApiResponseDto> GetAnnouncementNotificationAsync()
+    {
+        try
+        {
+            var response = await _adminRepository.GetAllNotificationAsync();
+
+            if (response != null && response.Any())
+            {
+                return new ApiResponseDto { IsSuccess = true, Data = response, StatusCode = 200 };
+            }
+            else
+            {
+                return new ApiResponseDto { IsSuccess = false, Message = "No appointments found", StatusCode = 404 };
+            }
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponseDto { IsSuccess = false, Message = $"An error occurred: {ex.Message}", StatusCode = 500 };
+        }
+    }
+
+    public async Task<ApiResponseDto> MarkNotificationAsReadAsync()
+    {
+        try
+        {
+            var updateNotificationStatus = await _adminRepository.UpdateNotificationStatus();
+
+            if (updateNotificationStatus)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Message = "Marked all as read",
+                    StatusCode = 200
+                };
+            }
+
+            return new ApiResponseDto
+            {
+                IsSuccess = false,
+                Message = "No notifications found or update failed",
+                StatusCode = 404
+            };
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponseDto
+            {
+                IsSuccess = false,
+                Message = $"An error occurred: {ex.Message}",
+                StatusCode = 500
+            };
+        }
+    }
 }
+
 

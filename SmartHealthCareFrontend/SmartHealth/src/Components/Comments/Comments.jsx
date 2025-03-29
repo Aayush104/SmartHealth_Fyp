@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
   // State variables
@@ -12,17 +13,20 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
     reviewText: "",
   });
   const [selected, setSelected] = useState(""); 
-  const [showReplyFields, setShowReplyFields] = useState({}); // Track which reply fields to show
-  const [replyTexts, setReplyTexts] = useState({}); // Store reply texts for each comment
+  const [showReplyFields, setShowReplyFields] = useState({}); 
+  const [replyTexts, setReplyTexts] = useState({}); 
+  const [showDelete, setShowDelete] = useState(false);
+  const [hasUserReviewed, setHasUserReviewed] = useState(false);
 
   // Get and decode JWT token
   const token = Cookies.get("Token");
-  let PatientId, UserName;
+  let PatientId, UserName, Role;
 
   if (token) {
     const decodedToken = JSON.parse(atob(token.split(".")[1]));
     PatientId = decodedToken.userId;
     UserName = decodedToken.Name;
+    Role = decodedToken.Role;
   }
 
   // Convert createdAt date to relative time
@@ -47,7 +51,6 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
     return `${diffMonths} month${diffMonths === 1 ? "" : "s"} ago`;
   };
 
-
   useEffect(() => {
     if (DoctorId && token) {
       const checkCommentValidation = async () => {
@@ -64,15 +67,18 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
         }
       };
 
+      if(Role == "Admin") {
+        setShowDelete(true);
+      }
+
       checkCommentValidation();
     }
   }, [DoctorId, token]);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newComment.visitedFor || !newComment.reviewText || selected === "") {
-      alert("All fields are required!");
+      toast.error("All fields are required!");
       return;
     }
 
@@ -98,16 +104,15 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
       );
 
       if (response.status === 200) {
-       
         setNewComment({ visitedFor: "", reviewText: "" });
         setSelected("");
         window.location.reload();
       }
     } catch (error) {
       console.error("Error submitting comment:", error);
+      toast.error("Failed to submit comment!");
     }
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -116,6 +121,11 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
           `https://localhost:7070/api/Doctor/GetComments/${DoctorId}`
         );
         const commentsData = response.data.data.$values || [];
+        
+        // Check if the current user has already reviewed
+        const userReview = commentsData.some(review => review.userName === UserName);
+        setHasUserReviewed(userReview);
+
         setReviews(commentsData);
       
         if (commentsData.length > 0) {
@@ -149,7 +159,7 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
     if (DoctorId) {
       fetchData();
     }
-  }, [DoctorId]);
+  }, [DoctorId, UserName]);
 
   // Toggle reply field visibility
   const toggleReplyField = (reviewId) => {
@@ -170,7 +180,7 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
     e.preventDefault();
     
     if (!replyTexts[commentId] || replyTexts[commentId].trim() === "") {
-      alert("Reply text cannot be empty!");
+      toast.error("Reply text cannot be empty!");
       return;
     }
 
@@ -231,18 +241,45 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
       }
     } catch (error) {
       console.error("Error submitting reply:", error);
-      alert("Failed to submit reply. Please try again.");
+      toast.error("Failed to submit reply!");
     }
   };
 
   const placeholderImage =
     "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg";
 
+  const handleDeleteComment = async (commentId) => {
+    try {
+      const response = await axios.post(
+        `https://localhost:7070/api/Admin/DeleteComment/${commentId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      if (response.status === 200) {
+        // Remove the comment from the reviews state
+        setReviews(prevReviews => 
+          prevReviews.filter(review => review.commentId !== commentId)
+        );
+        
+        // Show success toast
+        toast.success("Comment deleted successfully!");
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      toast.error("Failed to delete comment!");
+    }
+  };
+
   return (
     <div className="max-w-3xl mx-auto py-6">
       <h2 className="text-2xl font-bold mb-6">Patient Stories</h2>
 
-      {view && !viewReply && (
+      {view && !viewReply && !hasUserReviewed && (
         <div className="bg-white rounded-lg shadow p-6 mb-8">
           <h3 className="text-lg font-semibold mb-4">Write a Review</h3>
           <form onSubmit={handleSubmit}>
@@ -352,16 +389,27 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
                 </div>
               )}
 
-              {viewReply && (
-                <div className="mt-4">
-                  <button 
-                    className="text-blue-500 hover:text-blue-700"
-                    onClick={() => toggleReplyField(review.commentId)}
+              <div className="flex items-center gap-8">
+                {viewReply && (
+                  <div className="mt-4">
+                    <button 
+                      className="text-blue-500 hover:text-blue-700 font-medium"
+                      onClick={() => toggleReplyField(review.commentId)}
+                    >
+                      {showReplyFields[review.commentId] ? "Cancel Reply" : "Reply"}
+                    </button>
+                  </div>
+                )}
+
+                {showDelete && (
+                  <p 
+                    className="text-red-400 font-medium cursor-pointer hover:text-red-500 mt-4"    
+                    onClick={() => handleDeleteComment(review.commentId)}
                   >
-                    {showReplyFields[review.commentId] ? "Cancel Reply" : "Reply"}
-                  </button>
-                </div>
-              )}
+                    Delete
+                  </p>
+                )}
+              </div>
 
               {viewReply && showReplyFields[review.commentId] && (
                 <div className="flex items-center gap-2 mt-2">

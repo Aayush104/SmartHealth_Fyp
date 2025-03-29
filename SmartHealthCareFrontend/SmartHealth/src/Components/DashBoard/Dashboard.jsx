@@ -6,6 +6,7 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 import { RiUserFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
+import { MdBroadcastOnPersonal } from "react-icons/md";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Dashboard = () => {
             <span className="text-sm sm:text-md hidden sm:inline">Dashboard</span>
           </li>
           <li
-            onClick={() => handleNavigation("/admin/messages")}
+            onClick={() => handleNavigation("/admin/users")}
             className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
             title="Messages"
           >
@@ -43,12 +44,12 @@ const Dashboard = () => {
             <span className="text-sm sm:text-md hidden sm:inline">Bookings</span>
           </li>
           <li
-            onClick={() => handleNavigation("/admin/review")}
+            onClick={() => handleNavigation("/admin/broadcast")}
             className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
             title="Review"
           >
-            <BiMessageSquareDetail className="text-xl" />
-            <span className="text-sm sm:text-md hidden sm:inline">Review</span>
+            <MdBroadcastOnPersonal className="text-xl" />
+            <span className="text-sm sm:text-md hidden sm:inline">Announcement</span>
           </li>
           <li
             onClick={() => handleNavigation("/admin/profile")}
