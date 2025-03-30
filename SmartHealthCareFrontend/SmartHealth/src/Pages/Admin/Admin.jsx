@@ -15,6 +15,7 @@ import logo from '../../Assets/Image/Logo.png';// Adjust the logo path according
 import { MdHome } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import AllBookings from "../../Components/Admin Components/AllBookings";
+import Announcement from "../../Components/Admin Components/Announcement";
 
 const Admin = () => {
   const [data, setData] = useState([]);
@@ -115,8 +116,8 @@ const Admin = () => {
             </div>
           )}
           {section === "broadcast" && (
-            <div className="bg-green-600 w-full p-4">
-              <p className="text-center text-white font-bold text-xl">This is the Review section</p>
+            <div className=" w-full p-4">
+              <p className="text-center text-white font-bold text-xl"><Announcement /> </p>
             </div>
           )}
           {section === "profile" && (
