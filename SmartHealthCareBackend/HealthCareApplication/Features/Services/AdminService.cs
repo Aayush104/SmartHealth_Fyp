@@ -1,7 +1,9 @@
 ﻿using HealthCareApplication.Contracts.Email;
 using HealthCareApplication.Dtos.AnnouncementDto;
+using HealthCareApplication.Dtos.CommentDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Helper;
+using HealthCareApplication.NotificationHub;
 using HealthCareApplication.StatusHub;
 using HealthCareDomain.Entity.Announcement;
 using HealthCareDomain.Entity.Doctors;
@@ -28,13 +30,15 @@ public class AdminService : IAdminService
         private readonly IAdminRepository _adminRepository;
         private readonly UserManager<ApplicationUser> _userManager;
     private readonly IHubContext<UserHub> _hubContext;
+
+    private readonly IHubContext<Notificationhub> _Context;
     private readonly IMailService _mailService;
     private readonly IOtpService _otpService;
     private readonly IDataProtector _dataProtector;
 
 
     public AdminService(IDoctorRepository doctorRepository, UserManager<ApplicationUser> userManager, IMailService mailService,IOtpService otpService, 
-     IDataProtectionProvider dataProtection, DataSecurityProvider securityProvider, IAdminRepository adminRepository, IHubContext<UserHub> hubContext)
+     IDataProtectionProvider dataProtection, DataSecurityProvider securityProvider, IAdminRepository adminRepository, IHubContext<UserHub> hubContext, IHubContext<Notificationhub> Context)
         {
             _doctorRepository = doctorRepository;
             _userManager = userManager;
@@ -42,6 +46,7 @@ public class AdminService : IAdminService
         _otpService = otpService;
         _adminRepository = adminRepository;
         _hubContext = hubContext;
+        _Context = Context;
         _dataProtector = dataProtection.CreateProtector(securityProvider.securityKey);
         }
 
@@ -310,7 +315,8 @@ public class AdminService : IAdminService
         return new ApiResponseDto { IsSuccess = false, Message = "Failed to Unblock user", StatusCode = 400 };
     }
 
-  
+
+    // DoAnnouncementAsync with standardized notification format
     public async Task<ApiResponseDto> DoAnnouncementAsync(AnnounceDto announceDto)
     {
         if (announceDto == null)
@@ -330,15 +336,25 @@ public class AdminService : IAdminService
             CreatedAt = DateTime.UtcNow
         };
 
-        await _hubContext.Clients.All.SendAsync("ReceiveNotification", announceDto.Title);
+        // Create a structured notification object
+        var notificationObject = new
+        {
+            type = "announcement",
+            content = $"{announceDto.Title}: {announceDto.Description}",
+            id = Guid.NewGuid().ToString(),
+            timestamp = DateTime.UtcNow,
+            title = announceDto.Title,
+            description = announceDto.Description
+        };
 
+        await _Context.Clients.All.SendAsync("ReceiveNotification", notificationObject);
         await _adminRepository.DoAnnounceAsync(announce);
 
         return new ApiResponseDto
         {
             IsSuccess = true,
             Message = "Announcement created successfully.",
-             StatusCode = 200
+            StatusCode = 200
         };
     }
 

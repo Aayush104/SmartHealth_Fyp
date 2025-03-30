@@ -32,20 +32,23 @@ const DoctorNotifications = () => {
     connectionRef.current.on("ReceiveNotification", (message) => {
       console.log("Received notification:", message);
       
-      // Check if the message is an announcement
-      const isAnnouncement = typeof message === 'string' || message.type === 'announcement';
+      // Determine if message is an object with type or a string
+      const messageType = typeof message === 'object' && message !== null ? message.type : 'system';
+      const messageContent = typeof message === 'object' && message !== null ? message.content : message;
       
       const newNotification = {
-        id: message.id || `notification-${Date.now()}`,
-        type: isAnnouncement ? "announcement" : (message.type || "system"),
-        message: isAnnouncement ? message : (message.content || message),
+        id: typeof message === 'object' && message !== null && message.id ? message.id : `notification-${Date.now()}`,
+        type: messageType,
+        message: messageContent,
         read: false,
         timestamp: new Date(),
-        icon: getIconForType(isAnnouncement ? "announcement" : (message.type || "system")),
-        link: message.link || null,
-        doctorId: message.doctorId || null,
-        markAs: 1, // Set to 1 to ensure it's counted as unread
-        isMarked: false // For tracking announcement read status
+        icon: getIconForType(messageType),
+        link: typeof message === 'object' && message !== null && message.doctorId ? `/Doctors/${message.doctorId}` : null,
+        doctorId: typeof message === 'object' && message !== null ? message.doctorId : null,
+        markAs: 1,
+        isMarked: false,
+        title: typeof message === 'object' && message !== null ? message.title : null,
+        description: typeof message === 'object' && message !== null ? message.description : null
       };
 
       setNotifications((prev) => [newNotification, ...prev]);
@@ -70,8 +73,6 @@ const DoctorNotifications = () => {
         }
       );
 
-      console.log("reviews", response);
-
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.isSuccess && responseData.data && responseData.data.$values) {
@@ -84,7 +85,7 @@ const DoctorNotifications = () => {
             message: `${notification.userName} left a review: "${notification.reviewText}"`,
             read: false,
             timestamp: new Date(notification.createdAt),
-            icon: getIconForType("message"),
+            icon: getIconForType("review"),
             link: `/Doctors/${notification.doctorId}`,
             markAs: notification.markAs,
           }));
@@ -115,12 +116,12 @@ const DoctorNotifications = () => {
           id: `announcement-${announcement.id}`,
           type: "announcement",
           message: `${announcement.title}: ${announcement.description}`,
-          read: announcement.isMarked, // Set read status based on isMarked
+          read: announcement.isMarked,
           timestamp: new Date(announcement.createdAt),
           icon: getIconForType("announcement"),
           link: null,
-          markAs: announcement.isMarked ? 0 : 1, // Set markAs based on isMarked
-          announcementId: announcement.id, // Store the announcement ID for API calls
+          markAs: announcement.isMarked ? 0 : 1,
+          announcementId: announcement.id,
           isMarked: announcement.isMarked,
           title: announcement.title,
           description: announcement.description
@@ -171,12 +172,31 @@ const DoctorNotifications = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const markNotificationAsRead = (notificationId) => {
-    setNotifications(prevNotifications => 
-      prevNotifications.map(n => 
-        n.id === notificationId ? { ...n, read: true, markAs: 0 } : n
-      )
-    );
+  const markNotificationAsRead = async (notificationId) => {
+    // Find the notification
+    const notification = notifications.find(n => n.id === notificationId);
+    
+    if (!notification) return;
+    
+    try {
+      // If it's an announcement notification
+      if (notification.type === "announcement" && notification.announcementId) {
+        // Mark specific announcement as read if needed
+        // This would require a new API endpoint, but we're using markAllAsRead for now
+      } else if (notification.doctorId) {
+        // For doctor-specific notifications, you might want a specific endpoint
+        // This would require a new API endpoint, but we're using markAllAsRead for now
+      }
+      
+      // Update local state regardless
+      setNotifications(prevNotifications => 
+        prevNotifications.map(n => 
+          n.id === notificationId ? { ...n, read: true, markAs: 0 } : n
+        )
+      );
+    } catch (error) {
+      console.error("Error marking notification as read:", error);
+    }
   };
 
   // Mark all doctor notifications as read
@@ -192,10 +212,7 @@ const DoctorNotifications = () => {
         }
       );
       
-      console.log("Doctor mark all as read response:", response);
-
       if (response.status === 200) {
-        // Mark non-announcement notifications as read
         setNotifications(prevNotifications =>
           prevNotifications.map(notification => 
             notification.type !== "announcement" 
@@ -217,10 +234,7 @@ const DoctorNotifications = () => {
         "https://localhost:7070/api/Admin/MarkAllAnnouncementAsRead"
       );
       
-      console.log("Announcements mark all as read response:", response);
-
       if (response.status === 200) {
-        // Update local state to mark all announcements as read
         setNotifications(prevNotifications =>
           prevNotifications.map(notification => 
             notification.type === "announcement" 

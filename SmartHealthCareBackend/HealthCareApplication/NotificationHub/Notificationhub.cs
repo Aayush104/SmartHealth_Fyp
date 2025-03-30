@@ -13,5 +13,6 @@ namespace HealthCareApplication.NotificationHub
         {
             await Clients.All.SendAsync("ReceiveNotification", message);
         }
+
     }
 }
