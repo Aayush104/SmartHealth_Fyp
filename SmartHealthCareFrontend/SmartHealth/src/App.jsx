@@ -33,6 +33,7 @@ import VideoCall from "./Pages/VideoCall/VideoCall";
 import { Protect, RedirectIfAuthenticated } from "./Components/Protected/Protect";
 import UnAuthorized from "./Components/Helper/UnAuthorized";
 import { toast } from 'react-toastify';
+import FAQSection from "./Pages/Q N A/FAQSection";
 
 // App component
 const App = () => {
@@ -118,6 +119,7 @@ const App = () => {
           }
         />
         <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/FAQ" element={<FAQSection />} />
         <Route path="/meeting/:meetingId" element={<VideoCall />} />
         <Route path="/Doctors" element={<FindDoctor />} />
         <Route path="/Doctors/:id" element={<DoctorDetail />} />

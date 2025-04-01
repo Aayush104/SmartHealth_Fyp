@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,11 @@ namespace HealthCareApplication.Dtos.UserDto
         public string? LicenseFile { get; set; }
         public string? QualificationsFile { get; set; }
         public string? GovernmentIdFile { get; set; }
+
+        public string? FromDay { get; set; }
+        public string? ToDay { get; set; }
+        public string? FromTime { get; set; }
+        public string? ToTime { get; set; }
 
         public bool? IsBlocked { get; set; }
         public List<AdditionalnfoDto> AdditionalInfo { get; set; }

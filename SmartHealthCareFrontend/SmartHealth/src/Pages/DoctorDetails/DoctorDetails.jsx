@@ -23,9 +23,9 @@ const DoctorDetails = () => {
   const [doctorDetails, setDoctorDetails] = useState(null);
   const [error, setError] = useState(null);
   const [showMore, setShowMore] = useState(false);
-    const [showAdditionalForm, setShowAdditionalForm] = useState(false);
-    const[viewReply, setViewReply] = useState(false)
-    const [userRole, setUserRole] = useState(null);
+  const [showAdditionalForm, setShowAdditionalForm] = useState(false);
+  const [viewReply, setViewReply] = useState(false);
+  const [userRole, setUserRole] = useState(null);
 
   const handleCloseForms = () => {
     localStorage.removeItem('Null');
@@ -34,23 +34,17 @@ const DoctorDetails = () => {
     document.body.style.overflow = 'auto'; // Enable scrolling
   };
 
+  const token = Cookies.get("Token");
 
-const token = Cookies.get("Token");
+  let userId;
+  let role;
+  if(token) {
+    const decodedToken = JSON.parse(atob(token.split(".")[1]));
+    userId = decodedToken.userId;
+    role = decodedToken.Role;
+  }
 
-let userId;
-let role;
-if(token)
-{
-  const decodedToken = JSON.parse(atob(token.split(".")[1]));
-  userId = decodedToken.userId;
-  role =  decodedToken.Role;
-}
-
-
-
-
-  useEffect(()=>
-  {
+  useEffect(() => {
     if (role === "Doctor") {
       setUserRole("Doctor");
     } else if (role === "Admin") {
@@ -59,14 +53,11 @@ if(token)
       setUserRole("Patient"); // Default to Patient if no specific role
     }
     
-  if(localStorage.getItem("Null"))
-    {setShowAdditionalForm(true);
+    if(localStorage.getItem("Null")) {
+      setShowAdditionalForm(true);
       document.body.style.overflow = 'hidden';
-      
     }
-    
-  })
-
+  }, [role]);
 
   const renderNavigation = () => {
     switch (userRole) {
@@ -78,26 +69,23 @@ if(token)
         return <Navbar />;
     }
   };
- 
 
   useEffect(() => {
-console.log(userRole);
+    console.log(userRole);
 
     const details = localStorage.getItem('AppointmentDetails');
 
-    if(details)
-    {
+    if(details) {
       localStorage.removeItem("AppointmentDetails");
-
     }
+    
     const fetchDoctorDetails = async () => {
       try {
         const response = await axios.get(`https://localhost:7070/api/Doctor/GetDoctorDetails/${id}`);
         setDoctorDetails(response.data?.data || {});
 
-        console.log("Yo ho Id", response.data?.data.doctor?.id );
-        if(userId == response.data?.data.doctor?.id)
-        {
+        console.log("Yo ho Id", response.data?.data.doctor?.id);
+        if(userId == response.data?.data.doctor?.id) {
           setViewReply(true);
         }
         console.log(response.data?.data);
@@ -108,7 +96,7 @@ console.log(userRole);
     };
 
     fetchDoctorDetails();
-  }, [id]);
+  }, [id, userId]);
 
   const handleReadMoreClick = () => setShowMore(true);
   const handleShowLessClick = () => setShowMore(false);
@@ -126,124 +114,119 @@ console.log(userRole);
 
   return (
     <div className="bg-neutral-100">
-    
-    {renderNavigation()}
-    <ChatBot />
+      {renderNavigation()}
+      <ChatBot />
       <div className="px-28 mt-2">
         <SearchDoctor />
       </div>
       {showAdditionalForm && <PersonalDetailsForm onClose={handleCloseForms} />}
       <div className='flex gap-2'>
-      <div className="mx-8 mb-8 px-20 ">
-        <div className="border w-[48rem] bg-white p-2 flex items-center shadow justify-between">
-          <div className="flex gap-8">
-            <img
-              src={doctorDetails.doctor?.profileget || placeholderImage}
-              className="h-30 w-40 text-white border rounded"
-              alt={`Dr. ${doctor?.fullName || "Doctor"}`}
-            />
-            <div>
-              <div className="mt-2 text-gray-500 leading-7">
-                <h2 className="text-3xl font-bold capitalize text-sky-500">
-                  Dr. {doctor?.fullName || "Unknown"}
-                </h2>
-                <span className="mt-3 text-sm">Profile is Claimed</span>
-                <p className="flex gap-2">
-                  <PiStethoscopeBold className="mt-2" />
-                  {doctor?.experience || "N/A"} experience overall
-                </p>
-                <p className="flex gap-2">
-                  <FaUserDoctor className="mt-1.5" />
-                  {doctor?.specialization || "Specialization not available"}
-                </p>
-                <p className="uppercase flex gap-2">
-                  <GiGraduateCap className="mt-1.5 text-lg" />
-                  {doctor?.qualifications || "Qualifications not available"}
-                </p>
-                {doctor?.fee && (
+        <div className="mx-8 mb-8 px-20 ">
+          <div className="border w-[48rem] bg-white p-2 flex items-center shadow justify-between">
+            <div className="flex gap-8">
+              <img
+                src={doctorDetails.doctor?.profileget || placeholderImage}
+                className="h-30 w-40 text-white border rounded"
+                alt={`Dr. ${doctor?.fullName || "Doctor"}`}
+              />
+              <div>
+                <div className="mt-2 text-gray-500 leading-7">
+                  <h2 className="text-3xl font-bold capitalize text-sky-500">
+                    Dr. {doctor?.fullName || "Unknown"}
+                  </h2>
+                  <span className="mt-3 text-sm">Profile is Claimed</span>
                   <p className="flex gap-2">
-                    <MdPayment className="mt-2" />
-                    Fee: Rs.{doctor?.fee}
+                    <PiStethoscopeBold className="mt-2" />
+                    {doctor?.experience || "N/A"} experience overall
                   </p>
-                )}
+                  <p className="flex gap-2">
+                    <FaUserDoctor className="mt-1.5" />
+                    {doctor?.specialization || "Specialization not available"}
+                  </p>
+                  <p className="uppercase flex gap-2">
+                    <GiGraduateCap className="mt-1.5 text-lg" />
+                    {doctor?.qualifications || "Qualifications not available"}
+                  </p>
+                  {doctor?.fee && (
+                    <p className="flex gap-2">
+                      <MdPayment className="mt-2" />
+                      Fee: Rs.{doctor?.fee}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="mr-4 flex gap-8 flex-col">
+              <div className="border p-2 rounded-full bg-neutral-200 cursor-pointer">
+                <FaRegHeart className="text-xl text-gray-700 hover:text-red-500 transition ease-out" />
+              </div>
+              <div className="border p-2 rounded-full bg-neutral-200 cursor-pointer">
+                <FaRegComment className="text-gray-700 text-xl transition ease-out hover:text-sky-600" />
               </div>
             </div>
           </div>
-          <div className="mr-4 flex gap-8 flex-col">
-            <div className="border p-2 rounded-full bg-neutral-200 cursor-pointer">
-              <FaRegHeart className="text-xl text-gray-700 hover:text-red-500 transition ease-out" />
-            </div>
-            <div className="border p-2 rounded-full bg-neutral-200 cursor-pointer">
-              <FaRegComment className="text-gray-700 text-xl transition ease-out hover:text-sky-600" />
-            </div>
-          </div>
-        </div>
 
-        <div className="bg-white border w-[48rem] mt-8 p-4 rounded-sm shadow-md">
-          <div className="mb-5">
-            <h2 className="font-bold text-1.8rem">Overview</h2>
-            <p className="text-md text-gray-500 mt-4 text-justify">{doctor?.description || "No description available."}</p>
-            {!showMore && (
-              <button
-                onClick={handleReadMoreClick}
-                className="text-sky-500 mt-2 cursor-pointer"
-              >
-                Read More
-              </button>
+          <div className="bg-white border w-[48rem] mt-8 p-4 rounded-sm shadow-md">
+            <div className="mb-5">
+              <h2 className="font-bold text-1.8rem">Overview</h2>
+              <p className="text-md text-gray-500 mt-4 text-justify">{doctor?.description || "No description available."}</p>
+              {!showMore && (
+                <button
+                  onClick={handleReadMoreClick}
+                  className="text-sky-500 mt-2 cursor-pointer"
+                >
+                  Read More
+                </button>
+              )}
+            </div>
+
+            {showMore && (
+              <div>
+                {/* Experiences Section */}
+                <div className="mb-5">
+                  <h2 className="font-bold text-1.8rem">Experience</h2>
+                  <ul className="text-md text-gray-500 mt-4 list-decimal pl-5">
+                    {additionalInfo?.experiences?.$values?.length > 0 ? (
+                      additionalInfo.experiences.$values.map((exp, idx) => (
+                        <li key={idx} className='font-semibold leading-loose'>{exp}</li>
+                      ))
+                    ) : (
+                      <li>No experience data available.</li>
+                    )}
+                  </ul>
+                </div>
+
+                {/* Trainings Section */}
+                <div className="mb-5">
+                  <h2 className="font-bold text-1.8rem">Education and Training</h2>
+                  <ul className="text-md text-gray-500 mt-4 list-decimal pl-5">
+                    {additionalInfo?.trainings?.$values?.length > 0 ? (
+                      additionalInfo.trainings.$values.map((training, idx) => (
+                        <li key={idx} className='font-semibold leading-loose'>{training}</li>
+                      ))
+                    ) : (
+                      <li>No training data available.</li>
+                    )}
+                  </ul>
+                </div>
+
+                <button
+                  onClick={handleShowLessClick}
+                  className="text-sky-500 mt-2 cursor-pointer"
+                >
+                  Show Less
+                </button>
+              </div>
             )}
           </div>
+          <Comments DoctorId={id} photo={doctorDetails.doctor?.profileget} viewReply={viewReply} DoctorName={doctor?.fullName} />
+        </div>
 
-          {showMore && (
-            <div>
-              {/* Experiences Section */}
-              <div className="mb-5">
-                <h2 className="font-bold text-1.8rem">Experience</h2>
-                <ul className="text-md text-gray-500 mt-4 list-decimal pl-5">
-                  {additionalInfo?.experiences?.$values?.length > 0 ? (
-                    additionalInfo.experiences.$values.map((exp, idx) => (
-                      <li key={idx} className='font-semibold leading-loose'>{exp}</li>
-                    ))
-                  ) : (
-                    <li>No experience data available.</li>
-                  )}
-                </ul>
-              </div>
-
-              {/* Trainings Section */}
-              <div className="mb-5">
-                <h2 className="font-bold text-1.8rem">Education and Training</h2>
-                <ul className="text-md text-gray-500 mt-4 list-decimal pl-5">
-                  {additionalInfo?.trainings?.$values?.length > 0 ? (
-                    additionalInfo.trainings.$values.map((training, idx) => (
-                      <li key={idx} className='font-semibold leading-loose'>{training}</li>
-                    ))
-                  ) : (
-                    <li>No training data available.</li>
-                  )}
-                </ul>
-              </div>
-
-              <button
-                onClick={handleShowLessClick}
-                className="text-sky-500 mt-2 cursor-pointer"
-              >
-                Show Less
-              </button>
-            </div>
+        <div>
+          {userRole !== "Doctor" && (
+            <TimeSlot fee={doctor?.fee} Id={id} />
           )}
         </div>
-        <Comments DoctorId = { id } photo={doctorDetails.doctor?.profileget} viewReply = {viewReply} DoctorName = {doctor?.fullName} />
-      </div>
-
-      <div>
-      
-        <TimeSlot fee={doctor?.fee} Id={id} />
-
-      
-
-      
-</div>
-
       </div>
 
       <Footer />

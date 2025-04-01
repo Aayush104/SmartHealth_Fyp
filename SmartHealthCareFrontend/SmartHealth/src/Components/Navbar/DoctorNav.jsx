@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import { NavLink } from 'react-router-dom';
 import { MdOutlineRateReview } from "react-icons/md";
 import DoctorNotifications from '../DoctorNotification'; // Import the new component
+import { GoReport } from 'react-icons/go';
 
 const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick, doctorData }) => {
   const handleLogout = () => {
@@ -20,6 +21,7 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick, doc
 
   const token = Cookies.get("Token");
   const decodedToken = token ? JSON.parse(atob(token.split('.')[1])) : {};
+ 
   const userName = decodedToken.Name || "Doctor";
 
   const placeholderImage = "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg";
@@ -29,12 +31,12 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick, doc
       <img src={logo} alt="Medical Logo" className="w-36 cursor-pointer" />
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-8">
-        <NavLink to={`/DoctorProfile/${doctorData?.data?.doctor?.fullName || ''}`}>
-  <div className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
-    <MdHome className="text-3xl mt-1 group-hover:text-sky-400" />
-    <span className="mt-1">Home</span>
-  </div>
-</NavLink>
+          <NavLink to={`/DoctorProfile/${userName || ''}`}>
+            <div className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
+              <MdHome className="text-3xl mt-1 group-hover:text-sky-400" />
+              <span className="mt-1">Home</span>
+            </div>
+          </NavLink>
 
           <NavLink to="/DoctorAppointments">
             <li className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
@@ -43,7 +45,7 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick, doc
             </li>
           </NavLink>
           
-          {/* Replace the notifications li with our new component */}
+          {/* Doctor notifications component */}
           <DoctorNotifications />
 
           <NavLink to="/chat">  
@@ -82,9 +84,14 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick, doc
                 <MdOutlineRateReview className="text-gray-400" /> View Reviews
               </li>
             </NavLink>
+            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+              <GoReport className="text-gray-400" /> Do Report
+            </li>
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={handleLogout}>
               <TbLogout2 className="text-gray-400" /> Logout
             </li>
+
+          
           </ul>
         </div>
       </div>

@@ -162,5 +162,11 @@ namespace HealthCarePersistence.Repository
 
             return false;
         }
+
+        public async Task DeleteAdditionalAsync(DoctorAdditionalInfo info)
+        {
+            _dbContext.DoctorAdditionalInfos.Remove(info);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

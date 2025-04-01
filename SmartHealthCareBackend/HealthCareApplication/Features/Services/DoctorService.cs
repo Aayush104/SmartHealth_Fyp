@@ -120,51 +120,45 @@ namespace HealthCareApplication.Features.Services
         {
             try
             {
+                // First, get all existing records for this user
                 var existingRecords = await _doctorRepository.GetByUserIdFromAdditionalAsync(request.UserId);
 
-                int experienceIndex = 0, trainingIndex = 0;
-
-                // Update existing records with missing values
-                foreach (var record in existingRecords)
+                // If there are existing records, delete them all first
+                // This is the cleanest approach to avoid duplicate entries
+                if (existingRecords.Any())
                 {
-                    if (string.IsNullOrEmpty(record.ExperienceDetail) && experienceIndex < request.Experiences.Count)
+                    foreach (var record in existingRecords)
                     {
-                        record.ExperienceDetail = request.Experiences[experienceIndex++];
+                        await _doctorRepository.DeleteAdditionalAsync(record);
                     }
-
-                    if (string.IsNullOrEmpty(record.Trainings) && trainingIndex < request.Trainings.Count)
-                    {
-                        record.Trainings = request.Trainings[trainingIndex++];
-                    }
-
-                    await _doctorRepository.UpdateAdditionalAsync(record);
                 }
 
-                // Add new records for remaining experiences and trainings
-                while (experienceIndex < request.Experiences.Count || trainingIndex < request.Trainings.Count)
+                // Now add all the new experiences and trainings
+                // We'll use the longer of the two lists to determine how many records to create
+                int maxCount = Math.Max(request.Experiences.Count, request.Trainings.Count);
+
+                for (int i = 0; i < maxCount; i++)
                 {
                     var newRecord = new DoctorAdditionalInfo
                     {
                         Id = Guid.NewGuid().ToString(),
                         UserId = request.UserId,
-                        ExperienceDetail = experienceIndex < request.Experiences.Count ? request.Experiences[experienceIndex++] : null,
-                        Trainings = trainingIndex < request.Trainings.Count ? request.Trainings[trainingIndex++] : null
+                        ExperienceDetail = i < request.Experiences.Count ? request.Experiences[i] : null,
+                        Trainings = i < request.Trainings.Count ? request.Trainings[i] : null
                     };
 
                     await _doctorRepository.AddAdditionalInfoAsync(newRecord);
                 }
 
-               
                 return new ApiResponseDto
                 {
                     IsSuccess = true,
-                    Message = "Additional Info Added Successfully",
+                    Message = existingRecords.Any() ? "Additional Info Updated Successfully" : "Additional Info Added Successfully",
                     StatusCode = 200
                 };
             }
             catch (Exception ex)
             {
-               
                 return new ApiResponseDto
                 {
                     IsSuccess = false,
@@ -173,6 +167,64 @@ namespace HealthCareApplication.Features.Services
                 };
             }
         }
+
+        //public async Task<ApiResponseDto> CreateOrUpdateDoctorAdditionalInfo(AdditionalnfoDto request)
+        //{
+        //    try
+        //    {
+        //        var existingRecords = await _doctorRepository.GetByUserIdFromAdditionalAsync(request.UserId);
+
+        //        int experienceIndex = 0, trainingIndex = 0;
+
+        //        // Update existing records with missing values
+        //        foreach (var record in existingRecords)
+        //        {
+        //            if (string.IsNullOrEmpty(record.ExperienceDetail) && experienceIndex < request.Experiences.Count)
+        //            {
+        //                record.ExperienceDetail = request.Experiences[experienceIndex++];
+        //            }
+
+        //            if (string.IsNullOrEmpty(record.Trainings) && trainingIndex < request.Trainings.Count)
+        //            {
+        //                record.Trainings = request.Trainings[trainingIndex++];
+        //            }
+
+        //            await _doctorRepository.UpdateAdditionalAsync(record);
+        //        }
+
+        //        // Add new records for remaining experiences and trainings
+        //        while (experienceIndex < request.Experiences.Count || trainingIndex < request.Trainings.Count)
+        //        {
+        //            var newRecord = new DoctorAdditionalInfo
+        //            {
+        //                Id = Guid.NewGuid().ToString(),
+        //                UserId = request.UserId,
+        //                ExperienceDetail = experienceIndex < request.Experiences.Count ? request.Experiences[experienceIndex++] : null,
+        //                Trainings = trainingIndex < request.Trainings.Count ? request.Trainings[trainingIndex++] : null
+        //            };
+
+        //            await _doctorRepository.AddAdditionalInfoAsync(newRecord);
+        //        }
+
+
+        //        return new ApiResponseDto
+        //        {
+        //            IsSuccess = true,
+        //            Message = "Additional Info Added Successfully",
+        //            StatusCode = 200
+        //        };
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return new ApiResponseDto
+        //        {
+        //            IsSuccess = false,
+        //            Message = $"An error occurred: {ex.Message}",
+        //            StatusCode = 500
+        //        };
+        //    }
+        //}
 
         public async Task<ApiResponseDto> DoCommentAsync(CommentDtoo commentDtoo)
         {
@@ -331,17 +383,32 @@ namespace HealthCareApplication.Features.Services
         {
             try
             {
-                // Decrypt the doctor ID
-                var doctorId = _dataProtector.Unprotect(Id);
+                string doctorId;
+
+                // Try to decrypt the ID
+                try
+                {
+                    doctorId = _dataProtector.Unprotect(Id);
+                }
+                catch
+                {
+                    // If decryption fails, assume it's already in plain text
+                    doctorId = Id;
+                }
 
                 // Fetch doctor details
                 var doctorDetails = await _doctorRepository.GetDoctorBYId(doctorId);
                 if (doctorDetails == null)
                 {
-                    throw new Exception("Doctor not found.");
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = false,
+                        Message = "Doctor not found.",
+                        StatusCode = 404
+                    };
                 }
 
-                // Fetch additional records by user ID
+                // Fetch additional records
                 var existingRecords = await _doctorRepository.GetByUserIdFromAdditionalAsync(doctorId);
 
                 // Extract experiences and trainings
@@ -355,7 +422,7 @@ namespace HealthCareApplication.Features.Services
                     .Select(d => d.Trainings)
                     .ToList();
 
-                // Map data to DoctorDetailsDto
+                // Map data to DTO
                 var doctor = new DoctorDetailsDto
                 {
                     Id = doctorDetails.Id,
@@ -370,24 +437,27 @@ namespace HealthCareApplication.Features.Services
                     Experience = doctorDetails.Experience,
                     phoneNumber = doctorDetails.User.PhoneNumber,
                     GovernmentIdFile = doctorDetails.GovernmentIdFilePath,
-                    QualificationsFile = doctorDetails.QualificationsFilePath ,
-                    LicenseFile = doctorDetails .LicenseFilePath ,  
-
-
+                    QualificationsFile = doctorDetails.QualificationsFilePath,
+                    LicenseFile = doctorDetails.LicenseFilePath,
+                    FromDay = doctorDetails.FromDay,
+                    FromTime = doctorDetails.FromTime,
+                    ToDay = doctorDetails.ToDay,
+                    ToTime = doctorDetails.ToTime
+                    
                 };
 
                 // Map additional info
                 var additionalInfo = new AdditionalnfoDto
                 {
                     Experiences = experiences,
-                    Trainings = trainings,
+                    Trainings = trainings
                 };
 
-                // Create the response
+                // Create response
                 return new ApiResponseDto
                 {
                     IsSuccess = true,
-                    Data = new { doctor, additionalInfo }, // Anonymous object
+                    Data = new { doctor, additionalInfo },
                     StatusCode = 200
                 };
             }
@@ -404,8 +474,8 @@ namespace HealthCareApplication.Features.Services
         }
 
 
-    
-public async Task<ApiResponseDto> GetDoctorNotificationAsync(string Id)
+
+        public async Task<ApiResponseDto> GetDoctorNotificationAsync(string Id)
         {
             try
             {

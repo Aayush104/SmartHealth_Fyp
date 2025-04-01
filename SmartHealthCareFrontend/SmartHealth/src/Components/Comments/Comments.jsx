@@ -17,6 +17,7 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
   const [replyTexts, setReplyTexts] = useState({}); 
   const [showDelete, setShowDelete] = useState(false);
   const [hasUserReviewed, setHasUserReviewed] = useState(false);
+  const [users, setUser] = useState(false)
 
   // Get and decode JWT token
   const token = Cookies.get("Token");
@@ -68,8 +69,18 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
       };
 
       if(Role == "Admin") {
+        setView(true);
         setShowDelete(true);
+       
       }
+      if(Role == "Patient") {
+
+        setUser(true)
+      
+       
+      }
+
+
 
       checkCommentValidation();
     }
@@ -279,7 +290,7 @@ const Comments = ({ DoctorId, photo, viewReply, DoctorName }) => {
     <div className="max-w-3xl mx-auto py-6">
       <h2 className="text-2xl font-bold mb-6">Patient Stories</h2>
 
-      {view && !viewReply && !hasUserReviewed && (
+      {view && !viewReply && users && !hasUserReviewed &&  (
         <div className="bg-white rounded-lg shadow p-6 mb-8">
           <h3 className="text-lg font-semibold mb-4">Write a Review</h3>
           <form onSubmit={handleSubmit}>

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillFileAdd } from 'react-icons/ai';
 import { RxCross2 } from 'react-icons/rx';
 import { motion } from 'framer-motion';
 import Select from 'react-select'; 
 import axios from 'axios';
-import { toast } from 'react-toastify'; // Import toast
+import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 
 const CompleteProfile = ({ onClose }) => {
@@ -17,14 +17,68 @@ const CompleteProfile = ({ onClose }) => {
   const [availableToDay, setAvailableToDay] = useState('');
   const [experience, setExperience] = useState('');
   const [description, setDescription] = useState('');
+  const [existingProfileImage, setExistingProfileImage] = useState(null);
+  const [isUpdateMode, setIsUpdateMode] = useState(false);
 
   const token = Cookies.get("Token");
-
   const decodedToken = JSON.parse(atob(token.split('.')[1]));
   const userId = decodedToken.userId;
 
-  
   const experienceRegex = /^(?:\d+)\s?(?:year|month)s?$/;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://localhost:7070/api/Doctor/GetDoctorDetails/${userId}`);
+        
+        if (response.data && response.data.isSuccess) {
+          const doctorData = response.data.data.doctor;
+          let hasExistingData = false;
+          
+          // Pre-fill form fields with existing data
+          if (doctorData.experience) {
+            setExperience(doctorData.experience);
+            hasExistingData = true;
+          }
+          if (doctorData.fee) {
+            setConsultationFee(doctorData.fee);
+            hasExistingData = true;
+          }
+          if (doctorData.fromDay) {
+            setAvailableFromDay(doctorData.fromDay);
+            hasExistingData = true;
+          }
+          if (doctorData.toDay) {
+            setAvailableToDay(doctorData.toDay);
+            hasExistingData = true;
+          }
+          if (doctorData.fromTime) {
+            setAvailableTimeFrom(doctorData.fromTime);
+            hasExistingData = true;
+          }
+          if (doctorData.toTime) {
+            setAvailableTimeTo(doctorData.toTime);
+            hasExistingData = true;
+          }
+          if (doctorData.description) {
+            setDescription(doctorData.description);
+            hasExistingData = true;
+          }
+          if (doctorData.profileget) {
+            setExistingProfileImage(doctorData.profileget);
+            hasExistingData = true;
+          }
+          
+          // Set update mode if any existing data is found
+          setIsUpdateMode(hasExistingData);
+        }
+      } catch (error) {
+        console.error("Error fetching doctor details:", error);
+      }
+    };
+    
+    fetchData();
+  }, [userId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,10 +88,11 @@ const CompleteProfile = ({ onClose }) => {
       return;
     }
     
-
     const formData = new FormData();
     formData.append("userId", userId);
-    formData.append('Profile', selectedFile);
+    if (selectedFile) {
+      formData.append('Profile', selectedFile);
+    }
     formData.append('Experience', experience);
     formData.append('FromDay', availableFromDay);
     formData.append('ToDay', availableToDay);
@@ -47,19 +102,15 @@ const CompleteProfile = ({ onClose }) => {
     formData.append('Fee', consultationFee);
 
     try {
-      const response = await axios.post("https://localhost:7070/api/Doctor/AddProfile", formData, {
-    
-      });
-
+      const response = await axios.post("https://localhost:7070/api/Doctor/AddProfile", formData);
 
       if (response.status === 200) {
-        toast.success('Profile added successfully!');
+        toast.success(isUpdateMode ? 'Profile updated successfully!' : 'Profile added successfully!');
         onClose(); 
         window.location.reload();
-
       }
     } catch (error) {
-      toast.error('Error submitting profile. Please try again later.');
+      toast.error(isUpdateMode ? 'Error updating profile. Please try again later.' : 'Error submitting profile. Please try again later.');
     }
   };
 
@@ -68,8 +119,6 @@ const CompleteProfile = ({ onClose }) => {
     setSelectedFile(file);
     setFilePreview(URL.createObjectURL(file)); 
   };
-
- 
 
   const handleFeeChange = (event) => {
     setConsultationFee(event.target.value);
@@ -132,7 +181,7 @@ const CompleteProfile = ({ onClose }) => {
         </div>
         <div className='flex items-center justify-between mt-2'>
           <p className="text-lg font-semibold text-gray-500">Smart Health</p>
-          <p className="text-[15px] text-blue-400">Add Your Details</p>
+          <p className="text-[15px] text-blue-400">{isUpdateMode ? 'Update Your Details' : 'Add Your Details'}</p>
         </div>
         <div className='border'></div>
 
@@ -249,11 +298,11 @@ const CompleteProfile = ({ onClose }) => {
           </div>
 
           <div className="mb-4 w-full">
-          <label className="text-gray-700 text-sm" htmlFor="Add profile">
-                Add Profile
-              </label>
-            <div className="flex  items-center gap-4">
-            <label className="inline-flex items-center cursor-pointer border bg-sky-500 text-white py-2 px-4 rounded h-12">
+            <label className="text-gray-700 text-sm" htmlFor="Add profile">
+              Add Profile
+            </label>
+            <div className="flex items-center gap-4">
+              <label className="inline-flex items-center cursor-pointer border bg-sky-500 text-white py-2 px-4 rounded h-12">
                 <AiFillFileAdd className="mr-2 text-lg" />
                 <span>Choose file</span>
                 <input
@@ -264,14 +313,16 @@ const CompleteProfile = ({ onClose }) => {
                 />
               </label>
               {filePreview && (
-               <img src={filePreview} alt="File preview" className="h-20 object-contain" />
-              
+                <img src={filePreview} alt="File preview" className="h-20 object-contain" />
+              )}
+              {!filePreview && existingProfileImage && (
+                <img src={existingProfileImage} alt="Existing profile" className="h-20 object-contain" />
               )}
             </div>
           </div>
 
           <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded">
-            Submit Profile
+            {isUpdateMode ? 'Update Profile' : 'Submit Profile'}
           </button>
         </form>
       </motion.div>

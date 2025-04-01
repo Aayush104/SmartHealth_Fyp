@@ -52,12 +52,12 @@ const Dashboard = () => {
             <span className="text-sm sm:text-md hidden sm:inline">Announcement</span>
           </li>
           <li
-            onClick={() => handleNavigation("/admin/profile")}
+            onClick={() => handleNavigation("/admin/feedback")}
             className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2 hover:bg-sky-600 p-3 rounded-md transition-colors duration-200 cursor-pointer"
             title="Profile"
           >
             <RiUserFill className="text-xl" />
-            <span className="text-sm sm:text-md hidden sm:inline">Profile</span>
+            <span className="text-sm sm:text-md hidden sm:inline">FeedBacks</span>
           </li>
         </ul>
       </div>

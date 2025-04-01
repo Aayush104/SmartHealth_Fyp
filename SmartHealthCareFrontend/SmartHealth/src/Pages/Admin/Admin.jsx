@@ -120,9 +120,9 @@ const Admin = () => {
               <p className="text-center text-white font-bold text-xl"><Announcement /> </p>
             </div>
           )}
-          {section === "profile" && (
+          {section === "feedback" && (
             <div className="bg-yellow-600 w-full p-4">
-              <p className="text-center text-white font-bold text-xl">This is the Profile section</p>
+              <p className="text-center text-white font-bold text-xl">View Feed backs</p>
             </div>
           )}
         </div>
