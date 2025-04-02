@@ -9,6 +9,7 @@ using HealthCareDomain.Entity.Chat;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Otp;
 using HealthCareDomain.Entity.Patients;
+using HealthCareDomain.Entity.Reporting;
 using HealthCareDomain.Entity.Review;
 using HealthCareDomain.Entity.UserEntity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -38,6 +39,7 @@ namespace HealthCarePersistence.DatabaseContext
         public DbSet<Announce> Announces { get; set; }
 
         public DbSet<Reply> Replies { get; set; }
+        public DbSet<Report> Reports{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -147,6 +149,13 @@ namespace HealthCarePersistence.DatabaseContext
                 .WithMany(d => d.Replies)  
                 .HasForeignKey(r => r.DoctorId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Report>()
+    .HasOne(p => p.User)
+    .WithMany(u => u.Reports)  
+    .HasForeignKey(p => p.UserId)
+    .OnDelete(DeleteBehavior.Cascade);
+
 
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
