@@ -3,6 +3,7 @@ using HealthCareDomain.Contract.ContractDto.AdminDto;
 using HealthCareDomain.Entity.Announcement;
 using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Entity.Patients;
+using HealthCareDomain.Entity.Reporting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +27,7 @@ namespace HealthCareDomain.IRepository
 
         Task<bool> UpdateNotificationStatus();
 
-
-
-
+        Task DoReportAsync(Report report);
 
     }
 }

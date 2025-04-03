@@ -102,6 +102,52 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "DoReport",
+    "RelativePath": "api/Admin/DoReport",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Urgency",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ReportType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Subject",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Photo",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
     "Method": "GetAllBookings",
     "RelativePath": "api/Admin/GetAllBookings",
     "HttpMethod": "GET",

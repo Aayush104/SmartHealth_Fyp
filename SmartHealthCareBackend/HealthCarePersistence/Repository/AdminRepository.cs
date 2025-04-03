@@ -10,6 +10,7 @@ using HealthCareDomain.Entity.Doctors;
 using HealthCareDomain.Contract.ContractDto.AdminDto;
 using HealthCareDomain.Entity.Announcement;
 using HealthCareDomain.Entity.Review;
+using HealthCareDomain.Entity.Reporting;
 
 namespace HealthCarePersistence.Repository
 {
@@ -55,6 +56,12 @@ namespace HealthCarePersistence.Repository
         public async Task DoAnnounceAsync(Announce announce)
         {
             await _dbContext.Announces.AddAsync(announce);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task DoReportAsync(Report report)
+        {
+            await _dbContext.Reports.AddAsync(report);
             await _dbContext.SaveChangesAsync();
         }
 
@@ -117,6 +124,8 @@ namespace HealthCarePersistence.Repository
                 })
                 .ToListAsync();
         }
+
+  
 
         public async Task<bool> UnBlockUserAsync(string Id)
         {

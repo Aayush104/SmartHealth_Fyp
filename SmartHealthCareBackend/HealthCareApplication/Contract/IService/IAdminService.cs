@@ -1,5 +1,6 @@
 ﻿using HealthCareApplication.Dtos.AdminDto;
 using HealthCareApplication.Dtos.AnnouncementDto;
+using HealthCareApplication.Dtos.ReportDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareDomain.Entity.Doctors;
 using System;
@@ -29,7 +30,6 @@ namespace HealthCareDomain.IServices
 
         Task<ApiResponseDto> GetAnnouncementNotificationAsync();
         Task<ApiResponseDto> MarkNotificationAsReadAsync();
-
-
+        Task<ApiResponseDto> DoReportAsync(ReportDto reportDto);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Azure;
 using HealthCareApplication.Dtos.AnnouncementDto;
+using HealthCareApplication.Dtos.ReportDto;
 using HealthCareDomain.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -155,5 +156,12 @@ namespace HealthCareApi.Controllers
 
         }
 
+        [HttpPost ("DoReport")]
+
+        public async Task<IActionResult> DoReport(ReportDto reportDto)
+        {
+            var response = await _adminService.DoReportAsync(reportDto);
+            return StatusCode(response.StatusCode, response);
+        }
     }
 }

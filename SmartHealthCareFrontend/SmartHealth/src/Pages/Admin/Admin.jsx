@@ -16,6 +16,7 @@ import { MdHome } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import AllBookings from "../../Components/Admin Components/AllBookings";
 import Announcement from "../../Components/Admin Components/Announcement";
+import ReportPage from "../ReportPage/ReportPage";
 
 const Admin = () => {
   const [data, setData] = useState([]);
@@ -122,7 +123,7 @@ const Admin = () => {
           )}
           {section === "feedback" && (
             <div className="bg-yellow-600 w-full p-4">
-              <p className="text-center text-white font-bold text-xl">View Feed backs</p>
+              <p className="text-center text-white font-bold text-xl">oiubhj</p>
             </div>
           )}
         </div>

@@ -84,9 +84,11 @@ const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick, doc
                 <MdOutlineRateReview className="text-gray-400" /> View Reviews
               </li>
             </NavLink>
+            <NavLink to = '/Reports'>
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
               <GoReport className="text-gray-400" /> Do Report
             </li>
+            </NavLink>
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={handleLogout}>
               <TbLogout2 className="text-gray-400" /> Logout
             </li>

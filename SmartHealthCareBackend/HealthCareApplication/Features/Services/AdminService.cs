@@ -1,12 +1,15 @@
 ﻿using HealthCareApplication.Contracts.Email;
+using HealthCareApplication.Contracts.IService;
 using HealthCareApplication.Dtos.AnnouncementDto;
 using HealthCareApplication.Dtos.CommentDto;
+using HealthCareApplication.Dtos.ReportDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareApplication.Helper;
 using HealthCareApplication.NotificationHub;
 using HealthCareApplication.StatusHub;
 using HealthCareDomain.Entity.Announcement;
 using HealthCareDomain.Entity.Doctors;
+using HealthCareDomain.Entity.Reporting;
 using HealthCareDomain.Entity.UserEntity;
 using HealthCareDomain.IRepository;
 using HealthCareDomain.IServices;
@@ -14,6 +17,7 @@ using HealthCareInfrastructure.DataSecurity;
 using HealthCarePersistence.IRepository;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
@@ -35,10 +39,11 @@ public class AdminService : IAdminService
     private readonly IMailService _mailService;
     private readonly IOtpService _otpService;
     private readonly IDataProtector _dataProtector;
+    private readonly IFileService _fileService;
 
 
     public AdminService(IDoctorRepository doctorRepository, UserManager<ApplicationUser> userManager, IMailService mailService,IOtpService otpService, 
-     IDataProtectionProvider dataProtection, DataSecurityProvider securityProvider, IAdminRepository adminRepository, IHubContext<UserHub> hubContext, IHubContext<Notificationhub> Context)
+     IDataProtectionProvider dataProtection, DataSecurityProvider securityProvider, IAdminRepository adminRepository, IHubContext<UserHub> hubContext, IHubContext<Notificationhub> Context, IFileService fileService)
         {
             _doctorRepository = doctorRepository;
             _userManager = userManager;
@@ -47,6 +52,7 @@ public class AdminService : IAdminService
         _adminRepository = adminRepository;
         _hubContext = hubContext;
         _Context = Context;
+        _fileService = fileService;
         _dataProtector = dataProtection.CreateProtector(securityProvider.securityKey);
         }
 
@@ -412,6 +418,59 @@ public class AdminService : IAdminService
             };
         }
     }
+
+    public async Task<ApiResponseDto> DoReportAsync(ReportDto reportDto)
+    {
+        try
+        {
+            if (reportDto == null)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "No Data found",
+                    StatusCode = 404
+                };
+            }
+
+            string? photo = null; 
+
+            if (reportDto.Photo != null)
+            {
+                photo = await _fileService.SaveFileAsync(reportDto.Photo, "Report");
+            }
+
+            var reports = new Report
+            {
+                Category = reportDto.Category,
+                Urgency = reportDto.Urgency,
+                Subject = reportDto.Subject,
+                Description = reportDto.Description,
+                Photo = photo,
+                ReportType = reportDto.ReportType,
+    UserId = reportDto.UserId
+            };
+
+            await _adminRepository.DoReportAsync(reports); 
+
+            return new ApiResponseDto
+            {
+                IsSuccess = true,
+                Message = "Report submitted successfully",
+                StatusCode = 200
+            };
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponseDto
+            {
+                IsSuccess = false,
+                Message = $"An error occurred: {ex.Message}",
+                StatusCode = 500
+            };
+        }
+    }
+
 }
 
 

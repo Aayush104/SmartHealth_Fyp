@@ -34,6 +34,7 @@ import { Protect, RedirectIfAuthenticated } from "./Components/Protected/Protect
 import UnAuthorized from "./Components/Helper/UnAuthorized";
 import { toast } from 'react-toastify';
 import FAQSection from "./Pages/Q N A/FAQSection";
+import ReportPage from "./Pages/ReportPage/ReportPage";
 
 // App component
 const App = () => {
@@ -163,6 +164,7 @@ const App = () => {
         <Route path="/searched_doctor" element={<SearchedDoctor />} />
         <Route path="/NotFound" element={<NotFound />} />
         <Route path="/payment-success" element={<AppointmentConfirmation />} />
+        <Route path="/Reports" element={<ReportPage />} />
         <Route
           path="/chat"
           element={
