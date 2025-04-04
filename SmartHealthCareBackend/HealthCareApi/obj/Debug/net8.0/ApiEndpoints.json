@@ -178,6 +178,16 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "GetReport",
+    "RelativePath": "api/Admin/GetReport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
     "Method": "GetUsers",
     "RelativePath": "api/Admin/GetUsers",
     "HttpMethod": "GET",

@@ -11,17 +11,22 @@ using HealthCareDomain.Contract.ContractDto.AdminDto;
 using HealthCareDomain.Entity.Announcement;
 using HealthCareDomain.Entity.Review;
 using HealthCareDomain.Entity.Reporting;
+using HealthCareDomain.Entity.UserEntity;
+using Microsoft.AspNetCore.Identity;
 
 namespace HealthCarePersistence.Repository
 {
     public class AdminRepository : IAdminRepository
     {
         private readonly AppDbContext _dbContext;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public AdminRepository(AppDbContext dbContext)
+        public AdminRepository(AppDbContext dbContext, UserManager<ApplicationUser> userManager)
         {
             _dbContext = dbContext;
+            _userManager = userManager;
         }
+
 
         public async Task<bool> BlockUserAsync(string Id)
         {
@@ -105,6 +110,43 @@ namespace HealthCarePersistence.Repository
             var notification = await _dbContext.Announces.ToListAsync();
             return notification;
         }
+
+        public async Task<IEnumerable<ReportListDto>> GetAllReportsAsync()
+        {
+            var reports = await _dbContext.Reports
+                .Include(r => r.User)
+                .ThenInclude(u => u.DoctorAdditionalInfos)
+                .ToListAsync();
+
+            var reportListDtos = new List<ReportListDto>();
+
+            foreach (var report in reports)
+            {
+                var user = report.User;
+                var roles = await _userManager.GetRolesAsync(user);
+                var role = roles.FirstOrDefault();
+
+                var doctor = await _dbContext.Doctors
+                    .FirstOrDefaultAsync(d => d.Id == user.Id);
+
+                reportListDtos.Add(new ReportListDto
+                {
+                    Category = report.Category,
+                    Urgency = report.Urgency,
+                    ReportType = report.ReportType,
+                    Subject = report.Subject,
+                    Description = report.Description,
+                    UserName = user.FullName,
+                    Profileget = doctor?.Profile,
+                    Specialization = doctor?.Specialization,
+                    Role = role
+                });
+            }
+
+            return reportListDtos;
+        }
+
+
 
         public async Task<IEnumerable<PatientListDto>> GetPatient()
         {

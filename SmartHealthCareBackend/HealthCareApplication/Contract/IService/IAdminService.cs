@@ -26,6 +26,7 @@ namespace HealthCareDomain.IServices
         Task<ApiResponseDto> BlockDoctorAsync(string Id);
         Task<IEnumerable<DoctorDetailsDto>> GetAllVerifiedDoctorAsync();
         Task<ApiResponseDto> GetAllBookingAsync();
+        Task<ApiResponseDto> GetReportAsync();
         Task<ApiResponseDto> DoAnnouncementAsync(AnnounceDto announceDto);
 
         Task<ApiResponseDto> GetAnnouncementNotificationAsync();

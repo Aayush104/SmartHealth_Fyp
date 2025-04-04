@@ -163,5 +163,12 @@ namespace HealthCareApi.Controllers
             var response = await _adminService.DoReportAsync(reportDto);
             return StatusCode(response.StatusCode, response);
         }
+        [HttpGet ("GetReport")]
+
+        public async Task<IActionResult> GetReport()
+        {
+            var response = await _adminService.GetReportAsync();
+            return StatusCode(response.StatusCode, response);
+        }
     }
 }

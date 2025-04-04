@@ -204,7 +204,7 @@ public class AdminService : IAdminService
                 FullName = doctor.User.FullName,
                 Email = doctor.User.Email,
                 Specialization = doctor.Specialization,
-                Profileget = doctor.Profile, // Assuming 'Profileget' was a typo
+                Profileget = doctor.Profile, 
                 Qualifications = doctor.Qualifications,
                 Status = doctor.Status,
                 IsBlocked = doctor.User.IsBlocked
@@ -471,6 +471,26 @@ public class AdminService : IAdminService
         }
     }
 
+    public async Task<ApiResponseDto> GetReportAsync()
+    {
+        try
+        {
+            var response = await _adminRepository.GetAllReportsAsync();
+
+            if (response != null && response.Any())
+            {
+                return new ApiResponseDto { IsSuccess = true, Data = response, StatusCode = 200 };
+            }
+            else
+            {
+                return new ApiResponseDto { IsSuccess = false, Message = "No Reports found", StatusCode = 404 };
+            }
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponseDto { IsSuccess = false, Message = $"An error occurred: {ex.Message}", StatusCode = 500 };
+        }
+    }
 }
 
 

@@ -117,3 +117,6 @@ wwwroot\Qualification\d56cce5d-861a-4f31-ba4f-47f7246d9561.png
 wwwroot\Qualification\ed87c494-9d00-4315-a825-4585f87702eb.jpg
 wwwroot\Report\283b2b48-ae4e-4182-9fbc-3207be301cb0.jpg
 wwwroot\Report\6353736b-93c5-4e3e-a89d-ab5e66065cae.jpg
+wwwroot\Report\9823c4fa-a30a-4be7-a32e-a3f217763964.jpg
+wwwroot\Report\c19e0dd9-36a3-4bd4-b199-8a1c91d05b9b.png
+wwwroot\Report\f396f6df-6e14-440c-8576-c8bb33e8008f.png

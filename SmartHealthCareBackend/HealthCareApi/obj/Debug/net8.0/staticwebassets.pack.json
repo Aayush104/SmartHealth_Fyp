@@ -477,6 +477,18 @@
       "PackagePath": "staticwebassets\\Report\\6353736b-93c5-4e3e-a89d-ab5e66065cae.jpg"
     },
     {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Report\\9823c4fa-a30a-4be7-a32e-a3f217763964.jpg",
+      "PackagePath": "staticwebassets\\Report\\9823c4fa-a30a-4be7-a32e-a3f217763964.jpg"
+    },
+    {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Report\\c19e0dd9-36a3-4bd4-b199-8a1c91d05b9b.png",
+      "PackagePath": "staticwebassets\\Report\\c19e0dd9-36a3-4bd4-b199-8a1c91d05b9b.png"
+    },
+    {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Report\\f396f6df-6e14-440c-8576-c8bb33e8008f.png",
+      "PackagePath": "staticwebassets\\Report\\f396f6df-6e14-440c-8576-c8bb33e8008f.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HealthCareApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

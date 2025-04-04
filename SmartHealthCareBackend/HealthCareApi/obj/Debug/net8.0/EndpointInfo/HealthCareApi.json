@@ -378,6 +378,18 @@
         }
       }
     },
+    "/api/Admin/GetReport": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Appointment/paywithesewa": {
       "post": {
         "tags": [

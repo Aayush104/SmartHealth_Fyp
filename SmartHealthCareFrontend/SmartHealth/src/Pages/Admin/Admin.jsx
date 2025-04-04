@@ -17,6 +17,7 @@ import { NavLink } from "react-router-dom";
 import AllBookings from "../../Components/Admin Components/AllBookings";
 import Announcement from "../../Components/Admin Components/Announcement";
 import ReportPage from "../ReportPage/ReportPage";
+import ViewReports from "../../Components/Admin Components/ViewReports";
 
 const Admin = () => {
   const [data, setData] = useState([]);
@@ -122,8 +123,8 @@ const Admin = () => {
             </div>
           )}
           {section === "feedback" && (
-            <div className="bg-yellow-600 w-full p-4">
-              <p className="text-center text-white font-bold text-xl">oiubhj</p>
+            <div className="w-full p-4">
+              <p className="text-center text-white font-bold text-xl"><ViewReports /></p>
             </div>
           )}
         </div>

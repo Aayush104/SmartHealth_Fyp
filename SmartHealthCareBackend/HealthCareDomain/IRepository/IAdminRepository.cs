@@ -17,6 +17,7 @@ namespace HealthCareDomain.IRepository
         Task<IEnumerable<PatientListDto>> GetPatient();
         Task<IEnumerable<Doctor>> GetAllDoctors();
         Task<IEnumerable<BookingListDto>> GetAllAppointments();
+        Task<IEnumerable<ReportListDto>> GetAllReportsAsync();
         Task<bool> BlockUserAsync(string Id);
         Task<bool> UnBlockUserAsync(string Id);
         Task<bool> DeleteCommentAsync(int Id);
