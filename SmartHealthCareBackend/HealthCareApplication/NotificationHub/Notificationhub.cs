@@ -14,5 +14,9 @@ namespace HealthCareApplication.NotificationHub
             await Clients.All.SendAsync("ReceiveNotification", message);
         }
 
+        public async Task SendAdminNotification(object notification)
+        {
+            await Clients.All.SendAsync("ReceiveNotificationForAdmin", notification);
+        }
     }
 }

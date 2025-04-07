@@ -433,8 +433,7 @@ public class AdminService : IAdminService
                 };
             }
 
-            string? photo = null; 
-
+            string? photo = null;
             if (reportDto.Photo != null)
             {
                 photo = await _fileService.SaveFileAsync(reportDto.Photo, "Report");
@@ -450,16 +449,37 @@ public class AdminService : IAdminService
                 ReportType = reportDto.ReportType,
                 UserId = reportDto.UserId,
                 MarkAs = false
-
             };
 
-            await _adminRepository.DoReportAsync(reports); 
+      
+            await _adminRepository.DoReportAsync(reports);
+
+            var userDetail = await _userManager.FindByIdAsync(reportDto.UserId);
+            var roles = await _userManager.GetRolesAsync(userDetail);
+            string role = roles.FirstOrDefault();
+
+        
+            var notificationObject = new
+            {
+                id = reports.Id,
+                subject = reportDto.Subject,
+                userName = userDetail.FullName,
+                role = role,
+                urgency = reportDto.Urgency,
+                reportType = reportDto.ReportType,
+                category = reportDto.Category,
+                createdAt = DateTime.Now.ToString("o"), 
+                markAs = false
+            };
+
+            await _Context.Clients.All.SendAsync("ReceiveNotificationForAdmin", notificationObject);
 
             return new ApiResponseDto
             {
                 IsSuccess = true,
                 Message = "Report submitted successfully",
-                StatusCode = 200
+                StatusCode = 200,
+                Data = notificationObject 
             };
         }
         catch (Exception ex)

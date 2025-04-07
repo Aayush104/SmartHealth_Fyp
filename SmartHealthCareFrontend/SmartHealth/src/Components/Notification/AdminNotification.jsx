@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { IoIosNotifications } from 'react-icons/io';
+import * as signalR from '@microsoft/signalr';
 
 const AdminNotification = () => {
   // State to manage dropdown visibility and notifications
@@ -8,11 +9,7 @@ const AdminNotification = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Toggle dropdown visibility
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const connectionRef = useRef(null);
 
   // Format the timestamp to relative time (just now, x minutes ago, x hours ago, etc.)
   const getTimeString = (timestamp) => {
@@ -34,22 +31,10 @@ const AdminNotification = () => {
     }
   };
 
-  // Format name based on role
-  const formatName = (notification) => {
-    if (notification.role === "Doctor") {
-      return `Dr. ${notification.userName}`;
-    }
-    return notification.userName;
-  };
-
   // Generate user initials for avatar placeholder
   const getUserInitials = (name) => {
     if (!name) return "?";
-    const parts = name.split(" ");
-    if (parts.length === 1) {
-      return name.charAt(0).toUpperCase();
-    }
-    return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+    return name.charAt(0).toUpperCase();
   };
 
   // Generate notification message based on report type and category
@@ -57,8 +42,26 @@ const AdminNotification = () => {
     const prefix = notification.reportType === "Issue" 
       ? "reported an issue" 
       : "made a request";
-      
-    return `${formatName(notification)} ${prefix} in ${notification.category} category with ${notification.urgency} urgency.`;
+    
+    const displayName = notification.role === "Doctor" ? `Dr. ${notification.userName}` : notification.userName;
+    return `${displayName} ${prefix} in ${notification.category} category with ${notification.urgency} urgency.`;
+  };
+
+  // Transform API data to consistent notification format
+  const formatNotification = (item) => {
+    return {
+      id: item.id || Date.now(),
+      title: item.subject,
+      message: generateMessage(item),
+      time: getTimeString(item.createdAt),
+      isRead: item.markAs,
+      userName: item.userName,
+      role: item.role,
+      urgency: item.urgency,
+      reportType: item.reportType,
+      category: item.category,
+      createdAt: item.createdAt
+    };
   };
 
   // Fetch notification data
@@ -67,17 +70,14 @@ const AdminNotification = () => {
       setLoading(true);
       const response = await axios.get("https://localhost:7070/api/Admin/GetReport");
       
-      // Transform API data to notification format
-      const formattedNotifications = response.data.data.$values.map((item, index) => ({
-        id: index + 1,
-        title: item.subject,
-        message: generateMessage(item),
-        time: getTimeString(item.createdAt),
-        isRead: item.markAs,
-        originalData: item // Preserve original data for additional details
-      }));
+      if (response.data.data.$values && Array.isArray(response.data.data.$values)) {
+        const formattedNotifications = response.data.data.$values.map(formatNotification);
+        setNotifications(formattedNotifications);
+      } else {
+        console.error("Unexpected API response format:", response.data);
+        setError("Invalid data format received");
+      }
       
-      setNotifications(formattedNotifications);
       setLoading(false);
     } catch (err) {
       console.error("Error fetching notifications:", err);
@@ -86,9 +86,71 @@ const AdminNotification = () => {
     }
   };
 
+
   useEffect(() => {
-    fetchNotifications();
+    connectionRef.current = new signalR.HubConnectionBuilder()
+      .withUrl("https://localhost:7070/notificationHub")
+      .withAutomaticReconnect()
+      .configureLogging(signalR.LogLevel.Debug) 
+      .build();
+
+   
+    connectionRef.current
+      .start()
+      .then(() => {
+        console.log("SignalR Connected successfully");
+        fetchNotifications();
+      })
+      .catch((err) => {
+        console.error("SignalR Connection Error: ", err);
+       
+        if (err.errorType === 'FailedToNegotiateWithServerError') {
+          console.error("Negotiation failed - CORS or endpoint issue");
+        }
+      });
+
+    // Handle incoming notifications
+    connectionRef.current.on("ReceiveNotificationForAdmin", (notification) => {
+      console.log("Received notification for admin:", notification);
+      
+      // Handle notifications in a consistent format
+      if (typeof notification === 'string') {
+        // If it's just a string, create a minimal notification object
+        const newNotification = {
+          id: Date.now(),
+          subject: "System Notification",
+          userName: "System",
+          role: "System",
+          urgency: "Medium",
+          reportType: "System",
+          category: "Notification",
+          createdAt: new Date().toISOString(),
+          markAs: false
+        };
+        
+        // Format and add the new notification
+        setNotifications(prev => [formatNotification(newNotification), ...prev]);
+      } else {
+        // If it's an object, process it directly
+        setNotifications(prev => [formatNotification(notification), ...prev]);
+      }
+    });
+
+    // Log notifications for debugging
+    console.log("Current notifications:", notifications);
+
+    // Cleanup function
+    return () => {
+      if (connectionRef.current) {
+        connectionRef.current.stop();
+      }
+    };
   }, []);
+
+  // Toggle dropdown visibility
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   // Count unread notifications (markAs = false)
   const unreadCount = notifications.filter(notif => !notif.isRead).length;
@@ -130,7 +192,7 @@ const AdminNotification = () => {
             )}
           </div>
         </div>
-        <p className="text-sm mt-1" >Notifications</p>
+        <p className="text-sm mt-1">Notifications</p>
       </div>
 
       {/* Dropdown Menu */}
@@ -167,29 +229,18 @@ const AdminNotification = () => {
                 >
                   <div className="flex justify-between items-start">
                     <div className="flex items-center">
-                      {notification.originalData.profileget ? (
-                        <img 
-                          src={notification.originalData.profileget} 
-                          alt="Profile" 
-                          className="w-8 h-8 rounded-full mr-2"
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = "https://via.placeholder.com/40";
-                          }}
-                        />
-                      ) : (
-                        <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-2">
-                          {getUserInitials(notification.originalData.userName)}
-                        </div>
-                      )}
+                      {/* Always show initials avatar */}
+                      <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-2">
+                        {getUserInitials(notification.userName)}
+                      </div>
                       <h4 className="font-medium text-gray-800">
                         {notification.title}
                         <span className={`ml-2 text-xs px-2 py-1 rounded ${
-                          notification.originalData.urgency === "High" ? 'bg-red-100 text-red-800' :
-                          notification.originalData.urgency === "Medium" ? 'bg-yellow-100 text-yellow-800' :
+                          notification.urgency === "High" ? 'bg-red-100 text-red-800' :
+                          notification.urgency === "Medium" ? 'bg-yellow-100 text-yellow-800' :
                           'bg-green-100 text-green-800'
                         }`}>
-                          {notification.originalData.urgency}
+                          {notification.urgency}
                         </span>
                       </h4>
                     </div>
@@ -198,19 +249,14 @@ const AdminNotification = () => {
                   <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded">
-                      {notification.originalData.reportType}
+                      {notification.reportType}
                     </span>
                     <span className="text-xs px-2 py-1 bg-purple-100 text-purple-800 rounded">
-                      {notification.originalData.category}
+                      {notification.category}
                     </span>
                     <span className="text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded">
-                      {notification.originalData.role}
+                      {notification.role}
                     </span>
-                    {notification.originalData.specialization && (
-                      <span className="text-xs px-2 py-1 bg-teal-100 text-teal-800 rounded">
-                        {notification.originalData.specialization}
-                      </span>
-                    )}
                   </div>
                 </div>
               ))
