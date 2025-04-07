@@ -8,6 +8,7 @@ import Cookies from "js-cookie"; // Make sure you have `js-cookie` installed
 import logo from '../../Assets/Image/Logo.png';// Adjust the logo path accordingly
 import { MdHome } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import AdminNotification from "../Notification/AdminNotification";
 
 const AdminNav = () => {
   const handleLogout = () => {
@@ -33,17 +34,15 @@ const AdminNav = () => {
           <span className="mt-1">Home</span>
         </div>
         </NavLink>
-        <div className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
+        {/* <div className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
           <IoIosNotifications className="text-3xl mt-1 group-hover:text-sky-400" />
           <span className="mt-1">Notifications</span>
-        </div>
-
-        {/* Messages */}
+        </div> */}
         <div className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
-          <FaRegMessage className="text-2xl mt-1.5 group-hover:text-sky-400" />
-          <span className="mt-1">Messages</span>
+          <AdminNotification />
         </div>
 
+     
         {/* Profile Dropdown */}
         <div className="relative group">
           <div className="flex items-center gap-2 cursor-pointer">

@@ -10,7 +10,7 @@ import { RiCalendarScheduleFill } from "react-icons/ri";
 import Cookies from 'js-cookie';
 import { NavLink } from 'react-router-dom';
 import { MdOutlineRateReview } from "react-icons/md";
-import DoctorNotifications from '../DoctorNotification'; // Import the new component
+import DoctorNotifications from '../Notification/DoctorNotification'; // Import the new component
 import { GoReport } from 'react-icons/go';
 
 const DoctorNav = ({ onProfileClick, onAdditionalClick, onAvailabilityClick, doctorData }) => {

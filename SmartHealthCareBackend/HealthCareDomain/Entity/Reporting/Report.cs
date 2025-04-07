@@ -40,6 +40,8 @@ namespace HealthCareDomain.Entity.Reporting
 
         public virtual ApplicationUser User { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        public bool MarkAs { get; set; }
     }
 }

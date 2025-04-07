@@ -170,5 +170,15 @@ namespace HealthCareApi.Controllers
             var response = await _adminService.GetReportAsync();
             return StatusCode(response.StatusCode, response);
         }
+
+
+        [HttpPost ("MarkAsRead")]
+
+        public async Task<IActionResult> MarkAsRead()
+        {
+            var response = await _adminService.MarkAsReadAsync();
+            return StatusCode(response.StatusCode, response);
+        }
+
     }
 }

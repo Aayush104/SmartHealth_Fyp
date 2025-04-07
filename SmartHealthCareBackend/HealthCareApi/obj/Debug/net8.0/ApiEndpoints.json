@@ -208,6 +208,16 @@
   },
   {
     "ContainingType": "HealthCareApi.Controllers.AdminController",
+    "Method": "MarkAsRead",
+    "RelativePath": "api/Admin/MarkAsRead",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthCareApi.Controllers.AdminController",
     "Method": "RejectDoctor",
     "RelativePath": "api/Admin/RejectDoctor/{email}",
     "HttpMethod": "POST",

@@ -33,5 +33,9 @@ namespace HealthCareDomain.Contract.ContractDto.AdminDto
 
         public string? Specialization { get; set; }
         public string? Role { get; set; }
+
+        public bool MarkAs { get; set; }
+
+        public DateTime CreatedAt { get; set; }
     }
 }

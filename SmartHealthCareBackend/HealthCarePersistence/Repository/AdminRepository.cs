@@ -139,7 +139,10 @@ namespace HealthCarePersistence.Repository
                     UserName = user.FullName,
                     Profileget = doctor?.Profile,
                     Specialization = doctor?.Specialization,
-                    Role = role
+                    Role = role,
+                    MarkAs = report.MarkAs,
+                    CreatedAt = report.CreatedAt
+
                 });
             }
 
@@ -192,6 +195,22 @@ namespace HealthCarePersistence.Repository
                     announce.IsMarked = true;
                 }
 
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> UpdateReportNotificationStatus()
+        {
+            var reports = await _dbContext.Reports.ToListAsync();
+            if(reports.Any())
+            {
+                foreach(var report in reports)
+                {
+                    report.MarkAs = true;
+                }
                 await _dbContext.SaveChangesAsync();
                 return true;
             }

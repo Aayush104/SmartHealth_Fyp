@@ -31,6 +31,7 @@ namespace HealthCareDomain.IServices
 
         Task<ApiResponseDto> GetAnnouncementNotificationAsync();
         Task<ApiResponseDto> MarkNotificationAsReadAsync();
+        Task<ApiResponseDto> MarkAsReadAsync();
         Task<ApiResponseDto> DoReportAsync(ReportDto reportDto);
     }
 }

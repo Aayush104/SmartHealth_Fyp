@@ -448,7 +448,9 @@ public class AdminService : IAdminService
                 Description = reportDto.Description,
                 Photo = photo,
                 ReportType = reportDto.ReportType,
-    UserId = reportDto.UserId
+                UserId = reportDto.UserId,
+                MarkAs = false
+
             };
 
             await _adminRepository.DoReportAsync(reports); 
@@ -490,6 +492,44 @@ public class AdminService : IAdminService
         {
             return new ApiResponseDto { IsSuccess = false, Message = $"An error occurred: {ex.Message}", StatusCode = 500 };
         }
+    }
+
+    public async Task<ApiResponseDto> MarkAsReadAsync()
+    {
+
+        try
+        {
+
+            var updateNotificationStatus = await _adminRepository.UpdateReportNotificationStatus();
+
+            if (updateNotificationStatus)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Message = "Marked all as read",
+                    StatusCode = 200
+                };
+            }
+
+            return new ApiResponseDto
+            {
+                IsSuccess = false,
+                Message = "No notifications found or update failed",
+                StatusCode = 404
+            };
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponseDto
+            {
+                IsSuccess = false,
+                Message = $"An error occurred: {ex.Message}",
+                StatusCode = 500
+            };
+        }
+
+
     }
 }
 

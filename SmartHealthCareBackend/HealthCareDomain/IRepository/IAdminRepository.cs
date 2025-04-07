@@ -28,7 +28,9 @@ namespace HealthCareDomain.IRepository
 
         Task<bool> UpdateNotificationStatus();
 
+        Task<bool> UpdateReportNotificationStatus();
         Task DoReportAsync(Report report);
+   
 
     }
 }
