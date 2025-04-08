@@ -2,6 +2,7 @@
 using HealthCareApplication.Dtos.CommentDto;
 using HealthCareApplication.Dtos.UserDto;
 using HealthCareDomain.Entity.Appointment;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,6 @@ namespace HealthCareApplication.Contract.IService
 
         Task<ApiResponseDto> ChecKMeetingIdAsync(string MeetingId);
         Task<ApiResponseDto> CheckforCommentAsync(string DoctorId , string UserId);
-       
-
-        
+        Task <ApiResponseDto>UploadVideoAsync(IFormFile videoFile, string meetingId);
     }
 }

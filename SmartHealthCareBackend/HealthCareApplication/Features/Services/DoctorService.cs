@@ -123,8 +123,6 @@ namespace HealthCareApplication.Features.Services
                 // First, get all existing records for this user
                 var existingRecords = await _doctorRepository.GetByUserIdFromAdditionalAsync(request.UserId);
 
-                // If there are existing records, delete them all first
-                // This is the cleanest approach to avoid duplicate entries
                 if (existingRecords.Any())
                 {
                     foreach (var record in existingRecords)
@@ -133,8 +131,7 @@ namespace HealthCareApplication.Features.Services
                     }
                 }
 
-                // Now add all the new experiences and trainings
-                // We'll use the longer of the two lists to determine how many records to create
+            
                 int maxCount = Math.Max(request.Experiences.Count, request.Trainings.Count);
 
                 for (int i = 0; i < maxCount; i++)

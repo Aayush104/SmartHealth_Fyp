@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Identity;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using HealthCarePersistence.Migrations;
 using HealthCareApplication.Dtos.CommentDto;
+using HealthCareApplication.Dtos.VideoDto;
 
 namespace HealthCareApi.Controllers
 {
@@ -389,6 +390,29 @@ namespace HealthCareApi.Controllers
             }
             return StatusCode(response.StatusCode, response.Message);
         }
+
+
+        [HttpPost ("UploadVideo")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+
+        public async Task<IActionResult> UploadVideo(VideoUploadDto videoUploadDto)
+        {
+            var userId = HttpContext.User.FindFirst("userId")?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User not found");
+            }
+
+            var response = await _appointmentService.UploadVideoAsync(videoUploadDto.Video, videoUploadDto.meetingId);
+
+            if (response.StatusCode == 200)
+            {
+                return Ok();
+            }
+            return StatusCode(response.StatusCode, response.Message);
+        }
+
 
 
     }

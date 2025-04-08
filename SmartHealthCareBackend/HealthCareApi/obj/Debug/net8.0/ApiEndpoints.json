@@ -391,6 +391,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HealthCareApi.Controllers.AppointmentController",
+    "Method": "UploadVideo",
+    "RelativePath": "api/Appointment/UploadVideo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Video",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "meetingId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HealthCareApi.Controllers.AuthController",
     "Method": "CheckAccess",
     "RelativePath": "api/Auth/CheckAccess",

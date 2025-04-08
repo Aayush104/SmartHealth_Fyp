@@ -98,6 +98,9 @@ namespace HealthCarePersistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("VideoUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DoctorId");
@@ -642,8 +645,8 @@ namespace HealthCarePersistence.Migrations
                         {
                             Id = "25160704-4676-4ea0-8bf2-cffbfea196db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ff945d35-bff7-4556-a094-d9a61d546490",
-                            CreatedAt = new DateTime(2025, 4, 7, 4, 41, 3, 614, DateTimeKind.Utc).AddTicks(4623),
+                            ConcurrencyStamp = "a122df7b-6770-4939-8da2-8d16f477aa2b",
+                            CreatedAt = new DateTime(2025, 4, 8, 9, 24, 2, 917, DateTimeKind.Utc).AddTicks(3306),
                             Email = "aayushadhikari601@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Admin",
@@ -651,12 +654,12 @@ namespace HealthCarePersistence.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AAYUSHADHIKARI601@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK06K7xz93kmZsW8EoTTxOC1snlT+rp5CkVYzzhA5C4hrymfdayVPlMC/8v+M9vcbg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEyr3zLWqAJ93FVqbNjhCSKmaxkqfqTbZUIQ6cGGD+Xc4knk9CFDwWsyQkLB1GG+gw==",
                             PhoneNumber = "9827102964",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7c47a140-ea16-413c-83f1-d2779af4bd8f",
+                            SecurityStamp = "426756a1-9939-4899-aa67-ab01b5c8a1aa",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 4, 7, 4, 41, 3, 614, DateTimeKind.Utc).AddTicks(4630),
+                            UpdatedAt = new DateTime(2025, 4, 8, 9, 24, 2, 917, DateTimeKind.Utc).AddTicks(3311),
                             UserName = "Admin"
                         });
                 });

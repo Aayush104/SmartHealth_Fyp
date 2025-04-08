@@ -20,6 +20,29 @@ namespace HealthCarePersistence.Repository
             _dbContext = dbContext;
         }
 
+        public async Task<bool> AddVideoFileAsync(string uploads, string meetingId)
+        {
+
+            var meeting = await _dbContext.BookAppointments
+                                            .Where(x => x.MeetingId == meetingId)
+                                            .FirstOrDefaultAsync();
+
+
+            if (meeting != null)
+            {
+
+                meeting.VideoUrl = uploads;
+
+
+                await _dbContext.SaveChangesAsync();
+
+                return true;
+            }
+
+
+            return false;
+        }
+
 
         public async Task<int> BookAppointment(BookAppointment bookAppointment)
         {

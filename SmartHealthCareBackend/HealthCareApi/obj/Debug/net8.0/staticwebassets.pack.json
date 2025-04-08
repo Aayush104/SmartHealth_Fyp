@@ -489,6 +489,26 @@
       "PackagePath": "staticwebassets\\Report\\f396f6df-6e14-440c-8576-c8bb33e8008f.png"
     },
     {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Uploads\\22ef1f14-14c2-436b-a9fc-df5c471fdbb4.webm",
+      "PackagePath": "staticwebassets\\Uploads\\22ef1f14-14c2-436b-a9fc-df5c471fdbb4.webm"
+    },
+    {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Uploads\\441dcab1-58f8-4ded-b031-75a216b557d2.webm",
+      "PackagePath": "staticwebassets\\Uploads\\441dcab1-58f8-4ded-b031-75a216b557d2.webm"
+    },
+    {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Uploads\\731403ab-78f3-465e-98f2-9582e4d6719a.mp4",
+      "PackagePath": "staticwebassets\\Uploads\\731403ab-78f3-465e-98f2-9582e4d6719a.mp4"
+    },
+    {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Uploads\\8b254d11-a482-4abb-9ddb-1fdcb2473413.webm",
+      "PackagePath": "staticwebassets\\Uploads\\8b254d11-a482-4abb-9ddb-1fdcb2473413.webm"
+    },
+    {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Uploads\\c6472997-4df5-4a0f-acfb-78a7d9e36020.webm",
+      "PackagePath": "staticwebassets\\Uploads\\c6472997-4df5-4a0f-acfb-78a7d9e36020.webm"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HealthCareApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

@@ -22,5 +22,6 @@ namespace HealthCareDomain.IRepository
         Task <bool> CheckIds(string MeetingId);
 
         Task<bool> CheckCommentValidaton(string DoctorId, string UserId);
+        Task<bool> AddVideoFileAsync(string uploads, string meetingId);
     }
 }

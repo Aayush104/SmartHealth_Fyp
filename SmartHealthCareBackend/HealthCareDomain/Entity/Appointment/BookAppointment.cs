@@ -45,6 +45,8 @@ namespace HealthCareDomain.Entity.Appointment
 
         public bool MeetingIdValidation { get; set; } = true;
 
+        public string? VideoUrl { get; set; }
+
         public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
 }

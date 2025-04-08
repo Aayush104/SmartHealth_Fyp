@@ -14,6 +14,11 @@ using HealthCareApplication.Contracts.Email;
 using HealthCareDomain.Entity.Chat;
 using Microsoft.AspNetCore.Http;
 using HealthCareApplication.Dtos.CommentDto;
+using Microsoft.AspNetCore.Http.HttpResults;
+using HealthCareApplication.Contracts.IService;
+using Sprache;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HealthCareApplication.Features.Services
 {
@@ -24,14 +29,16 @@ namespace HealthCareApplication.Features.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IDataProtector _dataProtector;
         private readonly IMailService _mailService;
+        private readonly IFileService _fileService;
 
-        public AppointmentService(UserManager<ApplicationUser> userManager, IBookAppointmentRepository bookAppointmentRepository,IDoctorAvailabilityRepository doctorAvailabilityRepository, DataSecurityProvider securityProvider, IDataProtectionProvider dataProtector, IMailService mailService)
+        public AppointmentService(UserManager<ApplicationUser> userManager, IBookAppointmentRepository bookAppointmentRepository,IDoctorAvailabilityRepository doctorAvailabilityRepository, DataSecurityProvider securityProvider, IDataProtectionProvider dataProtector, IMailService mailService, IFileService fileService)
         {
             _bookAppointmentRepository = bookAppointmentRepository;
             _doctorAvailabilityRepository = doctorAvailabilityRepository;
             _mailService = mailService;
             _userManager = userManager;
             _dataProtector = dataProtector?.CreateProtector(securityProvider.securityKey);
+            _fileService = fileService;
         }
 
         public async Task<ApiResponseDto> BookAppointmentAsync(AppointmentDto appointmentDto, string userId, decimal total_Amount, string PaymentMethod)
@@ -316,6 +323,57 @@ namespace HealthCareApplication.Features.Services
             }
             catch (Exception ex)
             {
+
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
+
+        public async Task<ApiResponseDto> UploadVideoAsync(IFormFile videoFile, string meetingId)
+        {
+            try
+            {
+                if (videoFile == null || videoFile.Length == 0)
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = false,
+                        Message = "No video file found",
+                        StatusCode = 400
+                    };
+                }
+
+              
+                var uploads = await _fileService.SaveFileAsync(videoFile, "Uploads");
+
+            
+                var addVideo = await _bookAppointmentRepository.AddVideoFileAsync(uploads, meetingId);
+
+                if (addVideo)
+                {
+                    return new ApiResponseDto
+                    {
+                        IsSuccess = true,
+                        Message = "Video uploaded successfully",
+                        StatusCode = 200
+                    };
+                }
+
+               
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = "Failed to add video to the appointment",
+                    StatusCode = 500
+                };
+            }
+            catch (Exception ex)
+            {
+                
 
                 return new ApiResponseDto
                 {
