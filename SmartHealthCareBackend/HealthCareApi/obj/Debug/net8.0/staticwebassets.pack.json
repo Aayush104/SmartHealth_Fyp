@@ -613,6 +613,10 @@
       "PackagePath": "staticwebassets\\Report\\f396f6df-6e14-440c-8576-c8bb33e8008f.png"
     },
     {
+      "Id": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\wwwroot\\Uploads\\19573ea6-81c9-4433-9112-2b525a911457.webm",
+      "PackagePath": "staticwebassets\\Uploads\\19573ea6-81c9-4433-9112-2b525a911457.webm"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HealthCareApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

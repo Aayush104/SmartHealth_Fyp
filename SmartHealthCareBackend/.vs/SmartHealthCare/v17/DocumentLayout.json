@@ -89,8 +89,7 @@
               "RelativeToolTip": "HealthCareApi\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:58:09.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:58:09.874Z"
             },
             {
               "$type": "Document",
@@ -100,7 +99,7 @@
               "RelativeDocumentMoniker": "HealthCareApi\\Controllers\\AdminController.cs",
               "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Controllers\\AdminController.cs",
               "RelativeToolTip": "HealthCareApi\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T08:58:07.687Z",
               "EditorCaption": ""
@@ -115,8 +114,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AdminService.cs",
               "ViewState": "AgIAALIBAAAAAAAAAAAAwBsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:50:47.056Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:50:47.056Z"
             },
             {
               "$type": "Document",
@@ -128,8 +126,7 @@
               "RelativeToolTip": "HealthCareApplication\\Features\\Services\\AppointmentService.cs",
               "ViewState": "AgIAAHoBAAAAAAAAAAAuwJQBAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:31:45.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:31:45.295Z"
             },
             {
               "$type": "Document",
@@ -139,7 +136,7 @@
               "RelativeDocumentMoniker": "HealthCareApi\\Controllers\\AppointmentController.cs",
               "ToolTip": "D:\\SmartHealth_care\\SmartHealth_Fyp\\SmartHealthCareBackend\\HealthCareApi\\Controllers\\AppointmentController.cs",
               "RelativeToolTip": "HealthCareApi\\Controllers\\AppointmentController.cs",
-              "ViewState": "AgIAAAwBAAAAAAAAAAAwwKMBAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAABsBAAAAAAAAAAAwwCYBAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T08:28:22.379Z",
               "EditorCaption": ""
@@ -154,8 +151,7 @@
               "RelativeToolTip": "HealthCareDomain\\Contract\\ContractDto\\UserLIstForAppointment\\GetDoctorListByIdDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:38:34.558Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:38:34.558Z"
             },
             {
               "$type": "Document",
@@ -167,8 +163,7 @@
               "RelativeToolTip": "HealthCareDomain\\Contract\\ContractDto\\UserLIstForAppointment\\GetListById.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:38:15.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:38:15.079Z"
             },
             {
               "$type": "Document",
@@ -180,8 +175,7 @@
               "RelativeToolTip": "HealthCareDomain\\IRepository\\IBookAppointmentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:35:35.66Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:35:35.66Z"
             },
             {
               "$type": "Document",
@@ -193,8 +187,7 @@
               "RelativeToolTip": "HealthCarePersistence\\Repository\\BookAppointmentRepository.cs",
               "ViewState": "AgIAAGAAAAAAAAAAAAAowH0AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:32:34.55Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:32:34.55Z"
             },
             {
               "$type": "Document",
@@ -206,8 +199,7 @@
               "RelativeToolTip": "HealthCareDomain\\Contract\\ContractDto\\UserLIstForAppointment\\GetDoctorByIdDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:34:49.355Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:34:49.355Z"
             },
             {
               "$type": "Document",
@@ -219,8 +211,7 @@
               "RelativeToolTip": "HealthCareDomain\\IRepository\\IAdminRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:35:28.782Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:35:28.782Z"
             },
             {
               "$type": "Document",
@@ -232,8 +223,7 @@
               "RelativeToolTip": "HealthCareApplication\\Contract\\IService\\IAppointmentService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T08:29:46.638Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T08:29:46.638Z"
             },
             {
               "$type": "Document",
