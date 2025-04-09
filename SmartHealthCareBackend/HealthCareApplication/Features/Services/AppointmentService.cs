@@ -384,5 +384,38 @@ namespace HealthCareApplication.Features.Services
             }
         }
 
+        public async Task<ApiResponseDto> UserAppointmentsAsync(string userId)
+        {
+            try
+            {
+
+                var appointments = await _bookAppointmentRepository.GetAllAppointemntsById(userId);
+
+             
+                foreach(var appointment in appointments)
+                {
+                    appointment.DoctorId = _dataProtector.Protect(appointment.DoctorId);
+                }
+                return new ApiResponseDto
+                {
+                    IsSuccess = true,
+                    Message = "Appointments retrieved successfully",
+                    StatusCode = 200,
+                    Data = appointments
+                };
+
+
+
+            }
+            catch(Exception ex)
+            {
+                return new ApiResponseDto
+                {
+                    IsSuccess = false,
+                    Message = $"An error occurred: {ex.Message}",
+                    StatusCode = 500
+                };
+            }
+        }
     }
 }

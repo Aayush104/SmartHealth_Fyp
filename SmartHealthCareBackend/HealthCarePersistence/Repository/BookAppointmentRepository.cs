@@ -110,7 +110,31 @@ namespace HealthCarePersistence.Repository
             }
         }
 
+        public async Task<List<GetDoctorListByIdDto>> GetAllAppointemntsById(string userId)
+        {
+            var response = await _dbContext.BookAppointments
+                .Where(x=>x.PatientId == userId)
+                .Include(x => x.Doctor)
+                .ThenInclude(doctor => doctor.User)
+                .Select(DoctorList => new GetDoctorListByIdDto
+                { 
+                    DoctorId = DoctorList.DoctorId,
+                    DoctorName = DoctorList.Doctor.User.FullName,
+                    AppointmentDate = DoctorList.AppointmentDate,
+                    Slot = DoctorList.Slot,
+                    EndTime = DoctorList.EndTime,
+                    DoctorProfile = DoctorList.Doctor.Profile,
+                    speciality = DoctorList.Doctor.Specialization,
+                    VideoUrl = DoctorList.VideoUrl
 
+                
+                
+                
+                }).ToListAsync();
+
+
+            return response;
+        }
 
         public async Task<List<GetDoctorByIdDto>> GetDoctorListByIdAsync(string Id)
         {

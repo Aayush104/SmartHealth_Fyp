@@ -413,7 +413,25 @@ namespace HealthCareApi.Controllers
             return StatusCode(response.StatusCode, response.Message);
         }
 
+        [HttpGet("UserAppointments")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> UserAppointments()
+        {
+            var userId = HttpContext.User.FindFirst("userId")?.Value;
 
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User not found");
+            }
+
+            var response = await _appointmentService.UserAppointmentsAsync(userId);
+
+            if (response.StatusCode == 200)
+            {
+                return Ok(response);
+            }
+            return StatusCode(response.StatusCode, response.Message);
+        }
 
     }
 }

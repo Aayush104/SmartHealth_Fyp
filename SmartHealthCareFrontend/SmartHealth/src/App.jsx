@@ -35,6 +35,7 @@ import UnAuthorized from "./Components/Helper/UnAuthorized";
 import { toast } from 'react-toastify';
 import FAQSection from "./Pages/Q N A/FAQSection";
 import ReportPage from "./Pages/ReportPage/ReportPage";
+import PatientAppointments from "./Components/PatientAppointments/PatientAppointments";
 
 // App component
 const App = () => {
@@ -154,6 +155,14 @@ const App = () => {
           element={
             <Protect requiredRole={['Patient']}>
               <Home />
+            </Protect>
+          }
+        />
+        <Route
+          path="/MyAppointments"
+          element={
+            <Protect requiredRole={['Patient']}>
+              <PatientAppointments />
             </Protect>
           }
         />

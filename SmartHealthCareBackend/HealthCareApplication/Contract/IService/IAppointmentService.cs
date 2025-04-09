@@ -19,5 +19,6 @@ namespace HealthCareApplication.Contract.IService
         Task<ApiResponseDto> ChecKMeetingIdAsync(string MeetingId);
         Task<ApiResponseDto> CheckforCommentAsync(string DoctorId , string UserId);
         Task <ApiResponseDto>UploadVideoAsync(IFormFile videoFile, string meetingId);
+        Task<ApiResponseDto> UserAppointmentsAsync(string userId);
     }
 }

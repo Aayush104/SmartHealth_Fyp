@@ -634,6 +634,18 @@
         }
       }
     },
+    "/api/Appointment/UserAppointments": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth/CheckAccess": {
       "get": {
         "tags": [
