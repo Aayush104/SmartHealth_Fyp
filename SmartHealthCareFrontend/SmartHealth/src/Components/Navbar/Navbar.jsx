@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 import { MdOutlineArrowDropDown } from 'react-icons/md';
 import { GoReport } from "react-icons/go";
 import { RiQuestionAnswerLine } from "react-icons/ri";
+import { BiTask } from "react-icons/bi";
 const Navbar = () => {
   const location = useLocation();
   const [scrolling, setScrolling] = useState(false);
@@ -128,6 +129,12 @@ const Navbar = () => {
             <MdOutlineArrowDropDown className="text-2xl text-gray-500" />
           </div>
           <ul className="absolute mt-0.2 right-0 w-48 bg-white border rounded-lg shadow-lg hidden group-hover:block">
+
+          <NavLink to ="/FAQ">
+ <li className="px-4 py-2  hover:bg-gray-100 cursor-pointer flex items-center gap-2" >
+ <BiTask/> Appointments
+            </li>
+            </NavLink>
             
           <NavLink to ="/FAQ">
  <li className="px-4 py-2  hover:bg-gray-100 cursor-pointer flex items-center gap-2" >
@@ -135,24 +142,24 @@ const Navbar = () => {
             </li>
             </NavLink>
 
+            
+            <NavLink to ="/Reports">
+ <li className="px-4 py-2  hover:bg-gray-100 cursor-pointer flex items-center gap-2" >
+ <GoReport />         Do Report
+            </li>
+            </NavLink>
+
+         
+
+
+
+
             <NavLink to="/" onClick={handleLogout} >
           <li className=" py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
               <div className='flex items-center px-2 py-2'>
                 <TbLogout2 className="text-lg text-sky-600  mr-1 " />
                 <span className="text-md text-sky-600 font-medium  ">
                   Logout
-                </span>
-                </div>
-            </li>
-            </NavLink>
-            
-         
-<NavLink to = '/Reports'>
-            <li className=" py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
-              <div className='flex items-center px-2 py-2 '>
-                <GoReport className="text-lg text-sky-600 mr-1 mt-0.5 " />
-                <span className="text-md text-sky-600 font-medium  ">
-                Do Report
                 </span>
                 </div>
             </li>
