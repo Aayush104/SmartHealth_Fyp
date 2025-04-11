@@ -276,37 +276,36 @@ const Home = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="flex justify-between items-center mb-6">
-              <div className="py-8 w-full">
-                <motion.h2
-                  className="text-3xl md:text-4xl font-semibold text-sky-600 text-center mb-3"
-                  initial={{ opacity: 0, y: -20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7 }}
-                  viewport={{ once: true }}
-                >
-                  Upcoming Appointments
-                </motion.h2>
-                
-                <motion.div 
-                  className="flex items-center justify-center"
-                  initial={{ opacity: 0, scaleX: 0 }}
-                  whileInView={{ opacity: 1, scaleX: 1 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="h-1 w-40 md:w-56 bg-sky-400 rounded-full"></div>
-                </motion.div>
-                
-                <motion.p
-                  className="text-gray-600 text-center max-w-2xl mx-auto mt-5 px-4 text-sm md:text-base"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.7, delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  View and manage your scheduled sessions with practitioners
-                </motion.p>
-              </div>
+             
+                         <div className="py-6 w-full">
+                           <motion.h2
+                             initial={{ opacity: 0, y: -20 }}
+                             whileInView={{ opacity: 1, y: 0 }}
+                             transition={{ duration: 0.6, ease: "easeOut" }}
+                             viewport={{ once: false, amount: 0.5 }}
+                             className="text-4xl font-bold text-sky-600 text-center mb-2"
+                           >
+                             Upcoming Appointments
+                           </motion.h2>
+                         
+                           <motion.div
+                             initial={{ scaleX: 0 }}
+                             whileInView={{ scaleX: 1 }}
+                             transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
+                             viewport={{ once: false, amount: 0.5 }}
+                             className="origin-left h-1 w-40 md:w-52 bg-gradient-to-r from-sky-300 to-blue-600 rounded-full mx-auto"
+                           />
+                         
+                           <motion.p
+                             initial={{ opacity: 0, y: 20 }}
+                             whileInView={{ opacity: 1, y: 0 }}
+                             transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+                             viewport={{ once: false, amount: 0.5 }}
+                             className="text-gray-600 text-center max-w-2xl mx-auto mt-3 px-4 text-md"
+                           >
+                          View and manage your scheduled sessions with patients
+                           </motion.p>
+                         </div>
               {upcomingAppointments.length > 0 && (
                 <motion.button 
                   className="text-sky-500 hover:text-sky-600 flex items-center text-sm font-medium"

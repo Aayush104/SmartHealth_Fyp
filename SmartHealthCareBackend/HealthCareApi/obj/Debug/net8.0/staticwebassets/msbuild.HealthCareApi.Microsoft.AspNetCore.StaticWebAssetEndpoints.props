@@ -1860,5 +1860,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-aAi13WV3cvaIxlEuf4Yyt70GV9sSflzZermAVwqyMw4="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"3043354"},{"Name":"Content-Type","Value":"video/webm"},{"Name":"ETag","Value":"\u0022aAi13WV3cvaIxlEuf4Yyt70GV9sSflzZermAVwqyMw4=\u0022"},{"Name":"Last-Modified","Value":"Wed, 09 Apr 2025 10:14:42 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/HealthCareApi/Uploads/e831a112-ff90-418d-8d85-deddbe42eb72.pymj6dymyx.webm">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Uploads\e831a112-ff90-418d-8d85-deddbe42eb72.webm'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"pymj6dymyx"},{"Name":"integrity","Value":"sha256-/0oer1V4Fdno9\u002Ba6/o3Lhcd2leSQii3VgkRIa4OT4lE="},{"Name":"label","Value":"_content/HealthCareApi/Uploads/e831a112-ff90-418d-8d85-deddbe42eb72.webm"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3883929"},{"Name":"Content-Type","Value":"video/webm"},{"Name":"ETag","Value":"\u0022/0oer1V4Fdno9\u002Ba6/o3Lhcd2leSQii3VgkRIa4OT4lE=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 05:07:52 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/HealthCareApi/Uploads/e831a112-ff90-418d-8d85-deddbe42eb72.webm">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Uploads\e831a112-ff90-418d-8d85-deddbe42eb72.webm'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-/0oer1V4Fdno9\u002Ba6/o3Lhcd2leSQii3VgkRIa4OT4lE="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"3883929"},{"Name":"Content-Type","Value":"video/webm"},{"Name":"ETag","Value":"\u0022/0oer1V4Fdno9\u002Ba6/o3Lhcd2leSQii3VgkRIa4OT4lE=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 05:07:52 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>

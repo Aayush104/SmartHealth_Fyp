@@ -33,6 +33,8 @@ namespace HealthCareApi.Controllers
         private readonly string eSewa_SandboxKey = "8gBm/:&EnhH.1/q";
         private readonly string Khalti_SandboxKey = "live_secret_key_68791341fdd94846a146f0457ff7b455";
 
+        //private readonly string Khalti_SandboxKey = "live_secret_key_3fb3d001f89c4fd7965e13ed9f96c6eb";
+
 
 
         // Testing mode only
