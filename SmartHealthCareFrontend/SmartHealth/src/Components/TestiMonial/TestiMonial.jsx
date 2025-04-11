@@ -10,32 +10,40 @@ import testimonials from '../../Assets/Data/Testimonials.json';
 const Testimonial = () => {
   return (
     <div className='mt-20 mb-8'>
-     <motion.h2
-        className="text-gray-600 font-bold text-2xl md:text-4xl mx-16 uppercase"
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        TestiMonial
-      </motion.h2>
-      <div className="relative flex items-center mx-8">
-        <div className="w-8 h-8 bg-sky-600 rounded-full"></div>
-        <div className="h-1 w-64 bg-sky-600"></div>
-      </div>
-      <div className='flex flex-col items-center'>
-       
-      
     
-        <motion.span
-          className='font-bold text-Subheading capitalize font-comic'
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 100, damping: 25, delay: 0.2 }}
-        >
-          What our users have to say
-        </motion.span>
-      </div>
+    <div className="flex flex-col items-center mb-12">
+          <motion.div
+            className="flex flex-col items-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.span
+              className="bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-sm font-medium uppercase tracking-wider"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 100, damping: 25, delay: 0.2 }}
+            >
+              Testimonials
+            </motion.span>
+            
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold text-gray-800 mt-4 text-center"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 100, damping: 25, delay: 0.3 }}
+            >
+              What Our Users Have to Say
+            </motion.h2>
+            
+            <motion.div
+              className="h-1 w-24 bg-blue-500 mt-4 rounded-full"
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            />
+          </motion.div>
+        </div>
 
       <Swiper
         modules={[Pagination, Autoplay]}

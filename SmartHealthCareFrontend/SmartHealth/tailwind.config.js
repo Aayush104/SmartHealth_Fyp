@@ -39,7 +39,7 @@ export default {
         comic: ['"Comic Neue"', 'cursive'],
       },
       colors: {
-        "primary": '#336699',
+        "primary": '#4181C2',
       },
       screens: {
         sm: '640px',

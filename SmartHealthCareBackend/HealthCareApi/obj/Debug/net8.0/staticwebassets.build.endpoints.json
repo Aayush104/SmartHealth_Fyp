@@ -7137,6 +7137,88 @@
       ]
     },
     {
+      "Route": "MessageFile/a2935cba-efc4-4442-ba0c-f248298fe8cd.jpeg",
+      "AssetFile": "MessageFile/a2935cba-efc4-4442-ba0c-f248298fe8cd.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11687"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"07BprKsGsaqbr3VX7Jm6JMUpx1hXrCz9DMGj6FMKvrQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 12:00:02 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-07BprKsGsaqbr3VX7Jm6JMUpx1hXrCz9DMGj6FMKvrQ="
+        }
+      ]
+    },
+    {
+      "Route": "MessageFile/a2935cba-efc4-4442-ba0c-f248298fe8cd.t48czu6sw9.jpeg",
+      "AssetFile": "MessageFile/a2935cba-efc4-4442-ba0c-f248298fe8cd.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11687"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"07BprKsGsaqbr3VX7Jm6JMUpx1hXrCz9DMGj6FMKvrQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 12:00:02 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t48czu6sw9"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-07BprKsGsaqbr3VX7Jm6JMUpx1hXrCz9DMGj6FMKvrQ="
+        },
+        {
+          "Name": "label",
+          "Value": "MessageFile/a2935cba-efc4-4442-ba0c-f248298fe8cd.jpeg"
+        }
+      ]
+    },
+    {
       "Route": "MessageFile/a4a7917d-8978-4072-b565-bc030bd0acf2.dx67llb18k.jpeg",
       "AssetFile": "MessageFile/a4a7917d-8978-4072-b565-bc030bd0acf2.jpeg",
       "Selectors": [],

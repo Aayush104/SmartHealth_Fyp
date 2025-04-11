@@ -128,7 +128,7 @@ const Navbar = () => {
             <p className="text-sky-400 font-medium ml-2 capitalize">{userName}</p>
             <MdOutlineArrowDropDown className="text-2xl text-gray-500" />
           </div>
-          <ul className="absolute mt-0.2 right-0 w-48 bg-white border rounded-lg shadow-lg hidden group-hover:block">
+          <ul className="absolute mt-0.2 right-0 w-48 bg-white border rounded-lg shadow-lg  z-50 hidden group-hover:block">
 
           <NavLink to ="/MyAppointments">
  <li className="px-4 py-2  hover:bg-gray-100 cursor-pointer flex items-center gap-2" >

@@ -14,7 +14,7 @@ const AboutUs = () => {
       <ChatBot />
       <Navbar />
       <div>
-        <div className="h-[75vh] bg-ab_banner relative bg-cover bg-center mb-16 flex items-center justify-center">
+        <div className="h-[75vh] bg-ab_banner relative bg-cover bg-center mb-16 z-0 flex items-center justify-center ">
           <div className="absolute inset-0 bg-gradient-to-t from-blue-800 via-blue-600 to-transparent opacity-30"></div>
 
           <motion.p

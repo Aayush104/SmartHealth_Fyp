@@ -461,6 +461,8 @@ const PatientAppointments = () => {
                 </p>
 
                 {activeTab === "upcoming" && !searchQuery && (
+
+                  <NavLink to = "/Doctors">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -469,6 +471,7 @@ const PatientAppointments = () => {
                     <Calendar className="h-5 w-5 mr-2" />
                     Book Appointment
                   </motion.button>
+                  </NavLink>
                 )}
               </motion.div>
             )}
