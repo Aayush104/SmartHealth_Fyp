@@ -32,6 +32,7 @@ namespace HealthCareApi.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
+
         [HttpGet("SearchDoctor")]
         public async Task<IActionResult> SearchDoctor([FromQuery] SearchDto searchDto)
         {

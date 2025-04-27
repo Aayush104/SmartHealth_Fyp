@@ -26,8 +26,9 @@ const Admin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://localhost:7070/api/Doctor/VerifyDoctor");
+        const response = await axios.get("https://localhost:7070/api/Admin/VerifyDoctor");
         setData(response.data.$values);
+        console.log("Doctor",response)
       } catch (error) {
         console.error("Error fetching doctor data", error);
       }

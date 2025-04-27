@@ -22,7 +22,7 @@ const AdminNav = () => {
 
   return (
     <nav className="px-8 py-2 flex justify-between items-center bg-white shadow-md z-50">
-      {/* Logo */}
+     
       <img src={logo} alt="Medical Logo" className="w-36 cursor-pointer" />
 
       {/* Right Section */}
@@ -34,10 +34,7 @@ const AdminNav = () => {
           <span className="mt-1">Home</span>
         </div>
         </NavLink>
-        {/* <div className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
-          <IoIosNotifications className="text-3xl mt-1 group-hover:text-sky-400" />
-          <span className="mt-1">Notifications</span>
-        </div> */}
+    
         <div className="flex flex-col justify-center items-center cursor-pointer text-gray-500 font-medium group hover:text-sky-400">
           <AdminNotification />
         </div>

@@ -276,10 +276,15 @@ const Login = () => {
                   </div>
                 </div>
 
+<div className='flex items-center justify-center'>
                 <p className="mt-4 text-sm text-center text-gray-500">
                   Don't have an account? 
-                  <NavLink to="/register" className="text-sky-500 ml-1">Sign Up</NavLink>
+                  
                 </p>
+                <NavLink to="/patientRegistration" >
+                  <p className="text-sky-500 ml-1 items-center justify-center mt-4 cursor-pointer">Sign Up</p>
+                  </NavLink>
+                  </div>
               </div>
             </div>
           </div>

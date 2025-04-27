@@ -41,11 +41,11 @@ namespace HealthCareApplication.Features.Services
         private readonly IDataProtector _dataProtector;
         private readonly HttpClient _httpClient;
 
-        public AuthService( HttpClient httpclient, IPatientRepository patientRepository, IDoctorRepository doctorRepository, UserManager<ApplicationUser> userManager,
+        public AuthService(HttpClient httpclient, IPatientRepository patientRepository, IDoctorRepository doctorRepository, UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager, IFileService fileService, IMailService mailService, IOtpService otpService,
             ITokenService tokenService, IDataProtectionProvider dataProtector, DataSecurityProvider securityProvider)
         {
-            _httpClient = httpclient;   
+            _httpClient = httpclient;
             _patientRepository = patientRepository;
             _doctorRepository = doctorRepository;
             _userManager = userManager;
@@ -67,7 +67,7 @@ namespace HealthCareApplication.Features.Services
                 {
                     return new ApiResponseDto { IsSuccess = false, Message = "A user with this email already exists.", StatusCode = 400 };
                 }
-            
+
 
                 var otp = OtpGenerator.GenerateOtp();
                 var user = new ApplicationUser
@@ -89,13 +89,13 @@ namespace HealthCareApplication.Features.Services
                         {
                             Id = user.Id,
                             DateOfBirth = patientDto.DateOfBirth,
-                           Gender = patientDto.Gender,
-                           Address = patientDto.Address
+                            Gender = patientDto.Gender,
+                            Address = patientDto.Address
 
                         };
                         await _patientRepository.AddPatient(patient);
                         await _otpService.StoreOtpAsync(user.Id, "Registration", otp);
-                        await _mailService.SendEmail(user.Email,user.FullName, otp);
+                        await _mailService.SendEmail(user.Email, user.FullName, otp);
                     }
                     else if (role == "Doctor" && UserTypeDetails is DoctorDto doctorDto)
                     {
@@ -254,7 +254,7 @@ namespace HealthCareApplication.Features.Services
 
                 var otp = OtpGenerator.GenerateOtp();
 
-                var unhashedId = _dataProtector.Unprotect(userId);  
+                var unhashedId = _dataProtector.Unprotect(userId);
 
                 var user = await _userManager.FindByIdAsync(unhashedId);
 
@@ -297,10 +297,10 @@ namespace HealthCareApplication.Features.Services
         {
             try
             {
-               
+
                 var user = await _userManager.FindByEmailAsync(googleLoginDto.Email);
 
-                if (user !=null && user.IsBlocked)
+                if (user != null && user.IsBlocked)
                 {
                     return new ApiResponseDto { IsSuccess = false, Message = "You have been banned", StatusCode = 403 };
                 }
@@ -316,31 +316,31 @@ namespace HealthCareApplication.Features.Services
                         EmailConfirmed = true
                     };
 
-                  
+
                     var result = await _userManager.CreateAsync(user);
                     if (!result.Succeeded)
                     {
-                       
+
                         return new ApiResponseDto
                         {
                             IsSuccess = false,
                             Message = "Error registering user.",
-                            StatusCode = 400  
+                            StatusCode = 400
                         };
                     }
 
                     await _userManager.AddToRoleAsync(user, "Patient");
 
-                    
+
                     var patient = new Patient { Id = user.Id };
                     await _patientRepository.AddPatient(patient);
                 }
 
-               
+
                 var userRole = await _userManager.GetRolesAsync(user);
 
-                
-            
+
+
                 var token = _tokenService.GenerateToken(user, userRole.ToList());
 
                 if (token != null)

@@ -11,7 +11,7 @@ const VerifyDoc = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://localhost:7070/api/Doctor/VerifyDoctor');
+        const response = await axios.get('https://localhost:7070/api/Admin/VerifyDoctor');
         setData(response.data.$values);
       } catch (error) {
         console.error('Error fetching doctor data', error);
@@ -25,7 +25,7 @@ const VerifyDoc = () => {
     setRejected(false)
     setAccepted(true)
     try {
-      const response = await axios.post(`https://localhost:7070/api/Doctor/AcceptDoctor/${email}`);
+      const response = await axios.post(`https://localhost:7070/api/Admin/AcceptDoctor/${email}`);
       console.log(response.data);
       setData((prevData) => prevData.filter((doctor) => doctor.email !== email));
     } catch (error) {
@@ -38,7 +38,7 @@ const VerifyDoc = () => {
     setRejected(true)
     setAccepted(false)
     try {
-      const response = await axios.post(`https://localhost:7070/api/Doctor/RejectDoctor/${email}`);
+      const response = await axios.post(`https://localhost:7070/api/Admin/RejectDoctor/${email}`);
       console.log(response.data);
       setData((prevData) => prevData.filter((doctor) => doctor.email !== email));
     } catch (error) {

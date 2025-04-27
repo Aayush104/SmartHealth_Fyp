@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { motion } from "framer-motion"; // Importing motion
+import { motion } from "framer-motion"; 
 
 const DoctorAvailability = ({ onClose }) => {
   const [availabilities, setAvailabilities] = useState([]);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [slotDuration, setSlotDuration] = useState("20"); // Default duration
+  const [slotDuration, setSlotDuration] = useState("20"); 
   const [date, setDate] = useState("");
 
   const token = Cookies.get("Token");
   const decodedToken = token ? JSON.parse(atob(token.split('.')[1])) : {};
   const doctorId = decodedToken.userId || "Doctor";
 
-  // Handle adding availability
+ 
   const handleAddAvailability = () => {
     if (!startTime || !endTime || !date) {
       toast.error("Please fill in all fields.");

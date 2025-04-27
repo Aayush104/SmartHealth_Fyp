@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HubConnectionBuilder } from "@microsoft/signalr";
-import Cookies from "js-cookie"; // Ensure you have js-cookie installed
+import Cookies from "js-cookie"; 
 
 // Import pages and components
 import Landing from "./Pages/Landing/Landing";
@@ -27,9 +27,6 @@ import ChatPage from "./Pages/ChatPage/ChatPage";
 import Doctorverificationdetails from "./Components/Admin Components/Doctorverificationdetails";
 import AppointmentConfirmation from "./Components/AppointmentConfirmation/AppointmentConfirmation";
 import VideoCall from "./Pages/VideoCall/VideoCall";
-
-
-
 import { Protect, RedirectIfAuthenticated } from "./Components/Protected/Protect";
 import UnAuthorized from "./Components/Helper/UnAuthorized";
 import { toast } from 'react-toastify';

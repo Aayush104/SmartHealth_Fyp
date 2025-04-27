@@ -5,9 +5,6 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Fotter/Fotter';
 import { toast } from 'react-toastify';
 
-
-
-
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
   const [success, setSuccess] = useState(false);

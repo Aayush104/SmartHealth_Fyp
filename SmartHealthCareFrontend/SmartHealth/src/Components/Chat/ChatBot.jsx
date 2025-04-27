@@ -502,7 +502,7 @@ import {
 import { SmallCloseIcon, ChatIcon, ArrowRightIcon, CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
 import { v4 as uuidv4 } from 'uuid';
 
-// API endpoint URL - update this if your Flask server is running on a different port
+// API endpoint URL - Flask server Api End POint
 const API_URL = 'http://localhost:5000/api/chat';
 
 const ChatBot = () => {

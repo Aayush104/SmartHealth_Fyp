@@ -12,7 +12,7 @@ const ConfirmDoctorEmail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://localhost:7070/api/Doctor/ConfirmDoctorEmail/${email}/${otp}`);
+        const response = await axios.get(`https://localhost:7070/api/Admin/ConfirmDoctorEmail/${email}/${otp}`);
 
         if (response.data.isSuccess === true) {
           setVisual(true);

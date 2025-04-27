@@ -11,20 +11,20 @@ const DoctorProfile = () => {
   const [showProfileForm, setShowProfileForm] = useState(false);
   const [showAdditionalForm, setShowAdditionalForm] = useState(false);
   const [showAvailabilityForm, setShowAvailabilityForm] = useState(false);
-  const [doctorData, setDoctorData] = useState(null); // Store doctor data
-  const [loading, setLoading] = useState(false); // State to manage loading status
-  const [error, setError] = useState(null); // State to handle errors
+  const [doctorData, setDoctorData] = useState(null); 
+  const [loading, setLoading] = useState(false); 
+  const [error, setError] = useState(null); 
 
   const handleCloseForms = () => {
     setShowProfileForm(false);
     setShowAdditionalForm(false);
     setShowAvailabilityForm(false);
-    document.body.style.overflow = 'auto'; // Enable scrolling
+    document.body.style.overflow = 'auto'; 
   };
 
   const handleProfileClick = () => {
     setShowProfileForm(true);
-    document.body.style.overflow = 'hidden'; // Disable scrolling
+    document.body.style.overflow = 'hidden'; 
   };
 
   const handleAdditionalClick = () => {
@@ -47,7 +47,7 @@ const DoctorProfile = () => {
 
     const fetchData = async () => {
       setLoading(true);
-      setError(null); // Reset any previous error
+      setError(null); 
       try {
         console.log("Fetching doctor data...");
 
@@ -58,12 +58,12 @@ const DoctorProfile = () => {
         });
 
         console.log("Doctor data fetched:", response.data);
-        setDoctorData(response.data); // Store the response data
+        setDoctorData(response.data); 
       } catch (err) {
         console.error("Error fetching doctor data:", err);
         setError("Failed to load doctor data. Please try again.");
       } finally {
-        setLoading(false); // Set loading to false after the request is completed
+        setLoading(false); 
       }
     };
 

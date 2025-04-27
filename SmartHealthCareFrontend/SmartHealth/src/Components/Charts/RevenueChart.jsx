@@ -507,13 +507,13 @@ const RevenueChart = () => {
             setError(null);
             
             try {
-                // Set a timeout of 10 seconds to prevent hanging requests
+              
                 const response = await axios.get("https://localhost:7070/api/Doctor/DoctorRevenue", {
                     headers: { Authorization: `Bearer ${token}` },
                     timeout: 10000
                 });
 
-                // Ensure API response is correctly structured
+             
                 const rawData = response.data.data?.$values || [];
                 
                 if (rawData.length === 0) {

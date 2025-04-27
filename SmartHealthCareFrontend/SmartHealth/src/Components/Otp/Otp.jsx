@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ResetPassword from '../../Pages/ChangePassword/ResetPassword';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Otp = ({ userId: initialUserId, Purpose: initialPurpose }) => {
   const [userId, setUserId] = useState(initialUserId);
@@ -55,6 +56,8 @@ const Otp = ({ userId: initialUserId, Purpose: initialPurpose }) => {
         
        
           navigateTo('/login');
+          toast.success("Otp Verified Please login")
+        
           window.location.reload();
         }
       } else {
